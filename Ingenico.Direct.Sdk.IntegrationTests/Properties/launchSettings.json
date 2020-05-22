@@ -1,0 +1,18 @@
+{
+  "profiles": {
+    "Ingenico.Direct.Sdk.IntegrationTests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "direct.api.endpoint.scheme": "https",
+        "direct.api.endpoint.host": "fill_me_in",
+        "direct.api.endpoint.port": "443",
+        "direct.api.apiKeyId": "fill_me_in",
+        "direct.api.secretApiKey": "fill_me_in",
+        "direct.api.merchantId": "fill_me_in",
+        "direct.api.proxy.uri": "optional",
+        "direct.api.proxy.username": "optional",
+        "direct.api.proxy.password": "optional"
+      }
+    }
+  }
+}
