@@ -10,6 +10,8 @@ namespace Ingenico.Direct.Sdk.Domain
 
         public string InitialSchemeTransactionId { get; set; } = null;
 
+        public PaymentProduct5100SpecificInput PaymentProduct5100SpecificInput { get; set; } = null;
+
         public int? PaymentProductId { get; set; } = null;
 
         public CardRecurrenceDetails Recurring { get; set; } = null;

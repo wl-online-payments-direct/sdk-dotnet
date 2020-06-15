@@ -37,16 +37,63 @@ namespace Ingenico.Direct.Sdk
         /// <returns>The communicator configuration that can still be changed.</returns>
         public static CommunicatorConfiguration CreateConfiguration(IDictionary<string, string> configurationDictionary, string apiKeyId, string secretApiKey)
         {
-            var configuration = new CommunicatorConfiguration(configurationDictionary);
-            if (apiKeyId != null)
-            {
-                configuration.ApiKeyId = apiKeyId;
-            }
-            if (secretApiKey != null)
-            {
-                configuration.SecretApiKey = secretApiKey;
-            }
-            return configuration;
+            return new CommunicatorConfiguration(configurationDictionary)
+                .WithApiKeyId(apiKeyId)
+                .WithSecretApiKey(secretApiKey);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="CommunicatorBuilder"/> based on the provided values.
+        /// </summary>
+        /// <param name="apiKeyId">The API key identifier.</param>
+        /// <param name="secretApiKey">The secret API key.</param>
+        /// <param name="apiEndpoint">The URI of the Direct API.</param>
+        /// <param name="integrator">The integrator of the SDK.</param>
+        /// <returns>The communicator builder that can still be changed.</returns>
+        public static CommunicatorBuilder CreateCommunicatorBuilder(string apiKeyId, string secretApiKey, Uri apiEndpoint, String integrator)
+        {
+            CommunicatorConfiguration configuration = CreateConfiguration(apiKeyId, secretApiKey, apiEndpoint, integrator);
+            return CreateCommunicatorBuilder(configuration);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="CommunicatorBuilder"/> based on the configuration
+        /// values in <c>configurationDictionary</c>, <c>apiKeyId</c> and
+        /// <c>secretApiKey</c>.
+        /// </summary>
+        /// <param name="configurationDictionary">Dictionary containing configuration.</param>
+        /// <param name="apiKeyId">The API key identifier.</param>
+        /// <param name="secretApiKey">The secret API key.</param>
+        /// <returns>The communicator builder that can still be changed.</returns>
+        public static CommunicatorBuilder CreateCommunicatorBuilder(IDictionary<string, string> configurationDictionary, string apiKeyId, string secretApiKey)
+        {
+            CommunicatorConfiguration configuration = CreateConfiguration(configurationDictionary, apiKeyId, secretApiKey);
+            return CreateCommunicatorBuilder(configuration);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="CommunicatorBuilder"/> based on the passed configuration.
+        /// </summary>
+        /// <returns>The communicator builder that can still be changed.</returns>
+        public static CommunicatorBuilder CreateCommunicatorBuilder(CommunicatorConfiguration configuration)
+        {
+            MetaDataProvider metaDataProvider = new MetaDataProviderBuilder(configuration.Integrator)
+                .WithShoppingCartExtension(configuration.ShoppingCartExtension)
+                .Build();
+            return new CommunicatorBuilder()
+                .WithApiEndpoint(configuration.ApiEndpoint)
+                .WithConnection(new DefaultConnection(
+                    configuration.SocketTimeout,
+                    // connection timeout not supported
+                    configuration.ProxyConfiguration,
+                    configuration.MaxConnections))
+                .WithAuthenticator(new DefaultAuthenticator(
+                    configuration.AuthorizationType,
+                            configuration.ApiKeyId,
+                            configuration.SecretApiKey
+                ))
+                .WithMarshaller(DefaultMarshaller.Instance)
+                .WithMetaDataProvider(metaDataProvider);
         }
 
         /// <summary>
@@ -74,8 +121,8 @@ namespace Ingenico.Direct.Sdk
         /// <param name="secretApiKey">The secret API key.</param>
         public static ICommunicator CreateCommunicator(IDictionary<string, string> configurationDictionary, string apiKeyId, string secretApiKey)
         {
-            CommunicatorConfiguration configuration = CreateConfiguration(configurationDictionary, apiKeyId, secretApiKey);
-            return CreateCommunicator(configuration);
+            return CreateCommunicatorBuilder(configurationDictionary, apiKeyId, secretApiKey)
+                .Build();
         }
 
         /// <summary>
@@ -83,22 +130,8 @@ namespace Ingenico.Direct.Sdk
         /// </summary>
         public static ICommunicator CreateCommunicator(CommunicatorConfiguration configuration)
         {
-            return CreateCommunicator(
-                configuration.ApiEndpoint,
-                new DefaultConnection(
-                    configuration.SocketTimeout,
-                    // connection timeout not supported
-                    configuration.ProxyConfiguration,
-                    configuration.MaxConnections),
-                new DefaultAuthenticator(
-                    configuration.AuthorizationType,
-                            configuration.ApiKeyId,
-                            configuration.SecretApiKey
-                ),
-                new MetaDataProviderBuilder(configuration.Integrator)
-                    {
-                        ShoppingCartExtension = configuration.ShoppingCartExtension
-                    }.Build());
+            return CreateCommunicatorBuilder(configuration)
+                .Build();
         }
 
         /// <summary>
@@ -110,12 +143,25 @@ namespace Ingenico.Direct.Sdk
         /// <param name="metaDataProvider">The <see cref="MetaDataProvider"/> to use.</param>
         public static ICommunicator CreateCommunicator(Uri apiEndpoint, IConnection connection, IAuthenticator authenticator, MetaDataProvider metaDataProvider)
         {
+            return CreateCommunicator(apiEndpoint, connection, authenticator, metaDataProvider, DefaultMarshaller.Instance);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="ICommunicator"/> based on the passed fields.
+        /// </summary>
+        /// <param name="apiEndpoint">The Ingenico ePayments platform API endpoint URI to use.</param>
+        /// <param name="connection">The <see cref="IConnection"/> to use.</param>
+        /// <param name="authenticator">The <see cref="IAuthenticator"/> to use.</param>
+        /// <param name="metaDataProvider">The <see cref="MetaDataProvider"/> to use.</param>
+        /// <param name="marshaller">The <see cref="IMarshaller"/> to use.</param>
+        public static ICommunicator CreateCommunicator(Uri apiEndpoint, IConnection connection, IAuthenticator authenticator, MetaDataProvider metaDataProvider, IMarshaller marshaller)
+        {
             return new CommunicatorBuilder()
                 .WithApiEndpoint(apiEndpoint)
                 .WithConnection(connection)
                 .WithMetaDataProvider(metaDataProvider)
                 .WithAuthenticator(authenticator)
-                .WithMarshaller(DefaultMarshaller.Instance)
+                .WithMarshaller(marshaller)
                 .Build();
         }
 

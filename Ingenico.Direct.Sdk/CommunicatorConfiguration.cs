@@ -98,13 +98,8 @@ namespace Ingenico.Direct.Sdk
             {
                 ApiEndpoint = GetApiEndpoint(properties);
                 AuthorizationType = AuthorizationType.GetValueOf(GetProperty(properties, "direct.api.authorizationType", AuthorizationType.ToString()));
-
-                var connectTimout = int.Parse(GetProperty(properties, "direct.api.connectTimeout"));
-                ConnectTimeout = (connectTimout < 0) ? (TimeSpan?)TimeSpan.FromMilliseconds(connectTimout) : ConnectTimeout;
-
-                var socketTimout = int.Parse(GetProperty(properties, "direct.api.socketTimeout"));
-                SocketTimeout = (socketTimout < 0) ? (TimeSpan?)TimeSpan.FromMilliseconds(socketTimout) : SocketTimeout;
-
+                ConnectTimeout = GetTimeout(properties, "direct.api.connectTimeout", ConnectTimeout);
+                SocketTimeout = GetTimeout(properties, "direct.api.socketTimeout", SocketTimeout);
                 MaxConnections = GetProperty(properties, "direct.api.maxConnections", MaxConnections);
 
                 var proxyURI = GetProperty(properties, "direct.api.proxy.uri");
@@ -287,6 +282,14 @@ namespace Ingenico.Direct.Sdk
             var port = GetProperty(properties, "direct.api.endpoint.port", -1);
 
             return CreateURI(scheme, host, port);
+        }
+
+        private TimeSpan? GetTimeout(IDictionary<string, string> properties, String propertyName, TimeSpan? defaultTimeout)
+        {
+            var timeoutProperty = GetProperty(properties, propertyName);
+            return int.TryParse(timeoutProperty, out int timeoutInMilliseconds)
+                ? TimeSpan.FromMilliseconds(timeoutInMilliseconds)
+                : defaultTimeout;
         }
 
         Uri CreateURI(string scheme, string host, int port)

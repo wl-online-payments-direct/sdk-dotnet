@@ -63,12 +63,12 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             {
                 PaymentProducts = new List<PaymentProduct>
                 {
-                    new PaymentProduct { Id = "1" }
+                    new PaymentProduct { Id = 1 }
                 }
             };
 
             string json = DefaultMarshaller.Instance.Marshal(paymentProducts);
-            Assert.AreEqual("{\"paymentProducts\":[{\"id\":\"1\"}]}", json);
+            Assert.AreEqual("{\"paymentProducts\":[{\"id\":1}]}", json);
 
             var unmarshalledPaymentProducts = DefaultMarshaller.Instance.Unmarshal<GetPaymentProductsResponse>(json);
 

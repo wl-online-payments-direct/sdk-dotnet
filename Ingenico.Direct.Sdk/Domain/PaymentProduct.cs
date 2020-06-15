@@ -12,7 +12,7 @@ namespace Ingenico.Direct.Sdk.Domain
 
         public PaymentProductDisplayHints DisplayHints { get; set; } = null;
 
-        public string Id { get; set; } = null;
+        public int? Id { get; set; } = null;
 
         public long? MaxAmount { get; set; } = null;
 
