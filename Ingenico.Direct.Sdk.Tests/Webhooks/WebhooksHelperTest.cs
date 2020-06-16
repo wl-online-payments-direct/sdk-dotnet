@@ -39,7 +39,7 @@ namespace Ingenico.Direct.Sdk
   }
 }";
         const string GoodVersionJson = @"{
-  ""apiVersion"": ""v2"",
+  ""apiVersion"": ""v1"",
   ""id"": ""8ee793f6-4553-4749-85dc-f2ef095c5ab0"",
   ""created"": ""2020-01-01T12:30:30.000+0100"",
   ""merchantId"": ""1"",
@@ -73,7 +73,7 @@ namespace Ingenico.Direct.Sdk
         const string SecretKey = "hello+world";
 
         const string KeyIdHeader = "X-GCS-KeyId";
-        const string SignatureGood = "hP7n+mj7ZYY9YFEtzqO329s+0zzi/FpmaGIcN3Iiv2Q=";
+        const string SignatureGood = "0mw3LBod/3yPuI+UOmjpVmzL8U+YaTDC44haC6bzQpw=";
         const string SignatureWrongApi = "FuYBEmdzYQvyZWY2VOkb+AfIOCihYvQIbhubdcsIy28=";
         const string SignatureHeader = "X-GCS-Signature";
 
@@ -146,7 +146,7 @@ namespace Ingenico.Direct.Sdk
 
             WebhooksEvent anEvent = helper.Unmarshal(bodyStream, requestHeaders);
 
-            Assert.AreEqual("v2", anEvent.ApiVersion);
+            Assert.AreEqual("v1", anEvent.ApiVersion);
             Assert.AreEqual("8ee793f6-4553-4749-85dc-f2ef095c5ab0", anEvent.Id);
             Assert.AreEqual("2020-01-01T12:30:30.000+0100", anEvent.Created);
             Assert.AreEqual("1", anEvent.MerchantId);

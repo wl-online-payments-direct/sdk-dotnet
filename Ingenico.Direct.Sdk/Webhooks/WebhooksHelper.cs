@@ -81,7 +81,7 @@ namespace Ingenico.Direct.Sdk.Webhooks
                 bool isValid = signature.CompareWithoutTimingLeak(expectedSignature);
                 if (!isValid)
                 {
-                    throw new SignatureValidationException("failed to validate signature '" + signature + "'");
+                    throw new SignatureValidationException("failed to validate signature '" + signature + "'" + expectedSignature);
                 }
             }
         }
@@ -103,9 +103,9 @@ namespace Ingenico.Direct.Sdk.Webhooks
 
         private void ValidateApiVersion(WebhooksEvent unmarshalledEvent)
         {
-            if (!Client.ApiVersion.Equals(unmarshalledEvent.ApiVersion))
+            if (!"v1".Equals(unmarshalledEvent.ApiVersion))
             {
-                throw new ApiVersionMismatchException(unmarshalledEvent.ApiVersion, Client.ApiVersion);
+                throw new ApiVersionMismatchException(unmarshalledEvent.ApiVersion, "v1");
             }
         }
     }
