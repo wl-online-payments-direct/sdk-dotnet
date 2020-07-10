@@ -35,21 +35,6 @@ namespace Ingenico.Direct.Sdk
                                     CallContext context);
 
         /// <summary>
-        /// Corresponds to the HTTP Get method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
-        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
-        Task Get(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                              Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context);
-
-        /// <summary>
         /// Corresponds to the HTTP DELETE method.
         /// </summary>
         /// <param name="relativePath">The path to call, relative to the base URI.</param>
@@ -62,21 +47,6 @@ namespace Ingenico.Direct.Sdk
         /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
         Task<T> Delete<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
                                        CallContext context);
-
-        /// <summary>
-        /// Corresponds to the HTTP DELETE method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
-        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
-        Task Delete(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                                 Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context);
 
         /// <summary>
         /// Corresponds to the HTTP POST method.
@@ -94,22 +64,6 @@ namespace Ingenico.Direct.Sdk
                                      object requestBody, CallContext context);
 
         /// <summary>
-        /// Corresponds to the HTTP POST method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="requestBody">The optional request body to send.</param>
-        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
-        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
-        Task Post(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                               object requestBody, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context);
-
-        /// <summary>
         /// Corresponds to the HTTP PUT method.
         /// </summary>
         /// <param name="relativePath">The path to call, relative to the base URI.</param>
@@ -123,22 +77,6 @@ namespace Ingenico.Direct.Sdk
         /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
         Task<T> Put<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
                                     object requestBody, CallContext context);
-
-        /// <summary>
-        /// Corresponds to the HTTP PUT method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="requestBody">The optional request body to send.</param>
-        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
-        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
-        Task Put(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                              object requestBody, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context);
         #endregion
 
         /// <summary>

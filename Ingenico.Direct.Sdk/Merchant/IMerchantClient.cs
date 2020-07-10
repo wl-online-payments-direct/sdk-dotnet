@@ -25,13 +25,6 @@ namespace Ingenico.Direct.Sdk.Merchant
 		IProductsClient Products { get; }
 
         /// <summary>
-        /// Resource /v2/{merchantId}/tokens/{tokenId}
-        /// </summary>
-        /// <param name="tokenId">string</param>
-        /// <returns>TokensClient</returns>
-        ITokensClient WithNewTokens(string tokenId);
-
-        /// <summary>
         /// Resource /v2/{merchantId}/sessions
         /// </summary>
         /// <returns>SessionsClient</returns>
@@ -54,6 +47,12 @@ namespace Ingenico.Direct.Sdk.Merchant
         /// </summary>
         /// <returns>ProductGroupsClient</returns>
 		IProductGroupsClient ProductGroups { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/tokens
+        /// </summary>
+        /// <returns>TokensClient</returns>
+		ITokensClient Tokens { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/hostedcheckouts

@@ -13,9 +13,7 @@ using System.Collections.Generic;
 
 namespace Ingenico.Direct.Sdk.Merchant
 {
-    /// <summary>
-    /// Merchant client. Thread-safe.
-    /// </summary>
+    /// <inheritdoc/>
     public class MerchantClient : ApiResource, IMerchantClient
     {
         public MerchantClient(ApiResource parent, IDictionary<string, string> pathContext) :
@@ -23,54 +21,25 @@ namespace Ingenico.Direct.Sdk.Merchant
         {
         }
 
-        /// <summary>
-        /// Resource /v2/{merchantId}/products
-        /// </summary>
-        /// <returns>ProductsClient</returns>
+        /// <inheritdoc/>
 		public IProductsClient Products => new ProductsClient(this, null);
 
-        /// <summary>
-        /// Resource /v2/{merchantId}/tokens/{tokenId}
-        /// </summary>
-        /// <param name="tokenId">string</param>
-        /// <returns>TokensClient</returns>
-        public ITokensClient WithNewTokens(string tokenId)
-        {
-            IDictionary<string, string> subContext = new Dictionary<string, string>
-			{
-				{ "tokenId", tokenId }
-			};
-            return new TokensClient(this, subContext);
-		}
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/sessions
-        /// </summary>
-        /// <returns>SessionsClient</returns>
+        /// <inheritdoc/>
 		public ISessionsClient Sessions => new SessionsClient(this, null);
 
-        /// <summary>
-        /// Resource /v2/{merchantId}/payments
-        /// </summary>
-        /// <returns>PaymentsClient</returns>
+        /// <inheritdoc/>
 		public IPaymentsClient Payments => new PaymentsClient(this, null);
 
-        /// <summary>
-        /// Resource /v2/{merchantId}/services/testconnection
-        /// </summary>
-        /// <returns>ServicesClient</returns>
+        /// <inheritdoc/>
 		public IServicesClient Services => new ServicesClient(this, null);
 
-        /// <summary>
-        /// Resource /v2/{merchantId}/productgroups
-        /// </summary>
-        /// <returns>ProductGroupsClient</returns>
+        /// <inheritdoc/>
 		public IProductGroupsClient ProductGroups => new ProductGroupsClient(this, null);
 
-        /// <summary>
-        /// Resource /v2/{merchantId}/hostedcheckouts
-        /// </summary>
-        /// <returns>HostedCheckoutClient</returns>
+        /// <inheritdoc/>
+		public ITokensClient Tokens => new TokensClient(this, null);
+
+        /// <inheritdoc/>
 		public IHostedCheckoutClient HostedCheckout => new HostedCheckoutClient(this, null);
     }
 }

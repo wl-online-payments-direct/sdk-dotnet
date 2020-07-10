@@ -95,17 +95,7 @@ namespace Ingenico.Direct.Sdk
         #endregion
 
         #region HTTP methods
-        /// <summary>
-        /// Corresponds to the HTTP Get method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <typeparam name="T">Type of the response.</typeparam>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
+        /// <inheritdoc/>
         public async Task<T> Get<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
                                     CallContext context)
         {
@@ -118,41 +108,7 @@ namespace Ingenico.Direct.Sdk
             }).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Corresponds to the HTTP Get method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
-        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
-        public async Task Get(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                              Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
-        {
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-            requestHeaders = AddGenericHeaders(HttpMethod.Get, uri, requestHeaders, context);
-            await Connection.Get(uri, requestHeaders, (status, body, headers) => {
-                return ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler);
-            }).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Corresponds to the HTTP DELETE method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <typeparam name="T">Type of the response.</typeparam>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
+        /// <inheritdoc/>
         public async Task<T> Delete<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
                                        CallContext context)
         {
@@ -165,56 +121,10 @@ namespace Ingenico.Direct.Sdk
             }).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Corresponds to the HTTP DELETE method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
-        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
-        public async Task Delete(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                                 Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
-        {
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-            requestHeaders = AddGenericHeaders(HttpMethod.Delete, uri, requestHeaders, context);
-            await Connection.Delete(uri, requestHeaders, (status, body, headers) => {
-                return ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler);
-            }).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Corresponds to the HTTP POST method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="requestBody">The optional request body to send.</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <typeparam name="T">Type of the response.</typeparam>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
+        /// <inheritdoc/>
         public async Task<T> Post<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
                                      object requestBody, CallContext context)
         {
-            if (requestBody is MultipartFormDataObject)
-            {
-                return await Post<T>(relativePath, requestHeaders, requestParameters, (MultipartFormDataObject)requestBody, context)
-                    .ConfigureAwait(false);
-            }
-            if (requestBody is IMultipartFormDataRequest)
-            {
-                MultipartFormDataObject multipart = ((IMultipartFormDataRequest)requestBody).ToMultipartFormDataObject();
-                return await Post<T>(relativePath, requestHeaders, requestParameters, multipart, context)
-                    .ConfigureAwait(false);
-            }
 
             IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
             Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
@@ -234,114 +144,10 @@ namespace Ingenico.Direct.Sdk
             }).ConfigureAwait(false);
         }
 
-        async Task<T> Post<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                                     MultipartFormDataObject multipart, CallContext context)
-        {
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-
-            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
-
-            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
-
-            requestHeaders = AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context);
-            return await Connection.Post<T>(uri, requestHeaders, multipart, (status, body, headers) => {
-                return ProcessResponse<T>(status, body, headers, relativePath, context);
-            }).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Corresponds to the HTTP POST method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="requestBody">The optional request body to send.</param>
-        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
-        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
-        public async Task Post(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                               object requestBody, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
-        {
-            if (requestBody is MultipartFormDataObject)
-            {
-                await Post(relativePath, requestHeaders, requestParameters, (MultipartFormDataObject)requestBody, bodyHandler, context)
-                    .ConfigureAwait(false);
-                return;
-            }
-            if (requestBody is IMultipartFormDataRequest)
-            {
-                MultipartFormDataObject multipart = ((IMultipartFormDataRequest)requestBody).ToMultipartFormDataObject();
-                await Post(relativePath, requestHeaders, requestParameters, multipart, bodyHandler, context)
-                    .ConfigureAwait(false);
-                return;
-            }
-
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-
-            string requestJson = null;
-            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
-            if (requestBody != null)
-            {
-                requestHeaderList.Add(new EntityHeader("Content-Type", "application/json"));
-                requestJson = Marshaller.Marshal(requestBody);
-            }
-
-            requestHeaders = AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context);
-            await Connection.Post(uri, requestHeaders, requestJson, (status, body, headers) => {
-                return ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler);
-            }).ConfigureAwait(false);
-        }
-
-        async Task Post(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                               MultipartFormDataObject multipart, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
-        {
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-
-            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
-
-            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
-
-            requestHeaders = AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context);
-            await Connection.Post(uri, requestHeaders, multipart, (status, body, headers) => {
-                return ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler);
-            }).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Corresponds to the HTTP PUT method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="requestBody">The optional request body to send.</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <typeparam name="T">Type of the response.</typeparam>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
+        /// <inheritdoc/>
         public async Task<T> Put<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
                                     object requestBody, CallContext context)
         {
-            if (requestBody is MultipartFormDataObject)
-            {
-                return await Put<T>(relativePath, requestHeaders, requestParameters, (MultipartFormDataObject)requestBody, context)
-                    .ConfigureAwait(false);
-            }
-            if (requestBody is IMultipartFormDataRequest)
-            {
-                MultipartFormDataObject multipart = ((IMultipartFormDataRequest)requestBody).ToMultipartFormDataObject();
-                return await Put<T>(relativePath, requestHeaders, requestParameters, multipart, context)
-                    .ConfigureAwait(false);
-            }
 
             IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
             Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
@@ -360,106 +166,15 @@ namespace Ingenico.Direct.Sdk
                 return ProcessResponse<T>(status, body, headers, relativePath, context);
             }).ConfigureAwait(false);
         }
-
-        async Task<T> Put<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                                    MultipartFormDataObject multipart, CallContext context)
-        {
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-
-            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
-
-            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
-
-            requestHeaders = AddGenericHeaders(HttpMethod.Put, uri, requestHeaderList, context);
-            return await Connection.Put<T>(uri, requestHeaders, multipart, (status, body, headers) => {
-                return ProcessResponse<T>(status, body, headers, relativePath, context);
-            }).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Corresponds to the HTTP PUT method.
-        /// </summary>
-        /// <param name="relativePath">The path to call, relative to the base URI.</param>
-        /// <param name="requestHeaders">An optional list of request headers.</param>
-        /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="requestBody">The optional request body to send.</param>
-        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
-        /// <param name="context">The optional call context to use</param>
-        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Ingenico ePayments platform</exception>
-        /// <exception cref="ResponseException">when an error response was received from the Ingenico ePayments platform</exception>
-        /// <exception cref="ApiException">when an error response was received from the Ingenico ePayments platform which contained a list of errors</exception>
-        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
-        public async Task Put(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                              object requestBody, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
-        {
-            if (requestBody is MultipartFormDataObject)
-            {
-                await Put(relativePath, requestHeaders, requestParameters, (MultipartFormDataObject)requestBody, bodyHandler, context)
-                    .ConfigureAwait(false);
-                return;
-            }
-            if (requestBody is IMultipartFormDataRequest)
-            {
-                MultipartFormDataObject multipart = ((IMultipartFormDataRequest)requestBody).ToMultipartFormDataObject();
-                await Put(relativePath, requestHeaders, requestParameters, multipart, bodyHandler, context)
-                    .ConfigureAwait(false);
-                return;
-            }
-
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-
-            string requestJson = null;
-            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
-            if (requestBody != null)
-            {
-                requestHeaderList.Add(new EntityHeader("Content-Type", "application/json"));
-                requestJson = Marshaller.Marshal(requestBody);
-            }
-
-            requestHeaders = AddGenericHeaders(HttpMethod.Put, uri, requestHeaderList, context);
-            await Connection.Put(uri, requestHeaders, requestJson, (status, body, headers) => {
-                return ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler);
-            }).ConfigureAwait(false);
-        }
-
-        async Task Put(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                              MultipartFormDataObject multipart, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
-        {
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-
-            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
-
-            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
-
-            requestHeaders = AddGenericHeaders(HttpMethod.Put, uri, requestHeaderList, context);
-            await Connection.Put(uri, requestHeaders, multipart, (status, body, headers) => {
-                return ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler);
-            }).ConfigureAwait(false);
-        }
         #endregion
 
-        /// <summary>
-        /// Unmarshal a JSON string to a response object.
-        /// </summary>
-        /// <param name="responseJson">The JSON that will be parsed.</param>
-        /// <typeparam name="T">The response type.</typeparam>
-        /// <exception cref="MarshallerSyntaxException">if the JSON is not a valid representation for an object of the given type</exception>
+        /// <inheritdoc/>
         public T Unmarshal<T>(string responseJson)
         {
             return Marshaller.Unmarshal<T>(responseJson);
         }
 
-        /// <summary>
-        /// Utility method that delegates the call to this communicator's session's connection if that's an instance of <see cref="IPooledConnection"/>.
-        /// If not this method does nothing.
-        /// <seealso cref="IPooledConnection.CloseExpiredConnections"/>
-        /// </summary>
+        /// <inheritdoc/>
         public void CloseExpiredConnections()
         {
             if (typeof(IPooledConnection).IsAssignableFrom(Connection.GetType()))
@@ -468,11 +183,7 @@ namespace Ingenico.Direct.Sdk
             }
         }
 
-        /// <summary>
-        /// Utility method that delegates the call to this communicator's session's connection if that's an instance of
-        /// <see cref="IPooledConnection"/>.
-        /// </summary>
-        /// <param name="timespan">Idle time.</param>
+        /// <inheritdoc/>
         public void CloseIdleConnections(TimeSpan timespan)
         {
             if (Connection is IPooledConnection)
@@ -576,26 +287,14 @@ namespace Ingenico.Direct.Sdk
             }
         }
 
-        protected O ProcessResponse<O>(HttpStatusCode statusCode, Stream stream, IEnumerable<IResponseHeader> headers, string requestPath, CallContext context, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler = null)
+        protected O ProcessResponse<O>(HttpStatusCode statusCode, Stream stream, IEnumerable<IResponseHeader> headers, string requestPath, CallContext context)
         {
             if (context != null)
             {
                 context.IdempotenceRequestTimestamp = GetIdempotenceTimestamp(headers);
             }
             ThrowExceptionIfNecessary(statusCode, stream, headers, requestPath);
-            if (bodyHandler == null)
-            {
-                return Marshaller.Unmarshal<O>(stream);
-            }
-            try
-            {
-                bodyHandler(stream, headers);
-            }
-            catch (Exception e)
-            {
-                throw new BodyHandlerException("The bodyhandler threw an exception", e);
-            }
-            return default;
+            return Marshaller.Unmarshal<O>(stream);
         }
 
         protected long? GetIdempotenceTimestamp(IEnumerable<IResponseHeader> headers)

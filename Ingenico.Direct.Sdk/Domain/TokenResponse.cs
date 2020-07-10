@@ -10,6 +10,8 @@ namespace Ingenico.Direct.Sdk.Domain
 
         public TokenEWallet EWallet { get; set; } = null;
 
+        public ExternalTokenLinked ExternalTokenLinked { get; set; } = null;
+
         public string Id { get; set; } = null;
 
         public int? PaymentProductId { get; set; } = null;

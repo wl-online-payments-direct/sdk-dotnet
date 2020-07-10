@@ -9,12 +9,7 @@ using System.Collections.Generic;
 
 namespace Ingenico.Direct.Sdk
 {
-    /// <summary>
-    /// Ingenico ePayments platform client. Thread-safe.
-    ///
-    /// This client and all its child clients are bound to one specific value for the <i>X-GCS-ClientMetaInfo</i> header.
-    /// To get a new client with a different header value, use <see cref="WithClientMetaInfo"/>.
-    /// </summary>
+    /// <inheritdoc/>
     public class Client : ApiResource, IClient
     {
         public const string ApiVersion = "v2";
@@ -28,11 +23,7 @@ namespace Ingenico.Direct.Sdk
         {
         }
 
-        /// <summary>
-        /// Returns a new Client which uses the passed meta data for the <i>X-GCS-ClientMetaInfo</i> header.
-        /// </summary>
-        /// <param name="clientMetaInfo">JSON string containing the meta data for the client</param>
-        /// <exception cref="MarshallerSyntaxException">if the given clientMetaInfo is not a valid JSON string</exception>
+        /// <inheritdoc/>
         public Client WithClientMetaInfo(string clientMetaInfo)
         {
             if (_clientMetaInfo == null && clientMetaInfo == null)
@@ -60,18 +51,13 @@ namespace Ingenico.Direct.Sdk
             }
         }
 
-        /// <summary>
-        /// Utility method that delegates the call to this client's communicator.
-        /// </summary>
+        /// <inheritdoc/>
         public void CloseExpiredConnections()
         {
             _communicator.CloseExpiredConnections();
         }
 
-        /// <summary>
-        /// Utility method that delegates the call to this client's communicator.
-        /// </summary>
-        /// <param name="timespan">Idle time.</param>
+        /// <inheritdoc/>
         public void CloseIdleConnections(TimeSpan timespan)
         {
             _communicator.CloseIdleConnections(timespan);
@@ -92,20 +78,14 @@ namespace Ingenico.Direct.Sdk
         #endregion
 
         #region IDisposable support
-        /// <summary>
-        /// Releases any system resources associated with this object.
-        /// </summary>
+        /// <inheritdoc/>
         public void Dispose()
         {
             _communicator.Dispose();
         }
         #endregion
 
-        /// <summary>
-        /// Resource /v2/{merchantId}
-        /// </summary>
-        /// <param name="merchantId">string</param>
-        /// <returns>MerchantClient</returns>
+        /// <inheritdoc/>
         public IMerchantClient WithNewMerchant(string merchantId)
         {
             IDictionary<string, string> subContext = new Dictionary<string, string>

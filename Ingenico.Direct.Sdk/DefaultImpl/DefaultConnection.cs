@@ -66,36 +66,6 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 .ConfigureAwait(false);
         }
 
-        async Task<R> SendHttpMessage<R>(HttpMethod method, Uri uri, IEnumerable<IRequestHeader> requestHeaders, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler, MultipartFormDataObject multipart)
-        {
-            var content = new MultipartFormDataContent(multipart.Boundary);
-            content.Headers.ContentType = MediaTypeHeaderValue.Parse(multipart.ContentType);
-            foreach (KeyValuePair<string, string> value in multipart.Values)
-            {
-                var valueContent = new StringContent(value.Value, System.Text.Encoding.UTF8);
-                content.Add(valueContent, value.Key);
-            }
-            foreach (KeyValuePair<string, UploadableFile> file in multipart.Files)
-            {
-                var fileContent = new StreamContent(file.Value.Content);
-                fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(file.Value.ContentType);
-                if (file.Value.ContentLength >= 0)
-                {
-                    fileContent.Headers.ContentLength = file.Value.ContentLength;
-                }
-                content.Add(fileContent, file.Key, file.Value.FileName);
-            }
-
-            var contentType = content.Headers.ContentType;
-            if (contentType == null || !(multipart.ContentType).Equals(contentType.ToString()))
-            {
-                throw new InvalidOperationException("MultipartFormDataContent did not create the expected content type" + contentType);
-            }
-
-            return await SendHttpMessage<R>(method, uri, requestHeaders, responseHandler, content, "<binary content>")
-                .ConfigureAwait(false);
-        }
-
         async Task<R> SendHttpMessage<R>(HttpMethod method, Uri uri, IEnumerable<IRequestHeader> requestHeaders, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler, HttpContent content, string contentString)
         {
             var guid = Guid.NewGuid();
@@ -178,39 +148,31 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
         #endregion
 
         #region IConnection implementation
+        /// <inheritdoc/>
         public async Task<R> Get<R>(Uri uri, IEnumerable<IRequestHeader> requestHeaders, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler)
         {
             return await SendHttpMessage<R>(HttpMethod.Get, uri, requestHeaders,  responseHandler)
                 .ConfigureAwait(false);
         }
 
+        /// <inheritdoc/>
         public async Task<R> Delete<R>(Uri uri, IEnumerable<IRequestHeader> requestHeaders, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler)
         {
             return await SendHttpMessage<R>(HttpMethod.Delete, uri, requestHeaders,  responseHandler)
                 .ConfigureAwait(false);
         }
 
+        /// <inheritdoc/>
         public async Task<R> Post<R>(Uri uri, IEnumerable<IRequestHeader> requestHeaders, string body, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler)
         {
             return await SendHttpMessage<R>(HttpMethod.Post, uri, requestHeaders, responseHandler, body)
                 .ConfigureAwait(false);
         }
 
-        public async Task<R> Post<R>(Uri uri, IEnumerable<IRequestHeader> requestHeaders, MultipartFormDataObject multipart, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler)
-        {
-            return await SendHttpMessage<R>(HttpMethod.Post, uri, requestHeaders, responseHandler, multipart)
-                .ConfigureAwait(false);
-        }
-
+        /// <inheritdoc/>
         public async Task<R> Put<R>(Uri uri, IEnumerable<IRequestHeader> requestHeaders, string body, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler)
         {
             return await SendHttpMessage<R>(HttpMethod.Put, uri, requestHeaders,  responseHandler, body)
-                .ConfigureAwait(false);
-        }
-
-        public async Task<R> Put<R>(Uri uri, IEnumerable<IRequestHeader> requestHeaders, MultipartFormDataObject multipart, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler)
-        {
-            return await SendHttpMessage<R>(HttpMethod.Put, uri, requestHeaders, responseHandler, multipart)
                 .ConfigureAwait(false);
         }
         #endregion
@@ -284,12 +246,6 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             }
 
             var contentType = responseBodyHeaders.ContentType?.ToString();
-            if (IsBinaryContent(contentType))
-            {
-                sb.SetBinaryContentBody(contentType);
-                logger.Log(sb.Message);
-                return responseBodyStream;
-            }
 
             var sr = new StreamReader(responseBodyStream);
             string responseBody = sr.ReadToEnd();
@@ -314,14 +270,6 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
         void LogException(Guid guid, Exception exception)
         {
             _communicatorLogger?.Log("Error occurred for outgoing request (requestId='" + guid + "')", exception);
-        }
-
-        bool IsBinaryContent(string contentType)
-        {
-            return contentType != null
-                && !contentType.StartsWith("text/", StringComparison.OrdinalIgnoreCase)
-                               && (contentType.IndexOf("json", StringComparison.OrdinalIgnoreCase) < 0)
-                               && (contentType.IndexOf("xml", StringComparison.OrdinalIgnoreCase) < 0);
         }
         #endregion
 
