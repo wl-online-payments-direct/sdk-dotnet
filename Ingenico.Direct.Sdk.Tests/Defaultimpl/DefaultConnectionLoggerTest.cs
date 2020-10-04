@@ -72,7 +72,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
   uri:          '/v2/1/payments'
   headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********""") + @"[^']*" + Regex.Escape(@"'
   content-type: 'application/json'
-  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3452"",""cvv"":""***"",""expiryDate"":""**20""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
+  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3452"",""cvv"":""***"",""expiryDate"":""**30""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
 
         readonly string createPaymentFailureRejectedResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
   status-code:  '402'
@@ -148,7 +148,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 ""authorisationCode"": ""OK1131"",
                 ""card"": {
                     ""cardNumber"": ""************3456"",
-                    ""expiryDate"": ""1220""
+                    ""expiryDate"": ""1230""
                 },
                 ""fraudResults"": {
                     ""fraudServiceResult"": ""error"",
@@ -173,7 +173,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
   uri:          '/v2/1/payments'
   headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********"", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
   content-type: 'application/json'
-  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3456"",""cvv"":""***"",""expiryDate"":""**20""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
+  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3456"",""cvv"":""***"",""expiryDate"":""**30""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
 
         readonly string createPaymentResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
   status-code:  '201'
@@ -200,7 +200,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 ""authorisationCode"": ""OK1131"",
                 ""card"": {
                     ""cardNumber"": ""************3456"",
-                    ""expiryDate"": ""**20""
+                    ""expiryDate"": ""**30""
                 },
                 ""fraudResults"": {
                     ""fraudServiceResult"": ""error"",
@@ -267,7 +267,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
   uri:          '/v2/1/payments'
   headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********"", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
   content-type: 'application/json'
-  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3456"",""cvv"":""***"",""expiryDate"":""**20""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
+  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3456"",""cvv"":""***"",""expiryDate"":""**30""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
 
         readonly string createPaymentUnicodeResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
   status-code:  '201'
@@ -332,7 +332,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
   uri:          '/v2/1/payments'
   headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********""") + @"[^']*" + Regex.Escape(@"'
   content-type: 'application/json'
-  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3456"",""cvv"":""***"",""expiryDate"":""**20""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
+  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3456"",""cvv"":""***"",""expiryDate"":""**30""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
 
         readonly string createPaymentFailureInvalidCardNumberJsonResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
   status-code:  '400'
@@ -513,7 +513,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 Card card = new Card();
                 card.Cvv = "123";
                 card.CardNumber = "1234567890123456";
-                card.ExpiryDate = "1220";
+                card.ExpiryDate = "1230";
 
                 CardPaymentMethodSpecificInput paymentMethodSpecificInput = new CardPaymentMethodSpecificInput();
                 paymentMethodSpecificInput.PaymentProductId = 1;
@@ -578,7 +578,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 Card card = new Card();
                 card.Cvv = "123";
                 card.CardNumber = "1234567890123456";
-                card.ExpiryDate = "1220";
+                card.ExpiryDate = "1230";
 
                 CardPaymentMethodSpecificInput paymentMethodSpecificInput = new CardPaymentMethodSpecificInput();
                 paymentMethodSpecificInput.PaymentProductId = 1;
@@ -644,7 +644,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 Card card = new Card();
                 card.Cvv = "123";
                 card.CardNumber = "1234567890123456";
-                card.ExpiryDate = "1220";
+                card.ExpiryDate = "1230";
 
                 CardPaymentMethodSpecificInput paymentMethodSpecificInput = new CardPaymentMethodSpecificInput();
                 paymentMethodSpecificInput.PaymentProductId = 1;
@@ -706,7 +706,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 Card card = new Card();
                 card.Cvv = "123";
                 card.CardNumber = "1234567890123452";
-                card.ExpiryDate = "1220";
+                card.ExpiryDate = "1230";
 
                 CardPaymentMethodSpecificInput paymentMethodSpecificInput = new CardPaymentMethodSpecificInput();
                 paymentMethodSpecificInput.PaymentProductId = 1;

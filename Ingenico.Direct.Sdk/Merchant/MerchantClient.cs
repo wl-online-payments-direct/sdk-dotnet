@@ -3,7 +3,9 @@
  * https://support.direct.ingenico.com/documentation/api/reference/index.html
  */
 using Ingenico.Direct.Sdk.Merchant.HostedCheckout;
+using Ingenico.Direct.Sdk.Merchant.HostedTokenization;
 using Ingenico.Direct.Sdk.Merchant.Payments;
+using Ingenico.Direct.Sdk.Merchant.Payouts;
 using Ingenico.Direct.Sdk.Merchant.ProductGroups;
 using Ingenico.Direct.Sdk.Merchant.Products;
 using Ingenico.Direct.Sdk.Merchant.Services;
@@ -28,6 +30,9 @@ namespace Ingenico.Direct.Sdk.Merchant
 		public ISessionsClient Sessions => new SessionsClient(this, null);
 
         /// <inheritdoc/>
+		public IPayoutsClient Payouts => new PayoutsClient(this, null);
+
+        /// <inheritdoc/>
 		public IPaymentsClient Payments => new PaymentsClient(this, null);
 
         /// <inheritdoc/>
@@ -35,6 +40,9 @@ namespace Ingenico.Direct.Sdk.Merchant
 
         /// <inheritdoc/>
 		public IProductGroupsClient ProductGroups => new ProductGroupsClient(this, null);
+
+        /// <inheritdoc/>
+		public IHostedTokenizationClient HostedTokenization => new HostedTokenizationClient(this, null);
 
         /// <inheritdoc/>
 		public ITokensClient Tokens => new TokensClient(this, null);

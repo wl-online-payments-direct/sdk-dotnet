@@ -45,7 +45,7 @@ namespace Ingenico.Direct.Sdk.Logging
         ""card"": {
             ""cvv"": ""***"",
             ""cardNumber"": ""************3456"",
-            ""expiryDate"": ""**20""
+            ""expiryDate"": ""**30""
         }
     }
 }";
@@ -66,7 +66,7 @@ namespace Ingenico.Direct.Sdk.Logging
         ""card"": {
             ""cvv"": ""123"",
             ""cardNumber"": ""1234567890123456"",
-            ""expiryDate"": ""1220""
+            ""expiryDate"": ""1230""
         }
     }
 }";

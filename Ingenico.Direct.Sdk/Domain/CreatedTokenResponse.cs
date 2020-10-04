@@ -8,8 +8,12 @@ namespace Ingenico.Direct.Sdk.Domain
     {
         public CardWithoutCvv Card { get; set; } = null;
 
+        public ExternalTokenLinked ExternalTokenLinked { get; set; } = null;
+
         public bool? IsNewToken { get; set; } = null;
 
         public string Token { get; set; } = null;
+
+        public string TokenStatus { get; set; } = null;
     }
 }

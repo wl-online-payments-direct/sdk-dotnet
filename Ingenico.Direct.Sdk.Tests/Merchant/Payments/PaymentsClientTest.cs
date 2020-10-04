@@ -35,7 +35,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
                 ""authorisationCode"": ""OK1131"",
                 ""card"": {
                     ""cardNumber"": ""************9176"",
-                    ""expiryDate"": ""1220""
+                    ""expiryDate"": ""1230""
                 },
                 ""fraudResults"": {
                     ""fraudServiceResult"": ""error"",
@@ -435,7 +435,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
                     {
                         Cvv = "123",
                         CardNumber = "4567350000427977",
-                        ExpiryDate = "1220"
+                        ExpiryDate = "1230"
                     }
                 }
             };

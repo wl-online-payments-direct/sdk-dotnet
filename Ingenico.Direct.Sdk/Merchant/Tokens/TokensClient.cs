@@ -62,7 +62,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Tokens
         }
 
         /// <inheritdoc/>
-        public async Task<TokenResponse> DeleteToken(string tokenId, CallContext context = null)
+        public async Task DeleteToken(string tokenId, CallContext context = null)
         {
             IDictionary<string, string> pathContext = new Dictionary<string, string>
             {
@@ -71,7 +71,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Tokens
             string uri = InstantiateUri("/v2/{merchantId}/tokens/{tokenId}", pathContext);
             try
             {
-                return await _communicator.Delete<TokenResponse>(
+                await _communicator.Delete<object>(
                         uri,
                         ClientHeaders,
                         null,
