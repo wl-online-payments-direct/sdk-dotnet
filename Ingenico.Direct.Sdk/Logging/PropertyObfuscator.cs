@@ -93,27 +93,15 @@ namespace Ingenico.Direct.Sdk.Logging
             IDictionary<string, ValueObfuscator> Obfuscators { get; set; }
                 = new Dictionary<string, ValueObfuscator>();
 
-            public PropertyObfuscatorBuilder WithAll(string property)
+            public PropertyObfuscatorBuilder WithField(string property)
             {
-                Obfuscators.Add(property, ValueObfuscator.ALL);
+                Obfuscators.Add(property, ValueObfuscator.INSTANCE);
                 return this;
             }
 
-            public PropertyObfuscatorBuilder WithFixedLength(string property, int fixedLength)
+            public PropertyObfuscatorBuilder WithSensitiveField(string property)
             {
-                Obfuscators.Add(property, ValueObfuscator.FixedLength(fixedLength));
-                return this;
-            }
-
-            public PropertyObfuscatorBuilder WithKeepStartCount(string key, int count)
-            {
-                Obfuscators.Add(key, ValueObfuscator.KeepingStartCount(count));
-                return this;
-            }
-
-            public PropertyObfuscatorBuilder WithKeepEndCount(string property, int count)
-            {
-                Obfuscators.Add(property, ValueObfuscator.KeepingEndCount(count));
+                Obfuscators.Add(property, SensitiveValueObfuscator.INSTANCE);
                 return this;
             }
 

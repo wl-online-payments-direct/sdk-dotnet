@@ -7,17 +7,17 @@ namespace Ingenico.Direct.Sdk
     /// </summary>
     public class DeclinedPaymentException : DeclinedTransactionException
     {
-        private readonly PaymentErrorResponse _errors;
+        private readonly PaymentErrorResponse _errorResponse;
 
         /// <summary>
         /// Gets the result of creating a payment if available, otherwise <c>null</c>.
         /// </summary>
-        public CreatePaymentResponse CreatePaymentResponse => _errors?.PaymentResult;
+        public CreatePaymentResponse CreatePaymentResponse => _errorResponse?.PaymentResult;
 
-        public DeclinedPaymentException(System.Net.HttpStatusCode statusCode, string responseBody, PaymentErrorResponse errors)
-            : base(BuildMessage(errors), statusCode, responseBody, errors?.ErrorId, errors?.Errors)
+        public DeclinedPaymentException(System.Net.HttpStatusCode statusCode, string responseBody, PaymentErrorResponse errorResponse)
+            : base(BuildMessage(errorResponse), statusCode, responseBody, errorResponse?.ErrorId, errorResponse?.Errors)
         {
-            _errors = errors;
+            _errorResponse = errorResponse;
         }
 
         static string BuildMessage(PaymentErrorResponse errors)
@@ -27,7 +27,7 @@ namespace Ingenico.Direct.Sdk
             {
                 return "declined payment '" + payment.Id + "' with status '" + payment.Status + "'";
             }
-            return "the Ingenico ePayments platform returned a declined refund response";
+            return "the Ingenico ePayments platform returned a declined payment response";
         }
     }
 }

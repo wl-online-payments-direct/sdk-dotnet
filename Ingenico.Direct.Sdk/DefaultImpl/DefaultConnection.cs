@@ -15,7 +15,9 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
     /// </summary>
     public class DefaultConnection : IPooledConnection
     {
-        public DefaultConnection(TimeSpan? socketTimeout, int maxConnections = 10, Proxy proxy = null)
+        private readonly TimeSpan DEFAULT_SOCKET_TIMEOUT = TimeSpan.FromSeconds(10);
+
+        public DefaultConnection(TimeSpan? socketTimeout = null, int maxConnections = 10, Proxy proxy = null)
         {
             var handler = new HttpClientHandler();
             if (proxy != null)
@@ -30,14 +32,13 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             }
 
             ServicePointManager.DefaultConnectionLimit = maxConnections;
-            _httpClient = new HttpClient(handler);
-            if (socketTimeout != null)
+            _httpClient = new HttpClient(handler)
             {
-                _httpClient.Timeout = socketTimeout.Value;
-            }
+                Timeout = socketTimeout != null ? socketTimeout.Value : DEFAULT_SOCKET_TIMEOUT
+            };
         }
 
-        internal DefaultConnection(TimeSpan? socketTimeout, ProxyConfiguration proxyConfig, int maxConnections = 10)
+        internal DefaultConnection(ProxyConfiguration proxyConfig, TimeSpan? socketTimeout = null, int maxConnections = 10)
         {
             var handler = new HttpClientHandler();
             if (proxyConfig != null)
@@ -52,11 +53,10 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             }
 
             ServicePointManager.DefaultConnectionLimit = maxConnections;
-            _httpClient = new HttpClient(handler);
-            if (socketTimeout != null)
+            _httpClient = new HttpClient(handler)
             {
-                _httpClient.Timeout = socketTimeout.Value;
-            }
+                Timeout = socketTimeout != null ? socketTimeout.Value : DEFAULT_SOCKET_TIMEOUT
+            };
         }
 
         async Task<R> SendHttpMessage<R>(HttpMethod method, Uri uri, IEnumerable<IRequestHeader> requestHeaders, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R>responseHandler, string body = null)
@@ -94,7 +94,8 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                     }
                     var startTime = DateTime.Now;
                     LogRequest(guid, message, content, contentString);
-                    var httpResponseTask = _httpClient.SendAsync(message).ConfigureAwait(false);
+                    var httpResponseTask = _httpClient.SendAsync(message)
+                        .ConfigureAwait(false);
 
                     using (var httpResponse = await httpResponseTask)
                     {
@@ -103,7 +104,8 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                                       from value in header.Value
                                       select new ResponseHeader(header.Key, value);
 
-                        var responseBody = await responseBodyTask.ConfigureAwait(false);
+                        var responseBody = await responseBodyTask
+                            .ConfigureAwait(false);
                         var duration = DateTime.Now - startTime;
                         responseBody = LogResponse(guid, httpResponse, httpResponse.Content.Headers, responseBody, duration);
                         var responseBodyHeaders = from header in httpResponse.Content.Headers

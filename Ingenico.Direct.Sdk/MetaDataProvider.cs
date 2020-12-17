@@ -12,8 +12,7 @@ namespace Ingenico.Direct.Sdk
     /// </summary>
     public class MetaDataProvider
     {
-        public static readonly IEnumerable<string> ProhibitedHeaders
-            = new ReadOnlyCollection<string>(new List<string>
+        public static readonly IEnumerable<string> ProhibitedHeaders = new ReadOnlyCollection<string>(new List<string>
         {
             SERVER_META_INFO_HEADER,
             "X-GCS-Idempotence-Key",
@@ -23,7 +22,7 @@ namespace Ingenico.Direct.Sdk
         });
 
         private const string SERVER_META_INFO_HEADER = "X-GCS-ServerMetaInfo";
-        private const string SDK_VERSION = "2.1.0";
+        private const string SDK_VERSION = "2.2.0";
         internal string SdkIdentifier => "DirectDotnetServerSDK/v" + SDK_VERSION;
 
         private static readonly string _platformIdentifier = Environment.OSVersion.Platform + "/" + Environment.OSVersion.Version + " .NET/" + Environment.Version;

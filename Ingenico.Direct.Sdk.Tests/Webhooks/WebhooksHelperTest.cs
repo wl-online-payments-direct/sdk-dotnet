@@ -153,6 +153,7 @@ namespace Ingenico.Direct.Sdk
             Assert.AreEqual("payment.paid", anEvent.Type);
 
             Assert.Null(anEvent.Refund);
+            Assert.Null(anEvent.Payout);
             Assert.Null(anEvent.Token);
 
             Assert.NotNull(anEvent.Payment);

@@ -11,27 +11,15 @@ namespace Ingenico.Direct.Sdk.Logging
 
         public class HeaderObfuscatorBuilder
         {
-            public HeaderObfuscatorBuilder WithAll(string property)
+            public HeaderObfuscatorBuilder WithField(string property)
             {
-                Obfuscators.Add(property, ValueObfuscator.ALL);
+                Obfuscators.Add(property, ValueObfuscator.INSTANCE);
                 return this;
             }
 
-            public HeaderObfuscatorBuilder WithFixedLength(string property, int fixedLength)
+            public HeaderObfuscatorBuilder WithSensitiveField(string property)
             {
-                Obfuscators.Add(property, ValueObfuscator.FixedLength(fixedLength));
-                return this;
-            }
-
-            public HeaderObfuscatorBuilder WithKeepStartCount(string key, int count)
-            {
-                Obfuscators.Add(key, ValueObfuscator.KeepingStartCount(count));
-                return this;
-            }
-
-            public HeaderObfuscatorBuilder WithKeepEndCount(string property, int count)
-            {
-                Obfuscators.Add(property, ValueObfuscator.KeepingEndCount(count));
+                Obfuscators.Add(property, SensitiveValueObfuscator.INSTANCE);
                 return this;
             }
 

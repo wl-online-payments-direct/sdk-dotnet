@@ -103,13 +103,11 @@ namespace Ingenico.Direct.Sdk
                 MaxConnections = GetProperty(properties, "direct.api.maxConnections", MaxConnections);
 
                 var proxyURI = GetProperty(properties, "direct.api.proxy.uri");
-                var proxyUser = GetProperty(properties, "direct.api.proxy.username");
-                var proxyPass = GetProperty(properties, "direct.api.proxy.password");
                 if (proxyURI != null)
                 {
                     ProxyConfiguration.Uri = new Uri(proxyURI);
-                    ProxyConfiguration.Username = proxyUser;
-                    ProxyConfiguration.Password = proxyPass;
+                    ProxyConfiguration.Username = GetProperty(properties, "direct.api.proxy.username");
+                    ProxyConfiguration.Password = GetProperty(properties, "direct.api.proxy.password");
                 }
 
                 Integrator = GetProperty(properties, "direct.api.integrator", "");

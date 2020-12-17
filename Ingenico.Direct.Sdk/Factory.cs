@@ -83,14 +83,14 @@ namespace Ingenico.Direct.Sdk
             return new CommunicatorBuilder()
                 .WithApiEndpoint(configuration.ApiEndpoint)
                 .WithConnection(new DefaultConnection(
+                    configuration.ProxyConfiguration,
                     configuration.SocketTimeout,
                     // connection timeout not supported
-                    configuration.ProxyConfiguration,
                     configuration.MaxConnections))
                 .WithAuthenticator(new DefaultAuthenticator(
                     configuration.AuthorizationType,
-                            configuration.ApiKeyId,
-                            configuration.SecretApiKey
+                    configuration.ApiKeyId,
+                    configuration.SecretApiKey
                 ))
                 .WithMarshaller(DefaultMarshaller.Instance)
                 .WithMetaDataProvider(metaDataProvider);

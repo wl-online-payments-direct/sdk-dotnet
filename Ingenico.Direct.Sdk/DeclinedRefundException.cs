@@ -7,22 +7,22 @@ namespace Ingenico.Direct.Sdk
     /// </summary>
     public class DeclinedRefundException : DeclinedTransactionException
     {
-        private readonly RefundErrorResponse _errors;
+        private readonly RefundErrorResponse _errorResponse;
 
         /// <summary>
         /// Gets the result of creating a refund if available, otherwise <c>null</c>.
         /// </summary>
-        public RefundResponse RefundResult => _errors?.RefundResult;
+        public RefundResponse RefundResult => _errorResponse?.RefundResult;
 
-        public DeclinedRefundException(System.Net.HttpStatusCode statusCode, string responseBody, RefundErrorResponse errors)
-            : base(BuildMessage(errors), statusCode, responseBody, errors?.ErrorId, errors?.Errors)
+        public DeclinedRefundException(System.Net.HttpStatusCode statusCode, string responseBody, RefundErrorResponse errorResponse)
+            : base(BuildMessage(errorResponse), statusCode, responseBody, errorResponse?.ErrorId, errorResponse?.Errors)
         {
-            _errors = errors;
+            this._errorResponse = errorResponse;
         }
 
-        static string BuildMessage(RefundErrorResponse errors)
+        static string BuildMessage(RefundErrorResponse errorResponse)
         {
-            RefundResponse refund = errors?.RefundResult;
+            RefundResponse refund = errorResponse?.RefundResult;
             if (refund != null)
             {
                 return "declined refund '" + refund.Id + "' with status '" + refund.Status + "'";

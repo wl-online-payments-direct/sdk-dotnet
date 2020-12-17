@@ -18,6 +18,8 @@ namespace Ingenico.Direct.Sdk
 
         public RefundResponse Refund { get; set; }
 
+        public PayoutResponse Payout { get; set; }
+
         public TokenResponse Token { get; set; }
     }
 }

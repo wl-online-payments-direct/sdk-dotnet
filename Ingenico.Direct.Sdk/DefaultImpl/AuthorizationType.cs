@@ -19,13 +19,13 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
         /// <summary>
         /// Returns the enum value of the specified string.
         /// </summary>
-        public static AuthorizationType GetValueOf(string aString)
+        public static AuthorizationType GetValueOf(string value)
         {
-            if (V1HMAC.SignatureString.Equals(aString))
+            if (V1HMAC.SignatureString.ToLower().Equals((value??"").ToLower()))
             {
                 return V1HMAC;
             }
-            throw new ArgumentException("Unsupported Authorization");
+            throw new ArgumentException($"Unsupported Authorization '{value}'");
         }
         #endregion
     }

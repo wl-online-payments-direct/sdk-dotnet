@@ -89,11 +89,11 @@ namespace Ingenico.Direct.Sdk.Webhooks
         private static string ExtractHeaderValue(IEnumerable<IRequestHeader> requestHeaders, string headerName)
         {
             bool headerPredicate(IRequestHeader h) => h.Name.Equals(headerName, StringComparison.InvariantCultureIgnoreCase);
-			var headerCount = requestHeaders.Count(headerPredicate);
-			if (headerCount == 0)
-			{
-				throw new SignatureValidationException($"Missing ${headerName} header");
-			}
+            var headerCount = requestHeaders.Count(headerPredicate);
+            if (headerCount == 0)
+            {
+                throw new SignatureValidationException($"Missing ${headerName} header");
+            }
             if (headerCount != 1)
             {
                 throw new SignatureValidationException($"Duplicate ${headerName} header");

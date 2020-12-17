@@ -19,6 +19,16 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
         private readonly string _secretApiKey;
         private readonly AuthorizationType _authorizationType;
 
+        /// <param name="apiKeyId">An identifier for the secret API key. The apiKeyId can be retrieved from the Configuration Center.
+        ///        This identifier is visible in the HTTP request and is also used to identify the correct account.</param>
+        /// <param name="secretApiKey">A shared secret. The shared secret can be retrieved from the Configuration Center.
+        ///        An apiKeyId and secretApiKey always go hand-in-hand, the difference is that secretApiKey is never visible in the HTTP request.
+        ///        This secret is used as input for the HMAC algorithm.</param>
+        public DefaultAuthenticator(string apiKeyId, string secretApiKey)
+            : this(AuthorizationType.V1HMAC, apiKeyId, secretApiKey)
+        {
+        }
+
         /// <param name="authType">Based on this value both the Ingenico ePayments platform and the merchant know which security implementation is used.
         ///        A version number is used for backward compatibility in the future.</param>
         /// <param name="apiKeyId">An identifier for the secret API key. The apiKeyId can be retrieved from the Configuration Center.
@@ -66,7 +76,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             {
                 foreach (IRequestHeader header in requestHeaders)
                 {
-                    if ("content-type".Equals(header.Name,StringComparison.OrdinalIgnoreCase))
+                    if ("content-type".Equals(header.Name, StringComparison.OrdinalIgnoreCase))
                     {
                         contentType = header.Value;
                     }

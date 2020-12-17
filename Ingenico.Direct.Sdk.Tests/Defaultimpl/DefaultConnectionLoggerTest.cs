@@ -29,15 +29,15 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
     ],
     ""paymentResult"": {
         ""creationOutput"": {
-            ""additionalReference"": ""00000200001000059614"",
-            ""externalReference"": ""000002000010000596140000100001""
+            ""additionalReference"": ""1"",
+            ""externalReference"": ""1""
         },
         ""payment"": {
-            ""id"": ""000002000010000596140000100001"",
+            ""id"": ""1"",
             ""paymentOutput"": {
                 ""amountOfMoney"": {
                     ""amount"": 2345,
-                    ""currencyCode"": ""CAD""
+                    ""currencyCode"": ""EUR""
                 },
                 ""references"": {
                     ""paymentReference"": ""0""
@@ -70,9 +70,9 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
         readonly string createPaymentFailureRejectedRequest = Regex.Escape(@"Outgoing request (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"'):
   method:       'POST'
   uri:          '/v2/1/payments'
-  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********""") + @"[^']*" + Regex.Escape(@"'
+  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***""") + @"[^']*" + Regex.Escape(@"'
   content-type: 'application/json'
-  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3452"",""cvv"":""***"",""expiryDate"":""**30""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
+  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""*16"",""cvv"":""*3"",""expiryDate"":""*4""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""EUR""},""customer"":{""billingAddress"":{""countryCode"":""BE""}}}}'");
 
         readonly string createPaymentFailureRejectedResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
   status-code:  '402'
@@ -89,15 +89,15 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
     ],
     ""paymentResult"": {
         ""creationOutput"": {
-            ""additionalReference"": ""00000200001000059614"",
-            ""externalReference"": ""000002000010000596140000100001""
+            ""additionalReference"": ""1"",
+            ""externalReference"": ""1""
         },
         ""payment"": {
-            ""id"": ""000002000010000596140000100001"",
+            ""id"": ""1"",
             ""paymentOutput"": {
                 ""amountOfMoney"": {
                     ""amount"": 2345,
-                    ""currencyCode"": ""CAD""
+                    ""currencyCode"": ""EUR""
                 },
                 ""references"": {
                     ""paymentReference"": ""0""
@@ -129,67 +129,15 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 
         const string createPaymentJson = @"{
     ""creationOutput"": {
-        ""additionalReference"": ""00000000010000000001"",
-        ""externalReference"": ""000000000100000000010000100001""
+        ""additionalReference"": ""1"",
+        ""externalReference"": ""1""
     },
     ""payment"": {
-        ""id"": ""000000000100000000010000100001"",
+        ""id"": ""1"",
         ""paymentOutput"": {
             ""amountOfMoney"": {
                 ""amount"": 2345,
-                ""currencyCode"": ""CAD""
-            },
-            ""references"": {
-                ""paymentReference"": ""0""
-            },
-            ""paymentMethod"": ""card"",
-            ""cardPaymentMethodSpecificOutput"": {
-                ""paymentProductId"": 1,
-                ""authorisationCode"": ""OK1131"",
-                ""card"": {
-                    ""cardNumber"": ""************3456"",
-                    ""expiryDate"": ""1230""
-                },
-                ""fraudResults"": {
-                    ""fraudServiceResult"": ""error"",
-                    ""avsResult"": ""X"",
-                    ""cvvResult"": ""M""
-                }
-            }
-        },
-        ""status"": ""PENDING_APPROVAL"",
-        ""statusOutput"": {
-            ""isCancellable"": true,
-            ""statusCategory"": ""PENDING_MERCHANT"",
-            ""statusCode"": 600,
-            ""statusCodeChangeDateTime"": ""20160310094054"",
-            ""isAuthorized"": true
-        }
-    }
-}";
-
-        readonly string createPaymentRequest = Regex.Escape(@"Outgoing request (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"'):
-  method:       'POST'
-  uri:          '/v2/1/payments'
-  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********"", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
-  content-type: 'application/json'
-  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3456"",""cvv"":""***"",""expiryDate"":""**30""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
-
-        readonly string createPaymentResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
-  status-code:  '201'
-  headers:      ") + @"(?=('|.*, )Server=""[^""]*"")(?=('|.*, )Dummy="""")(?=('|.*, )Date=""[^""]*"")(?=('|.*, )Location=""http://localhost/v2/1/payments/000000000100000000010000100001"")'[^']*'" + Regex.Escape(@"
-  content-type: 'application/json'
-  body:         '{
-    ""creationOutput"": {
-        ""additionalReference"": ""00000000010000000001"",
-        ""externalReference"": ""000000000100000000010000100001""
-    },
-    ""payment"": {
-        ""id"": ""000000000100000000010000100001"",
-        ""paymentOutput"": {
-            ""amountOfMoney"": {
-                ""amount"": 2345,
-                ""currencyCode"": ""CAD""
+                ""currencyCode"": ""EUR""
             },
             ""references"": {
                 ""paymentReference"": ""0""
@@ -214,22 +162,74 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             ""isCancellable"": true,
             ""statusCategory"": ""PENDING_MERCHANT"",
             ""statusCode"": 600,
-            ""statusCodeChangeDateTime"": ""20160310094054"",
+            ""statusCodeChangeDateTime"": ""20200101120000"",
+            ""isAuthorized"": true
+        }
+    }
+}";
+
+        readonly string createPaymentRequest = Regex.Escape(@"Outgoing request (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"'):
+  method:       'POST'
+  uri:          '/v2/1/payments'
+  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***"", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
+  content-type: 'application/json'
+  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""*16"",""cvv"":""*3"",""expiryDate"":""*4""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""EUR""},""customer"":{""billingAddress"":{""countryCode"":""BE""}}}}'");
+
+        readonly string createPaymentResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
+  status-code:  '201'
+  headers:      ") + @"(?=('|.*, )Server=""[^""]*"")(?=('|.*, )Dummy="""")(?=('|.*, )Date=""[^""]*"")(?=('|.*, )Location=""http://localhost/v2/1/payments/1"")'[^']*'" + Regex.Escape(@"
+  content-type: 'application/json'
+  body:         '{
+    ""creationOutput"": {
+        ""additionalReference"": ""1"",
+        ""externalReference"": ""1""
+    },
+    ""payment"": {
+        ""id"": ""1"",
+        ""paymentOutput"": {
+            ""amountOfMoney"": {
+                ""amount"": 2345,
+                ""currencyCode"": ""EUR""
+            },
+            ""references"": {
+                ""paymentReference"": ""0""
+            },
+            ""paymentMethod"": ""card"",
+            ""cardPaymentMethodSpecificOutput"": {
+                ""paymentProductId"": 1,
+                ""authorisationCode"": ""OK1131"",
+                ""card"": {
+                    ""cardNumber"": ""*16"",
+                    ""expiryDate"": ""*4""
+                },
+                ""fraudResults"": {
+                    ""fraudServiceResult"": ""error"",
+                    ""avsResult"": ""X"",
+                    ""cvvResult"": ""M""
+                }
+            }
+        },
+        ""status"": ""PENDING_APPROVAL"",
+        ""statusOutput"": {
+            ""isCancellable"": true,
+            ""statusCategory"": ""PENDING_MERCHANT"",
+            ""statusCode"": 600,
+            ""statusCodeChangeDateTime"": ""20200101120000"",
             ""isAuthorized"": true
         }
     }
 }'");
         const string createPaymentUnicodeJson = @"{
     ""creationOutput"": {
-        ""additionalReference"": ""00000000010000000001"",
-        ""externalReference"": ""000000000100000000010000100001""
+        ""additionalReference"": ""1"",
+        ""externalReference"": ""1""
     },
     ""payment"": {
-        ""id"": ""000000000100000000010000100001"",
+        ""id"": ""1"",
         ""paymentOutput"": {
             ""amountOfMoney"": {
                 ""amount"": 2345,
-                ""currencyCode"": ""CAD""
+                ""currencyCode"": ""EUR""
             },
             ""references"": {
                 ""paymentReference"": ""0""
@@ -239,14 +239,15 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                ""paymentProductId"":840,
                ""paymentProduct840SpecificOutput"":{
                   ""customerAccount"":{
-                     ""firstName"":""Theresa"",
-                     ""surname"":""Schröder""
+                     ""firstName"":""Pepé"",
+                     ""surname"":""le Pew""
                   },
                   ""customerAddress"":{
-                     ""city"":""sittensen"",
-                     ""countryCode"":""DE"",
-                     ""street"":""Westerberg 25"",
-                     ""zip"":""27419""
+                     ""city"":""Zavéntem"",
+                     ""countryCode"":""BE"",
+                     ""street"":""Da Vincilaan"",
+                     ""houseNumber"":""3"",
+                     ""zip"":""1930""
                   }
                }
             }
@@ -256,7 +257,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             ""isCancellable"": true,
             ""statusCategory"": ""PENDING_MERCHANT"",
             ""statusCode"": 600,
-            ""statusCodeChangeDateTime"": ""20160310094054"",
+            ""statusCodeChangeDateTime"": ""20200101120000"",
             ""isAuthorized"": true
         }
     }
@@ -265,25 +266,25 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
         readonly string createPaymentUnicodeRequest = Regex.Escape(@"Outgoing request (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"'):
   method:       'POST'
   uri:          '/v2/1/payments'
-  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********"", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
+  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***"", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
   content-type: 'application/json'
-  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3456"",""cvv"":""***"",""expiryDate"":""**30""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
+  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""*16"",""cvv"":""*3"",""expiryDate"":""*4""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""EUR""},""customer"":{""billingAddress"":{""countryCode"":""BE""}}}}'");
 
         readonly string createPaymentUnicodeResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
   status-code:  '201'
-  headers:      ") + @"(?=('|.*, )Server=""[^""]*"")(?=('|.*, )Dummy="""")(?=('|.*, )Date=""[^""]*"")(?=('|.*, )Location=""http://localhost/v2/1/payments/000000000100000000010000100001"")'[^']*'" + Regex.Escape(@"
+  headers:      ") + @"(?=('|.*, )Server=""[^""]*"")(?=('|.*, )Dummy="""")(?=('|.*, )Date=""[^""]*"")(?=('|.*, )Location=""http://localhost/v2/1/payments/1"")'[^']*'" + Regex.Escape(@"
   content-type: 'application/json'
   body:         '{
     ""creationOutput"": {
-        ""additionalReference"": ""00000000010000000001"",
-        ""externalReference"": ""000000000100000000010000100001""
+        ""additionalReference"": ""1"",
+        ""externalReference"": ""1""
     },
     ""payment"": {
-        ""id"": ""000000000100000000010000100001"",
+        ""id"": ""1"",
         ""paymentOutput"": {
             ""amountOfMoney"": {
                 ""amount"": 2345,
-                ""currencyCode"": ""CAD""
+                ""currencyCode"": ""EUR""
             },
             ""references"": {
                 ""paymentReference"": ""0""
@@ -293,14 +294,15 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                ""paymentProductId"":840,
                ""paymentProduct840SpecificOutput"":{
                   ""customerAccount"":{
-                     ""firstName"":""Theresa"",
-                     ""surname"":""Schröder""
+                     ""firstName"":""*4"",
+                     ""surname"":""*6""
                   },
                   ""customerAddress"":{
-                     ""city"":""sittensen"",
-                     ""countryCode"":""DE"",
-                     ""street"":""Westerberg 25"",
-                     ""zip"":""27419""
+                     ""city"":""Zavéntem"",
+                     ""countryCode"":""BE"",
+                     ""street"":""*12"",
+                     ""houseNumber"":""*1"",
+                     ""zip"":""*4""
                   }
                }
             }
@@ -310,7 +312,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             ""isCancellable"": true,
             ""statusCategory"": ""PENDING_MERCHANT"",
             ""statusCode"": 600,
-            ""statusCodeChangeDateTime"": ""20160310094054"",
+            ""statusCodeChangeDateTime"": ""20200101120000"",
             ""isAuthorized"": true
         }
     }
@@ -330,9 +332,9 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
         readonly string createPaymentFailureInvalidCardNumberJsonRequest = Regex.Escape(@"Outgoing request (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"'):
   method:       'POST'
   uri:          '/v2/1/payments'
-  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********""") + @"[^']*" + Regex.Escape(@"'
+  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***""") + @"[^']*" + Regex.Escape(@"'
   content-type: 'application/json'
-  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""************3456"",""cvv"":""***"",""expiryDate"":""**30""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""CAD""},""customer"":{""billingAddress"":{""countryCode"":""CA""}}}}'");
+  body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""*16"",""cvv"":""*3"",""expiryDate"":""*4""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""EUR""},""customer"":{""billingAddress"":{""countryCode"":""BE""}}}}'");
 
         readonly string createPaymentFailureInvalidCardNumberJsonResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
   status-code:  '400'
@@ -351,8 +353,8 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 }'");
         readonly string deleteTokenRequest = Regex.Escape(@"Outgoing request (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"'):
   method:       'DELETE'
-  uri:          '/v2/1234/tokens/5678'
-  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********""") + @"[^']*" + Regex.Escape(@"'");
+  uri:          '/v2/1/tokens/5678'
+  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***""") + @"[^']*" + Regex.Escape(@"'");
         readonly string deleteTokenResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
   status-code:  '204'
   headers:      ") + @"(?=('|.*, )Server=""[^""]*"")(?=('|.*, )Dummy="""")(?=('|.*, )Date=""[^""]*"")'[^']*'" + Regex.Escape(@"
@@ -365,8 +367,8 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 
         readonly string testConnectionRequest = Regex.Escape(@"Outgoing request (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"')") + Regex.Escape(@":
   method:       'GET'
-  uri:          '/v2/1234/services/testconnection'
-  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""********""") + @"[^']*" + Regex.Escape(@"'");
+  uri:          '/v2/1/services/testconnection'
+  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***""") + @"[^']*" + Regex.Escape(@"'");
 
         readonly string testConnectionResponse = Regex.Escape(@"Incoming response (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"' + '") + @"[0-9]*" + Regex.Escape(@"' ms):
   status-code:  '200'
@@ -416,7 +418,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             // GET with no query params
             TestLogger logger = new TestLogger();
 
-            using (MockServer host = new MockServer(Port, "/v2/1234/services/testconnection", (request, response, arg3) =>
+            using (MockServer host = new MockServer(Port, "/v2/1/services/testconnection", (request, response, arg3) =>
                    {
                        AssignResponse((HttpStatusCode)200, new Dictionary<string, string>(), response);
 
@@ -426,7 +428,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             {
                 client.EnableLogging(logger);
 
-                TestConnection response = await client.WithNewMerchant("1234").Services.TestConnection()
+                TestConnection response = await client.WithNewMerchant("1").Services.TestConnection()
                     .ConfigureAwait(false);
 
                 Assert.That(response, Is.Not.Null);
@@ -454,7 +456,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 
             TestLogger logger = new TestLogger();
 
-            using (MockServer host = new MockServer(Port, "/v2/1234/tokens/5678", (request, response, arg3) =>
+            using (MockServer host = new MockServer(Port, "/v2/1/tokens/5678", (request, response, arg3) =>
                     {
                         AssignResponse((HttpStatusCode)204, new Dictionary<string, string>(), response, contentType: null);
                         return null;
@@ -462,7 +464,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             using (IClient client = CreateClient())
             {
                 client.EnableLogging(logger);
-                await client.WithNewMerchant("1234").Tokens.DeleteToken("5678")
+                await client.WithNewMerchant("1").Tokens.DeleteToken("5678")
                     .ConfigureAwait(false);
             }
             Assert.That(logger.Entries, Has.Count.EqualTo(2));
@@ -488,7 +490,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 
             using (MockServer host = new MockServer(Port, "/v2/1/payments", (request, response, arg3) =>
                    {
-                       AssignResponse((HttpStatusCode)201, new Dictionary<string, string>(), response, "http://localhost/v2/1/payments/000000000100000000010000100001");
+                       AssignResponse((HttpStatusCode)201, new Dictionary<string, string>(), response, "http://localhost/v2/1/payments/1");
 
                        return createPaymentJson;
                    }))
@@ -497,11 +499,11 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 client.EnableLogging(logger);
 
                 AmountOfMoney amountOfMoney = new AmountOfMoney();
-                amountOfMoney.CurrencyCode = "CAD";
+                amountOfMoney.CurrencyCode = "EUR";
                 amountOfMoney.Amount = 2345L;
 
                 Address billingAddress = new Address();
-                billingAddress.CountryCode = "CA";
+                billingAddress.CountryCode = "BE";
 
                 Customer customer = new Customer();
                 customer.BillingAddress = billingAddress;
@@ -553,7 +555,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 
             using (MockServer host = new MockServer(Port, "/v2/1/payments", (request, response, arg3) =>
                    {
-                       AssignResponse((HttpStatusCode)201, new Dictionary<string, string>(), response, "http://localhost/v2/1/payments/000000000100000000010000100001");
+                       AssignResponse((HttpStatusCode)201, new Dictionary<string, string>(), response, "http://localhost/v2/1/payments/1");
 
                        return createPaymentUnicodeJson;
                    }))
@@ -562,11 +564,11 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 client.EnableLogging(logger);
 
                 AmountOfMoney amountOfMoney = new AmountOfMoney();
-                amountOfMoney.CurrencyCode = "CAD";
+                amountOfMoney.CurrencyCode = "EUR";
                 amountOfMoney.Amount = 2345L;
 
                 Address billingAddress = new Address();
-                billingAddress.CountryCode = "CA";
+                billingAddress.CountryCode = "BE";
 
                 Customer customer = new Customer();
                 customer.BillingAddress = billingAddress;
@@ -628,11 +630,11 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 client.EnableLogging(logger);
 
                 AmountOfMoney amountOfMoney = new AmountOfMoney();
-                amountOfMoney.CurrencyCode = "CAD";
+                amountOfMoney.CurrencyCode = "EUR";
                 amountOfMoney.Amount = 2345L;
 
                 Address billingAddress = new Address();
-                billingAddress.CountryCode = "CA";
+                billingAddress.CountryCode = "BE";
 
                 Customer customer = new Customer();
                 customer.BillingAddress = billingAddress;
@@ -690,11 +692,11 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                 client.EnableLogging(logger);
 
                 AmountOfMoney amountOfMoney = new AmountOfMoney();
-                amountOfMoney.CurrencyCode = "CAD";
+                amountOfMoney.CurrencyCode = "EUR";
                 amountOfMoney.Amount = 2345L;
 
                 Address billingAddress = new Address();
-                billingAddress.CountryCode = "CA";
+                billingAddress.CountryCode = "BE";
 
                 Customer customer = new Customer();
                 customer.BillingAddress = billingAddress;
@@ -741,7 +743,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 
             TestLogger logger = new TestLogger();
 
-            using (MockServer host = new MockServer(Port, "/v2/1234/services/testconnection", (request, response, arg3) =>
+            using (MockServer host = new MockServer(Port, "/v2/1/services/testconnection", (request, response, arg3) =>
                    {
                        AssignResponse((HttpStatusCode)500, new Dictionary<string, string>(), response);
 
@@ -751,7 +753,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             {
                 client.EnableLogging(logger);
 
-                Assert.CatchAsync(typeof(DirectException), async () => await client.WithNewMerchant("1234").Services.TestConnection()
+                Assert.CatchAsync(typeof(DirectException), async () => await client.WithNewMerchant("1").Services.TestConnection()
                         .ConfigureAwait(false));
             }
 
@@ -777,7 +779,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 
             TestLogger logger = new TestLogger();
 
-            using (MockServer host = new MockServer(Port, "/v2/1234/services/testconnection", (request, response, arg3) =>
+            using (MockServer host = new MockServer(Port, "/v2/1/services/testconnection", (request, response, arg3) =>
                    {
                        AssignResponse((HttpStatusCode)404, new Dictionary<string, string>(), response, contentType: "text/html");
 
@@ -787,7 +789,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             {
                 client.EnableLogging(logger);
 
-                Assert.CatchAsync(typeof(NotFoundException), async () => await client.WithNewMerchant("1234").Services.TestConnection()
+                Assert.CatchAsync(typeof(NotFoundException), async () => await client.WithNewMerchant("1").Services.TestConnection()
                         .ConfigureAwait(false));
             }
             Assert.That(logger.Entries, Has.Count.EqualTo(2));
@@ -812,7 +814,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 
             TestLogger logger = new TestLogger();
             using (IClient client = CreateClient(1, 10))
-            using (MockServer host = new MockServer(Port, "/v2/1234/services/testconnection", (request, response, arg3) =>
+            using (MockServer host = new MockServer(Port, "/v2/1/services/testconnection", (request, response, arg3) =>
                    {
                        AssignResponse((HttpStatusCode)200, new Dictionary<string, string>(), response);
                        System.Threading.Thread.Sleep(500);
@@ -821,7 +823,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
                    }))
             {
                 client.EnableLogging(logger);
-                Assert.That(async () => await client.WithNewMerchant("1234").Services.TestConnection().ConfigureAwait(false),
+                Assert.That(async () => await client.WithNewMerchant("1").Services.TestConnection().ConfigureAwait(false),
                             Throws.Exception.TypeOf(typeof(CommunicationException))
                             .And.InnerException.TypeOf(typeof(TaskCanceledException)));
             }
@@ -846,7 +848,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
 
             TestLogger logger = new TestLogger();
             using (IClient client = CreateClient())
-            using (MockServer host = new MockServer(Port, "/v2/1234/services/testconnection", (request, response, arg3) =>
+            using (MockServer host = new MockServer(Port, "/v2/1/services/testconnection", (request, response, arg3) =>
                    {
                        AssignResponse((HttpStatusCode)200, new Dictionary<string, string>(), response);
                        client.DisableLogging();
@@ -856,7 +858,7 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
             {
                 client.EnableLogging(logger);
 
-                TestConnection response = await client.WithNewMerchant("1234").Services.TestConnection()
+                TestConnection response = await client.WithNewMerchant("1").Services.TestConnection()
                     .ConfigureAwait(false);
 
                 Assert.NotNull(response);

@@ -53,13 +53,13 @@ namespace Ingenico.Direct.Sdk
 
         protected Exception CreateException(HttpStatusCode statusCode, string responseBody, object errorObject, CallContext context)
         {
-            if (errorObject is PaymentErrorResponse && ((PaymentErrorResponse)errorObject).PaymentResult != null)
+            if (errorObject is PaymentErrorResponse paymentErrorResp && paymentErrorResp.PaymentResult != null)
             {
-                return new DeclinedPaymentException(statusCode, responseBody, (PaymentErrorResponse)errorObject);
+                return new DeclinedPaymentException(statusCode, responseBody, paymentErrorResp);
             }
-            if (errorObject is RefundErrorResponse && ((RefundErrorResponse)errorObject).RefundResult != null)
+            if (errorObject is RefundErrorResponse refundErrorResp && refundErrorResp.RefundResult != null)
             {
-                return new DeclinedRefundException(statusCode, responseBody, (RefundErrorResponse)errorObject);
+                return new DeclinedRefundException(statusCode, responseBody, refundErrorResp);
             }
 
             string errorId;

@@ -23,7 +23,7 @@ namespace Ingenico.Direct.Sdk.Logging
     }
 }";
         const string binObfuscated = @"{
-    ""bin"": ""123456**""
+    ""bin"": ""*8""
 }";
         const string binUnobfuscated = @"{
     ""bin"": ""12345678""
@@ -43,13 +43,13 @@ namespace Ingenico.Direct.Sdk.Logging
     ""cardPaymentMethodSpecificInput"": {
         ""paymentProductId"": 1,
         ""card"": {
-            ""cvv"": ""***"",
-            ""cardNumber"": ""************3456"",
-            ""expiryDate"": ""**30""
+            ""cvv"": ""*3"",
+            ""cardNumber"": ""*16"",
+            ""expiryDate"": ""*4""
         }
     }
 }";
-        const string cardUnObfuscated = @"{
+        const string cardUnobfuscated = @"{
     ""order"": {
         ""amountOfMoney"": {
             ""currencyCode"": ""CAD"",
@@ -70,14 +70,76 @@ namespace Ingenico.Direct.Sdk.Logging
         }
     }
 }";
+        const string gdprObfuscated = @"{
+    ""order"": {
+        ""amountOfMoney"": {
+            ""currencyCode"": ""EUR"",
+            ""amount"": 2345
+        },
+        ""customer"": {
+            ""billingAddress"": {
+                ""countryCode"": ""BE"",
+                ""city"": ""Zaventem"",
+                ""zip"": ""*4"",
+                ""street"": ""*12"",
+                ""houseNumber"": ""*1""
+            },
+            ""personalInformation"": {
+                ""dateOfBirth"": ""*8"",
+                ""name"": {
+                    ""firstName"": ""*4"",
+                    ""surname"": ""*6""
+                }
+            },
+            ""contactDetails"": {
+                ""emailAddress"": ""*17"",
+                ""faxNumber"": ""*18"",
+                ""mobilePhoneNumber"": ""*11"",
+                ""phoneNumber"": ""*12"",
+                ""workPhoneNumber"": ""*12""
+            }
+        }
+    }
+}";
+        const string gdprUnobfuscated = @"{
+    ""order"": {
+        ""amountOfMoney"": {
+            ""currencyCode"": ""EUR"",
+            ""amount"": 2345
+        },
+        ""customer"": {
+            ""billingAddress"": {
+                ""countryCode"": ""BE"",
+                ""city"": ""Zaventem"",
+                ""zip"": ""1930"",
+                ""street"": ""Da Vincilaan"",
+                ""houseNumber"": ""3""
+            },
+            ""personalInformation"": {
+                ""dateOfBirth"": ""19370929"",
+                ""name"": {
+                    ""firstName"": ""Wile"",
+                    ""surname"": ""Coyote""
+                }
+            },
+            ""contactDetails"": {
+                ""emailAddress"": ""wecoyote@acme.org"",
+                ""faxNumber"": ""+32 (0)2 286 96 16"",
+                ""mobilePhoneNumber"": ""+3222869611"",
+                ""phoneNumber"": ""02 585 56 80"",
+                ""workPhoneNumber"": ""003222869611""
+            }
+        }
+    }
+}";
         const string ibanObfuscated = @"{
     ""sepaDirectDebit"": {
         ""mandate"": {
             ""bankAccountIban"": {
-                ""iban"": ""**************4567""
+                ""iban"": ""*18""
             },
             ""debtor"": {
-                ""surname"": ""Jones""
+                ""surname"": ""*5""
             },
             ""isRecurring"": false
         },
@@ -114,7 +176,7 @@ namespace Ingenico.Direct.Sdk.Logging
     }
 }";
         const string noObjectObfuscationObfuscated = @"{
-    ""value"" : ****,
+    ""value"" : *4,
     ""value"" : {
     }
 }";
@@ -140,21 +202,27 @@ namespace Ingenico.Direct.Sdk.Logging
         }
 
         [TestCase]
+        public void TestObfuscateBodyWithBin()
+        {
+            CheckObfuscatedBodyWithMatches(binUnobfuscated, binObfuscated);
+        }
+
+        [TestCase]
         public void TestObfuscateBodyWithCard()
         {
-            CheckObfuscatedBodyWithMatches(cardUnObfuscated, cardObfuscated);
+            CheckObfuscatedBodyWithMatches(cardUnobfuscated, cardObfuscated);
+        }
+
+        [TestCase]
+        public void TestObfuscateBodyWithGDPRData()
+        {
+            CheckObfuscatedBodyWithMatches(gdprUnobfuscated, gdprObfuscated);
         }
 
         [TestCase]
         public void TestObfuscateBodyWithIban()
         {
             CheckObfuscatedBodyWithMatches(ibanUnobfuscated, ibanObfuscated);
-        }
-
-        [TestCase]
-        public void TestObfuscateBodyWithBin()
-        {
-            CheckObfuscatedBodyWithMatches(binUnobfuscated, binObfuscated);
         }
 
         [TestCase]
@@ -172,17 +240,17 @@ namespace Ingenico.Direct.Sdk.Logging
         [TestCase]
         public void TestObfuscateHeader()
         {
-            CheckObfuscateHeaderWithMatch("Authorization", "Basic QWxhZGRpbjpPcGVuU2VzYW1l", "********");
-            CheckObfuscateHeaderWithMatch("authorization", "Basic QWxhZGRpbjpPcGVuU2VzYW1l", "********");
-            CheckObfuscateHeaderWithMatch("AUTHORIZATION", "Basic QWxhZGRpbjpPcGVuU2VzYW1l", "********");
+            CheckObfuscateHeaderWithMatch("Authorization", "Basic QWxhZGRpbjpPcGVuU2VzYW1l", "***");
+            CheckObfuscateHeaderWithMatch("authorization", "Basic QWxhZGRpbjpPcGVuU2VzYW1l", "***");
+            CheckObfuscateHeaderWithMatch("AUTHORIZATION", "Basic QWxhZGRpbjpPcGVuU2VzYW1l", "***");
 
-            CheckObfuscateHeaderWithMatch("X-GCS-Authentication-Token", "foobar", "********");
-            CheckObfuscateHeaderWithMatch("x-gcs-authentication-token", "foobar", "********");
-            CheckObfuscateHeaderWithMatch("X-GCS-AUTHENTICATION-TOKEN", "foobar", "********");
+            CheckObfuscateHeaderWithMatch("X-GCS-Authentication-Token", "foobar", "***");
+            CheckObfuscateHeaderWithMatch("x-gcs-authentication-token", "foobar", "***");
+            CheckObfuscateHeaderWithMatch("X-GCS-AUTHENTICATION-TOKEN", "foobar", "***");
 
-            CheckObfuscateHeaderWithMatch("X-GCS-CallerPassword", "foobar", "********");
-            CheckObfuscateHeaderWithMatch("x-gcs-callerpassword", "foobar", "********");
-            CheckObfuscateHeaderWithMatch("X-GCS-CALLERPASSWORD", "foobar", "********");
+            CheckObfuscateHeaderWithMatch("X-GCS-CallerPassword", "foobar", "***");
+            CheckObfuscateHeaderWithMatch("x-gcs-callerpassword", "foobar", "***");
+            CheckObfuscateHeaderWithMatch("X-GCS-CALLERPASSWORD", "foobar", "***");
 
             CheckObfuscateHeaderWithNoMatch("Content-Type", "application/json");
             CheckObfuscateHeaderWithNoMatch("content-type", "application/json");
