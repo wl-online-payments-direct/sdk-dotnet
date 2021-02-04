@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 using Ingenico.Direct.Sdk.Domain;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Ingenico.Direct.Sdk.Merchant.HostedCheckout
 
         /// <summary>
         /// Resource /v2/{merchantId}/hostedcheckouts
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CreateHostedCheckoutApi">Create hosted checkout</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/CreateHostedCheckoutApi">Create hosted checkout</a>
         /// </summary>
         /// <param name="body">CreateHostedCheckoutRequest</param>
         /// <param name="context">CallContext</param>
@@ -33,7 +33,7 @@ namespace Ingenico.Direct.Sdk.Merchant.HostedCheckout
 
         /// <summary>
         /// Resource /v2/{merchantId}/hostedcheckouts/{hostedCheckoutId}
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetHostedCheckoutApi">Get hosted checkout status</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetHostedCheckoutApi">Get hosted checkout status</a>
         /// </summary>
         /// <param name="hostedCheckoutId">string</param>
         /// <param name="context">CallContext</param>

@@ -57,6 +57,10 @@ namespace Ingenico.Direct.Sdk
             {
                 return new DeclinedPaymentException(statusCode, responseBody, paymentErrorResp);
             }
+            if (errorObject is PayoutErrorResponse response && response.PayoutResult != null)
+            {
+                return new DeclinedPayoutException(statusCode, responseBody, response);
+            }
             if (errorObject is RefundErrorResponse refundErrorResp && refundErrorResp.RefundResult != null)
             {
                 return new DeclinedRefundException(statusCode, responseBody, refundErrorResp);
@@ -64,10 +68,20 @@ namespace Ingenico.Direct.Sdk
 
             string errorId;
             IList<APIError> errors;
-            if (errorObject is PaymentErrorResponse paymentErrorResponse)
+            if (errorObject == null)
+            {
+                errorId = null;
+                errors = new List<APIError>();
+            }
+            else if (errorObject is PaymentErrorResponse paymentErrorResponse)
             {
                 errorId = paymentErrorResponse.ErrorId;
                 errors = paymentErrorResponse.Errors;
+            }
+            else if (errorObject is PayoutErrorResponse payoutErrorResponse)
+            {
+                errorId = payoutErrorResponse.ErrorId;
+                errors = payoutErrorResponse.Errors;
             }
             else if (errorObject is RefundErrorResponse refundErrorResponse)
             {

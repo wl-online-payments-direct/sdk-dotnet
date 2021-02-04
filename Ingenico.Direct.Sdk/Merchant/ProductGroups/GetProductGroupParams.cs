@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 using Ingenico.Direct.Sdk;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ namespace Ingenico.Direct.Sdk.Merchant.ProductGroups
 {
     /// <summary>
     /// Query parameters for
-    /// <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetProductGroup">Get product group</a>
+    /// <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetProductGroup">Get product group</a>
     /// </summary>
     public class GetProductGroupParams : AbstractParamRequest
     {

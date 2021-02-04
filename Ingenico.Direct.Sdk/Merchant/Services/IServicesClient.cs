@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 using Ingenico.Direct.Sdk.Domain;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Services
 
         /// <summary>
         /// Resource /v2/{merchantId}/services/testconnection
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/TestConnectionApi">Test connection</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/TestConnectionApi">Test connection</a>
         /// </summary>
         /// <param name="context">CallContext</param>
         /// <returns>TestConnection</returns>

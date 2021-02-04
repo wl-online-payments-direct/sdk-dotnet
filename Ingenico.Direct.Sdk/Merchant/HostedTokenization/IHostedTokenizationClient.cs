@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 using Ingenico.Direct.Sdk.Domain;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Ingenico.Direct.Sdk.Merchant.HostedTokenization
 
         /// <summary>
         /// Resource /v2/{merchantId}/hostedtokenizations
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CreateHostedTokenizationApi">Create hosted tokenization session</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/CreateHostedTokenizationApi">Create hosted tokenization session</a>
         /// </summary>
         /// <param name="body">CreateHostedTokenizationRequest</param>
         /// <param name="context">CallContext</param>
@@ -33,7 +33,7 @@ namespace Ingenico.Direct.Sdk.Merchant.HostedTokenization
 
         /// <summary>
         /// Resource /v2/{merchantId}/hostedtokenizations/{hostedTokenizationId}
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetHostedTokenizationApi">Get hosted tokenization session</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetHostedTokenizationApi">Get hosted tokenization session</a>
         /// </summary>
         /// <param name="hostedTokenizationId">string</param>
         /// <param name="context">CallContext</param>

@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 using Ingenico.Direct.Sdk.Domain;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CreatePaymentApi">Create payment</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/CreatePaymentApi">Create payment</a>
         /// </summary>
         /// <param name="body">CreatePaymentRequest</param>
         /// <param name="context">CallContext</param>
@@ -34,7 +34,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments/{paymentId}
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetPaymentApi">Get payment</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetPaymentApi">Get payment</a>
         /// </summary>
         /// <param name="paymentId">string</param>
         /// <param name="context">CallContext</param>
@@ -52,7 +52,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments/{paymentId}/complete
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CompletePaymentApi">Complete payment</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/CompletePaymentApi">Complete payment</a>
         /// </summary>
         /// <param name="paymentId">string</param>
         /// <param name="body">CompletePaymentRequest</param>
@@ -72,7 +72,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments/{paymentId}/cancel
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CancelPaymentApi">Cancel payment</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/CancelPaymentApi">Cancel payment</a>
         /// </summary>
         /// <param name="paymentId">string</param>
         /// <param name="context">CallContext</param>
@@ -90,7 +90,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments/{paymentId}/refund
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/RefundPaymentApi">Refund payment</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/RefundPaymentApi">Refund payment</a>
         /// </summary>
         /// <param name="paymentId">string</param>
         /// <param name="body">RefundRequest</param>
@@ -110,7 +110,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments/{paymentId}/capture
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CapturePaymentApi">Capture payment</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/CapturePaymentApi">Capture payment</a>
         /// </summary>
         /// <param name="paymentId">string</param>
         /// <param name="body">CapturePaymentRequest</param>
@@ -129,7 +129,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments/{paymentId}/captures
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetCapturesApi">Get Captures Api</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetCapturesApi">Get Captures Api</a>
         /// </summary>
         /// <param name="paymentId">string</param>
         /// <param name="context">CallContext</param>
@@ -147,7 +147,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments/{paymentId}/refunds
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetRefundsApi">Get Refunds Api</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetRefundsApi">Get Refunds Api</a>
         /// </summary>
         /// <param name="paymentId">string</param>
         /// <param name="context">CallContext</param>

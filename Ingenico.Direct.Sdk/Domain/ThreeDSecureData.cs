@@ -1,15 +1,31 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 namespace Ingenico.Direct.Sdk.Domain
 {
     public class ThreeDSecureData
     {
+        /// <summary>
+        /// The ACS Transaction ID for a prior 3-D Secure authenticated transaction (for example, the first recurring transaction that was authenticated with the customer)<para />
+        /// </summary>
         public string AcsTransactionId { get; set; } = null;
 
+        /// <summary>
+        /// Authentication used by the customer on your website<para />
+        /// Possible values are<para />
+        ///  * guest = no login occurred, customer is logged in as guest<para />
+        ///  * merchant-credentials = the customer logged in using credentials that are specific to you<para />
+        ///  * federated-id = the customer logged in using a federated ID<para />
+        ///  * issuer-credentials = the customer logged in using credentials from the card issuer (of the card used in this transaction)<para />
+        ///  * third-party-authentication = the customer logged in using third-party authentication<para />
+        ///  * fido-authentication = the customer logged in using a FIDO authenticator<para />
+        /// </summary>
         public string Method { get; set; } = null;
 
+        /// <summary>
+        /// Timestamp in UTC (YYYYMMDDHHmm) of the 3-D Secure authentication of this transaction<para />
+        /// </summary>
         public string UtcTimestamp { get; set; } = null;
     }
 }

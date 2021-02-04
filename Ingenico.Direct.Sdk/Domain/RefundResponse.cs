@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 namespace Ingenico.Direct.Sdk.Domain
 {
@@ -8,8 +8,14 @@ namespace Ingenico.Direct.Sdk.Domain
     {
         public string Id { get; set; } = null;
 
+        /// <summary>
+        /// Object containing refund details<para />
+        /// </summary>
         public RefundOutput RefundOutput { get; set; } = null;
 
+        /// <summary>
+        /// Current high-level status of the payment in a human-readable form.<para />
+        /// </summary>
         public string Status { get; set; } = null;
 
         public OrderStatusOutput StatusOutput { get; set; } = null;

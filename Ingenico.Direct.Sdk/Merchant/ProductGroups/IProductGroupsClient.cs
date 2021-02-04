@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 using Ingenico.Direct.Sdk.Domain;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Ingenico.Direct.Sdk.Merchant.ProductGroups
 
         /// <summary>
         /// Resource /v2/{merchantId}/productgroups
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetProductGroups">Get product groups</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetProductGroups">Get product groups</a>
         /// </summary>
         /// <param name="query">GetProductGroupsParams</param>
         /// <param name="context">CallContext</param>
@@ -33,7 +33,7 @@ namespace Ingenico.Direct.Sdk.Merchant.ProductGroups
 
         /// <summary>
         /// Resource /v2/{merchantId}/productgroups/{paymentProductGroupId}
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetProductGroup">Get product group</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetProductGroup">Get product group</a>
         /// </summary>
         /// <param name="paymentProductGroupId">string</param>
         /// <param name="query">GetProductGroupParams</param>

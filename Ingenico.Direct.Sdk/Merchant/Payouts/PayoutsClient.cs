@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 using Ingenico.Direct.Sdk.Domain;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Payouts
             }
             catch (ResponseException e)
             {
-                object errorObject = _communicator.Unmarshal<ErrorResponse>(e.Body);
+                object errorObject = _communicator.Unmarshal<PayoutErrorResponse>(e.Body);
                 throw CreateException(e.StatusCode, e.Body, errorObject, context);
             }
         }

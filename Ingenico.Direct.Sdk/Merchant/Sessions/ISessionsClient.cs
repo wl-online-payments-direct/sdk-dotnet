@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 using Ingenico.Direct.Sdk.Domain;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Sessions
 
         /// <summary>
         /// Resource /v2/{merchantId}/sessions
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/CreateSessionApi">Create session</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/CreateSessionApi">Create session</a>
         /// </summary>
         /// <param name="body">SessionRequest</param>
         /// <param name="context">CallContext</param>

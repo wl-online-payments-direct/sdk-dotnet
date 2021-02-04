@@ -5,7 +5,7 @@ using System.IO;
 namespace Ingenico.Direct.Sdk.Logging
 {
     [TestFixture]
-    public class SysOutCommunicatorLoggerTest
+    public class SystemConsoleCommunicatorLoggerTest
     {
         TextWriter oldStdOut;
         TextWriter newStdOut;

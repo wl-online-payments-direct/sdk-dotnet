@@ -1,6 +1,6 @@
 /*
  * This class was auto-generated from the API references found at
- * https://support.direct.ingenico.com/documentation/api/reference/index.html
+ * https://support.direct.ingenico.com/documentation/api/reference
  */
 using Ingenico.Direct.Sdk.Domain;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Products
 
         /// <summary>
         /// Resource /v2/{merchantId}/products
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetPaymentProducts">Get payment products</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetPaymentProducts">Get payment products</a>
         /// </summary>
         /// <param name="query">GetPaymentProductsParams</param>
         /// <param name="context">CallContext</param>
@@ -33,7 +33,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Products
 
         /// <summary>
         /// Resource /v2/{merchantId}/products/{paymentProductId}
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetPaymentProduct">Get payment product</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetPaymentProduct">Get payment product</a>
         /// </summary>
         /// <param name="paymentProductId">int?</param>
         /// <param name="query">GetPaymentProductParams</param>
@@ -52,7 +52,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Products
 
         /// <summary>
         /// Resource /v2/{merchantId}/products/{paymentProductId}/directory
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetProductDirectoryApi">Get payment product directory</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetProductDirectoryApi">Get payment product directory</a>
         /// </summary>
         /// <param name="paymentProductId">int?</param>
         /// <param name="query">GetProductDirectoryParams</param>
@@ -71,7 +71,7 @@ namespace Ingenico.Direct.Sdk.Merchant.Products
 
         /// <summary>
         /// Resource /v2/{merchantId}/products/{paymentProductId}/networks
-        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference/index.html#operation/GetPaymentProductNetworks">Get payment product networks</a>
+        /// - <a href="https://support.direct.ingenico.com/documentation/api/reference#operation/GetPaymentProductNetworks">Get payment product networks</a>
         /// </summary>
         /// <param name="paymentProductId">int?</param>
         /// <param name="query">GetPaymentProductNetworksParams</param>
