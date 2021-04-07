@@ -18,6 +18,9 @@ namespace Ingenico.Direct.Sdk.Domain
         /// </summary>
         public string Type { get; set; } = null;
 
+        /// <summary>
+        /// Deprecated: This field is not used by any payment product<para />
+        /// </summary>
         public IList<ValueMappingElement> ValueMapping { get; set; } = null;
     }
 }

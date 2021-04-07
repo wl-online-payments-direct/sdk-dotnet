@@ -29,6 +29,12 @@ namespace Ingenico.Direct.Sdk.Domain
         public bool? JavaEnabled { get; set; } = null;
 
         /// <summary>
+        /// * true = JavaScript is enabled in the browser.<para />
+        /// * false = JavaScript is not enabled in the browser. In this case the following parameters are not mandatory anymore: colorDepth, javaEnabled, screenHeight, screenWidth, timezoneOffsetUtcMinutes.<para />
+        /// </summary>
+        public bool? JavaScriptEnabled { get; set; } = null;
+
+        /// <summary>
         /// Height of the screen in pixels. Value is returned from the screen.height property.<para />
         /// <para />
         /// If you use the latest version of our JavaScript Client SDK, we will collect this data and include it in the encryptedCustomerInput property. We will then automatically populate this data if available.<para />

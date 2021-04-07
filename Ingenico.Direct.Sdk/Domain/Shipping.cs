@@ -43,6 +43,16 @@ namespace Ingenico.Direct.Sdk.Domain
         public bool? IsFirstUsage { get; set; } = null;
 
         /// <summary>
+        /// Cost associated with the shipping of the order.<para />
+        /// </summary>
+        public long? ShippingCost { get; set; } = null;
+
+        /// <summary>
+        /// Tax amount of the shipping cost.<para />
+        /// </summary>
+        public long? ShippingCostTax { get; set; } = null;
+
+        /// <summary>
         /// Indicates the merchandise delivery timeframe. Possible values:<para />
         ///  * electronic = For electronic delivery (services or digital goods<para />
         ///  * same-day = For same day deliveries<para />

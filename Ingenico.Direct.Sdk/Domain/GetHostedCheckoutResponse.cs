@@ -15,6 +15,7 @@ namespace Ingenico.Direct.Sdk.Domain
         /// This is the status of the hosted checkout. Possible values are:<para />
         /// * IN_PROGRESS - The checkout is still in progress and has not finished yet<para />
         /// * PAYMENT_CREATED - A payment has been created<para />
+        /// * CANCELLED_BY_CONSUMER - The HostedCheckout session have been cancelled by the customer<para />
         /// </summary>
         public string Status { get; set; } = null;
     }

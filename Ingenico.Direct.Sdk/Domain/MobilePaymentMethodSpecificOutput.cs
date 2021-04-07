@@ -17,7 +17,7 @@ namespace Ingenico.Direct.Sdk.Domain
         public CardFraudResults FraudResults { get; set; } = null;
 
         /// <summary>
-        /// The network that was used for the refund<para />
+        /// Deprecated: This field is not used by any payment product<para />
         /// </summary>
         public string Network { get; set; } = null;
 

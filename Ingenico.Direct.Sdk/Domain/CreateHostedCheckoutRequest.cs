@@ -22,6 +22,11 @@ namespace Ingenico.Direct.Sdk.Domain
         public HostedCheckoutSpecificInput HostedCheckoutSpecificInput { get; set; } = null;
 
         /// <summary>
+        /// Object containing the specific input details for mobile payments<para />
+        /// </summary>
+        public MobilePaymentMethodHostedCheckoutSpecificInput MobilePaymentMethodSpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Order object containing order related data <para />
         ///  Please note that this object is required to be able to submit the amount.<para />
         /// </summary>

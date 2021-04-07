@@ -34,6 +34,11 @@ namespace Ingenico.Direct.Sdk.Domain
         public bool? IsRecurring { get; set; } = null;
 
         /// <summary>
+        /// Object containing specific input required for CB payments<para />
+        /// </summary>
+        public PaymentProduct130SpecificInput PaymentProduct130SpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Payment product identifier - Please see [payment products](https://support.direct.ingenico.com/documentation/api/reference/index.html#tag/Products) for a full overview of possible values.<para />
         /// </summary>
         public int? PaymentProductId { get; set; } = null;
@@ -51,20 +56,13 @@ namespace Ingenico.Direct.Sdk.Domain
         public string ReturnUrl { get; set; } = null;
 
         /// <summary>
-        /// * true = 3D Secure authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to recurring.<para />
-        /// * false = 3D Secure authentication will not be skipped for this transaction.<para />
+        /// Deprecated: Use threeDSecure.skipAuthentication instead.<para />
+        ///  * true = 3D Secure authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to recurring.<para />
+        ///  * false = 3D Secure authentication will not be skipped for this transaction.<para />
         /// <para />
-        ///  Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.<para />
+        ///   Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.<para />
         /// </summary>
         public bool? SkipAuthentication { get; set; } = null;
-
-        /// <summary>
-        /// * true = Soft Decline retry mechanism will be skipped for this transaction. The transaction will result in "Authorization Declined" status. This setting should be used when skipAuthentication is set to true and the merchant does not want to use Soft Decline retry mechanism.<para />
-        /// * false = Soft Decline retry mechanism will not be skipped for this transaction.<para />
-        /// <para />
-        ///  Note: skipSoftDecline defaults to false if empty. This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.<para />
-        /// </summary>
-        public bool? SkipSoftDecline { get; set; } = null;
 
         /// <summary>
         /// Object containing specific data regarding 3-D Secure<para />

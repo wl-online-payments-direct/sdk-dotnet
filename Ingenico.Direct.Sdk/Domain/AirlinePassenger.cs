@@ -7,21 +7,25 @@ namespace Ingenico.Direct.Sdk.Domain
     public class AirlinePassenger
     {
         /// <summary>
-        /// First name of the passenger (this property is used for fraud screening on the Ogone Payment Platform)<para />
+        /// First name of the passenger<para />
+        /// This field is used by the following payment products: cards, 840<para />
         /// </summary>
         public string FirstName { get; set; } = null;
 
         /// <summary>
-        /// Surname of the passenger (this property is used for fraud screening on the Ogone Payment Platform)<para />
+        /// Surname of the passenger<para />
+        /// This field is used by the following payment products: cards, 840<para />
         /// </summary>
         public string Surname { get; set; } = null;
 
         /// <summary>
-        /// Surname prefix of the passenger (this property is used for fraud screening on the Ogone Payment Platform)<para />
+        /// Surname prefix or middle name of the passenger<para />
+        /// This field is used by the following payment products: 840<para />
         /// </summary>
         public string SurnamePrefix { get; set; } = null;
 
         /// <summary>
+        /// Deprecated: This field is not used by any payment product<para />
         /// Title of the passenger (this property is used for fraud screening on the Ogone Payment Platform)<para />
         /// </summary>
         public string Title { get; set; } = null;

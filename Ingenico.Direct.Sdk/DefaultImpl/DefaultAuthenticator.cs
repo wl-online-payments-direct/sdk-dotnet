@@ -19,9 +19,9 @@ namespace Ingenico.Direct.Sdk.DefaultImpl
         private readonly string _secretApiKey;
         private readonly AuthorizationType _authorizationType;
 
-        /// <param name="apiKeyId">An identifier for the secret API key. The apiKeyId can be retrieved from the Configuration Center.
+        /// <param name="apiKeyId">An identifier for the secret API key. The apiKeyId can be retrieved from the Back Office.
         ///        This identifier is visible in the HTTP request and is also used to identify the correct account.</param>
-        /// <param name="secretApiKey">A shared secret. The shared secret can be retrieved from the Configuration Center.
+        /// <param name="secretApiKey">A shared secret. The shared secret can be retrieved from the Back Office.
         ///        An apiKeyId and secretApiKey always go hand-in-hand, the difference is that secretApiKey is never visible in the HTTP request.
         ///        This secret is used as input for the HMAC algorithm.</param>
         public DefaultAuthenticator(string apiKeyId, string secretApiKey)

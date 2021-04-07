@@ -28,6 +28,7 @@ namespace Ingenico.Direct.Sdk.Domain
         public string Label { get; set; } = null;
 
         /// <summary>
+        /// Deprecated: This field is not used by any payment product<para />
         /// Link that should be used to replace the '{link}' variable in the label.<para />
         /// </summary>
         public string Link { get; set; } = null;

@@ -9,6 +9,7 @@ namespace Ingenico.Direct.Sdk.Domain
     public class ShoppingCart
     {
         /// <summary>
+        /// Deprecated: Use order.shipping.shippingCost for shipping cost. Other amounts are not used.<para />
         /// Determines how the total amount is split into amount types<para />
         /// </summary>
         public IList<AmountBreakdown> AmountBreakdown { get; set; } = null;

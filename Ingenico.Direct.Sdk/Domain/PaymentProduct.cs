@@ -47,6 +47,10 @@ namespace Ingenico.Direct.Sdk.Domain
         /// </summary>
         public string PaymentMethod { get; set; } = null;
 
+        public PaymentProduct302SpecificData PaymentProduct302SpecificData { get; set; } = null;
+
+        public PaymentProduct320SpecificData PaymentProduct320SpecificData { get; set; } = null;
+
         /// <summary>
         /// The payment product group that has this payment product, if there is any. Not populated otherwise. Currently only one payment product group is supported:<para />
         /// * cards<para />

@@ -41,9 +41,21 @@ namespace Ingenico.Direct.Sdk.Domain
         public string ExemptionRequest { get; set; } = null;
 
         /// <summary>
+        /// Merchant fraud rate in the EEA (all EEA card fraud divided by all EEA card volumes) calculated as per PSD2 RTS Mastercard will not calculate or validate the merchant fraud score<para />
+        /// </summary>
+        public int? MerchantFraudRate { get; set; } = null;
+
+        /// <summary>
         /// Object containing data regarding the customer authentication that occurred prior to the current transaction<para />
         /// </summary>
         public ThreeDSecureData PriorThreeDSecureData { get; set; } = null;
+
+        /// <summary>
+        /// Indicates dedicated payment processes and procedures were used, potential secure corporate payment exemption applies Logically this field should only be set to yes if the <para />
+        /// acquirer exemption field is blank. A merchant cannot claim both acquirer exemption and  secure payment. However, the DS will not validate <para />
+        /// the conditions in the extension. DS will pass data as presented.<para />
+        /// </summary>
+        public bool? SecureCorporatePayment { get; set; } = null;
 
         /// <summary>
         /// * true = 3D Secure authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to "recurring"<para />
@@ -52,5 +64,13 @@ namespace Ingenico.Direct.Sdk.Domain
         /// Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction<para />
         /// </summary>
         public bool? SkipAuthentication { get; set; } = null;
+
+        /// <summary>
+        /// * true = Soft Decline retry mechanism will be skipped for this transaction. The transaction will result in "Authorization Declined" status. This setting should be used when skipAuthentication is set to true and the merchant does not want to use Soft Decline retry mechanism.<para />
+        /// * false = Soft Decline retry mechanism will not be skipped for this transaction.<para />
+        /// <para />
+        /// Note: skipSoftDecline defaults to false if empty. This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.<para />
+        /// </summary>
+        public bool? SkipSoftDecline { get; set; } = null;
     }
 }

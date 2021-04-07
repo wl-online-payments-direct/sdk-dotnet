@@ -12,6 +12,7 @@ namespace Ingenico.Direct.Sdk.Domain
         public string Key { get; set; } = null;
 
         /// <summary>
+        /// Deprecated: This field is not used by any payment product<para />
         /// The reason why the status is MUST_WRITE. Currently only "IN_THE_PAST" is possible as value (for expiry date), but this can be extended with new values in the future.<para />
         /// </summary>
         public string MustWriteReason { get; set; } = null;
