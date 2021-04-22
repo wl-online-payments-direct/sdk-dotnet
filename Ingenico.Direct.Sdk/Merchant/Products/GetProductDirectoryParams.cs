@@ -13,8 +13,14 @@ namespace Ingenico.Direct.Sdk.Merchant.Products
     /// </summary>
     public class GetProductDirectoryParams : AbstractParamRequest
     {
+        /// <summary>
+        /// ISO 3166-1 alpha-2 country code<para />
+        /// </summary>
         public string CountryCode { get; set; } = null;
 
+        /// <summary>
+        /// Three-letter ISO currency code representing the currency of the transaction<para />
+        /// </summary>
         public string CurrencyCode { get; set; } = null;
 
         public override IEnumerable<RequestParam> ToRequestParameters()

@@ -45,7 +45,7 @@ namespace Ingenico.Direct.Sdk.Merchant
 		IPaymentsClient Payments { get; }
 
         /// <summary>
-        /// Resource /v2/{merchantId}/services/testconnection
+        /// Resource /v2/{merchantId}/services
         /// </summary>
         /// <returns>ServicesClient</returns>
 		IServicesClient Services { get; }

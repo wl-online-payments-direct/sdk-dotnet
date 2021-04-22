@@ -13,12 +13,26 @@ namespace Ingenico.Direct.Sdk.Merchant.Products
     /// </summary>
     public class GetPaymentProductNetworksParams : AbstractParamRequest
     {
+        /// <summary>
+        /// ISO 3166-1 alpha-2 country code<para />
+        /// </summary>
         public string CountryCode { get; set; } = null;
 
+        /// <summary>
+        /// Three-letter ISO currency code representing the currency for the amount<para />
+        /// </summary>
         public string CurrencyCode { get; set; } = null;
 
+        /// <summary>
+        /// Amount in cents and always having 2 decimals<para />
+        /// </summary>
         public long? Amount { get; set; } = null;
 
+        /// <summary>
+        /// This allows you to filter networks based on their support for recurring or not<para />
+        /// * true<para />
+        /// * false<para />
+        /// </summary>
         public bool? IsRecurring { get; set; } = null;
 
         public override IEnumerable<RequestParam> ToRequestParameters()
