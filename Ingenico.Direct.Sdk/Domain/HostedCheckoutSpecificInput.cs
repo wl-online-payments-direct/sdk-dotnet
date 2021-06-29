@@ -7,11 +7,6 @@ namespace Ingenico.Direct.Sdk.Domain
     public class HostedCheckoutSpecificInput
     {
         /// <summary>
-        /// Object containing card payment specific data for hosted checkout<para />
-        /// </summary>
-        public CardPaymentMethodSpecificInputForHostedCheckout CardPaymentMethodSpecificInput { get; set; } = null;
-
-        /// <summary>
         /// * true - Only payment products that support recurring payments will be shown. Any transactions created will also be tagged as being a first of a recurring sequence.<para />
         /// * false - Only payment products that support one-off payments will be shown.<para />
         /// The default value for this property is false.<para />
@@ -34,6 +29,11 @@ namespace Ingenico.Direct.Sdk.Domain
         /// URLs without a protocol will be rejected.<para />
         /// </summary>
         public string ReturnUrl { get; set; } = null;
+
+        /// <summary>
+        /// The number of minutes after which the session will expire. By default, the value is set to 180 minutes.<para />
+        /// </summary>
+        public int? SessionTimeout { get; set; } = null;
 
         /// <summary>
         /// * true - Default - Hosted Checkout will show a result page to the customer when applicable.<para />

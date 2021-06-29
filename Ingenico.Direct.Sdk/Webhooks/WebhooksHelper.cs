@@ -81,7 +81,7 @@ namespace Ingenico.Direct.Sdk.Webhooks
                 bool isValid = signature.CompareWithoutTimingLeak(expectedSignature);
                 if (!isValid)
                 {
-                    throw new SignatureValidationException("failed to validate signature '" + signature + "'" + expectedSignature);
+                    throw new SignatureValidationException("failed to validate signature '" + signature + "'");
                 }
             }
         }

@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>net45;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>Ingenico.Direct.Sdk</RootNamespace>
-    <AssemblyVersion>2.5.0</AssemblyVersion>
-    <Version>2.5.0</Version>
+    <AssemblyVersion>2.6.0</AssemblyVersion>
+    <Version>2.6.0</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>Ingenico ePayments</Company>
     <Product>Ingenico Direct .NET SDK unit tests</Product>
