@@ -22,7 +22,7 @@ namespace Ingenico.Direct.Sdk
         });
 
         private const string SERVER_META_INFO_HEADER = "X-GCS-ServerMetaInfo";
-        private const string SDK_VERSION = "2.6.0";
+        private const string SDK_VERSION = "2.7.0";
         internal string SdkIdentifier => "DirectDotnetServerSDK/v" + SDK_VERSION;
 
         private static readonly string _platformIdentifier = Environment.OSVersion.Platform + "/" + Environment.OSVersion.Version + " .NET/" + Environment.Version;
