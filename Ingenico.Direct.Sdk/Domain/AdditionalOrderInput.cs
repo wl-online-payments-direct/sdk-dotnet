@@ -17,6 +17,11 @@ namespace Ingenico.Direct.Sdk.Domain
         public LoanRecipient LoanRecipient { get; set; } = null;
 
         /// <summary>
+        /// Object that holds lodging specific data<para />
+        /// </summary>
+        public LodgingData LodgingData { get; set; } = null;
+
+        /// <summary>
         /// Object that holds the purchase and usage type indicators<para />
         /// </summary>
         public OrderTypeInformation TypeInformation { get; set; } = null;

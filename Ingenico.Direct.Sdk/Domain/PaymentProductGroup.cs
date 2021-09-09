@@ -2,6 +2,8 @@
  * This class was auto-generated from the API references found at
  * https://support.direct.ingenico.com/documentation/api/reference
  */
+using System.Collections.Generic;
+
 namespace Ingenico.Direct.Sdk.Domain
 {
     public class PaymentProductGroup
@@ -12,6 +14,11 @@ namespace Ingenico.Direct.Sdk.Domain
         /// Object containing display hints like the order of the product when shown in a list, the name of the product and the logo<para />
         /// </summary>
         public PaymentProductDisplayHints DisplayHints { get; set; } = null;
+
+        /// <summary>
+        /// List of display hints<para />
+        /// </summary>
+        public IList<PaymentProductDisplayHints> DisplayHintsList { get; set; } = null;
 
         /// <summary>
         /// The ID of the payment product group in our system<para />

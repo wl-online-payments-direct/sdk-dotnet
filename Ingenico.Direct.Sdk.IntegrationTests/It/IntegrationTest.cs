@@ -43,9 +43,9 @@ namespace Ingenico.Direct.Sdk.It
         {
             if (EndpointHost == null)
             {
-                throw new System.InvalidOperationException("Environment variable direct.api.endpoint.host must be set");
+                throw new InvalidOperationException("Environment variable direct.api.endpoint.host must be set");
             }
-            String scheme = EndpointScheme != null ? EndpointScheme : "https";
+            String scheme = EndpointScheme ?? "https";
             int port = EndpointPort != null ? Int32.Parse(EndpointPort) : -1;
             try
             {

@@ -186,6 +186,30 @@ namespace Ingenico.Direct.Sdk.Merchant.Payments
         }
 
         /// <inheritdoc/>
+        public async Task<PaymentDetailsResponse> GetPaymentDetails(string paymentId, CallContext context = null)
+        {
+            IDictionary<string, string> pathContext = new Dictionary<string, string>
+            {
+                { "paymentId", paymentId }
+            };
+            string uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}/details", pathContext);
+            try
+            {
+                return await _communicator.Get<PaymentDetailsResponse>(
+                        uri,
+                        ClientHeaders,
+                        null,
+                        context)
+                    .ConfigureAwait(false);
+            }
+            catch (ResponseException e)
+            {
+                object errorObject = _communicator.Unmarshal<ErrorResponse>(e.Body);
+                throw CreateException(e.StatusCode, e.Body, errorObject, context);
+            }
+        }
+
+        /// <inheritdoc/>
         public async Task<RefundsResponse> GetRefunds(string paymentId, CallContext context = null)
         {
             IDictionary<string, string> pathContext = new Dictionary<string, string>

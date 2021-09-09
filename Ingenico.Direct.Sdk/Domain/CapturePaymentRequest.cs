@@ -17,5 +17,10 @@ namespace Ingenico.Direct.Sdk.Domain
         /// This property indicates whether this will be the final capture of this transaction. The default value for this property is false.<para />
         /// </summary>
         public bool? IsFinal { get; set; } = null;
+
+        /// <summary>
+        /// Object that holds all reference properties that are linked to this transaction<para />
+        /// </summary>
+        public PaymentReferences References { get; set; } = null;
     }
 }

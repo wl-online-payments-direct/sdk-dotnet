@@ -33,6 +33,11 @@ namespace Ingenico.Direct.Sdk.Domain
         public PaymentProductDisplayHints DisplayHints { get; set; } = null;
 
         /// <summary>
+        /// List of display hints<para />
+        /// </summary>
+        public IList<PaymentProductDisplayHints> DisplayHintsList { get; set; } = null;
+
+        /// <summary>
         /// Object containing all the fields and their details that are associated with this payment product. If you are not interested in the data on the fields you should have us filter them our (using filter=fields in the query-string)<para />
         /// </summary>
         public IList<PaymentProductField> Fields { get; set; } = null;
