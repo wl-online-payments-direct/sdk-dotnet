@@ -7,6 +7,11 @@ namespace Ingenico.Direct.Sdk.Domain
     public class CardPaymentMethodSpecificOutput
     {
         /// <summary>
+        /// Allows amount to be authenticated to be different from amount authorized. (Amount in cents and always having 2 decimals)<para />
+        /// </summary>
+        public long? AuthenticatedAmount { get; set; } = null;
+
+        /// <summary>
         /// Card Authorization code as returned by the acquirer<para />
         /// </summary>
         public string AuthorisationCode { get; set; } = null;
@@ -15,6 +20,8 @@ namespace Ingenico.Direct.Sdk.Domain
         /// Object containing card details<para />
         /// </summary>
         public CardEssentials Card { get; set; } = null;
+
+        public ExternalTokenLinked ExternalTokenLinked { get; set; } = null;
 
         /// <summary>
         /// Fraud results contained in the CardFraudResults object<para />

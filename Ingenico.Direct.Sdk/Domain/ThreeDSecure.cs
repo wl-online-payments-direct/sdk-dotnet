@@ -7,6 +7,11 @@ namespace Ingenico.Direct.Sdk.Domain
     public class ThreeDSecure
     {
         /// <summary>
+        /// Allows amount to be authenticated to be different from amount authorized. (Amount in cents and always having 2 decimals)<para />
+        /// </summary>
+        public long? AuthenticationAmount { get; set; } = null;
+
+        /// <summary>
         /// Dimensions of the challenge window that potentially will be displayed to the customer. The challenge content is formatted to appropriately render in this window to provide the best possible user experience. Preconfigured sizes are width x height in pixels of the window displayed in the customer browser window. Possible values are<para />
         ///    * 250x400 (default)<para />
         ///    * 390x400<para />
