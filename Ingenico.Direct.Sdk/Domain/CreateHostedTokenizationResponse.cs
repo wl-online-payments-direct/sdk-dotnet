@@ -9,6 +9,13 @@ namespace Ingenico.Direct.Sdk.Domain
     public class CreateHostedTokenizationResponse
     {
         /// <summary>
+        /// Tokens referencing expired cards are returned in this array. <para />
+        /// These tokens can be used in the hosted tokenization session but you must ensure that the expiry date fields are displayed in the form in order to be updated.<para />
+        /// If you are using the option "hideTokenFields", these tokens should not be proposed to the customers.<para />
+        /// </summary>
+        public IList<string> ExpiredCardTokens { get; set; } = null;
+
+        /// <summary>
         /// The ID of the Hosted Tokenization Session<para />
         /// </summary>
         public string HostedTokenizationId { get; set; } = null;

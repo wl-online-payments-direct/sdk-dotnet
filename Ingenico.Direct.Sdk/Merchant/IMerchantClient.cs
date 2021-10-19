@@ -21,40 +21,10 @@ namespace Ingenico.Direct.Sdk.Merchant
     {
 
         /// <summary>
-        /// Resource /v2/{merchantId}/products
+        /// Resource /v2/{merchantId}/hostedcheckouts
         /// </summary>
-        /// <returns>ProductsClient</returns>
-		IProductsClient Products { get; }
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/sessions
-        /// </summary>
-        /// <returns>SessionsClient</returns>
-		ISessionsClient Sessions { get; }
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/payouts
-        /// </summary>
-        /// <returns>PayoutsClient</returns>
-		IPayoutsClient Payouts { get; }
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/payments
-        /// </summary>
-        /// <returns>PaymentsClient</returns>
-		IPaymentsClient Payments { get; }
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/services
-        /// </summary>
-        /// <returns>ServicesClient</returns>
-		IServicesClient Services { get; }
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/productgroups
-        /// </summary>
-        /// <returns>ProductGroupsClient</returns>
-		IProductGroupsClient ProductGroups { get; }
+        /// <returns>HostedCheckoutClient</returns>
+		IHostedCheckoutClient HostedCheckout { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/hostedtokenizations
@@ -63,15 +33,45 @@ namespace Ingenico.Direct.Sdk.Merchant
 		IHostedTokenizationClient HostedTokenization { get; }
 
         /// <summary>
+        /// Resource /v2/{merchantId}/payments
+        /// </summary>
+        /// <returns>PaymentsClient</returns>
+		IPaymentsClient Payments { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/payouts
+        /// </summary>
+        /// <returns>PayoutsClient</returns>
+		IPayoutsClient Payouts { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/productgroups
+        /// </summary>
+        /// <returns>ProductGroupsClient</returns>
+		IProductGroupsClient ProductGroups { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/products
+        /// </summary>
+        /// <returns>ProductsClient</returns>
+		IProductsClient Products { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/services
+        /// </summary>
+        /// <returns>ServicesClient</returns>
+		IServicesClient Services { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/sessions
+        /// </summary>
+        /// <returns>SessionsClient</returns>
+		ISessionsClient Sessions { get; }
+
+        /// <summary>
         /// Resource /v2/{merchantId}/tokens
         /// </summary>
         /// <returns>TokensClient</returns>
 		ITokensClient Tokens { get; }
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/hostedcheckouts
-        /// </summary>
-        /// <returns>HostedCheckoutClient</returns>
-		IHostedCheckoutClient HostedCheckout { get; }
     }
 }

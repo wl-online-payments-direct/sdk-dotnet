@@ -24,30 +24,30 @@ namespace Ingenico.Direct.Sdk.Merchant
         }
 
         /// <inheritdoc/>
-		public IProductsClient Products => new ProductsClient(this, null);
-
-        /// <inheritdoc/>
-		public ISessionsClient Sessions => new SessionsClient(this, null);
-
-        /// <inheritdoc/>
-		public IPayoutsClient Payouts => new PayoutsClient(this, null);
-
-        /// <inheritdoc/>
-		public IPaymentsClient Payments => new PaymentsClient(this, null);
-
-        /// <inheritdoc/>
-		public IServicesClient Services => new ServicesClient(this, null);
-
-        /// <inheritdoc/>
-		public IProductGroupsClient ProductGroups => new ProductGroupsClient(this, null);
+		public IHostedCheckoutClient HostedCheckout => new HostedCheckoutClient(this, null);
 
         /// <inheritdoc/>
 		public IHostedTokenizationClient HostedTokenization => new HostedTokenizationClient(this, null);
 
         /// <inheritdoc/>
-		public ITokensClient Tokens => new TokensClient(this, null);
+		public IPaymentsClient Payments => new PaymentsClient(this, null);
 
         /// <inheritdoc/>
-		public IHostedCheckoutClient HostedCheckout => new HostedCheckoutClient(this, null);
+		public IPayoutsClient Payouts => new PayoutsClient(this, null);
+
+        /// <inheritdoc/>
+		public IProductGroupsClient ProductGroups => new ProductGroupsClient(this, null);
+
+        /// <inheritdoc/>
+		public IProductsClient Products => new ProductsClient(this, null);
+
+        /// <inheritdoc/>
+		public IServicesClient Services => new ServicesClient(this, null);
+
+        /// <inheritdoc/>
+		public ISessionsClient Sessions => new SessionsClient(this, null);
+
+        /// <inheritdoc/>
+		public ITokensClient Tokens => new TokensClient(this, null);
     }
 }
