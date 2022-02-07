@@ -27,7 +27,7 @@ namespace Ingenico.Direct.Sdk.Domain
         /// The algorithm, from your 3D Secure provider, used to generate the authentication CAVV.<para />
         /// Note:<para />
         ///   Required when<para />
-        ///   * The 3D Secure authentication for the transaction is managed by a non-Ingenico ePayments 3D Secure authentication provider<para />
+        ///   * The 3D Secure authentication for the transaction is managed by a third-party 3D Secure authentication provider<para />
         ///   * You process the transaction through Atos<para />
         /// </summary>
         public string CavvAlgorithm { get; set; } = null;

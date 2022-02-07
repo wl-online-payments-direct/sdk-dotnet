@@ -4,11 +4,11 @@
  */
 namespace Ingenico.Direct.Sdk.Domain
 {
-    public class PaymentProduct771SpecificOutput
+    public class MandateContactDetails
     {
         /// <summary>
-        /// Unique reference to a Mandate<para />
+        /// Email address of the customer<para />
         /// </summary>
-        public string MandateReference { get; set; } = null;
+        public string EmailAddress { get; set; } = null;
     }
 }

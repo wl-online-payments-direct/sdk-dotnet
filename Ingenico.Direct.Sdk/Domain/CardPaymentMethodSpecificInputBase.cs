@@ -32,7 +32,7 @@ namespace Ingenico.Direct.Sdk.Domain
         public PaymentProduct5100SpecificInput PaymentProduct5100SpecificInput { get; set; } = null;
 
         /// <summary>
-        /// Payment product identifier - Please see [payment products](https://support.direct.ingenico.com/documentation/api/reference/index.html#tag/Products) for a full overview of possible values.<para />
+        /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
         /// </summary>
         public int? PaymentProductId { get; set; } = null;
 
@@ -53,7 +53,7 @@ namespace Ingenico.Direct.Sdk.Domain
 
         /// <summary>
         /// Indicates if this transaction should be tokenized<para />
-        ///  * true - Tokenize the transaction. Note that a payment on the Ogone platform that results in a status REDIRECTED cannot be tokenized in this way.<para />
+        ///  * true - Tokenize the transaction. Note that a payment on the payment platform that results in a status REDIRECTED cannot be tokenized in this way.<para />
         ///  * false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.<para />
         /// </summary>
         public bool? Tokenize { get; set; } = null;

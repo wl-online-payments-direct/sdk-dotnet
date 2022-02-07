@@ -56,7 +56,7 @@ namespace Ingenico.Direct.Sdk.Domain
         public string Locale { get; set; } = null;
 
         /// <summary>
-        /// Your identifier for the customer. It is used in the fraud-screening process for payments on the Ogone Payment Platform.<para />
+        /// Your identifier for the customer. It is used in the fraud-screening process for payments on the payment platform.<para />
         /// </summary>
         public string MerchantCustomerId { get; set; } = null;
 

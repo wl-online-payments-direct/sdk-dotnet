@@ -4,6 +4,7 @@
  */
 using Ingenico.Direct.Sdk.Merchant.HostedCheckout;
 using Ingenico.Direct.Sdk.Merchant.HostedTokenization;
+using Ingenico.Direct.Sdk.Merchant.Mandates;
 using Ingenico.Direct.Sdk.Merchant.Payments;
 using Ingenico.Direct.Sdk.Merchant.Payouts;
 using Ingenico.Direct.Sdk.Merchant.ProductGroups;
@@ -31,6 +32,12 @@ namespace Ingenico.Direct.Sdk.Merchant
         /// </summary>
         /// <returns>HostedTokenizationClient</returns>
 		IHostedTokenizationClient HostedTokenization { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/mandates
+        /// </summary>
+        /// <returns>MandatesClient</returns>
+		IMandatesClient Mandates { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments

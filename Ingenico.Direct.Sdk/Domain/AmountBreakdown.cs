@@ -19,7 +19,7 @@ namespace Ingenico.Direct.Sdk.Domain
         ///  * DUTY - Duty on the entire transaction, with the last 2 digits implied as decimal places.<para />
         ///  * SHIPPING - Shipping cost on the entire transaction, with the last 2 digits implied as decimal places.<para />
         ///  * VAT - Total amount of VAT paid on the transaction, with the last 2 digits implied as decimal places.<para />
-        ///  * BASE_AMOUNT - Order amount excluding all taxes, discount & shipping costs, with the last 2 digits implied as decimal places. Note: BASE_AMOUNT is only supported by the Ogone Payment Platform.<para />
+        ///  * BASE_AMOUNT - Order amount excluding all taxes, discount & shipping costs, with the last 2 digits implied as decimal places. Note: BASE_AMOUNT is only supported by the payment platform.<para />
         /// </summary>
         public string Type { get; set; } = null;
     }

@@ -9,7 +9,7 @@ namespace Ingenico.Direct.Sdk.Domain
     public class PaymentProduct320SpecificData
     {
         /// <summary>
-        /// The Ingenico gateway identifier. You should use this when creating a [tokenization specification](https://developers.google.com/pay/api/android/reference/request-objects#Gateway) .<para />
+        /// The gateway identifier. You should use this when creating a [tokenization specification](https://developers.google.com/pay/api/android/reference/request-objects#Gateway) .<para />
         /// </summary>
         public string Gateway { get; set; } = null;
 

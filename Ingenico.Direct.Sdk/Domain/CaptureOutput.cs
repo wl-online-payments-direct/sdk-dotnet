@@ -19,6 +19,11 @@ namespace Ingenico.Direct.Sdk.Domain
         public CardPaymentMethodSpecificOutput CardPaymentMethodSpecificOutput { get; set; } = null;
 
         /// <summary>
+        /// It allows you to store additional parameters for the transaction in the format you prefer (e.g.-> key-value query string, JSON, etc.) These parameters are then echoed back to you in API GET calls and Webhook notifications. This field must not contain any personal data.<para />
+        /// </summary>
+        public string MerchantParameters { get; set; } = null;
+
+        /// <summary>
         /// Object containing the mobile payment method details<para />
         /// </summary>
         public MobilePaymentMethodSpecificOutput MobilePaymentMethodSpecificOutput { get; set; } = null;

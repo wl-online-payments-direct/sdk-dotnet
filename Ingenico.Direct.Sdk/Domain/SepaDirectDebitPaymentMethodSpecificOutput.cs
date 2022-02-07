@@ -11,10 +11,13 @@ namespace Ingenico.Direct.Sdk.Domain
         /// </summary>
         public FraudResults FraudResults { get; set; } = null;
 
+        /// <summary>
+        /// Output that is SEPA Direct Debit specific (i.e. the used mandate)<para />
+        /// </summary>
         public PaymentProduct771SpecificOutput PaymentProduct771SpecificOutput { get; set; } = null;
 
         /// <summary>
-        /// Payment product identifier - Please see [payment products](https://support.direct.ingenico.com/documentation/api/reference/index.html#tag/Products) for a full overview of possible values.<para />
+        /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
         /// </summary>
         public int? PaymentProductId { get; set; } = null;
     }

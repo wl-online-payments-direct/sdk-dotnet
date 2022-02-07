@@ -32,7 +32,7 @@ namespace Ingenico.Direct.Sdk.Domain
         public PaymentProduct840SpecificOutput PaymentProduct840SpecificOutput { get; set; } = null;
 
         /// <summary>
-        /// Payment product identifier - Please see [payment products](https://support.direct.ingenico.com/documentation/api/reference/index.html#tag/Products) for a full overview of possible values.<para />
+        /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
         /// </summary>
         public int? PaymentProductId { get; set; } = null;
 

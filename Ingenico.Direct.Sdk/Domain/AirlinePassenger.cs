@@ -26,7 +26,7 @@ namespace Ingenico.Direct.Sdk.Domain
 
         /// <summary>
         /// Deprecated: This field is not used by any payment product<para />
-        /// Title of the passenger (this property is used for fraud screening on the Ogone Payment Platform)<para />
+        /// Title of the passenger (this property is used for fraud screening on the payment platform)<para />
         /// </summary>
         public string Title { get; set; } = null;
     }

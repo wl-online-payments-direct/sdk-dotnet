@@ -36,5 +36,10 @@ namespace Ingenico.Direct.Sdk.Domain
         /// Object containing the specific input details for payments that involve redirects to 3rd parties to complete, like iDeal and PayPal<para />
         /// </summary>
         public RedirectPaymentMethodSpecificInput RedirectPaymentMethodSpecificInput { get; set; } = null;
+
+        /// <summary>
+        /// Object containing the specific input details for SEPA direct debit payments<para />
+        /// </summary>
+        public SepaDirectDebitPaymentMethodSpecificInputBase SepaDirectDebitPaymentMethodSpecificInput { get; set; } = null;
     }
 }
