@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
+    <RootNamespace>OnlinePayments.Sdk</RootNamespace>
+    <AssemblyVersion>3.0.0</AssemblyVersion>
+    <Version>3.0.0</Version>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Company>Online Payments</Company>
+    <Product>Online Payments .NET SDK unit tests</Product>
+    <Description>Unit tests for the Online Payments .NET SDK</Description>
+    <PackageTags>Online Payments SDK</PackageTags>
+    <Copyright>Copyright (c) 2020 Ingenico e-Commerce Solutions B.V.</Copyright>
+    <Authors>Online Payments</Authors>
+    <PackageProjectUrl>https://github.com/wl-online-payments-direct/sdk-dotnet</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageIcon>packageIcon.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/wl-online-payments-direct/sdk-dotnet/master/packageIcon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/wl-online-payments-direct/sdk-dotnet</RepositoryUrl>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MockHttpServer" Version="1.4.0.0" />
+    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="NunitXml.TestLogger" Version="2.1.41" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\packageIcon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OnlinePayments.Sdk\OnlinePayments.Sdk.csproj" />
+  </ItemGroup>
+
+</Project>
