@@ -9,7 +9,7 @@ namespace OnlinePayments.Sdk.Domain
         /// Category the error belongs to. The category should give an indication of the type of error you are dealing with. Possible values:<para />
         /// * DIRECT_PLATFORM_ERROR - indicating that a functional error has occurred in the platform.<para />
         /// * PAYMENT_PLATFORM_ERROR - indicating that a functional error has occurred in the payment platform.<para />
-        /// * IO_ERROR - indicating that a technical error has occurred within the Direct platform or between Direct and any of the payment platforms or third party systems.<para />
+        /// * IO_ERROR - indicating that a technical error has occurred within the payment platform or between the payment platform and third party systems.<para />
         /// </summary>
         public string Category { get; set; } = null;
 
