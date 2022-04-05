@@ -22,6 +22,11 @@ namespace OnlinePayments.Sdk.Domain
         public FraudFields FraudFields { get; set; } = null;
 
         /// <summary>
+        /// Use this field after a successful Hosted Tokenization session to create a payment with the tokenized payment method details.<para />
+        /// </summary>
+        public string HostedTokenizationId { get; set; } = null;
+
+        /// <summary>
         /// Object containing the specific input details for mobile payments<para />
         /// </summary>
         public MobilePaymentMethodSpecificInput MobilePaymentMethodSpecificInput { get; set; } = null;

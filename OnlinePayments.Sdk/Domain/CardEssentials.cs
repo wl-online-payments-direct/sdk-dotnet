@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public string CardNumber { get; set; } = null;
 
         /// <summary>
+        /// ISO 3166-1 alpha-2 country code<para />
+        /// </summary>
+        public string CountryCode { get; set; } = null;
+
+        /// <summary>
         /// Expiry date of the card <para />
         ///  Format: MMYY<para />
         /// </summary>
