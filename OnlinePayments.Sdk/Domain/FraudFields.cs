@@ -11,6 +11,8 @@ namespace OnlinePayments.Sdk.Domain
         public string BlackListData { get; set; } = null;
 
         /// <summary>
+        /// Deprecated: Use order.customer.device.ipAddress instead.<para />
+        /// <para />
         /// The IP Address of the customer that is making the payment<para />
         /// </summary>
         public string CustomerIpAddress { get; set; } = null;

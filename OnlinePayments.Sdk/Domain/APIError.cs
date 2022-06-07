@@ -14,9 +14,15 @@ namespace OnlinePayments.Sdk.Domain
         public string Category { get; set; } = null;
 
         /// <summary>
+        /// Deprecated: Use errorCode instead.<para />
         /// Error code<para />
         /// </summary>
         public string Code { get; set; } = null;
+
+        /// <summary>
+        /// Error code<para />
+        /// </summary>
+        public string ErrorCode { get; set; } = null;
 
         /// <summary>
         /// HTTP status code for this error that can be used to determine the type of error<para />
