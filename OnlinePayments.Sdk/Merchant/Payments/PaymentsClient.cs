@@ -88,6 +88,13 @@ namespace OnlinePayments.Sdk.Merchant.Payments
         /// <inheritdoc/>
         public async Task<CancelPaymentResponse> CancelPayment(string paymentId, CallContext context = null)
         {
+            CancelPaymentRequest body = null;
+            return await CancelPayment(paymentId, body, context);
+        }
+
+        /// <inheritdoc/>
+        public async Task<CancelPaymentResponse> CancelPayment(string paymentId, CancelPaymentRequest body, CallContext context = null)
+        {
             IDictionary<string, string> pathContext = new Dictionary<string, string>
             {
                 { "paymentId", paymentId }
@@ -99,7 +106,7 @@ namespace OnlinePayments.Sdk.Merchant.Payments
                         uri,
                         ClientHeaders,
                         null,
-                        null,
+                        body,
                         context)
                     .ConfigureAwait(false);
             }

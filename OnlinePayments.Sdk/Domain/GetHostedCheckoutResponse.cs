@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class GetHostedCheckoutResponse
     {
         /// <summary>
-        /// When a payment has been created during the hosted checkout session this object will return the details<para />
+        /// This object will return the details of the payment after the payment is cancelled by the customer, rejected or authorized<para />
         /// </summary>
         public CreatedPaymentOutput CreatedPaymentOutput { get; set; } = null;
 

@@ -13,7 +13,7 @@ namespace OnlinePayments.Sdk.Domain
         public long? Amount { get; set; } = null;
 
         /// <summary>
-        /// This property indicates whether this will be the final capture of this transaction. The default value for this property is false.<para />
+        /// This property indicates whether this will be the final operation. The default value for this property is false.<para />
         /// </summary>
         public bool? IsFinal { get; set; } = null;
 

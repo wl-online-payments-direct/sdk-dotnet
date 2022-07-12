@@ -16,7 +16,7 @@ namespace OnlinePayments.Sdk.Domain
         public CardFraudResults FraudResults { get; set; } = null;
 
         /// <summary>
-        /// Deprecated: This field is not used by any payment product<para />
+        /// The card network that was used for a mobile payment method operation<para />
         /// </summary>
         public string Network { get; set; } = null;
 

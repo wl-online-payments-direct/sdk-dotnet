@@ -16,6 +16,26 @@ namespace OnlinePayments.Sdk.Merchant.Services
         }
 
         /// <inheritdoc/>
+        public async Task<GetPrivacyPolicyResponse> GetPrivacyPolicy(GetPrivacyPolicyParams query, CallContext context = null)
+        {
+            string uri = InstantiateUri("/v2/{merchantId}/services/privacypolicy", null);
+            try
+            {
+                return await _communicator.Get<GetPrivacyPolicyResponse>(
+                        uri,
+                        ClientHeaders,
+                        query,
+                        context)
+                    .ConfigureAwait(false);
+            }
+            catch (ResponseException e)
+            {
+                object errorObject = _communicator.Unmarshal<ErrorResponse>(e.Body);
+                throw CreateException(e.StatusCode, e.Body, errorObject, context);
+            }
+        }
+
+        /// <inheritdoc/>
         public async Task<TestConnection> TestConnection(CallContext context = null)
         {
             string uri = InstantiateUri("/v2/{merchantId}/services/testconnection", null);

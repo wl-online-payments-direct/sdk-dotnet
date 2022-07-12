@@ -38,11 +38,6 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentProduct130SpecificInput PaymentProduct130SpecificInput { get; set; } = null;
 
         /// <summary>
-        /// Object containing specific input required for bancontact.<para />
-        /// </summary>
-        public PaymentProduct3012SpecificInput PaymentProduct3012SpecificInput { get; set; } = null;
-
-        /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
         /// </summary>
         public int? PaymentProductId { get; set; } = null;
@@ -58,6 +53,11 @@ namespace OnlinePayments.Sdk.Domain
         /// URLs without a protocol will be rejected.<para />
         /// </summary>
         public string ReturnUrl { get; set; } = null;
+
+        /// <summary>
+        /// This is the unique Scheme Reference Data from the initial transaction that was performed with a Strong Customer Authentication. In case this value is unknown, a Scheme Reference of an earlier transaction that was part of the same sequence can be used as a fall-back. Still, it is strongly advised to submit this value for any Merchant Initiated Transaction or any recurring transaction (hereby defined as "Subsequent").<para />
+        /// </summary>
+        public string SchemeReferenceData { get; set; } = null;
 
         /// <summary>
         /// Deprecated: Use threeDSecure.skipAuthentication instead.<para />
