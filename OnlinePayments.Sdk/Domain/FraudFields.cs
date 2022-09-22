@@ -1,6 +1,8 @@
 /*
  * This class was auto-generated.
  */
+using System.Collections.Generic;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class FraudFields
@@ -16,5 +18,10 @@ namespace OnlinePayments.Sdk.Domain
         /// The IP Address of the customer that is making the payment<para />
         /// </summary>
         public string CustomerIpAddress { get; set; } = null;
+
+        /// <summary>
+        /// List of product categories that are being purchased.<para />
+        /// </summary>
+        public IList<string> ProductCategories { get; set; } = null;
     }
 }

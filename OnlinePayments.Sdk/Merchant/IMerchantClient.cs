@@ -24,60 +24,60 @@ namespace OnlinePayments.Sdk.Merchant
         /// Resource /v2/{merchantId}/hostedcheckouts
         /// </summary>
         /// <returns>HostedCheckoutClient</returns>
-		IHostedCheckoutClient HostedCheckout { get; }
+        IHostedCheckoutClient HostedCheckout { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/hostedtokenizations
         /// </summary>
         /// <returns>HostedTokenizationClient</returns>
-		IHostedTokenizationClient HostedTokenization { get; }
+        IHostedTokenizationClient HostedTokenization { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/mandates
         /// </summary>
         /// <returns>MandatesClient</returns>
-		IMandatesClient Mandates { get; }
+        IMandatesClient Mandates { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments
         /// </summary>
         /// <returns>PaymentsClient</returns>
-		IPaymentsClient Payments { get; }
+        IPaymentsClient Payments { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/payouts
         /// </summary>
         /// <returns>PayoutsClient</returns>
-		IPayoutsClient Payouts { get; }
+        IPayoutsClient Payouts { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/productgroups
         /// </summary>
         /// <returns>ProductGroupsClient</returns>
-		IProductGroupsClient ProductGroups { get; }
+        IProductGroupsClient ProductGroups { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/products
         /// </summary>
         /// <returns>ProductsClient</returns>
-		IProductsClient Products { get; }
+        IProductsClient Products { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/services
         /// </summary>
         /// <returns>ServicesClient</returns>
-		IServicesClient Services { get; }
+        IServicesClient Services { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/sessions
         /// </summary>
         /// <returns>SessionsClient</returns>
-		ISessionsClient Sessions { get; }
+        ISessionsClient Sessions { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/tokens
         /// </summary>
         /// <returns>TokensClient</returns>
-		ITokensClient Tokens { get; }
+        ITokensClient Tokens { get; }
     }
 }

@@ -40,7 +40,13 @@ namespace OnlinePayments.Sdk.Domain
         public string ExemptionRequest { get; set; } = null;
 
         /// <summary>
-        /// Merchant fraud rate in the EEA (all EEA card fraud divided by all EEA card volumes) calculated as per PSD2 RTS Mastercard will not calculate or validate the merchant fraud score<para />
+        /// Merchant fraud rate in the EEA (all EEA card fraud divided by all EEA card volumes) calculated as per PSD2 RTS. Mastercard will not calculate or validate the merchant fraud score<para />
+        /// Values accepted :<para />
+        /// * 1 - represents fraud rate less than or equal to 1 basis point [bp], which is 0.01%<para />
+        /// * 2 - represents fraud rate between 1 bp + - and 6 bps<para />
+        /// * 3 - represents fraud rate between 6 bps + - and 13 bps<para />
+        /// * 4 - represents fraud rate between 13 bps + - and 25 bps<para />
+        /// * 5 - represents fraud rate greater than 25 bps<para />
         /// </summary>
         public int? MerchantFraudRate { get; set; } = null;
 

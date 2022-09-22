@@ -48,6 +48,11 @@ namespace OnlinePayments.Sdk.Domain
         public string Eci { get; set; } = null;
 
         /// <summary>
+        /// Detailed description of the Exemption Engine outcomes<para />
+        /// </summary>
+        public string ExemptionEngineFlow { get; set; } = null;
+
+        /// <summary>
         /// 3D Secure Flow used during this transaction.<para />
         /// </summary>
         public string Flow { get; set; } = null;

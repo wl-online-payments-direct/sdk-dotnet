@@ -42,6 +42,11 @@ namespace OnlinePayments.Sdk.Domain
         public bool? IsFirstUsage { get; set; } = null;
 
         /// <summary>
+        /// Object containing information regarding shipping method<para />
+        /// </summary>
+        public ShippingMethod Method { get; set; } = null;
+
+        /// <summary>
         /// Cost associated with the shipping of the order.<para />
         /// </summary>
         public long? ShippingCost { get; set; } = null;
@@ -53,7 +58,7 @@ namespace OnlinePayments.Sdk.Domain
 
         /// <summary>
         /// Indicates the merchandise delivery timeframe. Possible values:<para />
-        ///  * electronic = For electronic delivery (services or digital goods<para />
+        ///  * electronic = For electronic delivery (services or digital goods)<para />
         ///  * same-day = For same day deliveries<para />
         ///  * overnight = For overnight deliveries<para />
         ///  * 2-day-or-more = For two day or more delivery time<para />
