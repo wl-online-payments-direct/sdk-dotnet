@@ -50,6 +50,11 @@ namespace OnlinePayments.Sdk.Domain
         public int? Eci { get; set; } = null;
 
         /// <summary>
+        /// 3D Secure Flow used during this transaction.<para />
+        /// </summary>
+        public string Flow { get; set; } = null;
+
+        /// <summary>
         /// Global score calculated by the Carte Bancaire (130) Scoring platform. Possible values from 0 to 99.<para />
         /// </summary>
         public int? SchemeRiskScore { get; set; } = null;

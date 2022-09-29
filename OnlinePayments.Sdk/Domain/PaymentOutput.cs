@@ -8,10 +8,15 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// Object containing amount and ISO currency code attributes<para />
         /// </summary>
+        public AmountOfMoney AcquiredAmount { get; set; } = null;
+
+        /// <summary>
+        /// Object containing amount and ISO currency code attributes<para />
+        /// </summary>
         public AmountOfMoney AmountOfMoney { get; set; } = null;
 
         /// <summary>
-        /// Amount that has been paid<para />
+        /// Amount that has been paid. This is deprecated. Use acquiredAmount instead.<para />
         /// </summary>
         public long? AmountPaid { get; set; } = null;
 
