@@ -50,5 +50,11 @@ namespace OnlinePayments.Sdk.Domain
         /// * a[b='some value'] selects all elements of the array in root property a that have a property b with value 'some value'.<para />
         /// </summary>
         public string PropertyName { get; set; } = null;
+
+        /// <summary>
+        /// Flag indicating if the request is retriable. <para />
+        /// Retriable requests mean that a technical error happened and that the same request can safely be sent again with a new idempotence key.<para />
+        /// </summary>
+        public bool? Retriable { get; set; } = null;
     }
 }

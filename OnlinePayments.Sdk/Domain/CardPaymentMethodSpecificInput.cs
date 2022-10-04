@@ -21,6 +21,22 @@ namespace OnlinePayments.Sdk.Domain
         public Card Card { get; set; } = null;
 
         /// <summary>
+        /// The end date of the last scheduled payment in a series of transactions.<para />
+        /// Format YYYYMMDD<para />
+        /// </summary>
+        public string CardOnFileRecurringExpiration { get; set; } = null;
+
+        /// <summary>
+        /// Period of payment occurrence for recurring and installment payments. Allowed values:<para />
+        ///   * Yearly<para />
+        ///   * Quarterly<para />
+        ///   * Monthly<para />
+        ///   * Weekly<para />
+        ///   * Daily<para />
+        /// </summary>
+        public string CardOnFileRecurringFrequency { get; set; } = null;
+
+        /// <summary>
         /// The unique scheme transactionId of the initial transaction that was performed with SCA. In case this is unknown a scheme transactionId of an earlier transaction part of the same sequence can be used as a fall-back. Strongly advised to be submitted for any MerchantInitiated or recurring transaction (a subsequent one).<para />
         /// </summary>
         public string InitialSchemeTransactionId { get; set; } = null;
