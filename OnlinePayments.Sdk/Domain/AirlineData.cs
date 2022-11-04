@@ -27,6 +27,11 @@ namespace OnlinePayments.Sdk.Domain
         public string FlightDate { get; set; } = null;
 
         /// <summary>
+        /// Indicator representing the type of flight on the itinerary.<para />
+        /// </summary>
+        public string FlightIndicator { get; set; } = null;
+
+        /// <summary>
         /// Object that holds the data on the individual legs of the flight ticket<para />
         /// </summary>
         public IList<AirlineFlightLeg> FlightLegs { get; set; } = null;
@@ -114,6 +119,11 @@ namespace OnlinePayments.Sdk.Domain
         /// City code of the point of sale<para />
         /// </summary>
         public string PosCityCode { get; set; } = null;
+
+        /// <summary>
+        /// Three-letter ISO currency code representing the currency in which ticket purchase amount is expressed.<para />
+        /// </summary>
+        public string TicketCurrency { get; set; } = null;
 
         /// <summary>
         /// Deprecated: This field is not used by any payment product<para />

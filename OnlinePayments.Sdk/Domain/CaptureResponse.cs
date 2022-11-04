@@ -10,6 +10,9 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public CaptureOutput CaptureOutput { get; set; } = null;
 
+        /// <summary>
+        /// Our unique payment transaction identifier<para />
+        /// </summary>
         public string Id { get; set; } = null;
 
         /// <summary>

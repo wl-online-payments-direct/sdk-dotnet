@@ -6,10 +6,20 @@ namespace OnlinePayments.Sdk.Domain
     public class AirlinePassenger
     {
         /// <summary>
+        /// Airline loyalty program level for the passenger on the itinerary.<para />
+        /// </summary>
+        public string AirlineLoyaltyStatus { get; set; } = null;
+
+        /// <summary>
         /// First name of the passenger<para />
         /// This field is used by the following payment products: cards, 840<para />
         /// </summary>
         public string FirstName { get; set; } = null;
+
+        /// <summary>
+        /// Type of passenger on the itinerary. <para />
+        /// </summary>
+        public string PassengerType { get; set; } = null;
 
         /// <summary>
         /// Surname of the passenger<para />
