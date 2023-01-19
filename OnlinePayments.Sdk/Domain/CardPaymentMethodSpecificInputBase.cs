@@ -6,6 +6,12 @@ namespace OnlinePayments.Sdk.Domain
     public class CardPaymentMethodSpecificInputBase
     {
         /// <summary>
+        /// * true - Default - Allows subsequent payments to use PSD2 dynamic linking from this payment (including Card On File).<para />
+        /// * false - Indicates that the dynamic linking (including Card On File data) will be ignored.<para />
+        /// </summary>
+        public bool? AllowDynamicLinking { get; set; } = null;
+
+        /// <summary>
         /// Determines the type of the authorization that will be used. Allowed values: <para />
         ///   * FINAL_AUTHORIZATION - The payment creation results in an authorization that is ready for capture. Final authorizations can't be reversed and need to be captured for the full amount within 7 days. <para />
         ///   * PRE_AUTHORIZATION - The payment creation results in a pre-authorization that is ready for capture. Pre-authortizations can be reversed and can be captured within 30 days. The capture amount can be lower than the authorized amount. <para />

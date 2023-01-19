@@ -34,5 +34,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Shopping cart data, including items and specific amounts.<para />
         /// </summary>
         public ShoppingCart ShoppingCart { get; set; } = null;
+
+        /// <summary>
+        /// Object containing specific input required to apply surcharging to an order.<para />
+        /// </summary>
+        public SurchargeSpecificInput SurchargeSpecificInput { get; set; } = null;
     }
 }

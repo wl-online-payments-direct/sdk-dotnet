@@ -20,5 +20,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing all data needed to redirect the customer<para />
         /// </summary>
         public RedirectData RedirectData { get; set; } = null;
+
+        /// <summary>
+        /// Object returned for the SHOW_FORM actionType.<para />
+        /// </summary>
+        public ShowFormData ShowFormData { get; set; } = null;
     }
 }

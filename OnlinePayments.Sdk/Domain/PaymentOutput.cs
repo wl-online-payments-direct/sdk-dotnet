@@ -59,5 +59,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the SEPA direct debit details<para />
         /// </summary>
         public SepaDirectDebitPaymentMethodSpecificOutput SepaDirectDebitPaymentMethodSpecificOutput { get; set; } = null;
+
+        /// <summary>
+        /// Object containing specific surcharging attributes applied to an order.<para />
+        /// </summary>
+        public SurchargeSpecificOutput SurchargeSpecificOutput { get; set; } = null;
     }
 }
