@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public string PaymentOption { get; set; } = null;
 
         /// <summary>
+        /// Bizum (payment product 5001) specific details<para />
+        /// </summary>
+        public PaymentProduct5001SpecificOutput PaymentProduct5001SpecificOutput { get; set; } = null;
+
+        /// <summary>
         /// Meal vouchers (payment product 5402) specific details<para />
         /// </summary>
         public PaymentProduct5402SpecificOutput PaymentProduct5402SpecificOutput { get; set; } = null;
