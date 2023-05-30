@@ -6,6 +6,11 @@ namespace OnlinePayments.Sdk.Domain
     public class HostedCheckoutSpecificInput
     {
         /// <summary>
+        /// The maximum number of times a customer can try to pay before the payment is definitely declined. The value must be between 1 and 10. By default, the value is set to 10 attempts.<para />
+        /// </summary>
+        public int? AllowedNumberOfPaymentAttempts { get; set; } = null;
+
+        /// <summary>
         /// Object containing card payment specific data for hosted checkout<para />
         /// </summary>
         public CardPaymentMethodSpecificInputForHostedCheckout CardPaymentMethodSpecificInput { get; set; } = null;

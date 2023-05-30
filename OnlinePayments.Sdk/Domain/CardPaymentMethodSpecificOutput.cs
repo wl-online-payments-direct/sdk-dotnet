@@ -20,6 +20,8 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public CardEssentials Card { get; set; } = null;
 
+        public CurrencyConversion CurrencyConversion { get; set; } = null;
+
         public ExternalTokenLinked ExternalTokenLinked { get; set; } = null;
 
         /// <summary>
@@ -36,6 +38,16 @@ namespace OnlinePayments.Sdk.Domain
         /// The specific payment option for the payment. To be used as a complement of the more generic paymentProductId (oney, banquecasino, cofidis), which allows to define a variation of the selected paymentProductId (ex: facilypay3x, banquecasino4x, cofidis3x-sansfrais, ...). List of modalities included in the payment product page.<para />
         /// </summary>
         public string PaymentOption { get; set; } = null;
+
+        /// <summary>
+        /// OneyDuplo Leroy Merlin specific details<para />
+        /// </summary>
+        public PaymentProduct3208SpecificOutput PaymentProduct3208SpecificOutput { get; set; } = null;
+
+        /// <summary>
+        /// OneyDuplo Alcampo specific details<para />
+        /// </summary>
+        public PaymentProduct3209SpecificOutput PaymentProduct3209SpecificOutput { get; set; } = null;
 
         /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
