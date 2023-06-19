@@ -4,6 +4,7 @@
 using OnlinePayments.Sdk.Merchant.HostedCheckout;
 using OnlinePayments.Sdk.Merchant.HostedTokenization;
 using OnlinePayments.Sdk.Merchant.Mandates;
+using OnlinePayments.Sdk.Merchant.PaymentLinks;
 using OnlinePayments.Sdk.Merchant.Payments;
 using OnlinePayments.Sdk.Merchant.Payouts;
 using OnlinePayments.Sdk.Merchant.ProductGroups;
@@ -37,6 +38,12 @@ namespace OnlinePayments.Sdk.Merchant
         /// </summary>
         /// <returns>MandatesClient</returns>
         IMandatesClient Mandates { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/paymentlinks
+        /// </summary>
+        /// <returns>PaymentLinksClient</returns>
+        IPaymentLinksClient PaymentLinks { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments

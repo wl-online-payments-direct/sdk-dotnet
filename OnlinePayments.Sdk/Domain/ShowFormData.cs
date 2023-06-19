@@ -9,5 +9,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Contains the third party data for payment product 5404 (WeChat Pay)<para />
         /// </summary>
         public PaymentProduct5404 PaymentProduct5404 { get; set; } = null;
+
+        /// <summary>
+        /// Contains the third party data for payment product 5407 (Twint)<para />
+        /// </summary>
+        public PaymentProduct5407 PaymentProduct5407 { get; set; } = null;
     }
 }

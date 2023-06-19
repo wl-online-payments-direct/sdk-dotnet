@@ -22,7 +22,7 @@ namespace OnlinePayments.Sdk
         });
 
         private const string SERVER_META_INFO_HEADER = "X-GCS-ServerMetaInfo";
-        private const string SDK_VERSION = "3.16.0";
+        private const string SDK_VERSION = "3.17.0";
         internal string SdkIdentifier => "OnlinePaymentsDotnetServerSDK/v" + SDK_VERSION;
 
         private static readonly string _platformIdentifier = Environment.OSVersion.Platform + "/" + Environment.OSVersion.Version + " .NET/" + Environment.Version;
