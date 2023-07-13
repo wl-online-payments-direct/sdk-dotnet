@@ -13,5 +13,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Please note that this field is ignored when order.additionalInput.typeInformation.purchaseType is set to "digital"<para />
         /// </summary>
         public bool? AddressSelectionAtPayPal { get; set; } = null;
+
+        /// <summary>
+        /// Free text field that you can use to support reconciliation flow.<para />
+        /// </summary>
+        public string Custom { get; set; } = null;
     }
 }

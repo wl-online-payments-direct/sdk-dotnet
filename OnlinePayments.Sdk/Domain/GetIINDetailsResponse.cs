@@ -8,6 +8,14 @@ namespace OnlinePayments.Sdk.Domain
     public class GetIINDetailsResponse
     {
         /// <summary>
+        /// The card's type as categorised by the payment method. Possible values are:<para />
+        ///   * Credit<para />
+        ///   * Debit<para />
+        ///   * Prepaid<para />
+        /// </summary>
+        public string CardType { get; set; } = null;
+
+        /// <summary>
         /// List of IIN details<para />
         /// </summary>
         public IList<IINDetail> CoBrands { get; set; } = null;

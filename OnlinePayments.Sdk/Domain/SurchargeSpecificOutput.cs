@@ -16,5 +16,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing amount and ISO currency code attributes<para />
         /// </summary>
         public AmountOfMoney SurchargeAmount { get; set; } = null;
+
+        /// <summary>
+        /// A summary of surcharge details used in the calculation of the surcharge amount. null if result = NO_SURCHARGE<para />
+        /// </summary>
+        public SurchargeRate SurchargeRate { get; set; } = null;
     }
 }

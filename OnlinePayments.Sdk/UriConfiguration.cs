@@ -52,9 +52,12 @@ namespace OnlinePayments.Sdk
                     throw new ArgumentException("apiEndpoint should not contain user info, query or fragment");
                 }
                 _uri = value;
-                Scheme = value.Scheme;
-                Port = value.Port;
-                Host = value.Host;
+                if (value != null)
+                {
+                    Scheme = value.Scheme;
+                    Port = value.Port;
+                    Host = value.Host;
+                }
             }
         }
 

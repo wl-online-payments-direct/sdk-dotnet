@@ -6,6 +6,11 @@ namespace OnlinePayments.Sdk.Domain
     public class CardPaymentMethodSpecificOutput
     {
         /// <summary>
+        /// Information about the acquirer used to process the transaction<para />
+        /// </summary>
+        public AcquirerInformation AcquirerInformation { get; set; } = null;
+
+        /// <summary>
         /// Allows amount to be authenticated to be different from amount authorized. (Amount in cents and always having 2 decimals)<para />
         /// </summary>
         public long? AuthenticatedAmount { get; set; } = null;

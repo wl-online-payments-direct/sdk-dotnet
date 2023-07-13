@@ -247,7 +247,7 @@ namespace OnlinePayments.Sdk.DefaultImpl
                 }
             }
 
-            var contentType = responseBodyHeaders.ContentType?.ToString();
+            var contentType = responseBodyHeaders?.ContentType?.ToString();
 
             var sr = new StreamReader(responseBodyStream);
             string responseBody = sr.ReadToEnd();
