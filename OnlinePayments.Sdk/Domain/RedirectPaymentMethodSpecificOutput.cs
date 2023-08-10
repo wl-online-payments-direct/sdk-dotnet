@@ -6,6 +6,11 @@ namespace OnlinePayments.Sdk.Domain
     public class RedirectPaymentMethodSpecificOutput
     {
         /// <summary>
+        /// Data of customer bank account<para />
+        /// </summary>
+        public CustomerBankAccount CustomerBankAccount { get; set; } = null;
+
+        /// <summary>
         /// Object containing the results of the fraud screening<para />
         /// </summary>
         public FraudResults FraudResults { get; set; } = null;

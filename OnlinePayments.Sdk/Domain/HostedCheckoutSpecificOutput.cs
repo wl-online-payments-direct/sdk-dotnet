@@ -11,7 +11,7 @@ namespace OnlinePayments.Sdk.Domain
         public string HostedCheckoutId { get; set; } = null;
 
         /// <summary>
-        /// Using the Back-Office it is possible to upload multiple templates of your HostedCheckout payment pages, including customized templates from Merchant Portal. You can force the use of another template by specifying it in the variant field. This allows you to test out the effect of certain changes to your hostedcheckout pages in a controlled manner. Please note that you need to specify the filename of the template or customization.<para />
+        /// It is possible to upload multiple templates of your payment pages using the Merchant Portal. You can force the use of a custom template by specifying it in the variant field. This allows you to test out the effect of certain changes to your payment pages in a controlled manner. Please note that you need to specify the filename of the template or customization.<para />
         /// </summary>
         public string Variant { get; set; } = null;
     }

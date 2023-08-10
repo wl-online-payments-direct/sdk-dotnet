@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public BrowserData BrowserData { get; set; } = null;
 
         /// <summary>
+        /// Device fingerprint used for fraud detection<para />
+        /// </summary>
+        public string DeviceFingerprint { get; set; } = null;
+
+        /// <summary>
         /// The IP address of the customer client from the HTTP Headers.<para />
         /// </summary>
         public string IpAddress { get; set; } = null;
