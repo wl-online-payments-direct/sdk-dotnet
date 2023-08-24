@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public CardPayoutMethodSpecificInput CardPayoutMethodSpecificInput { get; set; } = null;
 
         /// <summary>
+        /// Object containing the additional payout details for a Omnichannel merchants<para />
+        /// </summary>
+        public OmnichannelPayoutSpecificInput OmnichannelPayoutSpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Object that holds all reference properties that are linked to this transaction<para />
         /// </summary>
         public PaymentReferences References { get; set; } = null;

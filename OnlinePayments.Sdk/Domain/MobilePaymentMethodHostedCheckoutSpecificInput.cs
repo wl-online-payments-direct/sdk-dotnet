@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public string AuthorizationMode { get; set; } = null;
 
         /// <summary>
+        /// Object containing information specific to Google Pay. Required for payments with product 320.<para />
+        /// </summary>
+        public MobilePaymentProduct320SpecificInput PaymentProduct320SpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
         /// </summary>
         public int? PaymentProductId { get; set; } = null;
