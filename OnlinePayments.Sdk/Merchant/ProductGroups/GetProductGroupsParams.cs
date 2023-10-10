@@ -40,12 +40,12 @@ namespace OnlinePayments.Sdk.Merchant.ProductGroups
 
         /// <summary>
         /// Allows you to hide elements from the response, reducing the amount of data that needs to be returned to your client. Possible options are:<para />
-        /// * fields - Don't return any data on fields of the payment product<para />
-        /// * accountsOnFile - Don't return any accounts on file data<para />
-        /// * translations - Don't return any label texts associated with the payment products<para />
-        /// * productsWithoutFields - Don't return products that require any additional data to be captured<para />
-        /// * productsWithoutInstructions - Don't return products that show instructions<para />
-        /// * productsWithRedirects - Don't return products that require a redirect to a 3rd party. Note that products that involve potential redirects related to 3D Secure authentication are not hidden<para />
+        /// * fields - Do not return any data on fields of the payment product<para />
+        /// * accountsOnFile - Do not return any accounts on file data<para />
+        /// * translations - Do not return any label texts associated with the payment products<para />
+        /// * productsWithoutFields - Do not return products that require any additional data to be captured<para />
+        /// * productsWithoutInstructions - Do not return products that show instructions<para />
+        /// * productsWithRedirects - Do not return products that require a redirect to a 3rd party. Note that products that involve potential redirects related to 3D Secure authentication are not hidden<para />
         /// </summary>
         public IList<string> Hide { get; set; } = null;
 

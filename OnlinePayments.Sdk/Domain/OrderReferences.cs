@@ -39,7 +39,7 @@ namespace OnlinePayments.Sdk.Domain
         ///  * 8580 Qiwi - 255 characters<para />
         ///  * 1504 Konbini - 80 characters<para />
         /// <para />
-        /// All other payment products don't support a descriptor.<para />
+        /// All other payment products do not support a descriptor.<para />
         /// </summary>
         public string Descriptor { get; set; } = null;
 
@@ -50,6 +50,7 @@ namespace OnlinePayments.Sdk.Domain
 
         /// <summary>
         /// Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.<para />
+        /// It is highly recommended to provide a single MerchantReference per unique order on your side<para />
         /// </summary>
         public string MerchantReference { get; set; } = null;
     }

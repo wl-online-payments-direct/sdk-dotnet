@@ -17,7 +17,7 @@ namespace OnlinePayments.Sdk.Domain
 
         /// <summary>
         /// * true = the customer made changes to their account during this checkout<para />
-        /// * false = the customer didn't change anything to their account during this checkout/n<para />
+        /// * false = the customer did nnot change anything to their account during this checkout/n<para />
         /// <para />
         ///  The changes ment here are changes to billing & shipping address details, new payment account (tokens), or new users(s) added.<para />
         /// </summary>
@@ -47,7 +47,7 @@ namespace OnlinePayments.Sdk.Domain
         /// <para />
         /// true = the customer made changes to their password of the account used during this checkout<para />
         /// <para />
-        /// false = the customer didn't change anything to their password of the account used during this checkout<para />
+        /// false = the customer did not change anything to their password of the account used during this checkout<para />
         /// </summary>
         public bool? PasswordChangedDuringCheckout { get; set; } = null;
 

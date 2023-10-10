@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class CardInfo
     {
         /// <summary>
-        /// The complete credit/debit card number<para />
+        /// Provide the complete credit/debit card number (also known as the PAN) for the most accurate results.<para />
         /// </summary>
         public string CardNumber { get; set; } = null;
 

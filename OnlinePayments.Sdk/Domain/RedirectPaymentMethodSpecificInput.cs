@@ -21,6 +21,11 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectPaymentProduct5406SpecificInput PaymentProduct5406SpecificInput { get; set; } = null;
 
         /// <summary>
+        /// Object containing specific input for Account to Account payments (Payment product ID 5408)<para />
+        /// </summary>
+        public RedirectPaymentProduct5408SpecificInput PaymentProduct5408SpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Object containing specific input required for iDeal payments (Payment product ID 809)<para />
         /// </summary>
         public RedirectPaymentProduct809SpecificInput PaymentProduct809SpecificInput { get; set; } = null;

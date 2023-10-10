@@ -6,6 +6,11 @@ namespace OnlinePayments.Sdk.Domain
     public class RedirectPaymentMethodSpecificOutput
     {
         /// <summary>
+        /// Card Authorization code as returned by the acquirer<para />
+        /// </summary>
+        public string AuthorisationCode { get; set; } = null;
+
+        /// <summary>
         /// Data of customer bank account<para />
         /// </summary>
         public CustomerBankAccount CustomerBankAccount { get; set; } = null;

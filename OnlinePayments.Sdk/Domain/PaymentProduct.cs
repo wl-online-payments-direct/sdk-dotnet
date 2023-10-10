@@ -62,7 +62,7 @@ namespace OnlinePayments.Sdk.Domain
         public string PaymentProductGroup { get; set; } = null;
 
         /// <summary>
-        /// Indicates whether the payment product requires redirection to a third party to complete the payment. You can use this to filter out products that require a redirect if you don't want to support that.<para />
+        /// Indicates whether the payment product requires redirection to a third party to complete the payment. You can use this to filter out products that require a redirect if you do not want to support that.<para />
         /// * true - Redirection is required<para />
         /// * false - No redirection is required<para />
         /// </summary>

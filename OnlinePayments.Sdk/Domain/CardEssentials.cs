@@ -11,7 +11,7 @@ namespace OnlinePayments.Sdk.Domain
         public string Bin { get; set; } = null;
 
         /// <summary>
-        /// The complete credit/debit card number<para />
+        /// The masked credit/debit card number<para />
         /// </summary>
         public string CardNumber { get; set; } = null;
 
