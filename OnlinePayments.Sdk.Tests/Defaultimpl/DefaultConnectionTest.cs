@@ -39,6 +39,17 @@ namespace OnlinePayments.Sdk.DefaultImpl
             AssertProxyAndAuthentication(connection, proxy);
         }
 
+        [TestCase]
+        public void TestConstructWithProxyWithAuthenticationWithHandler()
+        {
+            var proxy = new Proxy { Uri = new Uri("http://test-proxy"), Username = "test-username", Password = "test-password" };
+
+            var handler = new CustomHttpClientHandler();
+
+            DefaultConnection connection = new DefaultConnection(SOCKET_TIMEOUT, MAX_CONNECTIONS, proxy, handler);
+            AssertProxyAndAuthenticationAndHandler(connection, proxy);
+        }
+
         static void AssertMaxConnections()
         {
             Assert.AreEqual(ServicePointManager.DefaultConnectionLimit, MAX_CONNECTIONS);
@@ -81,6 +92,21 @@ namespace OnlinePayments.Sdk.DefaultImpl
             if (handler == null)
             {
                 handler = (HttpClientHandler)httpClient.GetPrivateField<HttpMessageInvoker>("_handler");
+            }
+            Assert.That(handler.UseProxy, Is.True);
+            Assert.That(((WebProxy)handler.Proxy).Address, Is.EqualTo(proxy.Uri));
+            Assert.That(((NetworkCredential)handler.Proxy.Credentials), Is.Not.Null);
+            Assert.That(((NetworkCredential)handler.Proxy.Credentials).UserName, Is.EqualTo(proxy.Username));
+            Assert.That(((NetworkCredential)handler.Proxy.Credentials).Password, Is.EqualTo(proxy.Password));
+        }
+
+        static void AssertProxyAndAuthenticationAndHandler(DefaultConnection connection, Proxy proxy)
+        {
+            HttpClient httpClient = (HttpClient)connection.GetPrivateField("_httpClient");
+            CustomHttpClientHandler handler = (CustomHttpClientHandler)httpClient.GetPrivateField<HttpMessageInvoker>("handler");
+            if (handler == null)
+            {
+                handler = (CustomHttpClientHandler)httpClient.GetPrivateField<HttpMessageInvoker>("_handler");
             }
             Assert.That(handler.UseProxy, Is.True);
             Assert.That(((WebProxy)handler.Proxy).Address, Is.EqualTo(proxy.Uri));

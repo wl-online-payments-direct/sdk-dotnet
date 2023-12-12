@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>net45;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>OnlinePayments.Sdk</RootNamespace>
-    <AssemblyVersion>3.22.0</AssemblyVersion>
-    <Version>3.22.0</Version>
+    <AssemblyVersion>3.23.0</AssemblyVersion>
+    <Version>3.23.0</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>Online Payments</Company>
     <Product>Online Payments .NET SDK integration tests</Product>

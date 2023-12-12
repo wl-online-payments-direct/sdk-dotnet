@@ -17,9 +17,13 @@ namespace OnlinePayments.Sdk.DefaultImpl
     {
         private readonly TimeSpan DEFAULT_SOCKET_TIMEOUT = TimeSpan.FromSeconds(10);
 
-        public DefaultConnection(TimeSpan? socketTimeout = null, int maxConnections = 10, Proxy proxy = null)
+        private const string X_REQUEST_ID_HEADER = "X-Request-Id";
+
+        public DefaultConnection(TimeSpan? socketTimeout = null, int maxConnections = 10, Proxy proxy = null, HttpClientHandler handler = null)
         {
-            var handler = new HttpClientHandler();
+            if (handler == null)
+                handler = new HttpClientHandler();
+                
             if (proxy != null)
             {
                 handler.Proxy = new WebProxy(proxy.Uri);
@@ -38,9 +42,11 @@ namespace OnlinePayments.Sdk.DefaultImpl
             };
         }
 
-        internal DefaultConnection(ProxyConfiguration proxyConfig, TimeSpan? socketTimeout = null, int maxConnections = 10)
+        internal DefaultConnection(ProxyConfiguration proxyConfig, TimeSpan? socketTimeout = null, int maxConnections = 10, HttpClientHandler handler = null)
         {
-            var handler = new HttpClientHandler();
+            if (handler == null)
+                handler = new HttpClientHandler();
+
             if (proxyConfig != null)
             {
                 handler.Proxy = new WebProxy(proxyConfig.Uri);
@@ -64,6 +70,39 @@ namespace OnlinePayments.Sdk.DefaultImpl
             var content = (body == null ? null : new StringContent(body));
             return await SendHttpMessage<R>(method, uri, requestHeaders, responseHandler, content, body)
                 .ConfigureAwait(false);
+        }
+
+        async Task<R> SendHttpMessage<R>(HttpMethod method, Uri uri, IEnumerable<IRequestHeader> requestHeaders, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler, MultipartFormDataObject multipart)
+        {
+            var content = new MultipartFormDataContent(multipart.Boundary);
+            content.Headers.ContentType = MediaTypeHeaderValue.Parse(multipart.ContentType);
+            foreach (KeyValuePair<string, string> value in multipart.Values)
+            {
+                var valueContent = new StringContent(value.Value, System.Text.Encoding.UTF8);
+                content.Add(valueContent, value.Key);
+            }
+            foreach (KeyValuePair<string, UploadableFile> file in multipart.Files)
+            {
+                var fileContent = new StreamContent(file.Value.Content);
+                fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(file.Value.ContentType);
+                if (file.Value.ContentLength >= 0)
+                {
+                    fileContent.Headers.ContentLength = file.Value.ContentLength;
+                }
+                fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data") {
+                    Name = file.Key,
+                    FileName = file.Value.FileName
+                };
+                content.Add(fileContent, file.Key, file.Value.FileName);
+            }
+
+            var contentType = content.Headers.ContentType;
+            if (contentType == null || !(multipart.ContentType).Equals(contentType.ToString()))
+            {
+                throw new InvalidOperationException("MultipartFormDataContent did not create the expected content type" + contentType);
+            }
+
+            return await SendHttpMessage<R>(method, uri, requestHeaders, responseHandler, content, "<binary content>").ConfigureAwait(false);
         }
 
         async Task<R> SendHttpMessage<R>(HttpMethod method, Uri uri, IEnumerable<IRequestHeader> requestHeaders, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler, HttpContent content, string contentString)
@@ -92,6 +131,10 @@ namespace OnlinePayments.Sdk.DefaultImpl
                             message.Headers.Add(a.Name, a.Value);
                         }
                     }
+
+                    // set X-Request-Id for better traceability
+                    message.Headers.Add(X_REQUEST_ID_HEADER, guid.ToString());
+
                     var startTime = DateTime.Now;
                     LogRequest(guid, message, content, contentString);
                     var httpResponseTask = _httpClient.SendAsync(message)
@@ -169,6 +212,12 @@ namespace OnlinePayments.Sdk.DefaultImpl
         {
             return await SendHttpMessage<R>(HttpMethod.Post, uri, requestHeaders, responseHandler, body)
                 .ConfigureAwait(false);
+        }
+
+        /// <inheritdoc/>
+        public async Task<R> Post<R>(Uri uri, IEnumerable<IRequestHeader> requestHeaders, MultipartFormDataObject multipart, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler)
+        {
+            return await SendHttpMessage<R>(HttpMethod.Post, uri, requestHeaders, responseHandler, multipart).ConfigureAwait(false);
         }
 
         /// <inheritdoc/>

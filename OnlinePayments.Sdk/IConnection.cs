@@ -44,6 +44,21 @@ namespace OnlinePayments.Sdk
         Task<R> Post<R>(Uri uri, IEnumerable<IRequestHeader> requestHeaders, string body, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R>  responseHandler);
 
         /// <summary>
+        /// Send a multipart/form-data POST request to the payment platform.
+        ///
+        /// The content type of the request will be be part of the given request header list.
+        /// If the connection creates its own content type, it should be multipart.getContentType().
+        /// Otherwise, authentication failures will occur.
+        /// </summary>
+        /// <param name="uri">The URI to call, including any necessary query parameters.</param>
+        /// <param name="requestHeaders">An optional list of request headers.</param>
+        /// <param name="multipart">The multipart/form-data request to send.</param>
+        /// <param name="responseHandler">A callback that handles the stream from the response</param>
+        /// <returns>Returns the object that was returned from the callback</returns>
+        /// <exception cref="CommunicationException">when an exception occurred communicating with the payment platform</exception>
+        Task<R> Post<R>(Uri uri, IEnumerable<IRequestHeader> requestHeaders, MultipartFormDataObject multipart, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R> responseHandler);
+
+        /// <summary>
         /// Send a PUT request to the payment platform.
         /// </summary>
         /// <param name="uri">The URI to call, including any necessary query parameters.</param>

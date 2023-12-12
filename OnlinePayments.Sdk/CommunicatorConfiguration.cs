@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using OnlinePayments.Sdk.DefaultImpl;
 
 namespace OnlinePayments.Sdk
@@ -86,6 +87,11 @@ namespace OnlinePayments.Sdk
         /// Gets or sets the shoppingcart extension.
         /// </summary>
         public ShoppingCartExtension ShoppingCartExtension { get; set; }
+
+        /// <summary>
+        /// Gets or sets the http client handler used by the System.Net.Http.HttpClient. 
+        /// </summary>
+        public HttpClientHandler Handler { get; set; }
 
         public CommunicatorConfiguration()
         {
@@ -255,6 +261,17 @@ namespace OnlinePayments.Sdk
         public CommunicatorConfiguration WithShoppingCartExtension(ShoppingCartExtension shoppingCartExtension)
         {
             ShoppingCartExtension = shoppingCartExtension;
+            return this;
+        }
+
+        /// <summary>
+        /// Returns this with the http client handler assigned.
+        /// </summary>
+        /// <param name="handler">The http client handler.</param>
+        /// <returns>This.</returns>
+        public CommunicatorConfiguration WithHttpClientHandler(HttpClientHandler handler)
+        {
+            Handler = handler;
             return this;
         }
 

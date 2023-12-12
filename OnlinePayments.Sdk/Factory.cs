@@ -86,7 +86,8 @@ namespace OnlinePayments.Sdk
                     configuration.ProxyConfiguration,
                     configuration.SocketTimeout,
                     // connection timeout not supported
-                    configuration.MaxConnections))
+                    configuration.MaxConnections,
+                    configuration.Handler))
                 .WithAuthenticator(new DefaultAuthenticator(
                     configuration.AuthorizationType,
                     configuration.ApiKeyId,

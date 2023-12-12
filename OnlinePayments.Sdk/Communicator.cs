@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using OnlinePayments.Sdk.DefaultImpl;
 using OnlinePayments.Sdk.Logging;
 
 namespace OnlinePayments.Sdk
@@ -125,6 +124,15 @@ namespace OnlinePayments.Sdk
         public async Task<T> Post<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
                                      object requestBody, CallContext context)
         {
+            if (requestBody is MultipartFormDataObject)
+            {
+                return await Post<T>(relativePath, requestHeaders, requestParameters, (MultipartFormDataObject)requestBody, context).ConfigureAwait(false);
+            }
+            if (requestBody is IMultipartFormDataRequest)
+            {
+                MultipartFormDataObject multipart = ((IMultipartFormDataRequest)requestBody).ToMultipartFormDataObject();
+                return await Post<T>(relativePath, requestHeaders, requestParameters, multipart, context).ConfigureAwait(false);
+            }
 
             IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
             Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
@@ -140,6 +148,32 @@ namespace OnlinePayments.Sdk
 
             requestHeaders = AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context);
             return await Connection.Post<T>(uri, requestHeaders, requestJson, (status, body, headers) => {
+                return ProcessResponse<T>(status, body, headers, relativePath, context);
+            }).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Post method used for multipart form data object
+        /// </summary>
+        /// <typeparam name="T">Type of the response.</typeparam>
+        /// <param name="relativePath">The path to call, relative to the base URI.</param>
+        /// <param name="requestHeaders">An optional list of request headers.</param>
+        /// <param name="requestParameters">The optional set of request parameters.</param>
+        /// <param name="multipart">Multipart object to send</param>
+        /// <param name="context">The optional call context to use</param>
+        async Task<T> Post<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                                     MultipartFormDataObject multipart, CallContext context)
+        {
+            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
+            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+
+            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
+
+            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
+
+            requestHeaders = AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context);
+            return await Connection.Post<T>(uri, requestHeaders, multipart, (status, body, headers) => {
                 return ProcessResponse<T>(status, body, headers, relativePath, context);
             }).ConfigureAwait(false);
         }
