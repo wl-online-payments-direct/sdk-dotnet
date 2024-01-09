@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class GetIINDetailsRequest
     {
         /// <summary>
-        /// The first digits of the credit card number from left to right with a minimum of 6 digits. Providing additional digits can result in more co-brands being returned.<para />
+        /// The first digits of the credit card number from left to right with a minimum of 6 digits. Providing additional digits (up to 19) can result in more co-brands being returned.<para />
         /// </summary>
         public string Bin { get; set; } = null;
 

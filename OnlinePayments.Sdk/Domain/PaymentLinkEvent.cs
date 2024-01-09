@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class PaymentLinkEvent
     {
         /// <summary>
-        /// The date and time the change occurred.<para />
+        /// The date and time the change occurred. The date will contain the UTC offset.<para />
         /// </summary>
         public string DateTime { get; set; } = null;
 

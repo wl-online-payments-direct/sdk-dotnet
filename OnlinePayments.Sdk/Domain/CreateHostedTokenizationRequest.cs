@@ -11,6 +11,8 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public bool? AskConsumerConsent { get; set; } = null;
 
+        public CreditCardSpecificInputHostedTokenization CreditCardSpecificInput { get; set; } = null;
+
         /// <summary>
         /// Locale used in the GUI towards the consumer. <para />
         /// </summary>

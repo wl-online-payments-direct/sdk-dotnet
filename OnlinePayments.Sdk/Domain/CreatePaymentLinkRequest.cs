@@ -16,9 +16,9 @@ namespace OnlinePayments.Sdk.Domain
         public string ExpirationDate { get; set; } = null;
 
         /// <summary>
-        /// An object containing the details of the related payment.<para />
+        /// An object containing the details of the related payment input.<para />
         /// </summary>
-        public PaymentLinkOrder PaymentLinkOrder { get; set; } = null;
+        public PaymentLinkOrderInput PaymentLinkOrder { get; set; } = null;
 
         /// <summary>
         /// The payment link recipient name.<para />

@@ -21,6 +21,11 @@ namespace OnlinePayments.Sdk.Domain
         public Customer Customer { get; set; } = null;
 
         /// <summary>
+        /// Object to apply a discount to the total basket by adding a discount line.<para />
+        /// </summary>
+        public Discount Discount { get; set; } = null;
+
+        /// <summary>
         /// Object that holds all reference properties that are linked to this transaction<para />
         /// </summary>
         public OrderReferences References { get; set; } = null;

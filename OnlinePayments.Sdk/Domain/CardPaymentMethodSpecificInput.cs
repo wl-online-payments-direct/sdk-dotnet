@@ -50,8 +50,8 @@ namespace OnlinePayments.Sdk.Domain
         public string InitialSchemeTransactionId { get; set; } = null;
 
         /// <summary>
-        /// * true - Only payment products that support recurring payments will be shown. Any transactions created will also be tagged as being a first of a recurring sequence.<para />
-        /// * false - Only payment products that support one-off payments will be shown.<para />
+        /// * true - Indicates that the transactions is part of a scheduled recurring sequence. In addition, recurringPaymentSequenceIndicator indicates if the transaction is the first or subsequent in a recurring sequence. <para />
+        /// * false - Indicates that the transaction is not part of a scheduled recurring sequence.<para />
         /// The default value for this property is false.<para />
         /// </summary>
         public bool? IsRecurring { get; set; } = null;

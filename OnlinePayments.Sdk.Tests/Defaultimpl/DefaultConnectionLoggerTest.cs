@@ -171,7 +171,7 @@ namespace OnlinePayments.Sdk.DefaultImpl
         readonly string createPaymentRequest = Regex.Escape(@"Outgoing request (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"'):
   method:       'POST'
   uri:          '/v2/1/payments'
-  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***"", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
+  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***") + Regex.Escape(@""", X-Request-I") + @"[dD]=""" + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"") + Regex.Escape(@""", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
   content-type: 'application/json'
   body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""*16"",""cvv"":""*3"",""expiryDate"":""*4""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""EUR""},""customer"":{""billingAddress"":{""countryCode"":""BE""}}}}'");
 
@@ -266,7 +266,7 @@ namespace OnlinePayments.Sdk.DefaultImpl
         readonly string createPaymentUnicodeRequest = Regex.Escape(@"Outgoing request (requestId='") + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"'):
   method:       'POST'
   uri:          '/v2/1/payments'
-  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***"", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
+  headers:      'X-GCS-ServerMetaInfo=""") + @"[^""]*" + Regex.Escape(@""", Date=""") + @"[^""]+" + Regex.Escape(@""", Authorization=""***") + Regex.Escape(@""", X-Request-I") + @"[dD]=""" + @"([-a-zA-Z0-9]+)" + Regex.Escape(@"") + Regex.Escape(@""", Content-Type=""application/json""") + @"[^']*" + Regex.Escape(@"'
   content-type: 'application/json'
   body:         '{""cardPaymentMethodSpecificInput"":{""card"":{""cardNumber"":""*16"",""cvv"":""*3"",""expiryDate"":""*4""},""paymentProductId"":1},""order"":{""amountOfMoney"":{""amount"":2345,""currencyCode"":""EUR""},""customer"":{""billingAddress"":{""countryCode"":""BE""}}}}'");
 

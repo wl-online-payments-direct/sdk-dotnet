@@ -8,7 +8,7 @@ namespace OnlinePayments.Sdk.Domain
     public class PaymentLinkResponse
     {
         /// <summary>
-        /// The date after which the payment link will not be usable to complete the payment. The date sent must contain the UTC offset.<para />
+        /// The date after which the payment link will not be usable to complete the payment. The date will contain the UTC offset.<para />
         /// </summary>
         public string ExpirationDate { get; set; } = null;
 
@@ -25,9 +25,9 @@ namespace OnlinePayments.Sdk.Domain
         public string PaymentLinkId { get; set; } = null;
 
         /// <summary>
-        /// An object containing the details of the related payment.<para />
+        /// An object containing the details of the related payment output.<para />
         /// </summary>
-        public PaymentLinkOrder PaymentLinkOrder { get; set; } = null;
+        public PaymentLinkOrderOutput PaymentLinkOrder { get; set; } = null;
 
         /// <summary>
         /// The payment link recipient name.<para />

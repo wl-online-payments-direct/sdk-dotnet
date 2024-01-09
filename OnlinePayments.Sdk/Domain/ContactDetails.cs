@@ -11,7 +11,7 @@ namespace OnlinePayments.Sdk.Domain
         public string EmailAddress { get; set; } = null;
 
         /// <summary>
-        /// Fax number of the customer<para />
+        /// International version of the fax number of the customer including the leading + (i.e. +16127779311)<para />
         /// </summary>
         public string FaxNumber { get; set; } = null;
 
@@ -21,7 +21,7 @@ namespace OnlinePayments.Sdk.Domain
         public string MobilePhoneNumber { get; set; } = null;
 
         /// <summary>
-        /// Phone number of the customer<para />
+        /// International version of the phone number of the customer including the leading + (i.e. +16127779311)<para />
         /// </summary>
         public string PhoneNumber { get; set; } = null;
 

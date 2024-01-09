@@ -3,7 +3,7 @@
  */
 namespace OnlinePayments.Sdk.Domain
 {
-    public class PaymentLinkOrder
+    public class PaymentLinkOrderOutput
     {
         /// <summary>
         /// Object containing amount and ISO currency code attributes<para />
