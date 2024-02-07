@@ -176,7 +176,7 @@ namespace OnlinePayments.Sdk.DefaultImpl
             catch (CommunicationException exception)
             {
                 LogException(guid, exception);
-                throw exception;
+                throw;
             }
         }
 
