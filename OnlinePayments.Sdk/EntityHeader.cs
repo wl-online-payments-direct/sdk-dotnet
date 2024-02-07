@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk
     /// <summary>
     /// A header that specifies metadata about the content of the request or response. Immutable.
     /// </summary>
-    class EntityHeader : IRequestHeader, IResponseHeader
+    public class EntityHeader : IRequestHeader, IResponseHeader
     {
         public EntityHeader(string name, string value)
         {
