@@ -31,7 +31,7 @@ namespace OnlinePayments.Sdk.Domain
         public PersonalName Name { get; set; } = null;
 
         /// <summary>
-        /// Full name of the state or province<para />
+        /// ISO 3166-2 country subdivision code<para />
         /// </summary>
         public string State { get; set; } = null;
 
