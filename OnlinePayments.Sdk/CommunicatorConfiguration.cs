@@ -61,7 +61,7 @@ namespace OnlinePayments.Sdk
         /// <summary>
         /// Gets the proxy object
         /// </summary>
-        public Proxy Proxy => new Proxy { Username = ProxyConfiguration.Username, Password = ProxyConfiguration.Password, Uri = ProxyConfiguration.Uri };
+        public Proxy Proxy => ProxyConfiguration != null ? new Proxy { Username = ProxyConfiguration.Username, Password = ProxyConfiguration.Password, Uri = ProxyConfiguration.Uri } : null;
 
         /// <summary>
         /// Gets or sets the proxy URI.

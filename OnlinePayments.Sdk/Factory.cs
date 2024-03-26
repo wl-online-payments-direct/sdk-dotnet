@@ -83,10 +83,10 @@ namespace OnlinePayments.Sdk
             return new CommunicatorBuilder()
                 .WithApiEndpoint(configuration.ApiEndpoint)
                 .WithConnection(new DefaultConnection(
-                    configuration.ProxyConfiguration,
                     configuration.SocketTimeout,
                     // connection timeout not supported
                     configuration.MaxConnections,
+                    configuration.Proxy,
                     configuration.Handler))
                 .WithAuthenticator(new DefaultAuthenticator(
                     configuration.AuthorizationType,

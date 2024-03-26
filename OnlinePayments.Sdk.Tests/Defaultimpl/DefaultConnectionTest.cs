@@ -57,13 +57,15 @@ namespace OnlinePayments.Sdk.DefaultImpl
 
         static void AssertConnectTimeout(DefaultConnection connection)
         {
-            HttpClient httpClient = (HttpClient)connection.GetPrivateField("_httpClient");
+            Func<HttpClient> httpClientProvider = (Func<HttpClient>)connection.GetPrivateField("_httpClientProvider");
+            HttpClient httpClient = httpClientProvider();
             Assert.AreEqual(httpClient.Timeout, SOCKET_TIMEOUT);
         }
 
         static void AssertNoProxy(DefaultConnection connection)
         {
-            HttpClient httpClient = (HttpClient)connection.GetPrivateField("_httpClient");
+            Func<HttpClient> httpClientProvider = (Func<HttpClient>)connection.GetPrivateField("_httpClientProvider");
+            HttpClient httpClient = httpClientProvider();
             HttpClientHandler handler = (HttpClientHandler)httpClient.GetPrivateField<HttpMessageInvoker>("handler");
             if (handler == null)
             {
@@ -74,7 +76,8 @@ namespace OnlinePayments.Sdk.DefaultImpl
 
         static void AssertProxy(DefaultConnection connection, Proxy proxy)
         {
-            HttpClient httpClient = (HttpClient)connection.GetPrivateField("_httpClient");
+            Func<HttpClient> httpClientProvider = (Func<HttpClient>)connection.GetPrivateField("_httpClientProvider");
+            HttpClient httpClient = httpClientProvider();
             HttpClientHandler handler = (HttpClientHandler)httpClient.GetPrivateField<HttpMessageInvoker>("handler");
             if (handler == null)
             {
@@ -82,12 +85,13 @@ namespace OnlinePayments.Sdk.DefaultImpl
             }
             Assert.That(handler.UseProxy, Is.True);
             Assert.That(((WebProxy)handler.Proxy).Address, Is.EqualTo(proxy.Uri));
-            Assert.That(((NetworkCredential)handler.Proxy.Credentials), Is.Null);
+            Assert.That((NetworkCredential)handler.Proxy.Credentials, Is.Null);
         }
 
         static void AssertProxyAndAuthentication(DefaultConnection connection, Proxy proxy)
         {
-            HttpClient httpClient = (HttpClient)connection.GetPrivateField("_httpClient");
+            Func<HttpClient> httpClientProvider = (Func<HttpClient>)connection.GetPrivateField("_httpClientProvider");
+            HttpClient httpClient = httpClientProvider();
             HttpClientHandler handler = (HttpClientHandler)httpClient.GetPrivateField<HttpMessageInvoker>("handler");
             if (handler == null)
             {
@@ -102,7 +106,8 @@ namespace OnlinePayments.Sdk.DefaultImpl
 
         static void AssertProxyAndAuthenticationAndHandler(DefaultConnection connection, Proxy proxy)
         {
-            HttpClient httpClient = (HttpClient)connection.GetPrivateField("_httpClient");
+            Func<HttpClient> httpClientProvider = (Func<HttpClient>)connection.GetPrivateField("_httpClientProvider");
+            HttpClient httpClient = httpClientProvider();
             CustomHttpClientHandler handler = (CustomHttpClientHandler)httpClient.GetPrivateField<HttpMessageInvoker>("handler");
             if (handler == null)
             {

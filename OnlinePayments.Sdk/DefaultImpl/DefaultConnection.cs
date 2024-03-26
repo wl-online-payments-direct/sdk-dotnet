@@ -19,6 +19,14 @@ namespace OnlinePayments.Sdk.DefaultImpl
 
         private const string X_REQUEST_ID_HEADER = "X-Request-Id";
 
+        /// <summary>
+        /// Creates an instance of the <c>DefaultConnection</c> with socket timeout, maxConnections, and <see cref="Proxy"/> configuration.
+        /// The <see cref="HttpClientHandler"/> is an optional parameter that can be provided for the <see cref="HttpClient"/>.
+        /// </summary>
+        /// <param name="socketTimeout">Socket timeout set in the HttpClient handler instance</param>
+        /// <param name="maxConnections">Maximum number of connections</param>
+        /// <param name="proxy">Proxy class provided used for the HttpClientHandler</param>
+        /// <param name="handler">An optional HttpClientHandler used in the HttpClient instance</param>
         public DefaultConnection(TimeSpan? socketTimeout = null, int maxConnections = 10, Proxy proxy = null, HttpClientHandler handler = null)
         {
             if (handler == null)
@@ -36,33 +44,29 @@ namespace OnlinePayments.Sdk.DefaultImpl
             }
 
             ServicePointManager.DefaultConnectionLimit = maxConnections;
-            _httpClient = new HttpClient(handler)
+            var httpClient = new HttpClient(handler)
             {
                 Timeout = socketTimeout != null ? socketTimeout.Value : DEFAULT_SOCKET_TIMEOUT
             };
+
+            // Always return the same HttpClient instance
+            _httpClientProvider = () => httpClient;
+            _disposeAction = httpClient.Dispose;
         }
 
-        internal DefaultConnection(ProxyConfiguration proxyConfig, TimeSpan? socketTimeout = null, int maxConnections = 10, HttpClientHandler handler = null)
+        /// <summary>
+        /// Creates a new <c>DefaultConnection</c> instance with a custom provider for <see cref="HttpClient"/> instance to be used for each request.
+        /// This could be based on <c>IHttpClientFactory</c> or something completely different.
+        /// </summary>
+        /// <param name="httpClientProvider">The custom provider for <see cref="HttpClient"/> instances</param>
+        /// <param name="disposeAction">An optional action to call from the <c>Dispose</c> method</param>
+        /// <param name="maxConnections">Maximum number of connections</param>
+        /// <exception cref="ArgumentException">If httpClientProvider is not provided</exception>
+        public DefaultConnection(Func<HttpClient> httpClientProvider, Action disposeAction = null, int maxConnections = 10)
         {
-            if (handler == null)
-                handler = new HttpClientHandler();
-
-            if (proxyConfig != null)
-            {
-                handler.Proxy = new WebProxy(proxyConfig.Uri);
-                if (proxyConfig.Username != null)
-                {
-                    handler.Proxy.Credentials = new NetworkCredential(proxyConfig.Username, proxyConfig.Password);
-                }
-
-                handler.UseProxy = true;
-            }
-
             ServicePointManager.DefaultConnectionLimit = maxConnections;
-            _httpClient = new HttpClient(handler)
-            {
-                Timeout = socketTimeout != null ? socketTimeout.Value : DEFAULT_SOCKET_TIMEOUT
-            };
+            _httpClientProvider = httpClientProvider ?? throw new ArgumentException("httpClientProvider is required");
+            _disposeAction = disposeAction ?? (() => {});
         }
 
         async Task<R> SendHttpMessage<R>(HttpMethod method, Uri uri, IEnumerable<IRequestHeader> requestHeaders, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, R>responseHandler, string body = null)
@@ -137,7 +141,8 @@ namespace OnlinePayments.Sdk.DefaultImpl
 
                     var startTime = DateTime.Now;
                     LogRequest(guid, message, content, contentString);
-                    var httpResponseTask = _httpClient.SendAsync(message)
+                    var httpClient = _httpClientProvider();
+                    var httpResponseTask = httpClient.SendAsync(message)
                         .ConfigureAwait(false);
 
                     using (var httpResponse = await httpResponseTask)
@@ -243,7 +248,7 @@ namespace OnlinePayments.Sdk.DefaultImpl
         #region IDisposable implementation
         public void Dispose()
         {
-            _httpClient.Dispose();
+            _disposeAction();
         }
         #endregion
 
@@ -324,9 +329,8 @@ namespace OnlinePayments.Sdk.DefaultImpl
         }
         #endregion
 
-        // Private because not all operations are guaranteed to be thread safe.
-        // This class only uses thread safe methods (except in the constructor)
-        readonly HttpClient _httpClient;
+        private readonly Func<HttpClient> _httpClientProvider;
+        private readonly Action _disposeAction;
 
         ICommunicatorLogger _communicatorLogger;
     }
