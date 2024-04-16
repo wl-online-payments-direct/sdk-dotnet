@@ -15,5 +15,10 @@ namespace OnlinePayments.Sdk.Domain
         /// It is highly recommended to provide a single MerchantReference per unique order on your side<para />
         /// </summary>
         public string MerchantReference { get; set; } = null;
+
+        /// <summary>
+        /// Object containing details how surcharge will be applied to a payment link.<para />
+        /// </summary>
+        public SurchargeForPaymentLink SurchargeSpecificOutput { get; set; } = null;
     }
 }
