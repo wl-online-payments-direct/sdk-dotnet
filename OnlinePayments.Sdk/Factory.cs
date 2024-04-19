@@ -194,7 +194,7 @@ namespace OnlinePayments.Sdk
 
         /// <summary>
         /// Creates a <see cref="Client"/> based on the configuration values in
-        /// <c>configurationDictionary</c>, <codecapiKeyId</c> and
+        /// <c>configurationDictionary</c>, <c>apiKeyId</c> and
         /// <c>secretApiKey</c>.
         /// </summary>
         /// <param name="configurationDictionary">Dictionary containing configuration.</param>

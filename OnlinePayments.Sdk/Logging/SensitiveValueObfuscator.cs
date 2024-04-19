@@ -2,7 +2,7 @@ namespace OnlinePayments.Sdk.Logging
 {
     class SensitiveValueObfuscator : ValueObfuscator
     {
-        internal static readonly SensitiveValueObfuscator INSTANCE = new SensitiveValueObfuscator();
+        internal new static readonly SensitiveValueObfuscator INSTANCE = new SensitiveValueObfuscator();
 
         internal override string ObfuscateValue(string value)
         {

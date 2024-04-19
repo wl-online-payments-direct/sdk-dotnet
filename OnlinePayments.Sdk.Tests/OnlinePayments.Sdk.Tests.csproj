@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>net45;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>OnlinePayments.Sdk</RootNamespace>
-    <AssemblyVersion>3.27.0</AssemblyVersion>
-    <Version>3.27.0</Version>
+    <AssemblyVersion>3.27.1</AssemblyVersion>
+    <Version>3.27.1</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>Online Payments</Company>
     <Product>Online Payments .NET SDK unit tests</Product>
@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MockHttpServer" Version="1.4.0.0" />
+    <PackageReference Include="AP.MockHttpServer" Version="1.5.0.1061" />
     <PackageReference Include="NUnit" Version="3.14.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />

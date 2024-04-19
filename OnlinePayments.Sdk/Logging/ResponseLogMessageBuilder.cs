@@ -22,11 +22,11 @@ namespace OnlinePayments.Sdk.Logging
             _statusCode = statusCode;
         }
 
-        [ObsoleteAttribute("Ignores the duration argument. Set the Duration property instead")]
         public ResponseLogMessageBuilder(string requestId, HttpStatusCode statusCode, long duration)
             : base(requestId)
         {
             _statusCode = statusCode;
+            Duration = TimeSpan.FromMilliseconds(duration);
         }
 
         public TimeSpan Duration { get; set; }
