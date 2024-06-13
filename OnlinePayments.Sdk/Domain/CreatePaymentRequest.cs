@@ -37,6 +37,8 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public Order Order { get; set; } = null;
 
+        public PageCustomization PageCustomization { get; set; } = null;
+
         /// <summary>
         /// Object containing the specific input details for payments that involve redirects to 3rd parties to complete, like iDeal and PayPal<para />
         /// </summary>
@@ -46,5 +48,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the specific input details for SEPA direct debit payments<para />
         /// </summary>
         public SepaDirectDebitPaymentMethodSpecificInput SepaDirectDebitPaymentMethodSpecificInput { get; set; } = null;
+
+        /// <summary>
+        /// Time (in minutes) after which the scheme or issuer shall refuse to finalize the transaction, if supported by said scheme/ issuer<para />
+        /// </summary>
+        public int? SessionTimeout { get; set; } = null;
     }
 }

@@ -103,8 +103,7 @@ namespace OnlinePayments.Sdk.Domain
         public string PlaceOfIssue { get; set; } = null;
 
         /// <summary>
-        /// Deprecated: This field is not used by any payment product<para />
-        /// Passenger name record<para />
+        /// ***Deprecated***. Use passengers instead.<para />
         /// </summary>
         public string Pnr { get; set; } = null;
 

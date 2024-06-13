@@ -6,8 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class CardWithoutCvv
     {
         /// <summary>
-        /// The complete credit/debit card number (also know as the PAN)<para />
-        /// The card number is always obfuscated in any of our responses<para />
+        /// The obfuscated card number<para />
         /// </summary>
         public string CardNumber { get; set; } = null;
 

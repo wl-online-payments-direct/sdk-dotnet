@@ -16,7 +16,7 @@ namespace OnlinePayments.Sdk.Domain
         public BrowserData BrowserData { get; set; } = null;
 
         /// <summary>
-        /// Device fingerprint used for fraud detection<para />
+        /// The session ID for the device fingerprint must match the one sent in the device fingerprint script.<para />
         /// </summary>
         public string DeviceFingerprint { get; set; } = null;
 

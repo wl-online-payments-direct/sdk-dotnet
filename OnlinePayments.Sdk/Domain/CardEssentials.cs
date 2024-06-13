@@ -16,6 +16,14 @@ namespace OnlinePayments.Sdk.Domain
         public string CardNumber { get; set; } = null;
 
         /// <summary>
+        /// The card's type as categorised by the payment method. Possible values are:<para />
+        ///   * Credit<para />
+        ///   * Debit<para />
+        ///   * Prepaid<para />
+        /// </summary>
+        public string CardType { get; set; } = null;
+
+        /// <summary>
         /// ISO 3166-1 alpha-2 country code<para />
         /// </summary>
         public string CountryCode { get; set; } = null;

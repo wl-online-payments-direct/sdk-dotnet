@@ -31,6 +31,11 @@ namespace OnlinePayments.Sdk.Domain
         public CustomerOutput Customer { get; set; } = null;
 
         /// <summary>
+        /// Object to apply a discount to the total basket by adding a discount line.<para />
+        /// </summary>
+        public Discount Discount { get; set; } = null;
+
+        /// <summary>
         /// It allows you to store additional parameters for the transaction in the format you prefer (e.g.-> key-value query string, JSON, etc.) These parameters are then echoed back to you in API GET calls and Webhook notifications. This field must not contain any personal data.<para />
         /// </summary>
         public string MerchantParameters { get; set; } = null;

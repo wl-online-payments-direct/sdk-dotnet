@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectPaymentProduct3306SpecificInput PaymentProduct3306SpecificInput { get; set; } = null;
 
         /// <summary>
+        /// Object containing specific input required for Bizum payments<para />
+        /// </summary>
+        public RedirectPaymentProduct5001SpecificInput PaymentProduct5001SpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Object containing specific input for EPS payments (Payment product ID 5406)<para />
         /// </summary>
         public RedirectPaymentProduct5406SpecificInput PaymentProduct5406SpecificInput { get; set; } = null;

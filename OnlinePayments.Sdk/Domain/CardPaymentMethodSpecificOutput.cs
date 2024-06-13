@@ -40,6 +40,11 @@ namespace OnlinePayments.Sdk.Domain
         public string InitialSchemeTransactionId { get; set; } = null;
 
         /// <summary>
+        /// Object containing network token details<para />
+        /// </summary>
+        public NetworkTokenEssentials NetworkTokenData { get; set; } = null;
+
+        /// <summary>
         /// The Payment Account Reference is a unique alphanumeric identifier that links a PAN with all subsequent PANs for the same payment account (e.g., following card replacement) and all EMV payment tokens associated with that account. On its own Payment Account Reference cannot be used to start financial transactions, but it does allow for complying with regulatory requirements, performing risk analysis & supporting loyalty programs. Please note that the Payment Account Reference is a value returned after an authorization & only if provided by the acquirer and/or the issuer.<para />
         /// </summary>
         public string PaymentAccountReference { get; set; } = null;

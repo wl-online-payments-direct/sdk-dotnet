@@ -8,6 +8,12 @@ namespace OnlinePayments.Sdk.Domain
     public class CardPaymentMethodSpecificInputForHostedCheckout
     {
         /// <summary>
+        /// * true - Hosted Checkout will show Click to Pay, with cards grouped as one payment method<para />
+        /// * false - Default - Hosted Checkout will show cards as separate payment methods without Click to Pay<para />
+        /// </summary>
+        public bool? ClickToPay { get; set; } = null;
+
+        /// <summary>
         /// * true - Hosted Checkout will allow to show cards grouped as one payment method<para />
         /// * false - Default - Hosted Checkout will show cards as separate payment methods<para />
         /// </summary>

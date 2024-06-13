@@ -37,6 +37,11 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentProduct130SpecificInput PaymentProduct130SpecificInput { get; set; } = null;
 
         /// <summary>
+        /// Object containing specific input required for bancontact.<para />
+        /// </summary>
+        public PaymentProduct3012SpecificInput PaymentProduct3012SpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Object containing specific input required for OneyDuplo Leroy Merlin payments.<para />
         /// </summary>
         public PaymentProduct3208SpecificInput PaymentProduct3208SpecificInput { get; set; } = null;

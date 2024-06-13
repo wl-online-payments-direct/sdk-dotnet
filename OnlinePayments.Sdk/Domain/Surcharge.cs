@@ -11,7 +11,7 @@ namespace OnlinePayments.Sdk.Domain
         public AmountOfMoney NetAmount { get; set; } = null;
 
         /// <summary>
-        /// The payment product identifier.<para />
+        /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
         /// </summary>
         public int? PaymentProductId { get; set; } = null;
 

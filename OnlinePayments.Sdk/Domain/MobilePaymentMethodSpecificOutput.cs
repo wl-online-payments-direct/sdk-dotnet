@@ -6,6 +6,11 @@ namespace OnlinePayments.Sdk.Domain
     public class MobilePaymentMethodSpecificOutput
     {
         /// <summary>
+        /// Information about the acquirer used to process the transaction<para />
+        /// </summary>
+        public AcquirerInformation AcquirerInformation { get; set; } = null;
+
+        /// <summary>
         /// Card Authorization code as returned by the acquirer<para />
         /// </summary>
         public string AuthorisationCode { get; set; } = null;

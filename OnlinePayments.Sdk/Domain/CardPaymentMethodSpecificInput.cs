@@ -62,6 +62,11 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentProduct130SpecificInput PaymentProduct130SpecificInput { get; set; } = null;
 
         /// <summary>
+        /// Object containing specific input required for bancontact.<para />
+        /// </summary>
+        public PaymentProduct3012SpecificInput PaymentProduct3012SpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Object containing specific input required for OneyDuplo Leroy Merlin payments.<para />
         /// </summary>
         public PaymentProduct3208SpecificInput PaymentProduct3208SpecificInput { get; set; } = null;
@@ -70,6 +75,11 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific input required for OneyDuplo Alcampo payments.<para />
         /// </summary>
         public PaymentProduct3209SpecificInput PaymentProduct3209SpecificInput { get; set; } = null;
+
+        /// <summary>
+        /// Object containing specific input required for Click to Pay payments.<para />
+        /// </summary>
+        public PaymentProduct5002SpecificInput PaymentProduct5002SpecificInput { get; set; } = null;
 
         /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />

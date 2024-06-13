@@ -18,6 +18,8 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public string Locale { get; set; } = null;
 
+        public PageCustomization PageCustomization { get; set; } = null;
+
         /// <summary>
         /// Contains the payment product ids that will be used for manipulating the payment products available for the payment to the customer.<para />
         /// </summary>

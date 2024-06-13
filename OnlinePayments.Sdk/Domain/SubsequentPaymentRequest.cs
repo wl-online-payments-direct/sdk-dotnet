@@ -12,6 +12,11 @@ namespace OnlinePayments.Sdk.Domain
         public Order Order { get; set; } = null;
 
         /// <summary>
+        /// specific data required for Bizum subsequent payment<para />
+        /// </summary>
+        public SubsequentPaymentProduct5001SpecificInput SubsequentPaymentProduct5001SpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Object containing the specific input details for subsequent card payments<para />
         /// </summary>
         public SubsequentCardPaymentMethodSpecificInput SubsequentcardPaymentMethodSpecificInput { get; set; } = null;
