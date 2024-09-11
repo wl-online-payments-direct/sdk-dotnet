@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net45</TargetFrameworks>
     <RootNamespace>OnlinePayments.Sdk</RootNamespace>
-    <AssemblyVersion>3.28.0</AssemblyVersion>
-    <Version>3.28.0</Version>
+    <AssemblyVersion>3.29.0</AssemblyVersion>
+    <Version>3.29.0</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>Online Payments</Company>
     <Product>Online Payments .NET SDK integration tests</Product>

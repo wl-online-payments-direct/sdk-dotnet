@@ -6,6 +6,11 @@ namespace OnlinePayments.Sdk.Domain
     public class ThreeDSecureBase
     {
         /// <summary>
+        /// The amount to be authenticated. This field should be populated if the amount to be authenticated differs from the amount to be authorized (by default they are considered equal). Amount in cents and always having 2 decimals.<para />
+        /// </summary>
+        public long? AuthenticationAmount { get; set; } = null;
+
+        /// <summary>
         /// Dimensions of the challenge window that potentially will be displayed to the customer. The challenge content is formatted to appropriately render in this window to provide the best possible user experience. Preconfigured sizes are width x height in pixels of the window displayed in the customer browser window. Possible values are<para />
         ///    * 250x400 (default)<para />
         ///    * 390x400<para />
@@ -31,19 +36,6 @@ namespace OnlinePayments.Sdk.Domain
         public string ChallengeIndicator { get; set; } = null;
 
         /// <summary>
-        /// 3DS Requestor Decoupled Request Indicator. Indicates whether the 3DS Requestor requests the ACS to utilise Decoupled Authentication and agrees to utilise Decoupled Authentication if the ACS confirms its use.<para />
-        /// Possible values:<para />
-        /// * true<para />
-        /// * false<para />
-        /// </summary>
-        public bool? DecoupledIndicator { get; set; } = null;
-
-        /// <summary>
-        /// 3DS Requestor Decoupled Max Time. Indicates the maximum amount of time that the 3DS Requestor will wait for an ACS to provide the results of a Decoupled Authentication transaction (in minutes).<para />
-        /// </summary>
-        public string DecoupledMaxTime { get; set; } = null;
-
-        /// <summary>
         /// In PSD2, the ExemptionRequest field is used by merchants requesting an exemption when not using authentication on a transaction, in order to keep the conversion up.<para />
         /// * none = No exemption requested<para />
         /// * transaction-risk-analysis = Fraud analysis has been done already by your own fraud module and transaction scored as low risk<para />
@@ -62,11 +54,6 @@ namespace OnlinePayments.Sdk.Domain
         /// * 5 - represents fraud rate greater than 25 bps<para />
         /// </summary>
         public int? MerchantFraudRate { get; set; } = null;
-
-        /// <summary>
-        /// EMV Payment Token Source. This data element will be populated by the system residing in the 3-D Secure domain where the tokenisation occurs.<para />
-        /// </summary>
-        public string PaymentTokenSource { get; set; } = null;
 
         /// <summary>
         /// Object containing data regarding the customer authentication that occurred prior to the current transaction<para />
@@ -95,12 +82,5 @@ namespace OnlinePayments.Sdk.Domain
         /// Note: skipSoftDecline defaults to false if empty. This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.<para />
         /// </summary>
         public bool? SkipSoftDecline { get; set; } = null;
-
-        /// <summary>
-        /// Indicates the type of 3RI request. This data element provides additional information to the ACS to determine the best approach for handing a 3RI request.<para />
-        /// </summary>
-        public string ThreeRIIndicator { get; set; } = null;
-
-        public ThreeDSWhitelist Whitelist { get; set; } = null;
     }
 }

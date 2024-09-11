@@ -31,8 +31,6 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public Order Order { get; set; } = null;
 
-        public PageCustomization PageCustomization { get; set; } = null;
-
         /// <summary>
         /// Object containing the specific input details for payments that involve redirects to 3rd parties to complete, like iDeal and PayPal<para />
         /// </summary>

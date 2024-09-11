@@ -16,6 +16,13 @@ namespace OnlinePayments.Sdk.Domain
         public string AuthorizationMode { get; set; } = null;
 
         /// <summary>
+        /// This payment's ordinal number in the sequence of payments. <br/> As the payments are numbered from 1 to the totalNumberOfPayments provided at initialization of the sequence in the multiplePaymentInformation container, the allowed values for this field actually depend on whether the initial call to CreatePayment or CreateHostedCheckout led to a payment or not. <br/><para />
+        ///   - if the initial call led to a payment, since it is implicitly numbered 1, then the allowed values for this field range from 2 to the totalNumberOfPayments.<para />
+        ///   - if the initial call did not lead to a payment (e.g. this was a 0 amount operation for authentication), then the allowed values for this field range from 1 to the totalNumberOfPayments.<para />
+        /// </summary>
+        public int? PaymentNumber { get; set; } = null;
+
+        /// <summary>
         /// Deprecated: This is the unique Scheme Reference Data from the initial transaction that was performed with a Strong Customer Authentication. In case this value is unknown, a Scheme Reference of an earlier transaction that was part of the same sequence can be used as a fall-back. Still, it is strongly advised to submit this value for any Merchant Initiated Transaction or any recurring transaction (hereby defined as "Subsequent").<para />
         /// </summary>
         public string SchemeReferenceData { get; set; } = null;

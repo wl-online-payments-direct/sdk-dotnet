@@ -12,11 +12,15 @@ namespace OnlinePayments.Sdk.Domain
 
         /// <summary>
         /// A note related to the created payment link.<para />
+        /// <para />
+        /// Deprecated: Use `paymentLinkSpecificInput/description` instead.<para />
         /// </summary>
         public string Description { get; set; } = null;
 
         /// <summary>
-        /// The date after which the payment link will not be usable to complete the payment. The date sent cannot be more than 30 days in the future or a past date. It must also contain the UTC offset.<para />
+        /// The date after which the payment link will not be usable to complete the payment. The date sent cannot be more than 6 months in the future or a past date. It must also contain the UTC offset.<para />
+        /// <para />
+        /// Deprecated: Use `paymentLinkSpecificInput/expirationDate` instead.<para />
         /// </summary>
         public string ExpirationDate { get; set; } = null;
 
@@ -43,6 +47,14 @@ namespace OnlinePayments.Sdk.Domain
 
         /// <summary>
         /// An object containing the details of the related payment input.<para />
+        /// <para />
+        /// Deprecated: All properties in `paymentLinkOrder` are deprecated.  <para />
+        /// Use corresponding values as noted below:  <para />
+        /// | Property | Replacement |<para />
+        /// | - | - |<para />
+        /// | merchantReference | `order/references/merchantReference` |  <para />
+        /// | amount | `order/amountOfMoney` |  <para />
+        /// | surchargeSpecificInput | `order/surchargeSpecificInput` |<para />
         /// </summary>
         public PaymentLinkOrderInput PaymentLinkOrder { get; set; } = null;
 
@@ -53,6 +65,8 @@ namespace OnlinePayments.Sdk.Domain
 
         /// <summary>
         /// The payment link recipient name.<para />
+        /// <para />
+        /// Deprecated: Use `paymentLinkSpecificInput/recipientName` instead.<para />
         /// </summary>
         public string RecipientName { get; set; } = null;
 

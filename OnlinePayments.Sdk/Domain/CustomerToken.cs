@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class CustomerToken
     {
         /// <summary>
-        /// Object containing billing address details<para />
+        /// Object containing billing address details.<para />
         /// </summary>
         public Address BillingAddress { get; set; } = null;
 

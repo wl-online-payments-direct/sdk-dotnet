@@ -11,7 +11,7 @@ namespace OnlinePayments.Sdk.Domain
         public AcquirerInformation AcquirerInformation { get; set; } = null;
 
         /// <summary>
-        /// Allows amount to be authenticated to be different from amount authorized. (Amount in cents and always having 2 decimals)<para />
+        /// The amount to be authenticated. This field should be populated if the amount to be authenticated differs from the amount to be authorized (by default they are considered equal). Amount in cents and always having 2 decimals.<para />
         /// </summary>
         public long? AuthenticatedAmount { get; set; } = null;
 
@@ -38,11 +38,6 @@ namespace OnlinePayments.Sdk.Domain
         /// The unique scheme transactionId of the initial transaction that was performed with SCA. In case this is unknown a scheme transactionId of an earlier transaction part of the same sequence can be used as a fall-back. Strongly advised to be submitted for any MerchantInitiated or recurring transaction (a subsequent one).<para />
         /// </summary>
         public string InitialSchemeTransactionId { get; set; } = null;
-
-        /// <summary>
-        /// Object containing network token details<para />
-        /// </summary>
-        public NetworkTokenEssentials NetworkTokenData { get; set; } = null;
 
         /// <summary>
         /// The Payment Account Reference is a unique alphanumeric identifier that links a PAN with all subsequent PANs for the same payment account (e.g., following card replacement) and all EMV payment tokens associated with that account. On its own Payment Account Reference cannot be used to start financial transactions, but it does allow for complying with regulatory requirements, performing risk analysis & supporting loyalty programs. Please note that the Payment Account Reference is a value returned after an authorization & only if provided by the acquirer and/or the issuer.<para />

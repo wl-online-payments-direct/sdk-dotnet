@@ -11,6 +11,11 @@ namespace OnlinePayments.Sdk.Domain
         public string PaymentOption { get; set; } = null;
 
         /// <summary>
+        /// Object containing specific input for PostFinancePay payments (Payment product ID 3203).<para />
+        /// </summary>
+        public RedirectPaymentProduct3203SpecificInput PaymentProduct3203SpecificInput { get; set; } = null;
+
+        /// <summary>
         /// Object containing specific input required for Klarna payments (Payment product ID 3306)<para />
         /// </summary>
         public RedirectPaymentProduct3306SpecificInput PaymentProduct3306SpecificInput { get; set; } = null;

@@ -3,13 +3,12 @@
  */
 namespace OnlinePayments.Sdk.Domain
 {
-    public class MandatePersonalInformation
+    public class MandatePersonalInformationResponse
     {
         /// <summary>
         /// Object containing the name details of the customer.<para />
-        /// Required for Create mandate and Create payment calls.<para />
         /// </summary>
-        public MandatePersonalName Name { get; set; } = null;
+        public MandatePersonalNameResponse Name { get; set; } = null;
 
         /// <summary>
         /// Object containing the title of the customer (Mr, Miss or Mrs)<para />

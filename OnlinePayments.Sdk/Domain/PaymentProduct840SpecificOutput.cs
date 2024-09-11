@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class PaymentProduct840SpecificOutput
     {
         /// <summary>
-        /// Object containing billing address details<para />
+        /// Object containing billing address details.<para />
         /// </summary>
         public Address BillingAddress { get; set; } = null;
 
@@ -16,7 +16,7 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentProduct840CustomerAccount CustomerAccount { get; set; } = null;
 
         /// <summary>
-        /// Object containing billing address details<para />
+        /// Object containing billing address details.<para />
         /// </summary>
         public Address CustomerAddress { get; set; } = null;
 

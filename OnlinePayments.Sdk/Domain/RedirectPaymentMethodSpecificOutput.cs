@@ -26,6 +26,11 @@ namespace OnlinePayments.Sdk.Domain
         public string PaymentOption { get; set; } = null;
 
         /// <summary>
+        /// PostFinancePay (payment product 3203) specific details<para />
+        /// </summary>
+        public PaymentProduct3203SpecificOutput PaymentProduct3203SpecificOutput { get; set; } = null;
+
+        /// <summary>
         /// Bizum (payment product 5001) specific details<para />
         /// </summary>
         public PaymentProduct5001SpecificOutput PaymentProduct5001SpecificOutput { get; set; } = null;

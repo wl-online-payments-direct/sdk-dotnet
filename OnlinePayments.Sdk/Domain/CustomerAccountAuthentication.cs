@@ -14,6 +14,7 @@ namespace OnlinePayments.Sdk.Domain
         ///  * issuer-credentials = the customer logged in using credentials from the card issuer (of the card used in this transaction)<para />
         ///  * third-party-authentication = the customer logged in using third-party authentication<para />
         ///  * fido-authentication = the customer logged in using a FIDO authenticator<para />
+        ///  * cico-b-connect-token-for-cb = the customer logged in using Check-in/Check-out b.connect for CB<para />
         /// </summary>
         public string Method { get; set; } = null;
 

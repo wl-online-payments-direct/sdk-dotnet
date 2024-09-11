@@ -3,7 +3,7 @@
  */
 namespace OnlinePayments.Sdk.Domain
 {
-    public class MandateCustomer
+    public class MandateCustomerResponse
     {
         /// <summary>
         /// Object containing IBAN information<para />
@@ -21,16 +21,13 @@ namespace OnlinePayments.Sdk.Domain
         public MandateContactDetails ContactDetails { get; set; } = null;
 
         /// <summary>
-        /// Object containing consumer address details.<para />
-        /// Required for Create mandate and Create payment calls.<para />
-        /// Required for Create hostedCheckout calls where the IBAN is also provided.<para />
+        /// Object containing consumer address details<para />
         /// </summary>
-        public MandateAddress MandateAddress { get; set; } = null;
+        public MandateAddressResponse MandateAddress { get; set; } = null;
 
         /// <summary>
-        /// Object containing personal information of the customer.<para />
-        /// Required for Create mandate and Create payment calls.<para />
+        /// Object containing personal information of the customer<para />
         /// </summary>
-        public MandatePersonalInformation PersonalInformation { get; set; } = null;
+        public MandatePersonalInformationResponse PersonalInformation { get; set; } = null;
     }
 }

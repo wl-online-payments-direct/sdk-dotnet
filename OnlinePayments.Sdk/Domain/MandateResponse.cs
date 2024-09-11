@@ -11,15 +11,19 @@ namespace OnlinePayments.Sdk.Domain
         public string Alias { get; set; } = null;
 
         /// <summary>
-        /// Customer object containing customer specific inputs.<para />
-        /// Required for Create mandate and Create payment calls.<para />
+        /// Customer object containing customer specific outputs.<para />
         /// </summary>
-        public MandateCustomer Customer { get; set; } = null;
+        public MandateCustomerResponse Customer { get; set; } = null;
 
         /// <summary>
         /// The unique identifier of a customer<para />
         /// </summary>
         public string CustomerReference { get; set; } = null;
+
+        /// <summary>
+        /// The mandate PDF in base64 encoded string<para />
+        /// </summary>
+        public string MandatePdf { get; set; } = null;
 
         /// <summary>
         /// Specifies whether the mandate is for one-off or recurring payments. Possible values are:<para />

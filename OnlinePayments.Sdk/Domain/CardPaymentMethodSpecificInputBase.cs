@@ -32,14 +32,14 @@ namespace OnlinePayments.Sdk.Domain
         public string InitialSchemeTransactionId { get; set; } = null;
 
         /// <summary>
+        /// Container announcing forecoming subsequent payments. Holds modalities of these subsequent payments.<para />
+        /// </summary>
+        public MultiplePaymentInformation MultiplePaymentInformation { get; set; } = null;
+
+        /// <summary>
         /// Object containing specific input required for CB payments<para />
         /// </summary>
         public PaymentProduct130SpecificInput PaymentProduct130SpecificInput { get; set; } = null;
-
-        /// <summary>
-        /// Object containing specific input required for bancontact.<para />
-        /// </summary>
-        public PaymentProduct3012SpecificInput PaymentProduct3012SpecificInput { get; set; } = null;
 
         /// <summary>
         /// Object containing specific input required for OneyDuplo Leroy Merlin payments.<para />
