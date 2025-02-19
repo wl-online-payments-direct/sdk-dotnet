@@ -47,8 +47,15 @@ namespace OnlinePayments.Sdk.Domain
 
         /// <summary>
         /// Object that holds all reference properties that are linked to this transaction<para />
+        /// <para />
+        /// Deprecated: Use OperationReferences instead.<para />
         /// </summary>
         public PaymentReferences References { get; set; } = null;
+
+        /// <summary>
+        /// Object that holds all reference properties that are linked to this transaction<para />
+        /// </summary>
+        public OperationPaymentReferences OperationReferences { get; set; } = null;
 
         /// <summary>
         /// Object containing the SEPA direct debit details<para />
