@@ -1,5 +1,3 @@
-using System;
-
 namespace OnlinePayments.Sdk.Webhooks
 {
     /// <summary>

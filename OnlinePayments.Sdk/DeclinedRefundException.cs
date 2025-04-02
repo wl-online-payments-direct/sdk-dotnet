@@ -1,3 +1,7 @@
+/*
+ * This file was automatically generated.
+ */
+using System.Net;
 using OnlinePayments.Sdk.Domain;
 
 namespace OnlinePayments.Sdk
@@ -7,25 +11,25 @@ namespace OnlinePayments.Sdk
     /// </summary>
     public class DeclinedRefundException : DeclinedTransactionException
     {
-        private readonly RefundErrorResponse _errorResponse;
-
         /// <summary>
         /// Gets the result of creating a refund if available, otherwise <c>null</c>.
         /// </summary>
-        public RefundResponse RefundResult => _errorResponse?.RefundResult;
+        public RefundResponse RefundResponse => _response?.RefundResult;
 
-        public DeclinedRefundException(System.Net.HttpStatusCode statusCode, string responseBody, RefundErrorResponse errorResponse)
-            : base(BuildMessage(errorResponse), statusCode, responseBody, errorResponse?.ErrorId, errorResponse?.Errors)
+        public DeclinedRefundException(HttpStatusCode statusCode, string responseBody, RefundErrorResponse response)
+            : base(BuildMessage(response), statusCode, responseBody, response?.ErrorId, response?.Errors)
         {
-            this._errorResponse = errorResponse;
+            _response = response;
         }
 
-        static string BuildMessage(RefundErrorResponse errorResponse)
+        private readonly RefundErrorResponse _response;
+
+        private static string BuildMessage(RefundErrorResponse response)
         {
-            RefundResponse refund = errorResponse?.RefundResult;
-            if (refund != null)
+            var refundResult = response?.RefundResult;
+            if (refundResult != null)
             {
-                return "declined refund '" + refund.Id + "' with status '" + refund.Status + "'";
+                return "declined refund '" + refundResult.Id + "' with status '" + refundResult.Status + "'";
             }
             return "the payment platform returned a declined refund response";
         }

@@ -1,3 +1,6 @@
+/*
+ * This file was automatically generated.
+ */
 using System.Collections.Generic;
 using System.Net;
 using OnlinePayments.Sdk.Domain;
@@ -9,7 +12,6 @@ namespace OnlinePayments.Sdk
     /// </summary>
     public class ValidationException : ApiException
     {
-
         public ValidationException(HttpStatusCode statusCode, string responseBody, string errorId, IList<APIError> errors)
             : base("the payment platform returned an incorrect request error response", statusCode, responseBody, errorId, errors)
         {

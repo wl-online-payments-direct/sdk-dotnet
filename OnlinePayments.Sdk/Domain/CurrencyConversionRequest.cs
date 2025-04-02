@@ -1,12 +1,12 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class CurrencyConversionRequest
     {
-        public DccCardSource CardSource { get; set; } = null;
+        public DccCardSource CardSource { get; set; }
 
-        public Transaction Transaction { get; set; } = null;
+        public Transaction Transaction { get; set; }
     }
 }

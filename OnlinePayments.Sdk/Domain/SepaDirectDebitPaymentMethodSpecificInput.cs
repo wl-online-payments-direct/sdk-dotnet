@@ -1,18 +1,18 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class SepaDirectDebitPaymentMethodSpecificInput
     {
         /// <summary>
-        /// Object containing information specific to SEPA Direct Debit<para />
+        /// Object containing information specific to SEPA Direct Debit
         /// </summary>
-        public SepaDirectDebitPaymentProduct771SpecificInput PaymentProduct771SpecificInput { get; set; } = null;
+        public SepaDirectDebitPaymentProduct771SpecificInput PaymentProduct771SpecificInput { get; set; }
 
         /// <summary>
-        /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
+        /// Payment product identifier - Please see Products documentation for a full overview of possible values.
         /// </summary>
-        public int? PaymentProductId { get; set; } = null;
+        public int? PaymentProductId { get; set; }
     }
 }

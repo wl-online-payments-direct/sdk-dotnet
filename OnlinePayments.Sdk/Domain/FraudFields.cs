@@ -1,6 +1,7 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
+using System;
 using System.Collections.Generic;
 
 namespace OnlinePayments.Sdk.Domain
@@ -8,20 +9,21 @@ namespace OnlinePayments.Sdk.Domain
     public class FraudFields
     {
         /// <summary>
-        /// Additional black list input<para />
+        /// Additional black list input
         /// </summary>
-        public string BlackListData { get; set; } = null;
+        public string BlackListData { get; set; }
 
         /// <summary>
-        /// Deprecated: Use order.customer.device.ipAddress instead.<para />
-        /// <para />
-        /// The IP Address of the customer that is making the payment<para />
+        /// Deprecated: Use order.customer.device.ipAddress instead.
+        /// <p />
+        /// The IP Address of the customer that is making the payment
         /// </summary>
-        public string CustomerIpAddress { get; set; } = null;
+        [Obsolete("Use order.customer.device.ipAddress instead.  The IP Address of the customer that is making the payment")]
+        public string CustomerIpAddress { get; set; }
 
         /// <summary>
-        /// List of product categories that are being purchased.<para />
+        /// List of product categories that are being purchased.
         /// </summary>
-        public IList<string> ProductCategories { get; set; } = null;
+        public IList<string> ProductCategories { get; set; }
     }
 }

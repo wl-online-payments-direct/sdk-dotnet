@@ -1,5 +1,5 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 using System.Collections.Generic;
 
@@ -8,20 +8,24 @@ namespace OnlinePayments.Sdk.Domain
     public class CardPaymentMethodSpecificInputForHostedCheckout
     {
         /// <summary>
-        /// * true - Hosted Checkout will show Click to Pay, with cards grouped as one payment method<para />
-        /// * false - Default - Hosted Checkout will show cards as separate payment methods without Click to Pay<para />
+        /// <list type="bullet">
+        ///   <item><description>true - Hosted Checkout will show Click to Pay, with cards grouped as one payment method</description></item>
+        ///   <item><description>false - Default - Hosted Checkout will show cards as separate payment methods without Click to Pay</description></item>
+        /// </list>
         /// </summary>
-        public bool? ClickToPay { get; set; } = null;
+        public bool? ClickToPay { get; set; }
 
         /// <summary>
-        /// * true - Hosted Checkout will allow to show cards grouped as one payment method<para />
-        /// * false - Default - Hosted Checkout will show cards as separate payment methods<para />
+        /// <list type="bullet">
+        ///   <item><description>true - Hosted Checkout will allow to show cards grouped as one payment method</description></item>
+        ///   <item><description>false - Default - Hosted Checkout will show cards as separate payment methods</description></item>
+        /// </list>
         /// </summary>
-        public bool? GroupCards { get; set; } = null;
+        public bool? GroupCards { get; set; }
 
         /// <summary>
-        /// This array contains the payment product identifiers representing the brands. For co-badged cards, this displays their available brands in the order defined by this array, when groupCards is activated.<para />
+        /// This array contains the payment product identifiers representing the brands. For co-badged cards, this displays their available brands in the order defined by this array, when groupCards is activated.
         /// </summary>
-        public IList<int?> PaymentProductPreferredOrder { get; set; } = null;
+        public IList<int?> PaymentProductPreferredOrder { get; set; }
     }
 }

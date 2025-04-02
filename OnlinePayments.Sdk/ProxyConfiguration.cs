@@ -1,118 +1,13 @@
-using System;
 using System.Configuration;
 
 namespace OnlinePayments.Sdk
 {
-    class ProxyConfiguration : UriConfiguration
+    internal class ProxyConfiguration : UriConfiguration
     {
-        public ProxyConfiguration(Uri address)
-            : this(address, null, null)
-        {
-
-        }
-
-        public ProxyConfiguration(Uri address, string username, string password)
-            : this(address.Scheme, address.Host, address.Port, username, password)
-        {
-
-        }
-
-        public ProxyConfiguration(string host, int port)
-            : this("http", host, port)
-        {
-
-        }
-
-        public ProxyConfiguration(string host, int port, string username, string password)
-            : this("http", host, port, username, password)
-        {
-
-        }
-
-
-        public ProxyConfiguration(string scheme, string host, int port)
-            : this(scheme, host, port, null, null)
-        {
-
-        }
-
-        public ProxyConfiguration(string scheme, string host, int port, string username, string password)
-        {
-            if (string.IsNullOrWhiteSpace(scheme))
-            {
-                throw new ArgumentException("scheme is required");
-            }
-            if (string.IsNullOrWhiteSpace(host))
-            {
-                throw new ArgumentException("host is required");
-            }
-            if (port <= 0 || port > 65535)
-            {
-                throw new ArgumentException("port is invalid");
-            }
-            Scheme = scheme;
-            Host = host;
-            Port = port;
-            Username = username;
-            Password = password;
-        }
-
         [ConfigurationProperty("username", IsRequired = false)]
-        public string Username
-        {
-            get
-            {
-                return _username ?? (string)this["username"];
-            }
-            set
-            {
-                if (IsReadOnly())
-                {
-                    _username = value;
-                    return;
-                }
-                this["username"] = value;
-            }
-        }
-        string _username;
+        public string Username => ((string)this["username"]).NullIfEmpty();
 
         [ConfigurationProperty("password", IsRequired = false)]
-        public string Password
-        {
-            get
-            {
-                return _password ?? (string)this["password"];
-            }
-            set
-            {
-                if (IsReadOnly())
-                {
-                    _password = value;
-                    return;
-                }
-                this["password"] = value;
-            }
-        }
-        string _password;
-
-        public ProxyConfiguration WithUsername(string username)
-        {
-            Username = username;
-            return this;
-        }
-
-        public ProxyConfiguration WithPassword(string password)
-        {
-            Password = password;
-            return this;
-        }
-
-        /// <summary>
-        /// Initializes an empty ProxyConfiguration (possibly invalid)
-        /// </summary>
-        internal ProxyConfiguration()
-        {
-
-        }
+        public string Password => ((string)this["password"]).NullIfEmpty();
     }
 }

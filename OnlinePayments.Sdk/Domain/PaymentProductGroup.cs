@@ -1,5 +1,5 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 using System.Collections.Generic;
 
@@ -7,21 +7,18 @@ namespace OnlinePayments.Sdk.Domain
 {
     public class PaymentProductGroup
     {
-        public AccountOnFile AccountOnFile { get; set; } = null;
+        public AccountOnFile AccountOnFile { get; set; }
 
         /// <summary>
-        /// Object containing display hints like the order of the product when shown in a list, the name of the product and the logo<para />
+        /// Object containing display hints like the order of the product when shown in a list, the name of the product and the logo
         /// </summary>
-        public PaymentProductDisplayHints DisplayHints { get; set; } = null;
+        public PaymentProductDisplayHints DisplayHints { get; set; }
+
+        public IList<PaymentProductDisplayHints> DisplayHintsList { get; set; }
 
         /// <summary>
-        /// List of display hints<para />
+        /// The ID of the payment product group in our system
         /// </summary>
-        public IList<PaymentProductDisplayHints> DisplayHintsList { get; set; } = null;
-
-        /// <summary>
-        /// The ID of the payment product group in our system<para />
-        /// </summary>
-        public string Id { get; set; } = null;
+        public string Id { get; set; }
     }
 }

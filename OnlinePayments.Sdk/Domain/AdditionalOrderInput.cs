@@ -1,28 +1,28 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class AdditionalOrderInput
     {
         /// <summary>
-        /// Object that holds airline specific data<para />
+        /// Object that holds airline specific data
         /// </summary>
-        public AirlineData AirlineData { get; set; } = null;
+        public AirlineData AirlineData { get; set; }
 
         /// <summary>
-        /// Object containing specific data regarding the recipient of a loan in the UK<para />
+        /// Object containing specific data regarding the recipient of a loan in the UK
         /// </summary>
-        public LoanRecipient LoanRecipient { get; set; } = null;
+        public LoanRecipient LoanRecipient { get; set; }
 
         /// <summary>
-        /// Object that holds lodging specific data<para />
+        /// Object that holds lodging specific data
         /// </summary>
-        public LodgingData LodgingData { get; set; } = null;
+        public LodgingData LodgingData { get; set; }
 
         /// <summary>
-        /// Object that holds the purchase and usage type indicators<para />
+        /// Object that holds the purchase and usage type indicators
         /// </summary>
-        public OrderTypeInformation TypeInformation { get; set; } = null;
+        public OrderTypeInformation TypeInformation { get; set; }
     }
 }

@@ -1,45 +1,43 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class OperationOutput
     {
         /// <summary>
-        /// Object containing amount and ISO currency code attributes<para />
+        /// Object containing amount and ISO currency code attributes
         /// </summary>
-        public AmountOfMoney AmountOfMoney { get; set; } = null;
+        public AmountOfMoney AmountOfMoney { get; set; }
 
         /// <summary>
-        /// Our unique payment transaction identifier<para />
+        /// Our unique payment transaction identifier
         /// </summary>
-        public string Id { get; set; } = null;
+        public string Id { get; set; }
 
         /// <summary>
-        /// Payment method identifier used by the our payment engine.<para />
+        /// Object that holds all reference properties that are linked to this transaction
         /// </summary>
-        public string PaymentMethod { get; set; } = null;
+        public OperationPaymentReferences OperationReferences { get; set; }
 
         /// <summary>
-        /// Object that holds all reference properties that are linked to this transaction<para />
-        /// <para />
-        /// Deprecated: Use OperationReferences instead.<para />
+        /// Payment method identifier used by the our payment engine.
         /// </summary>
-        public PaymentReferences References { get; set; } = null;
+        public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// Object that holds all reference properties that are linked to this transaction<para />
+        /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
-        public OperationPaymentReferences OperationReferences { get; set; } = null;
+        public PaymentReferences References { get; set; }
 
         /// <summary>
-        /// Current high-level status of the payment in a human-readable form.<para />
+        /// Current high-level status of the payment in a human-readable form.
         /// </summary>
-        public string Status { get; set; } = null;
+        public string Status { get; set; }
 
         /// <summary>
-        /// This object has the numeric representation of the current payment status, timestamp of last status change and performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.<para />
+        /// This object has the numeric representation of the current payment status, timestamp of last status change and performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.
         /// </summary>
-        public PaymentStatusOutput StatusOutput { get; set; } = null;
+        public PaymentStatusOutput StatusOutput { get; set; }
     }
 }

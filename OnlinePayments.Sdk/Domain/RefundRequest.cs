@@ -1,25 +1,28 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class RefundRequest
     {
         /// <summary>
-        /// Object containing amount and ISO currency code attributes<para />
+        /// Object containing amount and ISO currency code attributes
         /// </summary>
-        public AmountOfMoney AmountOfMoney { get; set; } = null;
+        public AmountOfMoney AmountOfMoney { get; set; }
 
         /// <summary>
-        /// Object that holds all reference properties that are linked to this transaction<para />
-        /// <para />
-        /// Deprecated: Use OperationReferences instead.<para />
+        /// The identifier of the capture that is used for partial refund. CaptureId is only necessary for Paypal/PostfinancePay multi-capture payments.
         /// </summary>
-        public PaymentReferences References { get; set; } = null;
+        public string CaptureId { get; set; }
 
         /// <summary>
-        /// Object that holds all reference properties that are linked to this transaction<para />
+        /// Object that holds all reference properties that are linked to this transaction
         /// </summary>
-        public OperationPaymentReferences OperationReferences { get; set; } = null;
+        public OperationPaymentReferences OperationReferences { get; set; }
+
+        /// <summary>
+        /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
+        /// </summary>
+        public PaymentReferences References { get; set; }
     }
 }

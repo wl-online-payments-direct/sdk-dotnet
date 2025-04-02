@@ -1,42 +1,44 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class MandateResponse
     {
         /// <summary>
-        /// An alias for the mandate. This can be used to visually represent the mandate. Do not include any unmasked sensitive data in the alias. If this field is not provided the masked IBAN of the customer is used.<para />
+        /// An alias for the mandate. This can be used to visually represent the mandate. Do not include any unmasked sensitive data in the alias. If this field is not provided the masked IBAN of the customer is used.
         /// </summary>
-        public string Alias { get; set; } = null;
+        public string Alias { get; set; }
 
         /// <summary>
-        /// Customer object containing customer specific outputs.<para />
+        /// Customer object containing customer specific outputs.
         /// </summary>
-        public MandateCustomerResponse Customer { get; set; } = null;
+        public MandateCustomerResponse Customer { get; set; }
 
         /// <summary>
-        /// The unique identifier of a customer<para />
+        /// The unique identifier of a customer
         /// </summary>
-        public string CustomerReference { get; set; } = null;
+        public string CustomerReference { get; set; }
 
         /// <summary>
-        /// The mandate PDF in base64 encoded string<para />
+        /// The mandate PDF in base64 encoded string
         /// </summary>
-        public string MandatePdf { get; set; } = null;
+        public string MandatePdf { get; set; }
 
         /// <summary>
-        /// Specifies whether the mandate is for one-off or recurring payments. Possible values are:<para />
-        /// * UNIQUE<para />
-        /// * RECURRING<para />
+        /// Specifies whether the mandate is for one-off or recurring payments. Possible values are:
+        /// <list type="bullet">
+        ///   <item><description>UNIQUE</description></item>
+        ///   <item><description>RECURRING</description></item>
+        /// </list>
         /// </summary>
-        public string RecurrenceType { get; set; } = null;
+        public string RecurrenceType { get; set; }
 
-        public string Status { get; set; } = null;
+        public string Status { get; set; }
 
         /// <summary>
-        /// The unique identifier of the mandate<para />
+        /// The unique identifier of the mandate
         /// </summary>
-        public string UniqueMandateReference { get; set; } = null;
+        public string UniqueMandateReference { get; set; }
     }
 }

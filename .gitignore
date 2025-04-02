@@ -45,7 +45,5 @@ Thumbs.db
 #Visual Studio Code
 .vscode
 
-# test results/
-**/TestResult.xml
-
-.idea/
+#JetBrains
+.idea

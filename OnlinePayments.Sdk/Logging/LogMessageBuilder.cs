@@ -8,15 +8,7 @@ namespace OnlinePayments.Sdk.Logging
     /// </summary>
     public abstract class LogMessageBuilder
     {
-        private readonly StringBuilder _headers = new StringBuilder();
-
         public abstract string Message { get; }
-
-        protected string RequestId { get; }
-        protected string Headers => _headers.ToString();
-        protected string Body { get; private set; }
-        protected string ContentType { get; private set; }
-        protected string Charset { get; private set; }
 
         public void AddHeader(string name, string value)
         {
@@ -25,11 +17,11 @@ namespace OnlinePayments.Sdk.Logging
                 _headers.Append(", ");
             }
 
-            _headers.Append(name)
-                .Append("=\"");
+            _headers.Append(name);
+            _headers.Append("=\"");
             if (value != null)
             {
-                string obfuscatedValue = LoggingUtil.ObfuscateHeader(name, value);
+                var obfuscatedValue = HeaderObfuscator.ObfuscateHeader(name, value);
                 _headers.Append(obfuscatedValue);
             }
             _headers.Append("\"");
@@ -37,11 +29,32 @@ namespace OnlinePayments.Sdk.Logging
 
         public void SetBody(string body, string contentType)
         {
-            Body = LoggingUtil.ObfuscateBody(body);
+            Body = IsBinaryContent(contentType) ? "<binary content>" : BodyObfuscator.ObfuscateBody(body);
+            ContentType = contentType;
+        }
+        public void SetBinaryContentBody(string contentType)
+        {
+            if (!IsBinaryContent(contentType))
+            {
+                throw new ArgumentException("Not a binary content type: " + contentType);
+            }
+            Body = "<binary content>";
             ContentType = contentType;
         }
 
-        protected LogMessageBuilder(string requestId)
+        protected string RequestId { get; }
+
+        protected string Headers => _headers.ToString();
+        private readonly StringBuilder _headers = new StringBuilder();
+
+        protected string Body { get; private set; }
+        protected string ContentType { get; private set; }
+        protected string Charset { get; private set; }
+
+        protected BodyObfuscator BodyObfuscator { get; }
+        protected HeaderObfuscator HeaderObfuscator { get; }
+
+        protected LogMessageBuilder(string requestId, BodyObfuscator bodyObfuscator, HeaderObfuscator headerObfuscator)
         {
             if (string.IsNullOrEmpty(requestId))
             {
@@ -49,11 +62,21 @@ namespace OnlinePayments.Sdk.Logging
             }
 
             RequestId = requestId;
+            BodyObfuscator = bodyObfuscator ?? throw new ArgumentException("bodyObfuscator is required");
+            HeaderObfuscator = headerObfuscator ?? throw new ArgumentException("headerObfuscator is required");
         }
 
-        protected string EmptyIfNull(string value)
+        protected static string EmptyIfNull(string value)
         {
             return value ?? "";
+        }
+
+        private static bool IsBinaryContent(string contentType)
+        {
+            return contentType != null
+                && !contentType.StartsWith("text/", StringComparison.OrdinalIgnoreCase)
+                               && contentType.IndexOf("json", StringComparison.OrdinalIgnoreCase) < 0
+                               && contentType.IndexOf("xml", StringComparison.OrdinalIgnoreCase) < 0;
         }
     }
 }

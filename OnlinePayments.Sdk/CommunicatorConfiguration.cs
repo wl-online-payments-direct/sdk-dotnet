@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using OnlinePayments.Sdk.DefaultImpl;
+using OnlinePayments.Sdk.Authentication;
+using OnlinePayments.Sdk.Communication;
+using OnlinePayments.Sdk.Domain;
 
 namespace OnlinePayments.Sdk
 {
@@ -16,9 +18,29 @@ namespace OnlinePayments.Sdk
         public const int DefaultMaxConnections = 10;
 
         /// <summary>
-        /// Gets or sets the payment platform API endpoint URI.
+        /// Gets or sets the Online Payments platform API endpoint URI.
         /// </summary>
         public Uri ApiEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the connect timeout
+        /// </summary>
+        public TimeSpan? ConnectTimeout { get; set; }
+
+        /// <summary>
+        /// Gets or sets the socket timeout
+        /// </summary>
+        public TimeSpan? SocketTimeout { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximal number of connections
+        /// </summary>
+        public int MaxConnections { get; set; } = DefaultMaxConnections;
+
+        /// <summary>
+        /// Gets or sets the type of the authorization.
+        /// </summary>
+        public AuthorizationType AuthorizationType { get; set; } = AuthorizationType.V1HMAC;
 
         /// <summary>
         /// Gets or sets an identifier for the secret API key. The <c>apiKeyId</c> can be
@@ -37,31 +59,9 @@ namespace OnlinePayments.Sdk
         public string SecretApiKey { get; set; }
 
         /// <summary>
-        /// Gets or sets the connect timeout
-        /// </summary>
-        public TimeSpan? ConnectTimeout { get; set; } = TimeSpan.FromSeconds(10);
-
-        /// <summary>
-        /// Gets or sets the socket timeout
-        /// </summary>
-        public TimeSpan? SocketTimeout { get; set; } = TimeSpan.FromSeconds(10);
-
-        /// <summary>
-        /// Gets or sets the maximal number of connections
-        /// </summary>
-        public int MaxConnections { get; set; } = DefaultMaxConnections;
-
-        /// <summary>
-        /// Gets or sets the type of the authorization.
-        /// </summary>
-        public AuthorizationType AuthorizationType { get; set; } = AuthorizationType.V1HMAC;
-
-        internal ProxyConfiguration ProxyConfiguration { get; set; }
-
-        /// <summary>
         /// Gets the proxy object
         /// </summary>
-        public Proxy Proxy => ProxyConfiguration != null ? new Proxy { Username = ProxyConfiguration.Username, Password = ProxyConfiguration.Password, Uri = ProxyConfiguration.Uri } : null;
+        public Proxy Proxy => ProxyUri != null ? new Proxy { Username = ProxyUserName, Password = ProxyPassword, Uri = ProxyUri } : null;
 
         /// <summary>
         /// Gets or sets the proxy URI.
@@ -89,9 +89,9 @@ namespace OnlinePayments.Sdk
         public ShoppingCartExtension ShoppingCartExtension { get; set; }
 
         /// <summary>
-        /// Gets or sets the http client handler used by the System.Net.Http.HttpClient. 
+        /// Gets or sets a custom HttpClientHandler to be used by <see cref="DefaultConnection"/>.
         /// </summary>
-        public HttpClientHandler Handler { get; set; }
+        public HttpClientHandler HttpClientHandler { get; set; }
 
         public CommunicatorConfiguration()
         {
@@ -103,21 +103,46 @@ namespace OnlinePayments.Sdk
             if (properties != null)
             {
                 ApiEndpoint = GetApiEndpoint(properties);
-                AuthorizationType = AuthorizationType.GetValueOf(GetProperty(properties, "onlinePayments.api.authorizationType", AuthorizationType.ToString()));
-                ConnectTimeout = GetTimeout(properties, "onlinePayments.api.connectTimeout", ConnectTimeout);
-                SocketTimeout = GetTimeout(properties, "onlinePayments.api.socketTimeout", SocketTimeout);
-                MaxConnections = GetProperty(properties, "onlinePayments.api.maxConnections", MaxConnections);
+                AuthorizationType = AuthorizationType.GetValueOf(GetProperty(properties, "onlinePayments.api.authorizationType"));
 
-                var proxyURI = GetProperty(properties, "onlinePayments.api.proxy.uri");
-                if (proxyURI != null)
+                var connectTimeout = int.Parse(GetProperty(properties, "onlinePayments.api.connectTimeout"));
+                ConnectTimeout = connectTimeout >= 0 ? (TimeSpan?)TimeSpan.FromMilliseconds(connectTimeout) : null;
+
+                var socketTimeout = int.Parse(GetProperty(properties, "onlinePayments.api.socketTimeout"));
+                SocketTimeout = socketTimeout >= 0 ? (TimeSpan?)TimeSpan.FromMilliseconds(socketTimeout) : null;
+
+                MaxConnections = GetProperty(properties, "onlinePayments.api.maxConnections", DefaultMaxConnections);
+
+                var proxyUri = GetProperty(properties, "onlinePayments.api.proxy.uri");
+                var proxyUser = GetProperty(properties, "onlinePayments.api.proxy.username");
+                var proxyPass = GetProperty(properties, "onlinePayments.api.proxy.password");
+                if (proxyUri != null)
                 {
-                    ProxyConfiguration.Uri = new Uri(proxyURI);
-                    ProxyConfiguration.Username = GetProperty(properties, "onlinePayments.api.proxy.username");
-                    ProxyConfiguration.Password = GetProperty(properties, "onlinePayments.api.proxy.password");
+                    ProxyUri = new Uri(proxyUri);
+                    ProxyUserName = proxyUser;
+                    ProxyPassword = proxyPass;
                 }
 
                 Integrator = GetProperty(properties, "onlinePayments.api.integrator", "");
             }
+        }
+
+        internal CommunicatorConfiguration(CommunicatorConfigurationSection section)
+        {
+            ApiEndpoint = section.ApiEndpoint;
+            ConnectTimeout = section.ConnectTimeout;
+            SocketTimeout = section.SocketTimeout;
+            MaxConnections = section.MaxConnections;
+            AuthorizationType = AuthorizationType.GetValueOf(section.AuthorizationType);
+            ApiKeyId = section.ApiKeyId;
+            SecretApiKey = section.SecretApiKey;
+
+            ProxyUri = section.ProxyConfiguration.Uri;
+            ProxyUserName = section.ProxyConfiguration.Username;
+            ProxyPassword = section.ProxyConfiguration.Password;
+
+            Integrator = section.Integrator;
+            ShoppingCartExtension = section.ShoppingCartExtension;
         }
 
         /// <summary>
@@ -204,11 +229,7 @@ namespace OnlinePayments.Sdk
         /// <returns>This.</returns>
         public CommunicatorConfiguration WithProxyUri(Uri proxyUri)
         {
-            if (ProxyConfiguration == null)
-            {
-                ProxyConfiguration = new ProxyConfiguration();
-            }
-            ProxyConfiguration.Uri = proxyUri;
+            ProxyUri = proxyUri;
             return this;
         }
 
@@ -219,11 +240,7 @@ namespace OnlinePayments.Sdk
         /// <returns>This.</returns>
         public CommunicatorConfiguration WithProxyUserName(string proxyName)
         {
-            if (ProxyConfiguration == null)
-            {
-                ProxyConfiguration = new ProxyConfiguration();
-            }
-            ProxyConfiguration.Username = proxyName;
+            ProxyUserName = proxyName;
             return this;
         }
 
@@ -234,11 +251,7 @@ namespace OnlinePayments.Sdk
         /// <returns>This.</returns>
         public CommunicatorConfiguration WithProxyPassword(string proxyPassword)
         {
-            if (ProxyConfiguration == null)
-            {
-                ProxyConfiguration = new ProxyConfiguration();
-            }
-            ProxyConfiguration.Password = proxyPassword;
+            ProxyPassword = proxyPassword;
             return this;
         }
 
@@ -265,49 +278,38 @@ namespace OnlinePayments.Sdk
         }
 
         /// <summary>
-        /// Returns this with the http client handler assigned.
+        /// Returns this with a custom HttpClientHandler assigned.
         /// </summary>
-        /// <param name="handler">The http client handler.</param>
+        /// <param name="httpClientHandler">The custom HttpClientHandler.</param>
         /// <returns>This.</returns>
-        public CommunicatorConfiguration WithHttpClientHandler(HttpClientHandler handler)
+        public CommunicatorConfiguration WithHttpClientHandler(HttpClientHandler httpClientHandler)
         {
-            Handler = handler;
+            HttpClientHandler = httpClientHandler;
             return this;
         }
 
-        static string GetProperty(IDictionary<string, string> properties, string name, string defaultValue = null)
+        private static string GetProperty(IDictionary<string, string> properties, string name, string defaultValue = null)
         {
-            return properties.ContainsKey(name)
-                ? properties[name]
-                : defaultValue;
+            return properties.TryGetValue(name, out var value) ? value : defaultValue;
         }
 
-        static int GetProperty(IDictionary<string, string> properties, string key, int defaultValue)
+        private static int GetProperty(IDictionary<string, string> properties, string key, int defaultValue)
         {
-            string propertyValue = GetProperty(properties, key);
-            return int.TryParse(propertyValue, out int propertyInt)
-                ? propertyInt
-                : defaultValue;
+            var propertyValue = GetProperty(properties, key);
+            return int.TryParse(propertyValue, out var propertyInt) ? propertyInt : defaultValue;
         }
 
-        Uri GetApiEndpoint(IDictionary<string, string> properties)
+        private static Uri GetApiEndpoint(IDictionary<string, string> properties)
         {
             var host = GetProperty(properties, "onlinePayments.api.endpoint.host", "");
             var scheme = GetProperty(properties, "onlinePayments.api.endpoint.scheme", "https");
             var port = GetProperty(properties, "onlinePayments.api.endpoint.port", -1);
 
-            return CreateURI(scheme, host, port);
+            return CreateUri(scheme, host, port);
+
         }
 
-        private TimeSpan? GetTimeout(IDictionary<string, string> properties, String propertyName, TimeSpan? defaultTimeout)
-        {
-            var timeoutProperty = GetProperty(properties, propertyName);
-            return int.TryParse(timeoutProperty, out int timeoutInMilliseconds)
-                ? TimeSpan.FromMilliseconds(timeoutInMilliseconds)
-                : defaultTimeout;
-        }
-
-        Uri CreateURI(string scheme, string host, int port)
+        private static Uri CreateUri(string scheme, string host, int port)
         {
             try
             {

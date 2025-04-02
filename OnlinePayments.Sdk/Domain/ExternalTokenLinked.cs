@@ -1,28 +1,30 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
+using System;
 using Newtonsoft.Json;
 
 namespace OnlinePayments.Sdk.Domain
 {
     public class ExternalTokenLinked
     {
+        /// <summary>
+        /// The computed token
+        /// </summary>
         [JsonProperty(PropertyName = "ComputedToken")]
-        /// <summary>
-        /// The computed token<para />
-        /// </summary>
-        public string ComputedToken { get; set; } = null;
+        public string ComputedToken { get; set; }
 
+        /// <summary>
+        /// Deprecated: Use the field ComputedToken instead.
+        /// </summary>
         [JsonProperty(PropertyName = "GTSComputedToken")]
-        /// <summary>
-        /// Deprecated: Use the field ComputedToken instead.<para />
-        /// </summary>
-        public string GTSComputedToken { get; set; } = null;
+        [Obsolete("Use the field ComputedToken instead.")]
+        public string GTSComputedToken { get; set; }
 
-        [JsonProperty(PropertyName = "GeneratedToken")]
         /// <summary>
-        /// The generated token<para />
+        /// The generated token
         /// </summary>
-        public string GeneratedToken { get; set; } = null;
+        [JsonProperty(PropertyName = "GeneratedToken")]
+        public string GeneratedToken { get; set; }
     }
 }

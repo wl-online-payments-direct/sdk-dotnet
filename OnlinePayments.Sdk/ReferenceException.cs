@@ -1,3 +1,6 @@
+/*
+ * This file was automatically generated.
+ */
 using System.Collections.Generic;
 using System.Net;
 using OnlinePayments.Sdk.Domain;
@@ -10,7 +13,7 @@ namespace OnlinePayments.Sdk
     public class ReferenceException : ApiException
     {
         public ReferenceException(HttpStatusCode statusCode, string responseBody, string errorId, IList<APIError> errors)
-            : base("the payment platform returned an incorrect request error response", statusCode, responseBody, errorId, errors)
+            : base("the payment platform returned a reference error response", statusCode, responseBody, errorId, errors)
         {
 
         }

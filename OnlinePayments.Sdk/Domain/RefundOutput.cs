@@ -1,45 +1,43 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class RefundOutput
     {
         /// <summary>
-        /// Object containing amount and ISO currency code attributes<para />
+        /// Object containing amount and ISO currency code attributes
         /// </summary>
-        public AmountOfMoney AmountOfMoney { get; set; } = null;
+        public AmountOfMoney AmountOfMoney { get; set; }
 
-        public long? AmountPaid { get; set; } = null;
+        public long? AmountPaid { get; set; }
 
-        public RefundCardMethodSpecificOutput CardRefundMethodSpecificOutput { get; set; } = null;
+        public RefundCardMethodSpecificOutput CardRefundMethodSpecificOutput { get; set; }
 
-        public RefundEWalletMethodSpecificOutput EWalletRefundMethodSpecificOutput { get; set; } = null;
+        public RefundEWalletMethodSpecificOutput EWalletRefundMethodSpecificOutput { get; set; }
 
         /// <summary>
-        /// It allows you to store additional parameters for the transaction in the format you prefer (e.g.-> key-value query string, JSON, etc.) These parameters are then echoed back to you in API GET calls and Webhook notifications. This field must not contain any personal data.<para />
+        /// It allows you to store additional parameters for the transaction in the format you prefer (e.g.-&gt; key-value query string, JSON, etc.) These parameters are then echoed back to you in API GET calls and Webhook notifications. This field must not contain any personal data.
         /// </summary>
-        public string MerchantParameters { get; set; } = null;
+        public string MerchantParameters { get; set; }
 
-        public RefundMobileMethodSpecificOutput MobileRefundMethodSpecificOutput { get; set; } = null;
+        public RefundMobileMethodSpecificOutput MobileRefundMethodSpecificOutput { get; set; }
 
         /// <summary>
-        /// Payment method identifier used by the our payment engine.<para />
+        /// Object that holds all reference properties that are linked to this transaction
         /// </summary>
-        public string PaymentMethod { get; set; } = null;
-
-        public RefundRedirectMethodSpecificOutput RedirectRefundMethodSpecificOutput { get; set; } = null;
+        public OperationPaymentReferences OperationReferences { get; set; }
 
         /// <summary>
-        /// Object that holds all reference properties that are linked to this transaction<para />
-        /// <para />
-        /// Deprecated: Use OperationReferences instead.<para />
+        /// Payment method identifier used by the our payment engine.
         /// </summary>
-        public PaymentReferences References { get; set; } = null;
+        public string PaymentMethod { get; set; }
+
+        public RefundRedirectMethodSpecificOutput RedirectRefundMethodSpecificOutput { get; set; }
 
         /// <summary>
-        /// Object that holds all reference properties that are linked to this transaction<para />
+        /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
-        public OperationPaymentReferences OperationReferences { get; set; } = null;
+        public PaymentReferences References { get; set; }
     }
 }

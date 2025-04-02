@@ -1,13 +1,13 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class GetMandateResponse
     {
         /// <summary>
-        /// Object containing the created mandate.<para />
+        /// Object containing the created mandate.
         /// </summary>
-        public MandateResponse Mandate { get; set; } = null;
+        public MandateResponse Mandate { get; set; }
     }
 }

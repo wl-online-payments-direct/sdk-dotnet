@@ -11,26 +11,24 @@ namespace OnlinePayments.Sdk.Webhooks
     /// </summary>
     public class InMemorySecretKeyStore : ISecretKeyStore
     {
-        public static readonly InMemorySecretKeyStore Instance = new InMemorySecretKeyStore ();
-
-        private readonly IDictionary<string,string> _store = new ConcurrentDictionary<string, string> ();
-
         private InMemorySecretKeyStore ()
         {
         }
 
+        public static readonly InMemorySecretKeyStore Instance = new InMemorySecretKeyStore ();
+
+        private readonly IDictionary<string,string> _store = new ConcurrentDictionary<string, string> ();
+
         /// <summary>
         /// Stores the given secret key for the given key id.
         /// </summary>
-        public void StoreSecretKey(string keyId, string secretKey)
-        {
-            if (String.IsNullOrWhiteSpace(keyId))
+        public void StoreSecretKey(string keyId, string secretKey) {
+            if (keyId.IsBlank())
             {
-                throw new ArgumentNullException ("keyId is required");
+                throw new ArgumentException ("keyId is required");
             }
-            if (String.IsNullOrWhiteSpace(secretKey))
-            {
-                throw new ArgumentNullException("secretKey is required");
+            if (secretKey.IsBlank()) {
+                throw new ArgumentException("secretKey is required");
             }
             _store.Add(keyId, secretKey);
         }
@@ -38,22 +36,20 @@ namespace OnlinePayments.Sdk.Webhooks
         /// <summary>
         /// Removes the secret key for the given key id.
         /// </summary>
-        public void RemoveSecretKey(string keyId)
-        {
+        public void RemoveSecretKey(string keyId) {
             _store.Remove (keyId);
         }
 
         /// <summary>
         /// Removes all stored secret keys
         /// </summary>
-        public void Clear()
-        {
+        public void Clear() {
             _store.Clear ();
         }
 
         public string GetSecretKey(string keyId)
         {
-            if (_store.TryGetValue(keyId, out string secretKey))
+            if (_store.TryGetValue(keyId, out var secretKey))
             {
                 return secretKey;
             }

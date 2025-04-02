@@ -1,13 +1,13 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class LineItemInvoiceData
     {
         /// <summary>
-        /// Shopping cart item description<para />
+        /// Shopping cart item description
         /// </summary>
-        public string Description { get; set; } = null;
+        public string Description { get; set; }
     }
 }

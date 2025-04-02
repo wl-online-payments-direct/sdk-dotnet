@@ -2,7 +2,7 @@ using System;
 
 namespace OnlinePayments.Sdk
 {
-    static class UriUtils
+    internal static class UriUtils
     {
         internal static bool HasPath(this Uri apiEndpoint)
             => !string.IsNullOrEmpty(apiEndpoint.LocalPath) && !apiEndpoint.LocalPath.Equals("/");

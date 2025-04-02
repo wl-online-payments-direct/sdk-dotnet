@@ -8,10 +8,6 @@ namespace OnlinePayments.Sdk.Logging
     /// </summary>
     public class NLogCommunicatorLogger : ICommunicatorLogger
     {
-        private readonly ILogger _logger;
-        private readonly LogLevel _logLevel;
-        private readonly LogLevel _errorLogLevel;
-
         /// <summary>
         /// Creates a new communicator logger.
         /// </summary>
@@ -30,7 +26,7 @@ namespace OnlinePayments.Sdk.Logging
         /// <param name="errorLogLevel">The level to use when logging through <see cref="Log(string, Exception)"/></param>
         public NLogCommunicatorLogger(ILogger logger, LogLevel logLevel, LogLevel errorLogLevel)
         {
-            _logger = logger ?? throw new ArgumentNullException();
+            _logger = logger ?? throw new ArgumentException("logger is required");
             _logLevel = logLevel ?? LogLevel.Debug;
             _errorLogLevel = errorLogLevel ?? LogLevel.Error;
         }
@@ -43,8 +39,12 @@ namespace OnlinePayments.Sdk.Logging
 
         public void Log(string message, Exception exception)
         {
-            _logger.Log(_errorLogLevel, message, exception, new object[0]);
+            _logger.Log(_errorLogLevel, message, exception, Array.Empty<object>());
         }
         #endregion
+
+        private readonly ILogger _logger;
+        private readonly LogLevel _logLevel;
+        private readonly LogLevel _errorLogLevel;
     }
 }

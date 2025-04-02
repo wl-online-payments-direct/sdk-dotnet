@@ -1,25 +1,25 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class Capture
     {
         /// <summary>
-        /// Object containing capture details<para />
+        /// Object containing capture details
         /// </summary>
-        public CaptureOutput CaptureOutput { get; set; } = null;
+        public CaptureOutput CaptureOutput { get; set; }
 
-        public string Id { get; set; } = null;
-
-        /// <summary>
-        /// Current high-level status of the payment in a human-readable form.<para />
-        /// </summary>
-        public string Status { get; set; } = null;
+        public string Id { get; set; }
 
         /// <summary>
-        /// This object has the numeric representation of the current capture status, timestamp of last status change and performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.<para />
+        /// Current high-level status of the payment in a human-readable form.
         /// </summary>
-        public CaptureStatusOutput StatusOutput { get; set; } = null;
+        public string Status { get; set; }
+
+        /// <summary>
+        /// This object has the numeric representation of the current capture status, timestamp of last status change and performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.
+        /// </summary>
+        public CaptureStatusOutput StatusOutput { get; set; }
     }
 }

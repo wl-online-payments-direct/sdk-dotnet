@@ -1,33 +1,33 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class MandateCustomerResponse
     {
         /// <summary>
-        /// Object containing IBAN information<para />
+        /// Object containing IBAN information
         /// </summary>
-        public BankAccountIban BankAccountIban { get; set; } = null;
+        public BankAccountIban BankAccountIban { get; set; }
 
         /// <summary>
-        /// Name of company, as a customer<para />
+        /// Name of company, as a customer
         /// </summary>
-        public string CompanyName { get; set; } = null;
+        public string CompanyName { get; set; }
 
         /// <summary>
-        /// Object containing email address<para />
+        /// Object containing email address
         /// </summary>
-        public MandateContactDetails ContactDetails { get; set; } = null;
+        public MandateContactDetails ContactDetails { get; set; }
 
         /// <summary>
-        /// Object containing consumer address details<para />
+        /// Object containing consumer address details
         /// </summary>
-        public MandateAddressResponse MandateAddress { get; set; } = null;
+        public MandateAddressResponse MandateAddress { get; set; }
 
         /// <summary>
-        /// Object containing personal information of the customer<para />
+        /// Object containing personal information of the customer
         /// </summary>
-        public MandatePersonalInformationResponse PersonalInformation { get; set; } = null;
+        public MandatePersonalInformationResponse PersonalInformation { get; set; }
     }
 }

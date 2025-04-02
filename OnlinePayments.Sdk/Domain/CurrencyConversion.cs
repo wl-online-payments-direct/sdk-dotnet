@@ -1,18 +1,18 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class CurrencyConversion
     {
         /// <summary>
-        /// Dynamic Currency Conversion(DCC) Proposal accepted by user<para />
+        /// Dynamic Currency Conversion(DCC) Proposal accepted by user
         /// </summary>
-        public bool? AcceptedByUser { get; set; } = null;
+        public bool? AcceptedByUser { get; set; }
 
         /// <summary>
-        /// Details of currency conversion to be proposed to the cardholder<para />
+        /// Details of currency conversion to be proposed to the cardholder
         /// </summary>
-        public DccProposal Proposal { get; set; } = null;
+        public DccProposal Proposal { get; set; }
     }
 }

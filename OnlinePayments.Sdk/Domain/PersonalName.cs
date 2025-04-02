@@ -1,23 +1,23 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class PersonalName
     {
         /// <summary>
-        /// Given name(s) or first name(s) of the customer<para />
+        /// Given name(s) or first name(s) of the customer
         /// </summary>
-        public string FirstName { get; set; } = null;
+        public string FirstName { get; set; }
 
         /// <summary>
-        /// Surname(s) or last name(s) of the customer<para />
+        /// Surname(s) or last name(s) of the customer
         /// </summary>
-        public string Surname { get; set; } = null;
+        public string Surname { get; set; }
 
         /// <summary>
-        /// Title of customer<para />
+        /// Title of customer
         /// </summary>
-        public string Title { get; set; } = null;
+        public string Title { get; set; }
     }
 }

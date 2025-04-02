@@ -1,10 +1,10 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class RegularExpressionValidator
     {
-        public string RegularExpression { get; set; } = null;
+        public string RegularExpression { get; set; }
     }
 }

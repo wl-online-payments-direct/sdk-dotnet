@@ -1,33 +1,35 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class PaymentProductFieldDisplayElement
     {
         /// <summary>
-        /// The ID of the display element.<para />
+        /// The ID of the display element.
         /// </summary>
-        public string Id { get; set; } = null;
+        public string Id { get; set; }
 
         /// <summary>
-        /// The label of the display element.<para />
+        /// The label of the display element.
         /// </summary>
-        public string Label { get; set; } = null;
+        public string Label { get; set; }
 
         /// <summary>
-        /// The type of the display element. Indicates how the value should be presented. Possible values are:<para />
-        /// * STRING - as plain text<para />
-        /// * CURRENCY - as an amount in cents displayed with a decimal separator and the currency of the payment<para />
-        /// * PERCENTAGE - as a number with a percentage sign<para />
-        /// * INTEGER - as an integer<para />
-        /// * URI - as a link<para />
+        /// The type of the display element. Indicates how the value should be presented. Possible values are:
+        /// <list type="bullet">
+        ///   <item><description>STRING - as plain text</description></item>
+        ///   <item><description>CURRENCY - as an amount in cents displayed with a decimal separator and the currency of the payment</description></item>
+        ///   <item><description>PERCENTAGE - as a number with a percentage sign</description></item>
+        ///   <item><description>INTEGER - as an integer</description></item>
+        ///   <item><description>URI - as a link</description></item>
+        /// </list>
         /// </summary>
-        public string Type { get; set; } = null;
+        public string Type { get; set; }
 
         /// <summary>
-        /// the value of the display element.<para />
+        /// the value of the display element.
         /// </summary>
-        public string Value { get; set; } = null;
+        public string Value { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System;
-using OnlinePayments.Sdk.Domain;
 using System.Threading.Tasks;
+using OnlinePayments.Sdk.Domain;
 
 namespace OnlinePayments.Sdk.It
 {
@@ -35,7 +35,7 @@ namespace OnlinePayments.Sdk.It
                 {
                     PaymentProductId = 1,
                     IsRecurring = false,
-                    SkipAuthentication = true,
+                    ThreeDSecure = new(){ SkipAuthentication = true },
                     Card = new Card
                     {
                         CardholderName = "Wile E. Coyote",
@@ -49,7 +49,7 @@ namespace OnlinePayments.Sdk.It
             string idempotenceKey = Guid.NewGuid().ToString();
             CallContext context = new CallContext().WithIdempotenceKey(idempotenceKey);
 
-            using (Client client = GetClient())
+            using (IClient client = GetClient())
             {
                 CreatePaymentResponse response = await client.WithNewMerchant(GetMerchantId()).Payments.CreatePayment(body, context)
                     .ConfigureAwait(false);

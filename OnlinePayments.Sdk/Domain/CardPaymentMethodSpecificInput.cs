@@ -1,153 +1,189 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
+using System;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class CardPaymentMethodSpecificInput
     {
         /// <summary>
-        /// * true - Default - Allows subsequent payments to use PSD2 dynamic linking from this payment (including Card On File).<para />
-        /// * false - Indicates that the dynamic linking (including Card On File data) will be ignored.<para />
+        /// <list type="bullet">
+        ///   <item><description>true - Default - Allows subsequent payments to use PSD2 dynamic linking from this payment (including Card On File).</description></item>
+        ///   <item><description>false - Indicates that the dynamic linking (including Card On File data) will be ignored.</description></item>
+        /// </list>
         /// </summary>
-        public bool? AllowDynamicLinking { get; set; } = null;
+        public bool? AllowDynamicLinking { get; set; }
 
         /// <summary>
-        /// Determines the type of the authorization that will be used. Allowed values: <para />
-        ///   * FINAL_AUTHORIZATION - The payment creation results in an authorization that is ready for capture. Final authorizations can't be reversed and need to be captured for the full amount within 7 days. <para />
-        ///   * PRE_AUTHORIZATION - The payment creation results in a pre-authorization that is ready for capture. Pre-authortizations can be reversed and can be captured within 30 days. The capture amount can be lower than the authorized amount. <para />
-        ///   * SALE - The payment creation results in an authorization that is already captured at the moment of approval. <para />
-        /// <para />
-        ///   Only used with some acquirers, ignored for acquirers that do not support this. In case the acquirer does not allow this to be specified the authorizationMode is 'unspecified', which behaves similar to a final authorization.<para />
+        /// Determines the type of the authorization that will be used. Allowed values:
+        /// <list type="bullet">
+        ///   <item><description>FINAL_AUTHORIZATION - The payment creation results in an authorization that is ready for capture. Final authorizations can't be reversed and need to be captured for the full amount within 7 days.</description></item>
+        ///   <item><description>PRE_AUTHORIZATION - The payment creation results in a pre-authorization that is ready for capture. Pre-authortizations can be reversed and can be captured within 30 days. The capture amount can be lower than the authorized amount.</description></item>
+        ///   <item><description>SALE - The payment creation results in an authorization that is already captured at the moment of approval.</description></item>
+        /// </list>
+        /// <p />
+        /// Only used with some acquirers, ignored for acquirers that do not support this. In case the acquirer does not allow this to be specified the authorizationMode is 'unspecified', which behaves similar to a final authorization.
         /// </summary>
-        public string AuthorizationMode { get; set; } = null;
+        public string AuthorizationMode { get; set; }
 
         /// <summary>
-        /// Object containing card details<para />
+        /// Object containing card details
         /// </summary>
-        public Card Card { get; set; } = null;
+        public Card Card { get; set; }
 
         /// <summary>
-        /// The end date of the last scheduled payment in a series of transactions.<para />
-        /// Format YYYYMMDD<para />
+        /// The end date of the last scheduled payment in a series of transactions.
+        /// Format YYYYMMDD
         /// </summary>
-        public string CardOnFileRecurringExpiration { get; set; } = null;
+        public string CardOnFileRecurringExpiration { get; set; }
 
         /// <summary>
-        /// Period of payment occurrence for recurring and installment payments. Allowed values:<para />
-        ///   * Yearly<para />
-        ///   * Quarterly<para />
-        ///   * Monthly<para />
-        ///   * Weekly<para />
-        ///   * Daily<para />
+        /// Period of payment occurrence for recurring and installment payments. Allowed values:
+        /// <list type="bullet">
+        ///   <item><description>Yearly</description></item>
+        ///   <item><description>Quarterly</description></item>
+        ///   <item><description>Monthly</description></item>
+        ///   <item><description>Weekly</description></item>
+        ///   <item><description>Daily</description></item>
+        /// </list>
         /// </summary>
-        public string CardOnFileRecurringFrequency { get; set; } = null;
-
-        public CurrencyConversionInput CurrencyConversion { get; set; } = null;
-
-        /// <summary>
-        /// The unique scheme transactionId of the initial transaction that was performed with SCA. In case this is unknown a scheme transactionId of an earlier transaction part of the same sequence can be used as a fall-back. Strongly advised to be submitted for any MerchantInitiated or recurring transaction (a subsequent one).<para />
-        /// </summary>
-        public string InitialSchemeTransactionId { get; set; } = null;
+        public string CardOnFileRecurringFrequency { get; set; }
 
         /// <summary>
-        /// * true - Indicates that the transactions is part of a scheduled recurring sequence. In addition, recurringPaymentSequenceIndicator indicates if the transaction is the first or subsequent in a recurring sequence. <para />
-        /// * false - Indicates that the transaction is not part of a scheduled recurring sequence.<para />
-        /// The default value for this property is false.<para />
+        /// For cobranded cards, this field indicates the brand selection method:
+        /// <list type="bullet">
+        ///   <item><description>default - The holder implicitly accepted the default brand.</description></item>
+        ///   <item><description>alternative - The holder explicitly selected an alternative brand.</description></item>
+        ///   <item><description>notApplicable - The card is not cobranded.</description></item>
+        /// </list>
         /// </summary>
-        public bool? IsRecurring { get; set; } = null;
+        public string CobrandSelectionIndicator { get; set; }
+
+        public CurrencyConversionInput CurrencyConversion { get; set; }
 
         /// <summary>
-        /// Container announcing forecoming subsequent payments. Holds modalities of these subsequent payments.<para />
+        /// The unique scheme transactionId of the initial transaction that was performed with SCA. In case this is unknown a scheme transactionId of an earlier transaction part of the same sequence can be used as a fall-back. Strongly advised to be submitted for any MerchantInitiated or recurring transaction (a subsequent one).
         /// </summary>
-        public MultiplePaymentInformation MultiplePaymentInformation { get; set; } = null;
+        public string InitialSchemeTransactionId { get; set; }
 
         /// <summary>
-        /// Object containing specific input required for CB payments<para />
+        /// <list type="bullet">
+        ///   <item><description>true - Indicates that the transactions is part of a scheduled recurring sequence. In addition, recurringPaymentSequenceIndicator indicates if the transaction is the first or subsequent in a recurring sequence.</description></item>
+        ///   <item><description>false - Indicates that the transaction is not part of a scheduled recurring sequence.
+        /// The default value for this property is false.</description></item>
+        /// </list>
         /// </summary>
-        public PaymentProduct130SpecificInput PaymentProduct130SpecificInput { get; set; } = null;
+        public bool? IsRecurring { get; set; }
 
         /// <summary>
-        /// Object containing specific input required for OneyDuplo Leroy Merlin payments.<para />
+        /// Container announcing forecoming subsequent payments. Holds modalities of these subsequent payments.
         /// </summary>
-        public PaymentProduct3208SpecificInput PaymentProduct3208SpecificInput { get; set; } = null;
+        public MultiplePaymentInformation MultiplePaymentInformation { get; set; }
 
         /// <summary>
-        /// Object containing specific input required for OneyDuplo Alcampo payments.<para />
+        /// Object containing specific input required for CB payments
         /// </summary>
-        public PaymentProduct3209SpecificInput PaymentProduct3209SpecificInput { get; set; } = null;
+        public PaymentProduct130SpecificInput PaymentProduct130SpecificInput { get; set; }
 
         /// <summary>
-        /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
+        /// Object containing specific input required for bancontact.
         /// </summary>
-        public int? PaymentProductId { get; set; } = null;
+        public PaymentProduct3012SpecificInput PaymentProduct3012SpecificInput { get; set; }
 
         /// <summary>
-        /// Object containing data related to recurring<para />
+        /// Object containing specific input required for OneyDuplo Leroy Merlin payments.
         /// </summary>
-        public CardRecurrenceDetails Recurring { get; set; } = null;
+        public PaymentProduct3208SpecificInput PaymentProduct3208SpecificInput { get; set; }
 
         /// <summary>
-        /// The URL that the customer is redirect to after the payment flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the customer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.<para />
-        /// Note: The provided URL should be absolute and contain the protocol to use, e.g. http:// or https://. For use on mobile devices a custom protocol can be used in the form of protocol://. This protocol must be registered on the device first.<para />
-        /// URLs without a protocol will be rejected.<para />
+        /// Object containing specific input required for OneyDuplo Alcampo payments.
         /// </summary>
-        public string ReturnUrl { get; set; } = null;
+        public PaymentProduct3209SpecificInput PaymentProduct3209SpecificInput { get; set; }
 
         /// <summary>
-        /// This is the unique Scheme Reference Data from the initial transaction that was performed with a Strong Customer Authentication. In case this value is unknown, a Scheme Reference of an earlier transaction that was part of the same sequence can be used as a fall-back. Still, it is strongly advised to submit this value for any Merchant Initiated Transaction or any recurring transaction (hereby defined as "Subsequent").<para />
+        /// Payment product identifier - Please see Products documentation for a full overview of possible values.
         /// </summary>
-        public string SchemeReferenceData { get; set; } = null;
+        public int? PaymentProductId { get; set; }
 
         /// <summary>
-        /// Deprecated: Use threeDSecure.skipAuthentication instead.<para />
-        ///  * true = 3D Secure authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to recurring.<para />
-        ///  * false = 3D Secure authentication will not be skipped for this transaction.<para />
-        /// <para />
-        ///   Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.<para />
+        /// Object containing data related to recurring
         /// </summary>
-        public bool? SkipAuthentication { get; set; } = null;
+        public CardRecurrenceDetails Recurring { get; set; }
 
         /// <summary>
-        /// Object containing specific data regarding 3-D Secure<para />
+        /// The URL that the customer is redirect to after the payment flow has finished. You can add any number of key value pairs in the query string that, for instance help you to identify the customer when they return to your site. Please note that we will also append some additional key value pairs that will also help you with this identification process.
+        /// Note: The provided URL should be absolute and contain the protocol to use, e.g. http:// or https://. For use on mobile devices a custom protocol can be used in the form of protocol://. This protocol must be registered on the device first.
+        /// URLs without a protocol will be rejected.
         /// </summary>
-        public ThreeDSecure ThreeDSecure { get; set; } = null;
+        public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// ID of the token to use to create the payment.<para />
+        /// This is the unique Scheme Reference Data from the initial transaction that was performed with a Strong Customer Authentication. In case this value is unknown, a Scheme Reference of an earlier transaction that was part of the same sequence can be used as a fall-back. Still, it is strongly advised to submit this value for any Merchant Initiated Transaction or any recurring transaction (hereby defined as &quot;Subsequent&quot;).
         /// </summary>
-        public string Token { get; set; } = null;
+        public string SchemeReferenceData { get; set; }
 
         /// <summary>
-        /// Indicates if this transaction should be tokenized<para />
-        ///  * true - Tokenize the transaction. Note that a payment on the payment platform that results in a status REDIRECTED cannot be tokenized in this way.<para />
-        ///  * false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.<para />
+        /// Deprecated: Use threeDSecure.skipAuthentication instead.
+        /// <list type="bullet">
+        ///   <item><description>true = 3D Secure authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to recurring.</description></item>
+        ///   <item><description>false = 3D Secure authentication will not be skipped for this transaction.</description></item>
+        /// </list>
+        /// <p />
+        /// Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.
         /// </summary>
-        public bool? Tokenize { get; set; } = null;
+        [Obsolete("Use threeDSecure.skipAuthentication instead.  * true = 3D Secure authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to recurring.  * false = 3D Secure authentication will not be skipped for this transaction.    Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.")]
+        public bool? SkipAuthentication { get; set; }
 
         /// <summary>
-        /// Indicates the channel via which the payment is created. Allowed values:<para />
-        ///   * ECOMMERCE - The transaction is a regular E-Commerce transaction.<para />
-        ///   * MOTO - The transaction is a Mail Order/Telephone Order.<para />
-        /// <para />
-        ///   Defaults to ECOMMERCE.<para />
+        /// Object containing specific data regarding 3-D Secure
         /// </summary>
-        public string TransactionChannel { get; set; } = null;
+        public ThreeDSecure ThreeDSecure { get; set; }
 
         /// <summary>
-        /// Indicates which party initiated the unscheduled recurring transaction. Allowed values:<para />
-        ///   * merchantInitiated - Merchant Initiated Transaction.<para />
-        ///   * cardholderInitiated - Cardholder Initiated Transaction.<para />
-        /// Note:<para />
-        ///   * This property is not allowed if isRecurring is true.<para />
-        ///   * When a customer has chosen to use a token on a hosted checkout this property is set to "cardholderInitiated".<para />
+        /// ID of the token to use to create the payment.
         /// </summary>
-        public string UnscheduledCardOnFileRequestor { get; set; } = null;
+        public string Token { get; set; }
 
         /// <summary>
-        /// * first = This transaction is the first of a series of unscheduled recurring transactions<para />
-        /// * subsequent = This transaction is a subsequent transaction in a series of unscheduled recurring transactions<para />
-        /// Note: this property is not allowed if isRecurring is true.<para />
+        /// Indicates if this transaction should be tokenized
+        /// <list type="bullet">
+        ///   <item><description>true - Tokenize the transaction. Note that a payment on the payment platform that results in a status REDIRECTED cannot be tokenized in this way.</description></item>
+        ///   <item><description>false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.</description></item>
+        /// </list>
         /// </summary>
-        public string UnscheduledCardOnFileSequenceIndicator { get; set; } = null;
+        public bool? Tokenize { get; set; }
+
+        /// <summary>
+        /// Indicates the channel via which the payment is created. Allowed values:
+        /// <list type="bullet">
+        ///   <item><description>ECOMMERCE - The transaction is a regular E-Commerce transaction.</description></item>
+        ///   <item><description>MOTO - The transaction is a Mail Order/Telephone Order.</description></item>
+        /// </list>
+        /// <p />
+        /// Defaults to ECOMMERCE.
+        /// </summary>
+        public string TransactionChannel { get; set; }
+
+        /// <summary>
+        /// Indicates which party initiated the unscheduled recurring transaction. Allowed values:
+        /// <list type="bullet">
+        ///   <item><description>merchantInitiated - Merchant Initiated Transaction.</description></item>
+        ///   <item><description>cardholderInitiated - Cardholder Initiated Transaction.
+        /// Note:</description></item>
+        ///   <item><description>This property is not allowed if isRecurring is true.</description></item>
+        ///   <item><description>When a customer has chosen to use a token on a hosted checkout this property is set to &quot;cardholderInitiated&quot;.</description></item>
+        /// </list>
+        /// </summary>
+        public string UnscheduledCardOnFileRequestor { get; set; }
+
+        /// <summary>
+        /// <list type="bullet">
+        ///   <item><description>first = This transaction is the first of a series of unscheduled recurring transactions</description></item>
+        ///   <item><description>subsequent = This transaction is a subsequent transaction in a series of unscheduled recurring transactions
+        /// Note: this property is not allowed if isRecurring is true.</description></item>
+        /// </list>
+        /// </summary>
+        public string UnscheduledCardOnFileSequenceIndicator { get; set; }
     }
 }

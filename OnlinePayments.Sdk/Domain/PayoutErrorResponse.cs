@@ -1,5 +1,5 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 using System.Collections.Generic;
 
@@ -7,13 +7,10 @@ namespace OnlinePayments.Sdk.Domain
 {
     public class PayoutErrorResponse
     {
-        public string ErrorId { get; set; } = null;
+        public string ErrorId { get; set; }
 
-        /// <summary>
-        /// Contains the set of errors<para />
-        /// </summary>
-        public IList<APIError> Errors { get; set; } = null;
+        public IList<APIError> Errors { get; set; }
 
-        public PayoutResult PayoutResult { get; set; } = null;
+        public PayoutResult PayoutResult { get; set; }
     }
 }

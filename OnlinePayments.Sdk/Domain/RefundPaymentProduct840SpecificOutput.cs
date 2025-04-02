@@ -1,10 +1,10 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class RefundPaymentProduct840SpecificOutput
     {
-        public RefundPaymentProduct840CustomerAccount CustomerAccount { get; set; } = null;
+        public RefundPaymentProduct840CustomerAccount CustomerAccount { get; set; }
     }
 }

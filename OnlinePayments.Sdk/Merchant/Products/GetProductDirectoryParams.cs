@@ -1,29 +1,30 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
-using OnlinePayments.Sdk;
 using System.Collections.Generic;
+using OnlinePayments.Sdk.Communication;
 
 namespace OnlinePayments.Sdk.Merchant.Products
 {
     /// <summary>
-    /// Query parameters for 'Get payment product directory'.
+    /// Query parameters for
+    /// Get payment product directory (/v2/{merchantId}/products/{paymentProductId}/directory)
     /// </summary>
     public class GetProductDirectoryParams : AbstractParamRequest
     {
         /// <summary>
-        /// ISO 3166-1 alpha-2 country code<para />
+        /// ISO 3166-1 alpha-2 country code
         /// </summary>
-        public string CountryCode { get; set; } = null;
+        public string CountryCode { get; set; }
 
         /// <summary>
-        /// Three-letter ISO currency code representing the currency of the transaction<para />
+        /// Three-letter ISO currency code representing the currency of the transaction
         /// </summary>
-        public string CurrencyCode { get; set; } = null;
+        public string CurrencyCode { get; set; }
 
         public override IEnumerable<RequestParam> ToRequestParameters()
         {
-            IList<RequestParam> result = new List<RequestParam>();
+            var result = new List<RequestParam>();
             if (CountryCode != null)
             {
                 result.Add(new RequestParam("countryCode", CountryCode));

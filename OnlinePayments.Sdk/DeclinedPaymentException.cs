@@ -1,3 +1,7 @@
+/*
+ * This file was automatically generated.
+ */
+using System.Net;
 using OnlinePayments.Sdk.Domain;
 
 namespace OnlinePayments.Sdk
@@ -7,22 +11,22 @@ namespace OnlinePayments.Sdk
     /// </summary>
     public class DeclinedPaymentException : DeclinedTransactionException
     {
-        private readonly PaymentErrorResponse _errorResponse;
-
         /// <summary>
         /// Gets the result of creating a payment if available, otherwise <c>null</c>.
         /// </summary>
-        public CreatePaymentResponse CreatePaymentResponse => _errorResponse?.PaymentResult;
+        public CreatePaymentResponse CreatePaymentResponse => _response?.PaymentResult;
 
-        public DeclinedPaymentException(System.Net.HttpStatusCode statusCode, string responseBody, PaymentErrorResponse errorResponse)
-            : base(BuildMessage(errorResponse), statusCode, responseBody, errorResponse?.ErrorId, errorResponse?.Errors)
+        public DeclinedPaymentException(HttpStatusCode statusCode, string responseBody, PaymentErrorResponse response)
+            : base(BuildMessage(response), statusCode, responseBody, response?.ErrorId, response?.Errors)
         {
-            _errorResponse = errorResponse;
+            _response = response;
         }
 
-        static string BuildMessage(PaymentErrorResponse errors)
+        private readonly PaymentErrorResponse _response;
+
+        private static string BuildMessage(PaymentErrorResponse response)
         {
-            PaymentResponse payment = errors?.PaymentResult?.Payment;
+            var payment = response?.PaymentResult?.Payment;
             if (payment != null)
             {
                 return "declined payment '" + payment.Id + "' with status '" + payment.Status + "'";
@@ -31,4 +35,3 @@ namespace OnlinePayments.Sdk
         }
     }
 }
-

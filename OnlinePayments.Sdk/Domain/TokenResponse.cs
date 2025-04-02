@@ -1,35 +1,35 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class TokenResponse
     {
         /// <summary>
-        /// Object containing card details<para />
+        /// Object containing card details
         /// </summary>
-        public TokenCard Card { get; set; } = null;
+        public TokenCard Card { get; set; }
 
         /// <summary>
-        /// Object containing eWallet details<para />
+        /// Object containing eWallet details
         /// </summary>
-        public TokenEWallet EWallet { get; set; } = null;
+        public TokenEWallet EWallet { get; set; }
 
-        public ExternalTokenLinked ExternalTokenLinked { get; set; } = null;
-
-        /// <summary>
-        /// ID of the token<para />
-        /// </summary>
-        public string Id { get; set; } = null;
+        public ExternalTokenLinked ExternalTokenLinked { get; set; }
 
         /// <summary>
-        /// Temporary tokens have a lifespan of two hours and can only be used once.<para />
+        /// ID of the token
         /// </summary>
-        public bool? IsTemporary { get; set; } = null;
+        public string Id { get; set; }
 
         /// <summary>
-        /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
+        /// Temporary tokens have a lifespan of two hours and can only be used once.
         /// </summary>
-        public int? PaymentProductId { get; set; } = null;
+        public bool? IsTemporary { get; set; }
+
+        /// <summary>
+        /// Payment product identifier - Please see Products documentation for a full overview of possible values.
+        /// </summary>
+        public int? PaymentProductId { get; set; }
     }
 }

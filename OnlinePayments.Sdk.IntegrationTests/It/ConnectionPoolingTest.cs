@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using System.Linq;
-using OnlinePayments.Sdk.Merchant.Services;
 using System.Threading.Tasks;
 
 namespace OnlinePayments.Sdk.It

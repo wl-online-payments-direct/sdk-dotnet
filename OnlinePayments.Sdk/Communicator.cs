@@ -5,12 +5,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using OnlinePayments.Sdk.Authentication;
+using OnlinePayments.Sdk.Communication;
+using OnlinePayments.Sdk.Json;
 using OnlinePayments.Sdk.Logging;
 
 namespace OnlinePayments.Sdk
 {
     /// <summary>
-    /// Used to communicate with the payment platform web services.
+    /// Used to communicate with the Online Payments platform web services.
     /// </summary>
     /// <remarks>
     /// It contains all the logic to transform a request object to a HTTP request and a HTTP response to a response object.
@@ -18,52 +21,30 @@ namespace OnlinePayments.Sdk
     /// </remarks>
     public class Communicator : ICommunicator
     {
-        // Virtual for unit testing
-        /// <summary>
-        /// Gets the payment platform API endpoint URI. This URI's path will be <c>null</c> or empty.
-        /// </summary>
-        public virtual Uri ApiEndpoint { get; private set; }
-
-        /// <summary>
-        /// Gets the <see cref="IConnection"/> object associated with this session. Never <c>null</c>.
-        /// </summary>
-        public IConnection Connection { get; private set; }
-
-        /// <summary>
-        /// Gets the <see cref="MetaDataProvider"/> object associated with this session. Never <c>null</c>.
-        /// </summary>
-        public MetaDataProvider MetaDataProvider { get; private set; }
-
-        /// <summary>
-        /// Gets he <see cref="IAuthenticator"/> object associated with this session. Never <c>null</c>.
-        /// </summary>
-        public IAuthenticator Authenticator { get; private set; }
-
         /// <summary>
         /// Gets the <see cref="IMarshaller"/> object associated with this communicator. Never <c>null</c>.
         /// </summary>
         public IMarshaller Marshaller { get; }
 
-        public Communicator(Uri apiEndpoint, IConnection connection, IAuthenticator authenticator,
-               MetaDataProvider metaDataProvider, IMarshaller marshaller)
+        public Communicator(Uri apiEndpoint, IConnection connection, IAuthenticator authenticator, IMetadataProvider metadataProvider, IMarshaller marshaller)
         {
-            ApiEndpoint = apiEndpoint ?? throw new ArgumentException("apiEndpoint is required");
-            if (ApiEndpoint.LocalPath != null && ApiEndpoint.LocalPath.Length > 0 && !ApiEndpoint.LocalPath.Equals("/"))
+            if (apiEndpoint == null)
+            {
+                throw new ArgumentException("apiEndpoint is required");
+            }
+            if (apiEndpoint.HasPath())
             {
                 throw new ArgumentException("apiEndpoint should not contain a path");
             }
-            if (!ApiEndpoint.UserInfo.Equals("")
-                || !ApiEndpoint.Query.Equals("")
-                || !ApiEndpoint.Fragment.Equals(""))
+            if (apiEndpoint.HasUserInfoOrQueryOrFragment())
             {
                 throw new ArgumentException("apiEndpoint should not contain user info, query or fragment");
             }
+            ApiEndpoint = apiEndpoint;
             Connection = connection ?? throw new ArgumentException("connection is required");
             Authenticator = authenticator ?? throw new ArgumentException("authenticator is required");
-            MetaDataProvider = metaDataProvider ?? throw new ArgumentException("metaDataProvider is required");
+            MetadataProvider = metadataProvider ?? throw new ArgumentException("metadataProvider is required");
             Marshaller = marshaller ?? throw new ArgumentException("marshaller is required");
-            // Per PCI requirements only connections using TLS 1.2 and higher are supported by the payment platform.
-            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
         }
 
         #region IDisposable implementation
@@ -81,6 +62,18 @@ namespace OnlinePayments.Sdk
         }
         #endregion
 
+        #region IObfuscationCapable implementation
+        public BodyObfuscator BodyObfuscator
+        {
+            set => Connection.BodyObfuscator = value;
+        }
+
+        public HeaderObfuscator HeaderObfuscator
+        {
+            set => Connection.HeaderObfuscator = value;
+        }
+        #endregion
+
         #region ILoggingCapable implementation
         public void EnableLogging(ICommunicatorLogger communicatorLogger)
         {
@@ -94,164 +87,396 @@ namespace OnlinePayments.Sdk
         #endregion
 
         #region HTTP methods
-        /// <inheritdoc/>
-        public async Task<T> Get<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                                    CallContext context)
-        {
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-            requestHeaders = AddGenericHeaders(HttpMethod.Get, uri, requestHeaders, context);
-            return await Connection.Get<T>(uri, requestHeaders, (status, body, headers) => {
-                return ProcessResponse<T>(status, body, headers, relativePath, context);
-            }).ConfigureAwait(false);
-        }
-
-        /// <inheritdoc/>
-        public async Task<T> Delete<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                                       CallContext context)
-        {
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-            requestHeaders = AddGenericHeaders(HttpMethod.Delete, uri, requestHeaders, context);
-            return await Connection.Delete<T>(uri, requestHeaders, (status, body, headers) => {
-                return ProcessResponse<T>(status, body, headers, relativePath, context);
-            }).ConfigureAwait(false);
-        }
-
-        /// <inheritdoc/>
-        public async Task<T> Post<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                                     object requestBody, CallContext context)
-        {
-            if (requestBody is MultipartFormDataObject)
-            {
-                return await Post<T>(relativePath, requestHeaders, requestParameters, (MultipartFormDataObject)requestBody, context).ConfigureAwait(false);
-            }
-            if (requestBody is IMultipartFormDataRequest)
-            {
-                MultipartFormDataObject multipart = ((IMultipartFormDataRequest)requestBody).ToMultipartFormDataObject();
-                return await Post<T>(relativePath, requestHeaders, requestParameters, multipart, context).ConfigureAwait(false);
-            }
-
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
-            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-
-            string requestJson = null;
-            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
-            if (requestBody != null)
-            {
-                requestHeaderList.Add(new EntityHeader("Content-Type", "application/json"));
-                requestJson = Marshaller.Marshal(requestBody);
-            }
-
-            requestHeaders = AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context);
-            return await Connection.Post<T>(uri, requestHeaders, requestJson, (status, body, headers) => {
-                return ProcessResponse<T>(status, body, headers, relativePath, context);
-            }).ConfigureAwait(false);
-        }
-
         /// <summary>
-        /// Post method used for multipart form data object
+        /// Corresponds to the HTTP Get method.
         /// </summary>
-        /// <typeparam name="T">Type of the response.</typeparam>
         /// <param name="relativePath">The path to call, relative to the base URI.</param>
         /// <param name="requestHeaders">An optional list of request headers.</param>
         /// <param name="requestParameters">The optional set of request parameters.</param>
-        /// <param name="multipart">Multipart object to send</param>
         /// <param name="context">The optional call context to use</param>
-        async Task<T> Post<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                                     MultipartFormDataObject multipart, CallContext context)
+        /// <typeparam name="T">Type of the response.</typeparam>
+        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Online Payments platform</exception>
+        /// <exception cref="ResponseException">when an error response was received from the Online Payments platform</exception>
+        public async Task<T> Get<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                                    CallContext context)
         {
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
             requestHeaders = requestHeaders ?? new List<IRequestHeader>();
-
-            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
-
-            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
-
-            requestHeaders = AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context);
-            return await Connection.Post<T>(uri, requestHeaders, multipart, (status, body, headers) => {
-                return ProcessResponse<T>(status, body, headers, relativePath, context);
-            }).ConfigureAwait(false);
+            requestHeaders = await AddGenericHeaders(HttpMethod.Get, uri, requestHeaders, context).ConfigureAwait(false);
+            return await Connection.Get(uri, requestHeaders, (status, body, headers) =>
+                ProcessResponse<T>(status, body, headers, relativePath, context)
+            ).ConfigureAwait(false);
         }
 
-        /// <inheritdoc/>
-        public async Task<T> Put<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
-                                    object requestBody, CallContext context)
+        /// <summary>
+        /// Corresponds to the HTTP Get method.
+        /// </summary>
+        /// <param name="relativePath">The path to call, relative to the base URI.</param>
+        /// <param name="requestHeaders">An optional list of request headers.</param>
+        /// <param name="requestParameters">The optional set of request parameters.</param>
+        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
+        /// <param name="context">The optional call context to use</param>
+        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Online Payments platform</exception>
+        /// <exception cref="ResponseException">when an error response was received from the Online Payments platform</exception>
+        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
+        public async Task Get(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                              Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
         {
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+            requestHeaders = await AddGenericHeaders(HttpMethod.Get, uri, requestHeaders, context).ConfigureAwait(false);
+            await Connection.Get(uri, requestHeaders, (status, body, headers) =>
+                ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler)
+            ).ConfigureAwait(false);
+        }
 
-            IEnumerable<RequestParam> requestParameterList = requestParameters?.ToRequestParameters();
-            Uri uri = ToAbsoluteURI(relativePath, requestParameterList);
+        /// <summary>
+        /// Corresponds to the HTTP DELETE method.
+        /// </summary>
+        /// <param name="relativePath">The path to call, relative to the base URI.</param>
+        /// <param name="requestHeaders">An optional list of request headers.</param>
+        /// <param name="requestParameters">The optional set of request parameters.</param>
+        /// <param name="context">The optional call context to use</param>
+        /// <typeparam name="T">Type of the response.</typeparam>
+        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Online Payments platform</exception>
+        /// <exception cref="ResponseException">when an error response was received from the Online Payments platform</exception>
+        public async Task<T> Delete<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                                       CallContext context)
+        {
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+            requestHeaders = await AddGenericHeaders(HttpMethod.Delete, uri, requestHeaders, context).ConfigureAwait(false);
+            return await Connection.Delete(uri, requestHeaders, (status, body, headers) =>
+                ProcessResponse<T>(status, body, headers, relativePath, context)
+            ).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Corresponds to the HTTP DELETE method.
+        /// </summary>
+        /// <param name="relativePath">The path to call, relative to the base URI.</param>
+        /// <param name="requestHeaders">An optional list of request headers.</param>
+        /// <param name="requestParameters">The optional set of request parameters.</param>
+        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
+        /// <param name="context">The optional call context to use</param>
+        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Online Payments platform</exception>
+        /// <exception cref="ResponseException">when an error response was received from the Online Payments platform</exception>
+        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
+        public async Task Delete(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                                 Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
+        {
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+            requestHeaders = await AddGenericHeaders(HttpMethod.Delete, uri, requestHeaders, context).ConfigureAwait(false);
+            await Connection.Delete(uri, requestHeaders, (status, body, headers) =>
+                ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler)
+            ).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Corresponds to the HTTP POST method.
+        /// </summary>
+        /// <param name="relativePath">The path to call, relative to the base URI.</param>
+        /// <param name="requestHeaders">An optional list of request headers.</param>
+        /// <param name="requestParameters">The optional set of request parameters.</param>
+        /// <param name="requestBody">The optional request body to send.</param>
+        /// <param name="context">The optional call context to use</param>
+        /// <typeparam name="T">Type of the response.</typeparam>
+        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Online Payments platform</exception>
+        /// <exception cref="ResponseException">when an error response was received from the Online Payments platform</exception>
+        public async Task<T> Post<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                                     object requestBody, CallContext context)
+        {
+            switch (requestBody)
+            {
+                case MultipartFormDataObject multipartFormDataObject:
+                    return await Post<T>(relativePath, requestHeaders, requestParameters, multipartFormDataObject, context).ConfigureAwait(false);
+                case IMultipartFormDataRequest multipartFormDataRequest:
+                {
+                    var multipart = multipartFormDataRequest.ToMultipartFormDataObject();
+                    return await Post<T>(relativePath, requestHeaders, requestParameters, multipart, context).ConfigureAwait(false);
+                }
+            }
+
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
             requestHeaders = requestHeaders ?? new List<IRequestHeader>();
 
             string requestJson = null;
-            IList<IRequestHeader> requestHeaderList = requestHeaders.ToList();
+            var requestHeaderList = requestHeaders.ToList();
             if (requestBody != null)
             {
                 requestHeaderList.Add(new EntityHeader("Content-Type", "application/json"));
                 requestJson = Marshaller.Marshal(requestBody);
             }
 
-            requestHeaders = AddGenericHeaders(HttpMethod.Put, uri, requestHeaderList, context);
-            return await Connection.Put<T>(uri, requestHeaders, requestJson, (status, body, headers) => {
-                return ProcessResponse<T>(status, body, headers, relativePath, context);
-            }).ConfigureAwait(false);
+            requestHeaders = await AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context).ConfigureAwait(false);
+            return await Connection.Post(uri, requestHeaders, requestJson, (status, body, headers) =>
+                ProcessResponse<T>(status, body, headers, relativePath, context)
+            ).ConfigureAwait(false);
+        }
+
+        private async Task<T> Post<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                                      MultipartFormDataObject multipart, CallContext context)
+        {
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+
+            var requestHeaderList = requestHeaders.ToList();
+            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
+
+            requestHeaders = await AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context).ConfigureAwait(false);
+            return await Connection.Post(uri, requestHeaders, multipart, (status, body, headers) =>
+                ProcessResponse<T>(status, body, headers, relativePath, context)
+            ).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Corresponds to the HTTP POST method.
+        /// </summary>
+        /// <param name="relativePath">The path to call, relative to the base URI.</param>
+        /// <param name="requestHeaders">An optional list of request headers.</param>
+        /// <param name="requestParameters">The optional set of request parameters.</param>
+        /// <param name="requestBody">The optional request body to send.</param>
+        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
+        /// <param name="context">The optional call context to use</param>
+        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Online Payments platform</exception>
+        /// <exception cref="ResponseException">when an error response was received from the Online Payments platform</exception>
+        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
+        public async Task Post(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                               object requestBody, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
+        {
+            switch (requestBody)
+            {
+                case MultipartFormDataObject multipartFormDataObject:
+                    await Post(relativePath, requestHeaders, requestParameters, multipartFormDataObject, bodyHandler, context).ConfigureAwait(false);
+                    return;
+                case IMultipartFormDataRequest multipartFormDataRequest:
+                {
+                    var multipart = multipartFormDataRequest.ToMultipartFormDataObject();
+                    await Post(relativePath, requestHeaders, requestParameters, multipart, bodyHandler, context).ConfigureAwait(false);
+                    return;
+                }
+            }
+
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+
+            string requestJson = null;
+            var requestHeaderList = requestHeaders.ToList();
+            if (requestBody != null)
+            {
+                requestHeaderList.Add(new EntityHeader("Content-Type", "application/json"));
+                requestJson = Marshaller.Marshal(requestBody);
+            }
+
+            requestHeaders = await AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context).ConfigureAwait(false);
+            await Connection.Post(uri, requestHeaders, requestJson, (status, body, headers) =>
+                ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler)
+            ).ConfigureAwait(false);
+        }
+
+        private async Task Post(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                                MultipartFormDataObject multipart, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
+        {
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+
+            var requestHeaderList = requestHeaders.ToList();
+            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
+
+            requestHeaders = await AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context).ConfigureAwait(false);
+            await Connection.Post(uri, requestHeaders, multipart, (status, body, headers) =>
+                ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler)
+            ).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Corresponds to the HTTP PUT method.
+        /// </summary>
+        /// <param name="relativePath">The path to call, relative to the base URI.</param>
+        /// <param name="requestHeaders">An optional list of request headers.</param>
+        /// <param name="requestParameters">The optional set of request parameters.</param>
+        /// <param name="requestBody">The optional request body to send.</param>
+        /// <param name="context">The optional call context to use</param>
+        /// <typeparam name="T">Type of the response.</typeparam>
+        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Online Payments platform</exception>
+        /// <exception cref="ResponseException">when an error response was received from the Online Payments platform</exception>
+        public async Task<T> Put<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                                    object requestBody, CallContext context)
+        {
+            switch (requestBody)
+            {
+                case MultipartFormDataObject multipartFormDataObject:
+                    return await Put<T>(relativePath, requestHeaders, requestParameters, multipartFormDataObject, context).ConfigureAwait(false);
+                case IMultipartFormDataRequest multipartFormDataRequest:
+                {
+                    var multipart = multipartFormDataRequest.ToMultipartFormDataObject();
+                    return await Put<T>(relativePath, requestHeaders, requestParameters, multipart, context).ConfigureAwait(false);
+                }
+            }
+
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+
+            string requestJson = null;
+            var requestHeaderList = requestHeaders.ToList();
+            if (requestBody != null)
+            {
+                requestHeaderList.Add(new EntityHeader("Content-Type", "application/json"));
+                requestJson = Marshaller.Marshal(requestBody);
+            }
+
+            requestHeaders = await AddGenericHeaders(HttpMethod.Put, uri, requestHeaderList, context).ConfigureAwait(false);
+            return await Connection.Put(uri, requestHeaders, requestJson, (status, body, headers) =>
+                ProcessResponse<T>(status, body, headers, relativePath, context)
+            ).ConfigureAwait(false);
+        }
+
+        private async Task<T> Put<T>(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                                     MultipartFormDataObject multipart, CallContext context)
+        {
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+
+            var requestHeaderList = requestHeaders.ToList();
+            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
+
+            requestHeaders = await AddGenericHeaders(HttpMethod.Put, uri, requestHeaderList, context).ConfigureAwait(false);
+            return await Connection.Put(uri, requestHeaders, multipart, (status, body, headers) =>
+                ProcessResponse<T>(status, body, headers, relativePath, context)
+            ).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Corresponds to the HTTP PUT method.
+        /// </summary>
+        /// <param name="relativePath">The path to call, relative to the base URI.</param>
+        /// <param name="requestHeaders">An optional list of request headers.</param>
+        /// <param name="requestParameters">The optional set of request parameters.</param>
+        /// <param name="requestBody">The optional request body to send.</param>
+        /// <param name="bodyHandler">A callback that receives the contents of the body as a stream</param>
+        /// <param name="context">The optional call context to use</param>
+        /// <exception cref="CommunicationException"> when an exception occurred communicating with the Online Payments platform</exception>
+        /// <exception cref="ResponseException">when an error response was received from the Online Payments platform</exception>
+        /// <exception cref="BodyHandlerException">when the BodyHandler throws an exception</exception>
+        public async Task Put(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                              object requestBody, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
+        {
+            switch (requestBody)
+            {
+                case MultipartFormDataObject multipartFormDataObject:
+                    await Put(relativePath, requestHeaders, requestParameters, multipartFormDataObject, bodyHandler, context).ConfigureAwait(false);
+                    return;
+                case IMultipartFormDataRequest multipartFormDataRequest:
+                {
+                    var multipart = multipartFormDataRequest.ToMultipartFormDataObject();
+                    await Put(relativePath, requestHeaders, requestParameters, multipart, bodyHandler, context).ConfigureAwait(false);
+                    return;
+                }
+            }
+
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+
+            string requestJson = null;
+            var requestHeaderList = requestHeaders.ToList();
+            if (requestBody != null)
+            {
+                requestHeaderList.Add(new EntityHeader("Content-Type", "application/json"));
+                requestJson = Marshaller.Marshal(requestBody);
+            }
+
+            requestHeaders = await AddGenericHeaders(HttpMethod.Put, uri, requestHeaderList, context).ConfigureAwait(false);
+            await Connection.Put(uri, requestHeaders, requestJson, (status, body, headers) =>
+                ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler)
+            ).ConfigureAwait(false);
+        }
+
+        private async Task Put(string relativePath, IEnumerable<IRequestHeader> requestHeaders, AbstractParamRequest requestParameters,
+                               MultipartFormDataObject multipart, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context)
+        {
+            var requestParameterList = requestParameters?.ToRequestParameters();
+            var uri = ToAbsoluteUri(relativePath, requestParameterList);
+            requestHeaders = requestHeaders ?? new List<IRequestHeader>();
+
+            var requestHeaderList = requestHeaders.ToList();
+            requestHeaderList.Add(new EntityHeader("Content-Type", multipart.ContentType));
+
+            requestHeaders = await AddGenericHeaders(HttpMethod.Put, uri, requestHeaderList, context).ConfigureAwait(false);
+            await Connection.Put(uri, requestHeaders, multipart, (status, body, headers) =>
+                ProcessResponse<object>(status, body, headers, relativePath, context, bodyHandler)
+            ).ConfigureAwait(false);
         }
         #endregion
 
-        /// <inheritdoc/>
-        public T Unmarshal<T>(string responseJson)
-        {
-            return Marshaller.Unmarshal<T>(responseJson);
-        }
-
-        /// <inheritdoc/>
+        /// <summary>
+        /// Utility method that delegates the call to this communicator's connection if that's an instance of <see cref="IPooledConnection"/>.
+        /// If not this method does nothing.
+        /// <seealso cref="IPooledConnection.CloseExpiredConnections"/>
+        /// </summary>
         public void CloseExpiredConnections()
         {
-            if (typeof(IPooledConnection).IsAssignableFrom(Connection.GetType()))
+            if (Connection is IPooledConnection pooledConnection)
             {
-                ((IPooledConnection)Connection).CloseExpiredConnections();
+                pooledConnection.CloseExpiredConnections();
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Utility method that delegates the call to this communicator's connection if that's an instance of
+        /// <see cref="IPooledConnection"/>.
+        /// </summary>
+        /// <param name="timespan">Idle time.</param>
         public void CloseIdleConnections(TimeSpan timespan)
         {
-            if (Connection is IPooledConnection)
+            if (Connection is IPooledConnection pooledConnection)
             {
-                ((IPooledConnection)Connection).CloseIdleConnections(timespan);
+                pooledConnection.CloseIdleConnections(timespan);
             }
         }
 
-        internal Uri ToAbsoluteURI(string relativePath, IEnumerable<RequestParam> requestParameters)
+        internal Uri ApiEndpoint { get; }
+
+        internal IConnection Connection { get; }
+
+        internal IMetadataProvider MetadataProvider { get; }
+
+        internal IAuthenticator Authenticator { get; }
+
+        internal Uri ToAbsoluteUri(string relativePath, IEnumerable<RequestParam> requestParameters)
         {
-            if (ApiEndpoint.HasPath())
+            string absolutePath;
+            if (relativePath.StartsWith("/", StringComparison.Ordinal))
             {
-                throw new InvalidOperationException("apiEndpoint should not contain a path");
+                absolutePath = relativePath;
             }
-            if (ApiEndpoint.HasUserInfoOrQueryOrFragment())
+            else
             {
-                throw new InvalidOperationException("apiEndpoint should not contain user info, query or fragment");
+                absolutePath = "/" + relativePath;
             }
 
-            string absolutePath = relativePath.StartsWith("/", StringComparison.Ordinal)
-                ? relativePath
-                : "/" + relativePath;
-
-            UriBuilder uriBuilder = new UriBuilder
+            var uriBuilder = new UriBuilder
             {
                 Scheme = ApiEndpoint.Scheme,
                 Host = ApiEndpoint.Host,
                 Port = ApiEndpoint.Port,
-                Path = absolutePath,
+                Path = absolutePath
             };
 
             if (requestParameters != null)
             {
-                foreach (RequestParam nvp in requestParameters)
+                foreach (var nvp in requestParameters)
                 {
                     uriBuilder.AddParameter(nvp.Name, nvp.Value);
                 }
@@ -265,25 +490,25 @@ namespace OnlinePayments.Sdk
         /// which uses other headers, so when you need to override this method,
         /// make sure to call <c>base.AddGenericHeaders</c> at the <i>end</i> of your overridden method.
         /// </summary>
-        protected IEnumerable<IRequestHeader> AddGenericHeaders(HttpMethod httpMethod, Uri uri, IEnumerable<IRequestHeader> requestHeaders, CallContext context)
+        protected async Task<IEnumerable<IRequestHeader>> AddGenericHeaders(HttpMethod httpMethod, Uri uri, IEnumerable<IRequestHeader> requestHeaders, CallContext context)
         {
             var requestHeaderList = requestHeaders.ToList();
 
             // add server meta info headers
-            requestHeaderList.AddRange(MetaDataProvider.ServerMetaDataHeaders);
+            requestHeaderList.AddRange(MetadataProvider.ServerMetadataHeaders);
 
             // add date header
             requestHeaderList.Add(new RequestHeader("Date", GetHeaderDateString()));
 
             // add context specific headers
-            if (context != null && context.IdempotenceKey != null)
+            if (context?.IdempotenceKey != null)
             {
                 requestHeaderList.Add(new RequestHeader("X-GCS-Idempotence-Key", context.IdempotenceKey));
             }
 
-            // add signature
-            string authenticationSignature = Authenticator.CreateSimpleAuthenticationSignature(httpMethod, uri, requestHeaderList);
-            requestHeaderList.Add(new RequestHeader("Authorization", authenticationSignature));
+            // add authorization
+            var authorization = await Authenticator.GetAuthorization(httpMethod, uri, requestHeaderList);
+            requestHeaderList.Add(new RequestHeader("Authorization", authorization));
             return requestHeaderList;
         }
 
@@ -291,7 +516,7 @@ namespace OnlinePayments.Sdk
         /// Gets the date in the preferred format for the HTTP date header (RFC1123).
         /// </summary>
         /// <returns>The header date string.</returns>
-        protected string GetHeaderDateString()
+        protected static string GetHeaderDateString()
         {
             return DateTime.UtcNow.ToString("r");
         }
@@ -299,18 +524,18 @@ namespace OnlinePayments.Sdk
         /// <summary>
         /// Checks the response for errors and throws an exception if necessary.
         /// </summary>
-        protected void ThrowExceptionIfNecessary(HttpStatusCode statusCode, Stream stream, IEnumerable<IResponseHeader> headers, string requestPath)
+        protected static void ThrowExceptionIfNecessary(HttpStatusCode statusCode, Stream stream, IEnumerable<IResponseHeader> headers, string requestPath)
         {
-            int intStatusCode = (int)statusCode;
+            var intStatusCode = (int)statusCode;
             // status codes in the 100 or 300 range are not expected
             if (intStatusCode < 200 || intStatusCode >= 300)
             {
                 var sr = new StreamReader(stream);
-                string body = sr.ReadToEnd();
+                var body = sr.ReadToEnd();
 
-                if (body.IsNullOrEmpty() || !IsJson(headers))
+                if (string.IsNullOrEmpty(body) || !IsJson(headers))
                 {
-                    ResponseException cause = new ResponseException(statusCode, body, headers);
+                    var cause = new ResponseException(statusCode, body, headers);
                     if (intStatusCode == (int)HttpStatusCode.NotFound)
                     {
                         throw new NotFoundException("The requested resource was not found; invalid path: " + requestPath, cause);
@@ -321,29 +546,53 @@ namespace OnlinePayments.Sdk
             }
         }
 
-        protected O ProcessResponse<O>(HttpStatusCode statusCode, Stream stream, IEnumerable<IResponseHeader> headers, string requestPath, CallContext context)
+        protected T ProcessResponse<T>(HttpStatusCode statusCode, Stream stream, IEnumerable<IResponseHeader> headers, string requestPath, CallContext context, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler = null)
         {
             if (context != null)
             {
                 context.IdempotenceRequestTimestamp = GetIdempotenceTimestamp(headers);
+                context.IdempotenceResponseDateTime = GetIdempotenceResponseDateTime(headers);
             }
             ThrowExceptionIfNecessary(statusCode, stream, headers, requestPath);
-            return Marshaller.Unmarshal<O>(stream);
+            if (bodyHandler == null) {
+                return Marshaller.Unmarshal<T>(stream);
+            }
+            try
+            {
+                bodyHandler(stream, headers);
+            }
+            catch (Exception e)
+            {
+                throw new BodyHandlerException("The bodyhandler threw an exception", e);
+            }
+            return default;
         }
 
-        protected long? GetIdempotenceTimestamp(IEnumerable<IResponseHeader> headers)
+        protected static long? GetIdempotenceTimestamp(IEnumerable<IResponseHeader> headers)
         {
-            if (long.TryParse(headers?.GetHeaderValue("X-GCS-Idempotence-Request-Timestamp"), out long retValue))
+            if (long.TryParse(headers?.GetHeaderValue("X-GCS-Idempotence-Request-Timestamp"), out var retValue))
             {
                 return retValue;
             }
             return null;
         }
 
-        bool IsJson(IEnumerable<IResponseHeader> headers)
+        protected static DateTimeOffset? GetIdempotenceResponseDateTime(IEnumerable<IResponseHeader> headers)
         {
-            string contentType = headers?.GetHeaderValue("Content-Type")?.ToLower();
-            return contentType == null || "application/json".Equals(contentType) || contentType.StartsWith("application/json", StringComparison.Ordinal);
+            if (DateTimeOffset.TryParse(headers?.GetHeaderValue("IdempotencyResponseDatetime"), out var retValue))
+            {
+                return retValue;
+            }
+
+            return null;
+        }
+
+        private static bool IsJson(IEnumerable<IResponseHeader> headers)
+        {
+            var contentType = headers?.GetHeaderValue("Content-Type")?.ToLower();
+            return contentType == null
+                   || "application/json".Equals(contentType) || contentType.StartsWith("application/json", StringComparison.Ordinal)
+                   || "application/problem+json".Equals(contentType) || contentType.StartsWith("application/problem+json", StringComparison.Ordinal);
         }
     }
 }

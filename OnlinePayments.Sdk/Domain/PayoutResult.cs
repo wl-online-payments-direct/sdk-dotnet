@@ -1,19 +1,19 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class PayoutResult
     {
-        public string Id { get; set; } = null;
+        public string Id { get; set; }
 
-        public PayoutOutput PayoutOutput { get; set; } = null;
+        public PayoutOutput PayoutOutput { get; set; }
 
         /// <summary>
-        /// Current high-level status of the payout in a human-readable form.<para />
+        /// Current high-level status of the payout in a human-readable form.
         /// </summary>
-        public string Status { get; set; } = null;
+        public string Status { get; set; }
 
-        public PayoutStatusOutput StatusOutput { get; set; } = null;
+        public PayoutStatusOutput StatusOutput { get; set; }
     }
 }

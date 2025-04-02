@@ -1,49 +1,54 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class OrderLineDetails
     {
         /// <summary>
-        /// Discount on the line item, with the last two digits implied as decimal places<para />
+        /// Discount on the line item, with the last two digits implied as decimal places
         /// </summary>
-        public long? DiscountAmount { get; set; } = null;
+        public long? DiscountAmount { get; set; }
 
         /// <summary>
-        /// Product or UPC Code<para />
+        /// The brand of the product.
         /// </summary>
-        public string ProductCode { get; set; } = null;
+        public string ProductBrand { get; set; }
 
         /// <summary>
-        /// The name of the product.<para />
+        /// Product or UPC Code
         /// </summary>
-        public string ProductName { get; set; } = null;
+        public string ProductCode { get; set; }
 
         /// <summary>
-        /// The price of one unit of the product, the value should be zero or greater<para />
+        /// The name of the product.
         /// </summary>
-        public long? ProductPrice { get; set; } = null;
+        public string ProductName { get; set; }
 
         /// <summary>
-        /// Code used to classify items that are purchased<para />
+        /// The price of one unit of the product, the value should be zero or greater
         /// </summary>
-        public string ProductType { get; set; } = null;
+        public long? ProductPrice { get; set; }
 
         /// <summary>
-        /// Quantity of the units being purchased, should be greater than zero<para />
-        /// Note: Must not be all spaces or all zeros<para />
+        /// Code used to classify items that are purchased
         /// </summary>
-        public long? Quantity { get; set; } = null;
+        public string ProductType { get; set; }
 
         /// <summary>
-        /// Tax on the line item, with the last two digits implied as decimal places<para />
+        /// Quantity of the units being purchased, should be greater than zero
+        /// Note: Must not be all spaces or all zeros
         /// </summary>
-        public long? TaxAmount { get; set; } = null;
+        public long? Quantity { get; set; }
 
         /// <summary>
-        /// Indicates the line item unit of measure; for example: each, kit, pair, gallon, month, etc.<para />
+        /// Tax on the line item, with the last two digits implied as decimal places
         /// </summary>
-        public string Unit { get; set; } = null;
+        public long? TaxAmount { get; set; }
+
+        /// <summary>
+        /// Indicates the line item unit of measure; for example: each, kit, pair, gallon, month, etc.
+        /// </summary>
+        public string Unit { get; set; }
     }
 }

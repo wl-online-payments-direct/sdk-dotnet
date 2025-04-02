@@ -1,3 +1,5 @@
+using System;
+
 namespace OnlinePayments.Sdk
 {
     /// <summary>
@@ -20,14 +22,25 @@ namespace OnlinePayments.Sdk
         }
 
         /// <summary>
-        /// Gets the idempotence request timestamp from the response to the
+        /// The idempotence request timestamp from the response to the
         /// last request for which this call context was used.
         /// </summary>
         /// <value>The idempotence request timestamp.</value>
-        /// <remarks>Returns <c>null</c> if no idempotencerequest was present.
-        ///  The setter should only be called by <see cref="Communicator"/> objects based
+        /// <remarks>Returns <c>null</c> if no idempotence request was present.
+        /// The property should only be set by <see cref="ICommunicator"/> objects based
         /// on the response to the request for which this call context was used.
         /// </remarks>
         public long? IdempotenceRequestTimestamp { get; set; }
+
+        /// <summary>
+        /// The idempotence response date/time from the response to the
+        /// last request for which this call context was used.
+        /// </summary>
+        /// <value>The idempotence response date/time.</value>
+        /// <remarks>Returns <c>null</c> if no idempotence request was present.
+        /// The property should only be set by <see cref="ICommunicator"/> objects based
+        /// on the response to the request for which this call context was used.
+        /// </remarks>
+        public DateTimeOffset? IdempotenceResponseDateTime { get; set; }
     }
 }

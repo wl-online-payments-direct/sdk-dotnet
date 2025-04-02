@@ -1,14 +1,14 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class LodgingData
     {
         /// <summary>
-        /// The date the guest checks into (or plans to check in to) the facility.<para />
-        /// Format YYYYMMDD<para />
+        /// The date the guest checks into (or plans to check in to) the facility.
+        /// Format YYYYMMDD
         /// </summary>
-        public string CheckInDate { get; set; } = null;
+        public string CheckInDate { get; set; }
     }
 }

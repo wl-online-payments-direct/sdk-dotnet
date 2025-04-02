@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace OnlinePayments.Sdk
+namespace OnlinePayments.Sdk.Domain
 {
     public class ShoppingCartExtension
     {

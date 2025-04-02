@@ -1,7 +1,7 @@
 using NUnit.Framework;
+using System.Threading.Tasks;
 using OnlinePayments.Sdk.Merchant.ProductGroups;
 using OnlinePayments.Sdk.Domain;
-using System.Threading.Tasks;
 
 namespace OnlinePayments.Sdk.It
 {
@@ -19,7 +19,7 @@ namespace OnlinePayments.Sdk.It
                 CurrencyCode = "EUR"
             };
 
-            using (Client client = GetClient())
+            using (IClient client = GetClient())
             {
                 PaymentProductGroup response = await client
                     .WithNewMerchant(GetMerchantId())

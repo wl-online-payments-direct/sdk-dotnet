@@ -13,7 +13,6 @@ namespace OnlinePayments.Sdk.It
         [TestCase]
         public async Task Test()
         {
-
             CommunicatorConfiguration configuration = GetCommunicatorConfiguration();
 
             using (IClient client = Factory.CreateClient(configuration))

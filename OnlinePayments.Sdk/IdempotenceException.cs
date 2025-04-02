@@ -1,3 +1,6 @@
+/*
+ * This file was automatically generated.
+ */
 using System.Collections.Generic;
 using System.Net;
 using OnlinePayments.Sdk.Domain;

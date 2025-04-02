@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
 namespace OnlinePayments.Sdk
 {
-    static class StringUtils
+    internal static class StringUtils
     {
         internal static string FromBase64String(this string input)
             => Encoding.GetString(Convert.FromBase64String(input));
@@ -17,15 +16,18 @@ namespace OnlinePayments.Sdk
             => Encoding.UTF8;
 
         internal static string NullIfEmpty(this string input)
-            => ((IEnumerable<char>)input).NullIfEmpty() as string;
+            => string.IsNullOrEmpty(input) ? null : input;
+
+        internal static bool IsBlank(this string input)
+            => string.IsNullOrEmpty(input) || string.IsNullOrEmpty(input.Trim());
 
         internal static bool CompareWithoutTimingLeak(this string input, string expected)
         {
-            int length = input.Length;
-            int expectedLength = expected.Length;
-            int limit = Math.Max(Math.Max(length, expectedLength), 256);
-            bool result = true;
-            for (int i = 0; i < limit; i++)
+            var length = input.Length;
+            var expectedLength = expected.Length;
+            var limit = Math.Max(Math.Max(length, expectedLength), 256);
+            var result = true;
+            for (var i = 0; i < limit; i++)
             {
                 if (i < length && i < expectedLength)
                 {

@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Reflection;
 
 namespace OnlinePayments.Sdk.Util
@@ -7,26 +7,22 @@ namespace OnlinePayments.Sdk.Util
     {
         internal static T GetPrivateProperty<T>(this object instance, string fieldName)
         {
-            BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-            PropertyInfo property = instance.GetType().GetProperty(fieldName, bindFlags);
+            const BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+            var property = instance.GetType().GetProperty(fieldName, bindFlags);
             return (T)property.GetValue(instance);
         }
 
         internal static object GetPrivateField<T>(this T instance, string fieldName)
         {
-            BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
-                | BindingFlags.Static;
-            FieldInfo field = typeof(T).GetField(fieldName, bindFlags);
-            return field?.GetValue(instance);
+            var type = typeof(T);
+            return GetPrivateField(instance, type, fieldName);
         }
 
-        internal static IEnumerable GetFields<T>(this T instance)
+        internal static object GetPrivateField(this object instance, Type type, string fieldName)
         {
-            var b = instance.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            foreach (var a in b)
-            {
-                yield return a;
-            }
+            const BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
+            var field = type.GetField(fieldName, bindFlags);
+            return field?.GetValue(instance);
         }
     }
 }

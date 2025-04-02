@@ -16,7 +16,7 @@ namespace OnlinePayments.Sdk.Logging
             var mock = new Mock<ILogger>();
             var messageList = new List<Tuple<LogLevel, string>>();
             mock.Setup(t => t.Log(It.IsAny<LogLevel>(), It.IsAny<string>())).Callback((LogLevel logLevel, string message) => messageList.Add(Tuple.Create(logLevel,message)));
-            NLogCommunicatorLogger communicatorLogger = new NLogCommunicatorLogger(mock.Object, LogLevel.Info, LogLevel.Warn);
+            var communicatorLogger = new NLogCommunicatorLogger(mock.Object, LogLevel.Info, LogLevel.Warn);
             communicatorLogger.Log("Hello world");
 
             Assert.That(messageList, Has.Count.EqualTo(1));
@@ -33,7 +33,7 @@ namespace OnlinePayments.Sdk.Logging
             var messageList = new List<Tuple<LogLevel, string, Exception>>();
             var exception = new Exception();
             mock.Setup(t => t.Log(It.IsAny<LogLevel>(), It.IsAny<string>(), It.IsAny<Exception>(), new object[0])).Callback((LogLevel logLevel, string message, Exception e, object[] unused) => messageList.Add(Tuple.Create(logLevel, message,e)));
-            NLogCommunicatorLogger communicatorLogger = new NLogCommunicatorLogger(mock.Object, LogLevel.Info, LogLevel.Warn);
+            var communicatorLogger = new NLogCommunicatorLogger(mock.Object, LogLevel.Info, LogLevel.Warn);
             communicatorLogger.Log("Hello world", exception);
             Assert.That(messageList, Has.Count.EqualTo(1));
 

@@ -1,60 +1,38 @@
-using OnlinePayments.Sdk.DefaultImpl;
 using System;
 
 namespace OnlinePayments.Sdk.It
 {
     public abstract class IntegrationTest
     {
-        readonly string ApiKeyId = Environment.GetEnvironmentVariable("onlinePayments.api.apiKeyId");
-        readonly string SecretApiKey = Environment.GetEnvironmentVariable("onlinePayments.api.secretApiKey");
-        readonly string MerchantId = Environment.GetEnvironmentVariable("onlinePayments.api.merchantId");
-        readonly string EndpointHost = Environment.GetEnvironmentVariable("onlinePayments.api.endpoint.host");
-        readonly string EndpointScheme = Environment.GetEnvironmentVariable("onlinePayments.api.endpoint.scheme");
-        readonly string EndpointPort = Environment.GetEnvironmentVariable("onlinePayments.api.endpoint.port");
+        private readonly string _merchantId = Environment.GetEnvironmentVariable("onlinePayments_api_merchantId");
+        private readonly string _apiKeyId = Environment.GetEnvironmentVariable("onlinePayments_api_apiKeyId");
+        private readonly string _secretApiKey = Environment.GetEnvironmentVariable("onlinePayments_api_secretApiKey");
 
         protected CommunicatorConfiguration GetCommunicatorConfiguration()
         {
-            if (ApiKeyId == null || SecretApiKey == null)
+            if (_apiKeyId == null || _secretApiKey == null)
             {
-                throw new System.InvalidOperationException("Environment variables onlinePayments.api.apiKeyId and onlinePayments.api.secretApiKey must be set");
+                throw new InvalidOperationException("Environment variables onlinePayments_api_apiKeyId and onlinePayments_api_secretApiKey must be set");
             }
-            return Factory.CreateConfiguration(ApiKeyId, SecretApiKey, GetEndpoint(), "OnlinePayments");
+            return Factory.CreateConfiguration(_apiKeyId, _secretApiKey);
         }
 
-        protected Client GetClient()
+        protected IClient GetClient()
         {
-            if (ApiKeyId != null && SecretApiKey != null)
+            if (_apiKeyId != null && _secretApiKey != null)
             {
-                return Factory.CreateClient(ApiKeyId, SecretApiKey, GetEndpoint(), "OnlinePayments").WithClientMetaInfo("{\"test\":\"test\"}");
+                return Factory.CreateClient(_apiKeyId, _secretApiKey).WithClientMetaInfo("{\"test\":\"test\"}");
             }
-            throw new System.InvalidOperationException("Environment variables onlinePayments.api.apiKeyId and onlinePayments.api.secretApiKey must be set");
+            throw new InvalidOperationException("Environment variables onlinePayments_api_apiKeyId and onlinePayments_api_secretApiKey must be set");
         }
 
         protected string GetMerchantId()
         {
-            if (MerchantId != null)
+            if (_merchantId != null)
             {
-                return MerchantId;
+                return _merchantId;
             }
-            throw new System.InvalidOperationException("Environment variable onlinePayments.api.merchantId must be set");
-        }
-
-        private Uri GetEndpoint()
-        {
-            if (EndpointHost == null)
-            {
-                throw new InvalidOperationException("Environment variable onlinePayments.api.endpoint.host must be set");
-            }
-            String scheme = EndpointScheme ?? "https";
-            int port = EndpointPort != null ? Int32.Parse(EndpointPort) : -1;
-            try
-            {
-                return new UriBuilder(scheme, EndpointHost, port).Uri;
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                throw new ArgumentException("Unable to construct API endpoint URI", e);
-            }
+            throw new InvalidOperationException("Environment variable onlinePayments_api_merchantId must be set");
         }
     }
 }

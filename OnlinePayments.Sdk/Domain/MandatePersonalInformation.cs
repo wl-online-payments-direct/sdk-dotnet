@@ -1,19 +1,19 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class MandatePersonalInformation
     {
         /// <summary>
-        /// Object containing the name details of the customer.<para />
-        /// Required for Create mandate and Create payment calls.<para />
+        /// Object containing the name details of the customer.
+        /// Required for Create mandate and Create payment calls.
         /// </summary>
-        public MandatePersonalName Name { get; set; } = null;
+        public MandatePersonalName Name { get; set; }
 
         /// <summary>
-        /// Object containing the title of the customer (Mr, Miss or Mrs)<para />
+        /// Object containing the title of the customer (Mr, Miss or Mrs)
         /// </summary>
-        public string Title { get; set; } = null;
+        public string Title { get; set; }
     }
 }

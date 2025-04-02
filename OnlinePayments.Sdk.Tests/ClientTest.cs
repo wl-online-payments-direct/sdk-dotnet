@@ -1,7 +1,8 @@
 using NUnit.Framework;
 using System.Linq;
 using System.Collections.Generic;
-using OnlinePayments.Sdk.DefaultImpl;
+using OnlinePayments.Sdk.Communication;
+using OnlinePayments.Sdk.Json;
 using OnlinePayments.Sdk.Util;
 
 namespace OnlinePayments.Sdk
@@ -12,44 +13,44 @@ namespace OnlinePayments.Sdk
         [TestCase]
         public void TestWithClientMetaInfo()
         {
-            IClient client1 = Factory.CreateClient(FactoryTest.DICT, FactoryTest.API_KEY_ID, FactoryTest.SECRET_API_KEY);
+            var client1 = FactoryTest.CreateClient();
             AssertNoClientHeaders(client1);
 
-            Client client2 = client1.WithClientMetaInfo(null);
+            var client2 = client1.WithClientMetaInfo(null);
             Assert.AreSame(client1, client2);
 
-            string clientMetaInfo = DefaultMarshaller.Instance.Marshal(new Dictionary<string, string> { { "test", "test" } });
-            Client client3 = client1.WithClientMetaInfo(clientMetaInfo);
+            var clientMetaInfo = DefaultMarshaller.Instance.Marshal(new Dictionary<string, string> { { "test", "test" } });
+            var client3 = client1.WithClientMetaInfo(clientMetaInfo);
 
             Assert.AreNotSame(client1, client3);
             AssertClientHeaders(client3, clientMetaInfo);
 
-            Client client4 = client3.WithClientMetaInfo(clientMetaInfo);
+            var client4 = client3.WithClientMetaInfo(clientMetaInfo);
             Assert.AreSame(client3, client4);
 
-            Client client5 = client3.WithClientMetaInfo(null);
+            var client5 = client3.WithClientMetaInfo(null);
             Assert.AreNotSame(client3, client5);
             AssertNoClientHeaders(client5);
 
             // nothing can be said about client1 and client5 being the same or not
         }
 
-        void AssertClientHeaders(Client client, string clientMetaInfo)
+        private static void AssertClientHeaders(IClient client, string clientMetaInfo)
         {
-            IEnumerable<RequestHeader> headers = GetHeaders(client);
+            var headers = GetHeaders(client);
 
-            string headerValue = clientMetaInfo.ToBase64String();
+            var headerValue = clientMetaInfo.ToBase64String();
 
             Assert.NotNull(headers.FirstOrDefault(v => v.Equals(new RequestHeader("X-GCS-ClientMetaInfo", headerValue))));
         }
 
-        void AssertNoClientHeaders(IClient client)
+        private static void AssertNoClientHeaders(IClient client)
         {
-            IEnumerable<RequestHeader> headers = GetHeaders(client);
-            Assert.Null(headers);
+            var headers = GetHeaders(client);
+            Assert.IsEmpty(headers);
         }
 
-        private IEnumerable<RequestHeader> GetHeaders(IClient client)
+        private static IEnumerable<RequestHeader> GetHeaders(IClient client)
         {
             // ApiResource.ClientHeaders is protected, so this test class has no access to it; use reflection to get it
             return client.GetPrivateProperty<IEnumerable<RequestHeader>>("ClientHeaders");

@@ -5,20 +5,17 @@ namespace OnlinePayments.Sdk.Logging
     /// </summary>
     public class RequestLogMessageBuilder : LogMessageBuilder
     {
-        const string messageTemplateWithoutBody = @"Outgoing request (requestId='{0}'):
+        private const string MessageTemplateWithoutBody = @"Outgoing request (requestId='{0}'):
   method:       '{1}'
   uri:          '{2}'
   headers:      '{3}'";
 
-        const string messageTemplateWithBody = messageTemplateWithoutBody + @"
+        private const string MessageTemplateWithBody = MessageTemplateWithoutBody + @"
   content-type: '{4}'
   body:         '{5}'";
 
-        private readonly string _method;
-        private readonly string _uri;
-
-        public RequestLogMessageBuilder(string requestId, string method, string uri)
-            : base(requestId)
+        public RequestLogMessageBuilder(string requestId, string method, string uri, BodyObfuscator bodyObfuscator, HeaderObfuscator headerObfuscator)
+            : base(requestId, bodyObfuscator, headerObfuscator)
         {
             _method = method;
             _uri = uri;
@@ -28,16 +25,17 @@ namespace OnlinePayments.Sdk.Logging
         {
             get
             {
-                string body = Body;
+                var body = Body;
                 if (body == null)
                 {
-                    return string.Format(messageTemplateWithoutBody, RequestId,
+                    return string.Format(MessageTemplateWithoutBody, RequestId,
                         EmptyIfNull(_method),
                         EmptyIfNull(_uri),
                         Headers);
+
                 }
 
-                return string.Format(messageTemplateWithBody, RequestId,
+                return string.Format(MessageTemplateWithBody, RequestId,
                     EmptyIfNull(_method),
                     EmptyIfNull(_uri),
                     Headers,
@@ -45,5 +43,8 @@ namespace OnlinePayments.Sdk.Logging
                     body);
             }
         }
+
+        private readonly string _method;
+        private readonly string _uri;
     }
 }

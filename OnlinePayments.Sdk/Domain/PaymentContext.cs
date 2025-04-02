@@ -1,23 +1,23 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class PaymentContext
     {
         /// <summary>
-        /// Object containing amount and ISO currency code attributes<para />
+        /// Object containing amount and ISO currency code attributes
         /// </summary>
-        public AmountOfMoney AmountOfMoney { get; set; } = null;
+        public AmountOfMoney AmountOfMoney { get; set; }
 
         /// <summary>
-        /// The country the payment takes place in<para />
+        /// The country the payment takes place in
         /// </summary>
-        public string CountryCode { get; set; } = null;
+        public string CountryCode { get; set; }
 
         /// <summary>
-        /// True if the payment is recurring<para />
+        /// True if the payment is recurring
         /// </summary>
-        public bool? IsRecurring { get; set; } = null;
+        public bool? IsRecurring { get; set; }
     }
 }

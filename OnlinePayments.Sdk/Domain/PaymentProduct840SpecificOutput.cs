@@ -1,28 +1,28 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class PaymentProduct840SpecificOutput
     {
         /// <summary>
-        /// Object containing billing address details.<para />
+        /// Object containing billing address details.
         /// </summary>
-        public Address BillingAddress { get; set; } = null;
+        public Address BillingAddress { get; set; }
 
         /// <summary>
-        /// Object containing the details of the PayPal account<para />
+        /// Object containing the details of the PayPal account
         /// </summary>
-        public PaymentProduct840CustomerAccount CustomerAccount { get; set; } = null;
+        public PaymentProduct840CustomerAccount CustomerAccount { get; set; }
 
         /// <summary>
-        /// Object containing billing address details.<para />
+        /// Object containing billing address details.
         /// </summary>
-        public Address CustomerAddress { get; set; } = null;
+        public Address CustomerAddress { get; set; }
 
         /// <summary>
-        /// Kind of seller protection in force for the PayPal transaction<para />
+        /// Kind of seller protection in force for the PayPal transaction
         /// </summary>
-        public ProtectionEligibility ProtectionEligibility { get; set; } = null;
+        public ProtectionEligibility ProtectionEligibility { get; set; }
     }
 }

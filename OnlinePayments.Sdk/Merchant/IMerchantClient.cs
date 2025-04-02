@@ -1,17 +1,22 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
+using OnlinePayments.Sdk.Merchant.Captures;
+using OnlinePayments.Sdk.Merchant.Complete;
 using OnlinePayments.Sdk.Merchant.HostedCheckout;
 using OnlinePayments.Sdk.Merchant.HostedTokenization;
 using OnlinePayments.Sdk.Merchant.Mandates;
 using OnlinePayments.Sdk.Merchant.PaymentLinks;
 using OnlinePayments.Sdk.Merchant.Payments;
 using OnlinePayments.Sdk.Merchant.Payouts;
+using OnlinePayments.Sdk.Merchant.PrivacyPolicy;
 using OnlinePayments.Sdk.Merchant.ProductGroups;
 using OnlinePayments.Sdk.Merchant.Products;
+using OnlinePayments.Sdk.Merchant.Refunds;
 using OnlinePayments.Sdk.Merchant.Services;
 using OnlinePayments.Sdk.Merchant.Sessions;
 using OnlinePayments.Sdk.Merchant.Tokens;
+using OnlinePayments.Sdk.Merchant.Webhooks;
 
 namespace OnlinePayments.Sdk.Merchant
 {
@@ -20,71 +25,101 @@ namespace OnlinePayments.Sdk.Merchant
     /// </summary>
     public interface IMerchantClient
     {
-
         /// <summary>
         /// Resource /v2/{merchantId}/hostedcheckouts
         /// </summary>
-        /// <returns>HostedCheckoutClient</returns>
+        /// <returns>IHostedCheckoutClient</returns>
         IHostedCheckoutClient HostedCheckout { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/hostedtokenizations
         /// </summary>
-        /// <returns>HostedTokenizationClient</returns>
+        /// <returns>IHostedTokenizationClient</returns>
         IHostedTokenizationClient HostedTokenization { get; }
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/mandates
-        /// </summary>
-        /// <returns>MandatesClient</returns>
-        IMandatesClient Mandates { get; }
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/paymentlinks
-        /// </summary>
-        /// <returns>PaymentLinksClient</returns>
-        IPaymentLinksClient PaymentLinks { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments
         /// </summary>
-        /// <returns>PaymentsClient</returns>
+        /// <returns>IPaymentsClient</returns>
         IPaymentsClient Payments { get; }
 
         /// <summary>
-        /// Resource /v2/{merchantId}/payouts
+        /// Resource /v2/{merchantId}/payments/{paymentId}/captures
         /// </summary>
-        /// <returns>PayoutsClient</returns>
-        IPayoutsClient Payouts { get; }
+        /// <returns>ICapturesClient</returns>
+        ICapturesClient Captures { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/payments/{paymentId}/refunds
+        /// </summary>
+        /// <returns>IRefundsClient</returns>
+        IRefundsClient Refunds { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/payments/{paymentId}/complete
+        /// </summary>
+        /// <returns>ICompleteClient</returns>
+        ICompleteClient Complete { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/productgroups
         /// </summary>
-        /// <returns>ProductGroupsClient</returns>
+        /// <returns>IProductGroupsClient</returns>
         IProductGroupsClient ProductGroups { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/products
         /// </summary>
-        /// <returns>ProductsClient</returns>
+        /// <returns>IProductsClient</returns>
         IProductsClient Products { get; }
 
         /// <summary>
-        /// Resource /v2/{merchantId}/services
+        /// Resource /v2/{merchantId}/services/testconnection
         /// </summary>
-        /// <returns>ServicesClient</returns>
+        /// <returns>IServicesClient</returns>
         IServicesClient Services { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/webhooks/validateCredentials
+        /// </summary>
+        /// <returns>IWebhooksClient</returns>
+        IWebhooksClient Webhooks { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/sessions
         /// </summary>
-        /// <returns>SessionsClient</returns>
+        /// <returns>ISessionsClient</returns>
         ISessionsClient Sessions { get; }
 
         /// <summary>
-        /// Resource /v2/{merchantId}/tokens
+        /// Resource /v2/{merchantId}/tokens/{tokenId}
         /// </summary>
-        /// <returns>TokensClient</returns>
+        /// <returns>ITokensClient</returns>
         ITokensClient Tokens { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/payouts/{payoutId}
+        /// </summary>
+        /// <returns>IPayoutsClient</returns>
+        IPayoutsClient Payouts { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/mandates
+        /// </summary>
+        /// <returns>IMandatesClient</returns>
+        IMandatesClient Mandates { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/services/privacypolicy
+        /// </summary>
+        /// <returns>IPrivacyPolicyClient</returns>
+        IPrivacyPolicyClient PrivacyPolicy { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/paymentlinks
+        /// </summary>
+        /// <returns>IPaymentLinksClient</returns>
+        IPaymentLinksClient PaymentLinks { get; }
+
     }
 }

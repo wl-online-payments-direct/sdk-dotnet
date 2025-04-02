@@ -1,63 +1,69 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class CreateMandateWithReturnUrl
     {
         /// <summary>
-        /// An alias for the mandate. This can be used to visually represent the mandate. Do not include any unmasked sensitive data in the alias. If this field is not provided the masked IBAN of the customer is used.<para />
+        /// An alias for the mandate. This can be used to visually represent the mandate. Do not include any unmasked sensitive data in the alias. If this field is not provided the masked IBAN of the customer is used.
         /// </summary>
-        public string Alias { get; set; } = null;
+        public string Alias { get; set; }
 
         /// <summary>
-        /// Customer object containing customer specific inputs.<para />
-        /// Required for Create mandate and Create payment calls.<para />
+        /// Customer object containing customer specific inputs.
+        /// Required for Create mandate and Create payment calls.
         /// </summary>
-        public MandateCustomer Customer { get; set; } = null;
+        public MandateCustomer Customer { get; set; }
 
         /// <summary>
-        /// The unique identifier of a customer<para />
+        /// The unique identifier of a customer
         /// </summary>
-        public string CustomerReference { get; set; } = null;
+        public string CustomerReference { get; set; }
 
         /// <summary>
-        /// The language code of the customer. ISO 639-1, possible values are:<para />
-        /// * de<para />
-        /// * en<para />
-        /// * es<para />
-        /// * fr<para />
-        /// * it<para />
-        /// * nl<para />
-        /// * si<para />
-        /// * sk<para />
-        /// * sv<para />
+        /// The language code of the customer. ISO 639-1, possible values are:
+        /// <list type="bullet">
+        ///   <item><description>de</description></item>
+        ///   <item><description>en</description></item>
+        ///   <item><description>es</description></item>
+        ///   <item><description>fr</description></item>
+        ///   <item><description>it</description></item>
+        ///   <item><description>nl</description></item>
+        ///   <item><description>si</description></item>
+        ///   <item><description>sk</description></item>
+        ///   <item><description>sv</description></item>
+        /// </list>
         /// </summary>
-        public string Language { get; set; } = null;
+        public string Language { get; set; }
 
         /// <summary>
-        /// Specifies whether the mandate is for one-off or recurring payments. Possible values are:<para />
-        /// * UNIQUE<para />
-        /// * RECURRING<para />
+        /// Specifies whether the mandate is for one-off or recurring payments. Possible values are:
+        /// <list type="bullet">
+        ///   <item><description>UNIQUE</description></item>
+        ///   <item><description>RECURRING</description></item>
+        /// </list>
         /// </summary>
-        public string RecurrenceType { get; set; } = null;
+        public string RecurrenceType { get; set; }
 
         /// <summary>
-        /// Return URL to use if the mandate signing requires redirection. Required for S2S Create Payment if and only if the signatureType is "SMS".<para />
+        /// Return URL to use if the mandate signing requires redirection. Required for S2S Create Payment if and only if the signatureType is &quot;SMS&quot;.
         /// </summary>
-        public string ReturnUrl { get; set; } = null;
+        public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// Specifies whether the mandate is tick box, unsigned or signed by SMS. Possible values are:<para />
-        /// * UNSIGNED<para />
-        /// * SMS<para />
-        /// * TICK_BOX - This option is only available for Equens Worldline<para />
+        /// Specifies whether the mandate is tick box, unsigned or signed by SMS. Possible values are:
+        /// <list type="bullet">
+        ///   <item><description>UNSIGNED</description></item>
+        ///   <item><description>SMS</description></item>
+        ///   <item><description>TICK_BOX - This option is only available for Equens Worldline</description></item>
+        /// </list>
         /// </summary>
-        public string SignatureType { get; set; } = null;
+        public string SignatureType { get; set; }
 
         /// <summary>
-        /// The unique identifier of the mandate<para />
+        /// The unique identifier of the mandate
         /// </summary>
-        public string UniqueMandateReference { get; set; } = null;
+        public string UniqueMandateReference { get; set; }
     }
 }

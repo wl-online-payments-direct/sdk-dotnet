@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using OnlinePayments.Sdk.Domain;
 using System.Threading.Tasks;
 
 namespace OnlinePayments.Sdk.It
@@ -12,9 +11,9 @@ namespace OnlinePayments.Sdk.It
         [TestCase]
         public async Task Test()
         {
-            var lParams = new SessionRequest();
+            var lParams = new Domain.SessionRequest();
 
-            using (Client client = GetClient())
+            using (IClient client = GetClient())
             {
                 var l = Logging.SystemConsoleCommunicatorLogger.Instance;
                 var response = await client

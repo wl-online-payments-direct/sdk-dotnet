@@ -1,6 +1,7 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
+using System;
 using System.Collections.Generic;
 
 namespace OnlinePayments.Sdk.Domain
@@ -8,44 +9,46 @@ namespace OnlinePayments.Sdk.Domain
     public class PaymentLinkResponse
     {
         /// <summary>
-        /// The date after which the payment link will not be usable to complete the payment. The date will contain the UTC offset.<para />
+        /// The date after which the payment link will not be usable to complete the payment. The date will contain the UTC offset.
         /// </summary>
-        public string ExpirationDate { get; set; } = null;
+        public DateTimeOffset ExpirationDate { get; set; }
 
         /// <summary>
-        /// The unique payment transaction identifier. This id is only set when a payment was processed with this payment link.<para />
+        /// The unique payment transaction identifier. This id is only set when a payment was processed with this payment link.
         /// </summary>
-        public string PaymentId { get; set; } = null;
+        public string PaymentId { get; set; }
 
-        public IList<PaymentLinkEvent> PaymentLinkEvents { get; set; } = null;
-
-        /// <summary>
-        /// The unique link identifier.<para />
-        /// </summary>
-        public string PaymentLinkId { get; set; } = null;
+        public IList<PaymentLinkEvent> PaymentLinkEvents { get; set; }
 
         /// <summary>
-        /// An object containing the details of the related payment output.<para />
+        /// The unique link identifier.
         /// </summary>
-        public PaymentLinkOrderOutput PaymentLinkOrder { get; set; } = null;
+        public string PaymentLinkId { get; set; }
 
         /// <summary>
-        /// The payment link recipient name.<para />
+        /// An object containing the details of the related payment output.
         /// </summary>
-        public string RecipientName { get; set; } = null;
+        public PaymentLinkOrderOutput PaymentLinkOrder { get; set; }
 
         /// <summary>
-        /// The URL that will redirect the customer to the Hosted Checkout page to process the payment.<para />
+        /// The payment link recipient name.
         /// </summary>
-        public string RedirectionUrl { get; set; } = null;
+        public string RecipientName { get; set; }
 
         /// <summary>
-        /// The state of the payment link:<para />
-        ///   * ACTIVE: The payment link is ready to be used.<para />
-        ///   * PAID: The payment has been completed.<para />
-        ///   * CANCELLED: The payment link has been manually cancelled.<para />
-        ///   * EXPIRED: The payment link is not usable anymore.<para />
+        /// The URL that will redirect the customer to the Hosted Checkout page to process the payment.
         /// </summary>
-        public string Status { get; set; } = null;
+        public string RedirectionUrl { get; set; }
+
+        /// <summary>
+        /// The state of the payment link:
+        /// <list type="bullet">
+        ///   <item><description>ACTIVE: The payment link is ready to be used.</description></item>
+        ///   <item><description>PAID: The payment has been completed.</description></item>
+        ///   <item><description>CANCELLED: The payment link has been manually cancelled.</description></item>
+        ///   <item><description>EXPIRED: The payment link is not usable anymore.</description></item>
+        /// </list>
+        /// </summary>
+        public string Status { get; set; }
     }
 }

@@ -10,13 +10,6 @@ namespace OnlinePayments.Sdk.Logging
     {
         public static readonly SystemConsoleCommunicatorLogger Instance = new SystemConsoleCommunicatorLogger();
 
-        private string DatePrefix => DateTime.Now.ToString("s") + " ";
-
-        SystemConsoleCommunicatorLogger()
-        {
-
-        }
-
         public void Log(string message)
         {
             // Console.WriteLine is thread safe
@@ -38,5 +31,12 @@ namespace OnlinePayments.Sdk.Logging
                 while (e != null);
             }
         }
+
+        private SystemConsoleCommunicatorLogger()
+        {
+
+        }
+
+        private static string DatePrefix => DateTime.Now.ToString("s") + " ";
     }
 }

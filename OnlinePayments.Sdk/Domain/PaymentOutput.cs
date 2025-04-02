@@ -1,73 +1,76 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
+using System;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class PaymentOutput
     {
         /// <summary>
-        /// Object containing amount and ISO currency code attributes<para />
+        /// Object containing amount and ISO currency code attributes
         /// </summary>
-        public AmountOfMoney AcquiredAmount { get; set; } = null;
+        public AmountOfMoney AcquiredAmount { get; set; }
 
         /// <summary>
-        /// Object containing amount and ISO currency code attributes<para />
+        /// Object containing amount and ISO currency code attributes
         /// </summary>
-        public AmountOfMoney AmountOfMoney { get; set; } = null;
+        public AmountOfMoney AmountOfMoney { get; set; }
 
         /// <summary>
-        /// Amount that has been paid. This is deprecated. Use acquiredAmount instead.<para />
+        /// Amount that has been paid. This is deprecated. Use acquiredAmount instead.
         /// </summary>
-        public long? AmountPaid { get; set; } = null;
+        [Obsolete("Amount that has been paid. This is deprecated. Use acquiredAmount instead.")]
+        public long? AmountPaid { get; set; }
 
         /// <summary>
-        /// Object containing the card payment method details<para />
+        /// Object containing the card payment method details
         /// </summary>
-        public CardPaymentMethodSpecificOutput CardPaymentMethodSpecificOutput { get; set; } = null;
+        public CardPaymentMethodSpecificOutput CardPaymentMethodSpecificOutput { get; set; }
 
         /// <summary>
-        /// Object containing the details of the customer<para />
+        /// Object containing the details of the customer
         /// </summary>
-        public CustomerOutput Customer { get; set; } = null;
+        public CustomerOutput Customer { get; set; }
 
         /// <summary>
-        /// Object to apply a discount to the total basket by adding a discount line.<para />
+        /// Object to apply a discount to the total basket by adding a discount line.
         /// </summary>
-        public Discount Discount { get; set; } = null;
+        public Discount Discount { get; set; }
 
         /// <summary>
-        /// It allows you to store additional parameters for the transaction in the format you prefer (e.g.-> key-value query string, JSON, etc.) These parameters are then echoed back to you in API GET calls and Webhook notifications. This field must not contain any personal data.<para />
+        /// It allows you to store additional parameters for the transaction in the format you prefer (e.g.-&gt; key-value query string, JSON, etc.) These parameters are then echoed back to you in API GET calls and Webhook notifications. This field must not contain any personal data.
         /// </summary>
-        public string MerchantParameters { get; set; } = null;
+        public string MerchantParameters { get; set; }
 
         /// <summary>
-        /// Object containing the mobile payment method details<para />
+        /// Object containing the mobile payment method details
         /// </summary>
-        public MobilePaymentMethodSpecificOutput MobilePaymentMethodSpecificOutput { get; set; } = null;
+        public MobilePaymentMethodSpecificOutput MobilePaymentMethodSpecificOutput { get; set; }
 
         /// <summary>
-        /// Payment method identifier used by the our payment engine.<para />
+        /// Payment method identifier used by the our payment engine.
         /// </summary>
-        public string PaymentMethod { get; set; } = null;
+        public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// Object containing the redirect payment product details<para />
+        /// Object containing the redirect payment product details
         /// </summary>
-        public RedirectPaymentMethodSpecificOutput RedirectPaymentMethodSpecificOutput { get; set; } = null;
+        public RedirectPaymentMethodSpecificOutput RedirectPaymentMethodSpecificOutput { get; set; }
 
         /// <summary>
-        /// Object that holds all reference properties that are linked to this transaction<para />
+        /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
-        public PaymentReferences References { get; set; } = null;
+        public PaymentReferences References { get; set; }
 
         /// <summary>
-        /// Object containing the SEPA direct debit details<para />
+        /// Object containing the SEPA direct debit details
         /// </summary>
-        public SepaDirectDebitPaymentMethodSpecificOutput SepaDirectDebitPaymentMethodSpecificOutput { get; set; } = null;
+        public SepaDirectDebitPaymentMethodSpecificOutput SepaDirectDebitPaymentMethodSpecificOutput { get; set; }
 
         /// <summary>
-        /// Object containing specific surcharging attributes applied to an order.<para />
+        /// Object containing specific surcharging attributes applied to an order.
         /// </summary>
-        public SurchargeSpecificOutput SurchargeSpecificOutput { get; set; } = null;
+        public SurchargeSpecificOutput SurchargeSpecificOutput { get; set; }
     }
 }

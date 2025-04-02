@@ -12,7 +12,7 @@ namespace OnlinePayments.Sdk.It
         [TestCase]
         public async Task Test()
         {
-            using (Client client = GetClient())
+            using (IClient client = GetClient())
             {
                 await client.WithNewMerchant(GetMerchantId()).Services.TestConnection()
                     .ConfigureAwait(false);

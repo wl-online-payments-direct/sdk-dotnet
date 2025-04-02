@@ -1,5 +1,5 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 using System.Collections.Generic;
 
@@ -7,39 +7,36 @@ namespace OnlinePayments.Sdk.Domain
 {
     public class PaymentStatusOutput
     {
-        /// <summary>
-        /// Contains the set of errors<para />
-        /// </summary>
-        public IList<APIError> Errors { get; set; } = null;
+        public IList<APIError> Errors { get; set; }
 
         /// <summary>
-        /// Indicates if the transaction has been authorized<para />
+        /// Indicates if the transaction has been authorized
         /// </summary>
-        public bool? IsAuthorized { get; set; } = null;
+        public bool? IsAuthorized { get; set; }
 
         /// <summary>
-        /// Flag indicating if the payment can be cancelled<para />
+        /// Flag indicating if the payment can be cancelled
         /// </summary>
-        public bool? IsCancellable { get; set; } = null;
+        public bool? IsCancellable { get; set; }
 
         /// <summary>
-        /// Flag indicating if the payment can be refunded<para />
+        /// Flag indicating if the payment can be refunded
         /// </summary>
-        public bool? IsRefundable { get; set; } = null;
+        public bool? IsRefundable { get; set; }
 
         /// <summary>
-        /// Highlevel status of the payment, payout or refund.<para />
+        /// Highlevel status of the payment, payout or refund.
         /// </summary>
-        public string StatusCategory { get; set; } = null;
+        public string StatusCategory { get; set; }
 
         /// <summary>
-        /// Numeric status code of the legacy API. It is returned to ease the migration from the legacy APIs. You should not write new business logic based on this property as it will be deprecated in a future version of the API. The value can also be found in the BackOffice and in report files.<para />
+        /// Numeric status code of the legacy API. The value can also be found in the BackOffice and in report files.
         /// </summary>
-        public int? StatusCode { get; set; } = null;
+        public int? StatusCode { get; set; }
 
         /// <summary>
-        /// Timestamp of the latest status change<para />
+        /// Timestamp of the latest status change
         /// </summary>
-        public string StatusCodeChangeDateTime { get; set; } = null;
+        public string StatusCodeChangeDateTime { get; set; }
     }
 }

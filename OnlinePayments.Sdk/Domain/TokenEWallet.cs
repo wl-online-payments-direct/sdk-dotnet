@@ -1,16 +1,19 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
+using System;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class TokenEWallet
     {
         /// <summary>
-        /// Deprecated: This field is not used by any payment product<para />
-        /// An alias for the token. This can be used to visually represent the token.<para />
+        /// Deprecated: This field is not used by any payment product
+        /// An alias for the token. This can be used to visually represent the token.
         /// </summary>
-        public string Alias { get; set; } = null;
+        [Obsolete("This field is not used by any payment product An alias for the token. This can be used to visually represent the token.")]
+        public string Alias { get; set; }
 
-        public CustomerToken Customer { get; set; } = null;
+        public CustomerToken Customer { get; set; }
     }
 }

@@ -1,24 +1,24 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class CardWithoutCvv
     {
         /// <summary>
-        /// The obfuscated card number<para />
+        /// The obfuscated card number
         /// </summary>
-        public string CardNumber { get; set; } = null;
+        public string CardNumber { get; set; }
 
         /// <summary>
-        /// The card holder's name on the card.<para />
+        /// The card holder's name on the card.
         /// </summary>
-        public string CardholderName { get; set; } = null;
+        public string CardholderName { get; set; }
 
         /// <summary>
-        /// Expiry date of the card<para />
-        /// Format: MMYY<para />
+        /// Expiry date of the card
+        /// Format: MMYY
         /// </summary>
-        public string ExpiryDate { get; set; } = null;
+        public string ExpiryDate { get; set; }
     }
 }

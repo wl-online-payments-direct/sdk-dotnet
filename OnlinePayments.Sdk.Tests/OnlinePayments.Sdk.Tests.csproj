@@ -1,41 +1,38 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net45</TargetFrameworks>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>OnlinePayments.Sdk</RootNamespace>
-    <AssemblyVersion>3.31.0</AssemblyVersion>
-    <Version>3.31.0</Version>
+    <AssemblyVersion>4.0.0</AssemblyVersion>
+    <Version>4.0.0</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>Online Payments</Company>
     <Product>Online Payments .NET SDK unit tests</Product>
     <Description>Unit tests for the Online Payments .NET SDK</Description>
     <PackageTags>Online Payments SDK</PackageTags>
-    <Copyright>Copyright (c) 2020 Ingenico e-Commerce Solutions B.V.</Copyright>
+    <Copyright>Copyright (c) 2020 Ingenico e-Commerce Solutions B.V..</Copyright>
     <Authors>Online Payments</Authors>
-    <PackageProjectUrl>https://github.com/wl-online-payments-direct/sdk-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Online-Payments/dotnet/</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageIcon>packageIcon.png</PackageIcon>
-    <PackageIconUrl>https://raw.githubusercontent.com/wl-online-payments-direct/sdk-dotnet/master/packageIcon.png</PackageIconUrl>
-    <RepositoryUrl>https://github.com/wl-online-payments-direct/sdk-dotnet</RepositoryUrl>
+    <PackageIconUrl>https://github.com/Online-Payments/sdk-dotnet/blob/master/packageIcon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Online-Payments/sdk-dotnet</RepositoryUrl>
+
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AP.MockHttpServer" Version="1.5.0.1061" />
-    <PackageReference Include="NUnit" Version="3.14.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-    <PackageReference Include="NunitXml.TestLogger" Version="2.1.80" />
+    <ProjectReference Include="..\OnlinePayments.Sdk\OnlinePayments.Sdk.csproj" />
   </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' != 'net45'">
-      <PackageReference Include="Moq" Version="4.20.70" />
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
-      <PackageReference Include="Moq" Version="4.17.2" />
-      <Reference Include="System.Net.Http" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AP.MockHttpServer" Version="1.5.0.1061" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+    <PackageReference Include="NUnit" Version="3.14.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+    <PackageReference Include="NunitXml.TestLogger" Version="3.1.20" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\packageIcon.png">
@@ -46,10 +43,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\OnlinePayments.Sdk\OnlinePayments.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

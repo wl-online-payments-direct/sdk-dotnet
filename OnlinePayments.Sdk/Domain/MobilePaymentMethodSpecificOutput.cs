@@ -1,38 +1,38 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class MobilePaymentMethodSpecificOutput
     {
         /// <summary>
-        /// Card Authorization code as returned by the acquirer<para />
+        /// Card Authorization code as returned by the acquirer
         /// </summary>
-        public string AuthorisationCode { get; set; } = null;
+        public string AuthorisationCode { get; set; }
 
         /// <summary>
-        /// Fraud results contained in the CardFraudResults object<para />
+        /// Fraud results contained in the CardFraudResults object
         /// </summary>
-        public CardFraudResults FraudResults { get; set; } = null;
+        public CardFraudResults FraudResults { get; set; }
 
         /// <summary>
-        /// The card network that was used for a mobile payment method operation<para />
+        /// The card network that was used for a mobile payment method operation
         /// </summary>
-        public string Network { get; set; } = null;
+        public string Network { get; set; }
 
         /// <summary>
-        /// Object containing payment details<para />
+        /// Object containing payment details
         /// </summary>
-        public MobilePaymentData PaymentData { get; set; } = null;
+        public MobilePaymentData PaymentData { get; set; }
 
         /// <summary>
-        /// Payment product identifier - Please see Products documentation for a full overview of possible values.<para />
+        /// Payment product identifier - Please see Products documentation for a full overview of possible values.
         /// </summary>
-        public int? PaymentProductId { get; set; } = null;
+        public int? PaymentProductId { get; set; }
 
         /// <summary>
-        /// 3D Secure results object<para />
+        /// 3D Secure results object
         /// </summary>
-        public ThreeDSecureResults ThreeDSecureResults { get; set; } = null;
+        public ThreeDSecureResults ThreeDSecureResults { get; set; }
     }
 }

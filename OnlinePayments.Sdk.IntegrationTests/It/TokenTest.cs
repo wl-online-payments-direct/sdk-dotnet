@@ -1,8 +1,7 @@
 using NUnit.Framework;
-using OnlinePayments.Sdk.Domain;
-using OnlinePayments.Sdk.Merchant.Tokens;
 using OnlinePayments.Sdk.Logging;
 using System.Threading.Tasks;
+using OnlinePayments.Sdk.Domain;
 
 namespace OnlinePayments.Sdk.It
 {
@@ -32,7 +31,7 @@ namespace OnlinePayments.Sdk.It
                 }
             };
 
-            using (Client client = GetClient())
+            using (IClient client = GetClient())
             {
                 client.EnableLogging(SystemConsoleCommunicatorLogger.Instance);
                 CreatedTokenResponse createTokenResponse = await client

@@ -1,13 +1,13 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class CustomerDeviceOutput
     {
         /// <summary>
-        /// ISO 3166-1 alpha-2 country code<para />
+        /// ISO 3166-1 alpha-2 country code
         /// </summary>
-        public string IpAddressCountryCode { get; set; } = null;
+        public string IpAddressCountryCode { get; set; }
     }
 }

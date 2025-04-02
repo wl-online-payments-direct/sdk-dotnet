@@ -1,32 +1,30 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class CapturePaymentRequest
     {
         /// <summary>
-        /// Here you can specify the amount that you want to capture (specified in cents, where single digit currencies are presumed to have 2 digits). The amount can be lower than the amount that was authorized, but not higher. <para />
-        ///  If left empty, the full amount will be captured and the request will be final. <para />
-        ///  If the full amount is captured, the request will also be final.<para />
+        /// Here you can specify the amount that you want to capture (specified in cents, where single digit currencies are presumed to have 2 digits). The amount can be lower than the amount that was authorized, but not higher.
+        /// If left empty, the full amount will be captured and the request will be final.
+        /// If the full amount is captured, the request will also be final.
         /// </summary>
-        public long? Amount { get; set; } = null;
+        public long? Amount { get; set; }
 
         /// <summary>
-        /// This property indicates whether this will be the final operation. The default value for this property is false.<para />
+        /// This property indicates whether this will be the final operation. The default value for this property is false.
         /// </summary>
-        public bool? IsFinal { get; set; } = null;
+        public bool? IsFinal { get; set; }
 
         /// <summary>
-        /// Object that holds all reference properties that are linked to this transaction<para />
-        /// <para />
-        /// Deprecated: Use OperationReferences instead.<para />
+        /// Object that holds all reference properties that are linked to this transaction
         /// </summary>
-        public PaymentReferences References { get; set; } = null;
+        public OperationPaymentReferences OperationReferences { get; set; }
 
         /// <summary>
-        /// Object that holds all reference properties that are linked to this transaction<para />
+        /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
-        public OperationPaymentReferences OperationReferences { get; set; } = null;
+        public PaymentReferences References { get; set; }
     }
 }

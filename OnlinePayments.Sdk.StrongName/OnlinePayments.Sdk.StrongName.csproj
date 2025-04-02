@@ -1,24 +1,25 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>OnlinePayments.Sdk</RootNamespace>
-    <AssemblyVersion>3.31.0</AssemblyVersion>
-    <Version>3.31.0</Version>
+    <AssemblyVersion>4.0.0</AssemblyVersion>
+    <Version>4.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>Online Payments</Company>
     <Product>Online Payments .NET SDK</Product>
-    <Description>SDK to communicate with the payment platform using the Online Payments Server API</Description>
+    <Description>SDK to communicate with the Online Payments platform using the Online Payments Server API</Description>
     <PackageTags>Online Payments SDK</PackageTags>
-    <Copyright>Copyright (c) 2020 Ingenico e-Commerce Solutions B.V.</Copyright>
+    <Copyright>Copyright (c) 2020 Ingenico e-Commerce Solutions B.V..</Copyright>
     <Authors>Online Payments</Authors>
-    <PackageProjectUrl>https://github.com/wl-online-payments-direct/sdk-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Online-Payments/dotnet/</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>packageIcon.png</PackageIcon>
-    <PackageIconUrl>https://raw.githubusercontent.com/wl-online-payments-direct/sdk-dotnet/master/packageIcon.png</PackageIconUrl>
-    <RepositoryUrl>https://github.com/wl-online-payments-direct/sdk-dotnet</RepositoryUrl>
+    <PackageIconUrl>https://github.com/Online-Payments/sdk-dotnet/blob/master/packageIcon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Online-Payments/sdk-dotnet</RepositoryUrl>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\online-payments-sdk-dotnet-keypair.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\OnlinePayments.Sdk.keypair.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
 
@@ -36,23 +37,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\OnlinePayments.Sdk\**\*.cs" Exclude="..\OnlinePayments.Sdk\obj\**\*.cs"/>
-    <None Include="..\online-payments-sdk-dotnet-keypair.snk" />
+    <Compile Include="..\OnlinePayments.Sdk\**\*.cs" Exclude="..\OnlinePayments.Sdk\obj\**\*.cs" />
+    <None Include="..\OnlinePayments.Sdk.keypair.snk" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="NLog" Version="4.7.15" />
+    <PackageReference Include="NLog" Version="5.3.2" />
     <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.1" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="NLog" Version="4.7.15" />
-    <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Net.Http" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +54,10 @@
       <PackagePath></PackagePath>
     </None>
     <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

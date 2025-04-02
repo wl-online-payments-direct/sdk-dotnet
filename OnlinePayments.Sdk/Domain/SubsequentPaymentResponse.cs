@@ -1,13 +1,13 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class SubsequentPaymentResponse
     {
         /// <summary>
-        /// Object that holds the payment related properties<para />
+        /// Object that holds the payment related properties
         /// </summary>
-        public PaymentResponse Payment { get; set; } = null;
+        public PaymentResponse Payment { get; set; }
     }
 }

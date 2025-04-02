@@ -1,13 +1,13 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class MobilePaymentProduct320SpecificInput
     {
         /// <summary>
-        /// Object containing specific data regarding 3-D Secure<para />
+        /// Object containing specific data regarding 3-D Secure
         /// </summary>
-        public GPayThreeDSecure ThreeDSecure { get; set; } = null;
+        public GPayThreeDSecure ThreeDSecure { get; set; }
     }
 }

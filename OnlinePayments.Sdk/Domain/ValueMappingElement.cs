@@ -1,5 +1,5 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 using System.Collections.Generic;
 
@@ -7,11 +7,11 @@ namespace OnlinePayments.Sdk.Domain
 {
     public class ValueMappingElement
     {
-        public IList<PaymentProductFieldDisplayElement> DisplayElements { get; set; } = null;
+        public IList<PaymentProductFieldDisplayElement> DisplayElements { get; set; }
 
         /// <summary>
-        /// Value corresponding to the key<para />
+        /// Value corresponding to the key
         /// </summary>
-        public string Value { get; set; } = null;
+        public string Value { get; set; }
     }
 }

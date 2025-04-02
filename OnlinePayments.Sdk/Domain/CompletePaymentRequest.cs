@@ -1,16 +1,16 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class CompletePaymentRequest
     {
-        public CompletePaymentCardPaymentMethodSpecificInput CardPaymentMethodSpecificInput { get; set; } = null;
+        public CompletePaymentCardPaymentMethodSpecificInput CardPaymentMethodSpecificInput { get; set; }
 
         /// <summary>
-        /// Order object containing order related data <para />
-        ///  Please note that this object is required to be able to submit the amount.<para />
+        /// Order object containing order related data
+        /// Please note that this object is required to be able to submit the amount.
         /// </summary>
-        public Order Order { get; set; } = null;
+        public Order Order { get; set; }
     }
 }

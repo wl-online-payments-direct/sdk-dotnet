@@ -1,33 +1,37 @@
+/*
+ * This file was automatically generated.
+ */
+using System.Net;
 using OnlinePayments.Sdk.Domain;
 
 namespace OnlinePayments.Sdk
 {
     /// <summary>
-    /// Represents an error response from a create payout call.
+    /// Represents an error response from a payout call.
     /// </summary>
     public class DeclinedPayoutException : DeclinedTransactionException
     {
-        private readonly PayoutErrorResponse _errorResponse;
-
         /// <summary>
         /// Gets the result of creating a payout if available, otherwise <c>null</c>.
         /// </summary>
-        public PayoutResult PayoutResult => _errorResponse?.PayoutResult;
+        public PayoutResult PayoutResult => _response?.PayoutResult;
 
-        public DeclinedPayoutException(System.Net.HttpStatusCode statusCode, string responseBody, PayoutErrorResponse errorResponse)
-            : base(BuildMessage(errorResponse), statusCode, responseBody, errorResponse?.ErrorId, errorResponse?.Errors)
+        public DeclinedPayoutException(HttpStatusCode statusCode, string responseBody, PayoutErrorResponse response)
+            : base(BuildMessage(response), statusCode, responseBody, response?.ErrorId, response?.Errors)
         {
-            this._errorResponse = errorResponse;
+            _response = response;
         }
 
-        static string BuildMessage(PayoutErrorResponse errors)
+        private readonly PayoutErrorResponse _response;
+
+        private static string BuildMessage(PayoutErrorResponse response)
         {
-            PayoutResult payout = errors?.PayoutResult;
-            if (payout != null)
+            var payoutResult = response?.PayoutResult;
+            if (payoutResult != null)
             {
-                return "declined payout '" + payout.Id + "' with status '" + payout.Status + "'";
+                return "declined payout '" + payoutResult.Id + "' with status '" + payoutResult.Status + "'";
             }
-            return "the payment platform returned a declined refund response";
+            return "the payment platform returned a declined payout response";
         }
     }
 }

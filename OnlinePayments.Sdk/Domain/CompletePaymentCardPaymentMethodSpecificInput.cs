@@ -1,10 +1,10 @@
 /*
- * This class was auto-generated.
+ * This file was automatically generated.
  */
 namespace OnlinePayments.Sdk.Domain
 {
     public class CompletePaymentCardPaymentMethodSpecificInput
     {
-        public CardWithoutCvv Card { get; set; } = null;
+        public CardWithoutCvv Card { get; set; }
     }
 }

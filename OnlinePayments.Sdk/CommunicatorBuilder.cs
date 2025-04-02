@@ -1,20 +1,17 @@
 using System;
+using OnlinePayments.Sdk.Authentication;
+using OnlinePayments.Sdk.Communication;
+using OnlinePayments.Sdk.Json;
 
 namespace OnlinePayments.Sdk
 {
     /// <summary>
-    /// Builder for a <see cref="Communicator"/> object.
+    /// Builder for a <see cref="ICommunicator"/> object.
     /// </summary>
     public class CommunicatorBuilder
     {
-        private Uri _apiEndpoint;
-        private IConnection _connection;
-        private MetaDataProvider _metaDataProvider;
-        private IAuthenticator _authenticator;
-        private IMarshaller _marshaller;
-
         /// <summary>
-        /// Sets the payment platform API endpoint URI to use.
+        /// Sets the Online Payments platform API endpoint URI to use.
         /// </summary>
         /// <param name="apiEndpoint">The API endpoint.</param>
         /// <returns>This.</returns>
@@ -47,20 +44,20 @@ namespace OnlinePayments.Sdk
         }
 
         /// <summary>
-        /// Sets the <see cref="MetaDataProvider"/> to use.
+        /// Sets the <see cref="IMetadataProvider"/> to use.
         /// </summary>
-        /// <param name="metaDataProvider">Meta data provider.</param>
+        /// <param name="metadataProvider">The meta data provider.</param>
         /// <returns>This.</returns>
-        public CommunicatorBuilder WithMetaDataProvider(MetaDataProvider metaDataProvider)
+        public CommunicatorBuilder WithMetadataProvider(IMetadataProvider metadataProvider)
         {
-            _metaDataProvider = metaDataProvider;
+            _metadataProvider = metadataProvider;
             return this;
         }
 
         /// <summary>
         /// Sets the <see cref="IMarshaller"/> to use.
         /// </summary>
-        /// <param name="marshaller">Marshaller.</param>
+        /// <param name="marshaller">The marshaller.</param>
         /// <returns>This.</returns>
         public CommunicatorBuilder WithMarshaller(IMarshaller marshaller)
         {
@@ -72,15 +69,25 @@ namespace OnlinePayments.Sdk
         /// Creates a fully initialized <see cref="Communicator"/> object.
         /// </summary>
         /// <exception cref="ArgumentException">if not all required components are set</exception>
-        public Communicator Build()
+        public ICommunicator Build()
         {
             return new Communicator(
                 _apiEndpoint,
                 _connection,
                 _authenticator,
-                _metaDataProvider,
+                _metadataProvider,
                 _marshaller
             );
         }
+
+        private Uri _apiEndpoint;
+
+        private IConnection _connection;
+
+        private IMetadataProvider _metadataProvider;
+
+        private IAuthenticator _authenticator;
+
+        private IMarshaller _marshaller;
     }
 }

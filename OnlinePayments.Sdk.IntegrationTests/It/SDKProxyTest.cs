@@ -1,12 +1,11 @@
 using NUnit.Framework;
-using OnlinePayments.Sdk.Merchant.Services;
-using OnlinePayments.Sdk.Domain;
-using OnlinePayments.Sdk.DefaultImpl;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading.Tasks;
 using OnlinePayments.Sdk.Util;
+using OnlinePayments.Sdk.Merchant.Services;
+using OnlinePayments.Sdk.Domain;
+using OnlinePayments.Sdk.Communication;
 
 namespace OnlinePayments.Sdk.It
 {
@@ -18,7 +17,7 @@ namespace OnlinePayments.Sdk.It
         public async Task Test()
         {
 
-            using (Client client = GetClient())
+            using (IClient client = GetClient())
             {
                 IServicesClient services = client
                     .WithNewMerchant(GetMerchantId())
