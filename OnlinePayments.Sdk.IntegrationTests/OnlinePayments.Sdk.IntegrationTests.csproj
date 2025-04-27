@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OnlinePayments.Sdk\OnlinePayments.Sdk.csproj" />
+    <ProjectReference Include="..\OnlinePayments.Sdk.NLog\OnlinePayments.Sdk.NLog.csproj" />
   </ItemGroup>
 
   <ItemGroup>

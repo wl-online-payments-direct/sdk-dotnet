@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlinePayments.Sdk.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlinePayments.Sdk.IntegrationTests", "OnlinePayments.Sdk.IntegrationTests\OnlinePayments.Sdk.IntegrationTests.csproj", "{79A27039-3B04-4106-A2B5-D51723D6CE9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlinePayments.Sdk.NLog", "OnlinePayments.Sdk.NLog\OnlinePayments.Sdk.NLog.csproj", "{F438B604-57F5-40FC-BF04-7EB107A43C6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,9 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0266ED1B-C40C-4AE5-9201-32C2D24E6C89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +71,20 @@ Global
 		{79A27039-3B04-4106-A2B5-D51723D6CE9C}.Release|x64.Build.0 = Release|Any CPU
 		{79A27039-3B04-4106-A2B5-D51723D6CE9C}.Release|x86.ActiveCfg = Release|Any CPU
 		{79A27039-3B04-4106-A2B5-D51723D6CE9C}.Release|x86.Build.0 = Release|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Debug|x64.Build.0 = Debug|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Debug|x86.Build.0 = Debug|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Release|x64.ActiveCfg = Release|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Release|x64.Build.0 = Release|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Release|x86.ActiveCfg = Release|Any CPU
+		{F438B604-57F5-40FC-BF04-7EB107A43C6A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
