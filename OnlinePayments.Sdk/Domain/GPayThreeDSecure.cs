@@ -24,12 +24,12 @@ namespace OnlinePayments.Sdk.Domain
         ///   <item><description>no-challenge-requested - you prefer the cardholder not to be challenged</description></item>
         ///   <item><description>challenge-requested - you prefer the customer to be challenged</description></item>
         ///   <item><description>challenge-required - you require the customer to be challenged</description></item>
-        ///   <item><description>no-challenge-requested-risk-analysis-performed â€“ letting the issuer know that you have already assessed the transaction with fraud prevention tool</description></item>
-        ///   <item><description>no-challenge-requested-data-share-only â€“ sharing data only with the DS</description></item>
-        ///   <item><description>no-challenge-requested-consumer-authentication-performed â€“ authentication already happened at your side â€“ when login in to your website</description></item>
-        ///   <item><description>no-challenge-requested-use-whitelist-exemption â€“ cardholder has whitelisted you at with the issuer</description></item>
-        ///   <item><description>challenge-requested-whitelist-prompt-requested â€“ cardholder is trying to whitelist you</description></item>
-        ///   <item><description>request-scoring-without-connecting-to-acs â€“ sending information to CB DS for a fraud scoring</description></item>
+        ///   <item><description>no-challenge-requested-risk-analysis-performed – letting the issuer know that you have already assessed the transaction with fraud prevention tool</description></item>
+        ///   <item><description>no-challenge-requested-data-share-only – sharing data only with the DS</description></item>
+        ///   <item><description>no-challenge-requested-consumer-authentication-performed – authentication already happened at your side – when login in to your website</description></item>
+        ///   <item><description>no-challenge-requested-use-whitelist-exemption – cardholder has whitelisted you at with the issuer</description></item>
+        ///   <item><description>challenge-requested-whitelist-prompt-requested – cardholder is trying to whitelist you</description></item>
+        ///   <item><description>request-scoring-without-connecting-to-acs – sending information to CB DS for a fraud scoring</description></item>
         /// </list>
         /// </summary>
         public string ChallengeIndicator { get; set; }

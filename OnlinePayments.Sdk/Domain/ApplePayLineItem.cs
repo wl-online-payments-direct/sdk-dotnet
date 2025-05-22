@@ -6,12 +6,12 @@ namespace OnlinePayments.Sdk.Domain
     public class ApplePayLineItem
     {
         /// <summary>
-        /// A required value thatâ€™s the monetary amount of the line item.
+        /// A required value that’s the monetary amount of the line item.
         /// </summary>
         public string Amount { get; set; }
 
         /// <summary>
-        /// A required value thatâ€™s a short, localized description of the line item.
+        /// A required value that’s a short, localized description of the line item.
         /// </summary>
         public string Label { get; set; }
 
@@ -31,7 +31,7 @@ namespace OnlinePayments.Sdk.Domain
         public long? RecurringPaymentIntervalCount { get; set; }
 
         /// <summary>
-        /// The amount of time â€” in calendar units, such as day, month, or year â€” that represents a fraction of the total payment interval.
+        /// The amount of time — in calendar units, such as day, month, or year — that represents a fraction of the total payment interval.
         /// </summary>
         public string RecurringPaymentIntervalUnit { get; set; }
 

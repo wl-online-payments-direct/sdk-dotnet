@@ -24,10 +24,10 @@ This repository consists out of three main components:
 The .NET SDK supports [.NET Standard](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) 2.0 and up.
 The following packages are required:
 
-* [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) 13.0.3 or higher
+* [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) 13.0.1 or higher
 * [NLog](https://www.nuget.org/packages/NLog/) 5.3.2 or higher
 * [System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/) 1.7.1 or higher
-* [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) 9.0.3 or higher
+* [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) 9.0.0 or higher
 
 ## Installation
 

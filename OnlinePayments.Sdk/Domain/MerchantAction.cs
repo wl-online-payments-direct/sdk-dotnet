@@ -32,5 +32,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object returned for the SHOW_FORM actionType.
         /// </summary>
         public ShowFormData ShowFormData { get; set; }
+
+        /// <summary>
+        /// Object returned for the SHOW_INSTRUCTIONS actionType.
+        /// </summary>
+        public ShowInstructionsData ShowInstructionsData { get; set; }
     }
 }

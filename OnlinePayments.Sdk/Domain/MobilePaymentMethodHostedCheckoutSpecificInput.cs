@@ -18,7 +18,7 @@ namespace OnlinePayments.Sdk.Domain
         public string AuthorizationMode { get; set; }
 
         /// <summary>
-        /// Object containing information specific to Apple Pay. Required for payments with product 302.
+        /// Object containing information specific to Apple Pay.
         /// </summary>
         public MobilePaymentProduct302SpecificInput PaymentProduct302SpecificInput { get; set; }
 

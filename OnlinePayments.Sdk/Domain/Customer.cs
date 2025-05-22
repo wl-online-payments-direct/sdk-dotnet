@@ -46,8 +46,8 @@ namespace OnlinePayments.Sdk.Domain
         ///   <item><description>Brazil - Consumer (CPF) with a length of 11 digits</description></item>
         ///   <item><description>Brazil - Company (CNPJ) with a length of 14 digits</description></item>
         ///   <item><description>Denmark - Consumer (CPR-nummer or personnummer) with a length of 10 digits</description></item>
-        ///   <item><description>Finland - Consumer (Finnish: henkilÃ¶tunnus (abbreviated as HETU), Swedish: personbeteckning) with a length of 11 characters</description></item>
-        ///   <item><description>Norway - Consumer (fÃ¸dselsnummer) with a length of 11 digits</description></item>
+        ///   <item><description>Finland - Consumer (Finnish: henkilötunnus (abbreviated as HETU), Swedish: personbeteckning) with a length of 11 characters</description></item>
+        ///   <item><description>Norway - Consumer (fødselsnummer) with a length of 11 digits</description></item>
         ///   <item><description>Sweden - Consumer (personnummer) with a length of 10 or 12 digits</description></item>
         /// </list>
         /// </summary>

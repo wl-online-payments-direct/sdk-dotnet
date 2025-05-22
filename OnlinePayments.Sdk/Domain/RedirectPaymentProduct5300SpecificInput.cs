@@ -1,10 +1,6 @@
 /*
  * This file was automatically generated.
  */
-using System;
-using Newtonsoft.Json;
-using OnlinePayments.Sdk.Json;
-
 namespace OnlinePayments.Sdk.Domain
 {
     public class RedirectPaymentProduct5300SpecificInput
@@ -37,8 +33,7 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// The date of the second installment (YYYYMMDD)
         /// </summary>
-        [JsonConverter(typeof(DateOnlyConverter))]
-        public DateTime SecondInstallmentPaymentDate { get; set; }
+        public string SecondInstallmentPaymentDate { get; set; }
 
         /// <summary>
         /// The duration of the session in seconds

@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectPaymentProduct3203SpecificInput PaymentProduct3203SpecificInput { get; set; }
 
         /// <summary>
+        /// BLIK (payment product 3204) specific details
+        /// </summary>
+        public RedirectPaymentProduct3204SpecificInput PaymentProduct3204SpecificInput { get; set; }
+
+        /// <summary>
         /// Object containing specific input required for Klarna PayLater payment (Payment product ID 3302)
         /// </summary>
         public RedirectPaymentProduct3302SpecificInput PaymentProduct3302SpecificInput { get; set; }
@@ -36,6 +41,16 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectPaymentProduct5300SpecificInput PaymentProduct5300SpecificInput { get; set; }
 
         /// <summary>
+        /// Object containing specific input required for E-Voucher payments (Payment product ID 5402)
+        /// </summary>
+        public RedirectPaymentProduct5402SpecificInput PaymentProduct5402SpecificInput { get; set; }
+
+        /// <summary>
+        /// Object containing specific input required for Chèque-Vacances Connect payments (Payment product ID 5403)
+        /// </summary>
+        public RedirectPaymentProduct5403SpecificInput PaymentProduct5403SpecificInput { get; set; }
+
+        /// <summary>
         /// Object containing specific input for EPS payments (Payment product ID 5406)
         /// </summary>
         public RedirectPaymentProduct5406SpecificInput PaymentProduct5406SpecificInput { get; set; }
@@ -51,7 +66,7 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectPaymentProduct5410SpecificInput PaymentProduct5410SpecificInput { get; set; }
 
         /// <summary>
-        /// Object containing specific input required for iDeal payments (Payment product ID 809)
+        /// Deprecated, this is no longer used.
         /// </summary>
         public RedirectPaymentProduct809SpecificInput PaymentProduct809SpecificInput { get; set; }
 

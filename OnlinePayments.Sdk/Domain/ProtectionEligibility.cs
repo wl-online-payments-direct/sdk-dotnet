@@ -9,7 +9,7 @@ namespace OnlinePayments.Sdk.Domain
         /// <list type="bullet">
         ///   <item><description>Eligible - Merchant is protected by PayPal's Seller Protection Policy for Unauthorized Payment and Item Not Received</description></item>
         ///   <item><description>PartiallyEligible - Merchant is protected by PayPal's Seller Protection Policy for Item Not Received</description></item>
-        ///   <item><description>Ineligible â€” Merchant is not protected under the Seller Protection Policy</description></item>
+        ///   <item><description>Ineligible — Merchant is not protected under the Seller Protection Policy</description></item>
         /// </list>
         /// </summary>
         public string Eligibility { get; set; }

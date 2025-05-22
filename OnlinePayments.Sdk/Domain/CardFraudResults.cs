@@ -9,7 +9,7 @@ namespace OnlinePayments.Sdk.Domain
         /// Result of the Address Verification Service checks. Possible values are:
         /// <list type="bullet">
         ///   <item><description>A - Address (Street) matches, Zip does not</description></item>
-        ///   <item><description>B - Street address match for international transactionsâ€”Postal code not verified due to incompatible formats</description></item>
+        ///   <item><description>B - Street address match for international transactions—Postal code not verified due to incompatible formats</description></item>
         ///   <item><description>C - Street address and postal code not verified for international transaction due to incompatible formats</description></item>
         ///   <item><description>D - Street address and postal code match for international transaction, cardholder name is incorrect</description></item>
         ///   <item><description>E - AVS error</description></item>
@@ -22,7 +22,7 @@ namespace OnlinePayments.Sdk.Domain
         ///   <item><description>M - Cardholder name, street address, and postal code match for international transaction</description></item>
         ///   <item><description>N - No Match on Address (Street) or Zip</description></item>
         ///   <item><description>O - Cardholder name and address match (Amex)</description></item>
-        ///   <item><description>P - Postal codes match for international transactionâ€”Street address not verified due to incompatible formats</description></item>
+        ///   <item><description>P - Postal codes match for international transaction—Street address not verified due to incompatible formats</description></item>
         ///   <item><description>Q - Billing address matches, cardholder is incorrect (Amex)</description></item>
         ///   <item><description>R - Retry, System unavailable or Timed out</description></item>
         ///   <item><description>S - Service not supported by issuer</description></item>

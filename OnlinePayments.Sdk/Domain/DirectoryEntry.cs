@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class DirectoryEntry
     {
         /// <summary>
-        /// Unique ID of the issuing bank of the customer
+        /// Deprecated. Unique ID of the issuing bank of the customer
         /// </summary>
         public string IssuerId { get; set; }
 

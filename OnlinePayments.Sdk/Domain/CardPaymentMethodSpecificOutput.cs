@@ -65,6 +65,11 @@ namespace OnlinePayments.Sdk.Domain
         public int? PaymentProductId { get; set; }
 
         /// <summary>
+        /// Instructions for reattempting a declined authorization. Provided only in case of declined authorization, for those acquirers that may respond with explicit instructions regarding potential reattempt processing.
+        /// </summary>
+        public ReattemptInstructions ReattemptInstructions { get; set; }
+
+        /// <summary>
         /// This is the unique Scheme Reference Data from the initial transaction that was performed with a Strong Customer Authentication. In case this value is unknown, a Scheme Reference of an earlier transaction that was part of the same sequence can be used as a fall-back. Still, it is strongly advised to submit this value for any Merchant Initiated Transaction or any recurring transaction (hereby defined as &quot;Subsequent&quot;).
         /// </summary>
         public string SchemeReferenceData { get; set; }

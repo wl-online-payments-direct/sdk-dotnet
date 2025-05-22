@@ -44,6 +44,11 @@ namespace OnlinePayments.Sdk.Domain
         public HostedCheckoutSpecificInput HostedCheckoutSpecificInput { get; set; }
 
         /// <summary>
+        /// Indicates if the payment link can be used multiple times. The default value for this property is false
+        /// </summary>
+        public bool? IsReusableLink { get; set; }
+
+        /// <summary>
         /// Object containing the specific input details for mobile payments
         /// </summary>
         public MobilePaymentMethodHostedCheckoutSpecificInput MobilePaymentMethodSpecificInput { get; set; }
@@ -57,12 +62,12 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// An object containing the details of the related payment input.
         /// <p />
-        /// Deprecated: All properties in <c>paymentLinkOrder</c> are deprecated.
-        /// Use corresponding values as noted below:
+        /// Deprecated: All properties in <c>paymentLinkOrder</c> are deprecated.<br />
+        /// Use corresponding values as noted below:<br />
         /// | Property | Replacement |
         /// | - | - |
-        /// | merchantReference | <c>references/merchantReference</c> |
-        /// | amount | <c>order/amountOfMoney</c> |
+        /// | merchantReference | <c>references/merchantReference</c> |<br />
+        /// | amount | <c>order/amountOfMoney</c> |<br />
         /// | surchargeSpecificInput | <c>order/surchargeSpecificInput</c> |
         /// </summary>
         public PaymentLinkOrderInput PaymentLinkOrder { get; set; }

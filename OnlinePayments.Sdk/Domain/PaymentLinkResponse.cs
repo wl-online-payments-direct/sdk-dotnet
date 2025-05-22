@@ -14,6 +14,11 @@ namespace OnlinePayments.Sdk.Domain
         public DateTimeOffset ExpirationDate { get; set; }
 
         /// <summary>
+        /// Indicates if the payment link can be used multiple times. The default value for this property is false
+        /// </summary>
+        public bool? IsReusableLink { get; set; }
+
+        /// <summary>
         /// The unique payment transaction identifier. This id is only set when a payment was processed with this payment link.
         /// </summary>
         public string PaymentId { get; set; }
