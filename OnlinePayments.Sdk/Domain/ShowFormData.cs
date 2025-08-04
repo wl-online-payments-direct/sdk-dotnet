@@ -11,6 +11,11 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentProduct3012 PaymentProduct3012 { get; set; }
 
         /// <summary>
+        /// Contains the third party data for payment product 5001 (Bizum)
+        /// </summary>
+        public PaymentProduct5001 PaymentProduct5001 { get; set; }
+
+        /// <summary>
         /// Contains the third party data for payment product 5404 (WeChat Pay)
         /// </summary>
         public PaymentProduct5404 PaymentProduct5404 { get; set; }

@@ -21,6 +21,11 @@ namespace OnlinePayments.Sdk.Domain
         public FraudResults FraudResults { get; set; }
 
         /// <summary>
+        /// BLIK (payment product 3204) specific details
+        /// </summary>
+        public PaymentProduct3204SpecificOutput PaymentMethod3204SpecificOutput { get; set; }
+
+        /// <summary>
         /// The specific payment option for the payment. To be used as a complement of the more generic paymentProductId (oney, banquecasino, cofidis), which allows to define a variation of the selected paymentProductId (ex: facilypay3x, banquecasino4x, cofidis3x-sansfrais, ...). List of modalities included in the payment product page.
         /// </summary>
         public string PaymentOption { get; set; }

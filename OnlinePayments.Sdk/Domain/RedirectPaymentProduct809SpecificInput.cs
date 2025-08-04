@@ -1,8 +1,11 @@
 /*
  * This file was automatically generated.
  */
+using System;
+
 namespace OnlinePayments.Sdk.Domain
 {
+    [Obsolete("Deprecated, this is no longer used.")]
     public class RedirectPaymentProduct809SpecificInput
     {
         /// <summary>

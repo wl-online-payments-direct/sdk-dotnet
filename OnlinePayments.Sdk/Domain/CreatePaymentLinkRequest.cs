@@ -62,12 +62,12 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// An object containing the details of the related payment input.
         /// <p />
-        /// Deprecated: All properties in <c>paymentLinkOrder</c> are deprecated.<br />
-        /// Use corresponding values as noted below:<br />
+        /// Deprecated: All properties in <c>paymentLinkOrder</c> are deprecated.
+        /// Use corresponding values as noted below:
         /// | Property | Replacement |
         /// | - | - |
-        /// | merchantReference | <c>references/merchantReference</c> |<br />
-        /// | amount | <c>order/amountOfMoney</c> |<br />
+        /// | merchantReference | <c>references/merchantReference</c> |
+        /// | amount | <c>order/amountOfMoney</c> |
         /// | surchargeSpecificInput | <c>order/surchargeSpecificInput</c> |
         /// </summary>
         public PaymentLinkOrderInput PaymentLinkOrder { get; set; }

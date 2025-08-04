@@ -14,7 +14,10 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public AccountOnFileDisplayHints DisplayHints { get; set; }
 
-        public int? Id { get; set; }
+        /// <summary>
+        /// ID of the token
+        /// </summary>
+        public string Id { get; set; }
 
         /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.

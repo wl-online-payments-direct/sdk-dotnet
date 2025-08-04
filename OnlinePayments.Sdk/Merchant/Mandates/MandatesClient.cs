@@ -169,6 +169,7 @@ namespace OnlinePayments.Sdk.Merchant.Mandates
         /// Resource /v2/{merchantId}/mandates/{uniqueMandateReference}/revoke - Revoke mandate
         /// </summary>
         /// <param name="uniqueMandateReference">string</param>
+        /// <param name="body">RevokeMandateRequest</param>
         /// <param name="context">CallContext</param>
         /// <returns>GetMandateResponse</returns>
         /// <exception cref="IdempotenceException">if an idempotent request caused a conflict (HTTP status code 409)</exception>
@@ -180,7 +181,7 @@ namespace OnlinePayments.Sdk.Merchant.Mandates
         ///            the payment platform was unable to process a message from a downstream partner/acquirer,
         ///            or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)</exception>
         /// <exception cref="ApiException">if the payment platform returned any other error</exception>
-        public async Task<GetMandateResponse> RevokeMandate(string uniqueMandateReference, CallContext context = null)
+        public async Task<GetMandateResponse> RevokeMandate(string uniqueMandateReference, RevokeMandateRequest body, CallContext context = null)
         {
             var pathContext = new Dictionary<string, string>
             {
@@ -193,7 +194,7 @@ namespace OnlinePayments.Sdk.Merchant.Mandates
                         uri,
                         ClientHeaders,
                         null,
-                        null,
+                        body,
                         context).ConfigureAwait(false);
             }
             catch (ResponseException e)

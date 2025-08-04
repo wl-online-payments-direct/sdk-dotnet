@@ -53,5 +53,10 @@ namespace OnlinePayments.Sdk.Domain
         /// It is highly recommended to provide a single MerchantReference per unique order on your side
         /// </summary>
         public string MerchantReference { get; set; }
+
+        /// <summary>
+        /// An identifier for a group of transactions. This reference helps to link multiple related transactions together, facilitating easier reconciliation and tracking.
+        /// </summary>
+        public string OperationGroupReference { get; set; }
     }
 }

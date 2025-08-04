@@ -25,6 +25,11 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public CardEssentials Card { get; set; }
 
+        /// <summary>
+        /// Information about whether the payment is made using Click to Pay
+        /// </summary>
+        public ClickToPay ClickToPay { get; set; }
+
         public CurrencyConversion CurrencyConversion { get; set; }
 
         public ExternalTokenLinked ExternalTokenLinked { get; set; }

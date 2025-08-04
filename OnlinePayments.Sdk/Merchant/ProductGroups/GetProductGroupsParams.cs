@@ -1,6 +1,7 @@
 /*
  * This file was automatically generated.
  */
+using System;
 using System.Collections.Generic;
 using OnlinePayments.Sdk.Communication;
 
@@ -25,6 +26,7 @@ namespace OnlinePayments.Sdk.Merchant.ProductGroups
         /// <summary>
         /// Deprecated: This field has no effect.
         /// </summary>
+        [Obsolete("This field has no effect.")]
         public string Locale { get; set; }
 
         /// <summary>

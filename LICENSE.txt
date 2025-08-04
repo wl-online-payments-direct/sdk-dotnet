@@ -49,7 +49,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-*** Notices for NLog - Copyright (c) 2004-2019 Jaroslaw Kowalski <jaak@jkowalski.net>, Kim Christensen, Julian Verdurmen. All rights reserved. &
 *** Notices for Moq 4 - Copyright (c) 2007, Clarius Consulting, Manas Technology Solutions, InSTEDD. All rights reserved.
 
 BSD-3-ClauseBSD License
@@ -76,7 +75,7 @@ These license terms are an agreement between you and Microsoft Corporation (or b
 IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW.
 
 1.    INSTALLATION AND USE RIGHTS.
-You may install and use any number of copies of the software to develop and test your applications. 
+You may install and use any number of copies of the software to develop and test your applications.
 
 2.    THIRD PARTY COMPONENTS. The software may include third party components with separate legal notices or governed by other agreements, as may be described in the ThirdPartyNotices file(s) accompanying the software.
 3.    ADDITIONAL LICENSING REQUIREMENTS AND/OR USE RIGHTS.
@@ -112,7 +111,7 @@ b.    Processing of Personal Data. To the extent Microsoft is a processor or sub
 
 ·        share, publish, rent or lease the software, provide the software as a stand-alone offering for others to use, or transfer the software or this agreement to any third party.
 
-6.    EXPORT RESTRICTIONS. You must comply with all domestic and international export laws and regulations that apply to the software, which include restrictions on destinations, end users, and end use. For further information on export restrictions, visit www.microsoft.com/exporting.  
+6.    EXPORT RESTRICTIONS. You must comply with all domestic and international export laws and regulations that apply to the software, which include restrictions on destinations, end users, and end use. For further information on export restrictions, visit www.microsoft.com/exporting.
 7.    SUPPORT SERVICES. Because this software is “as is,” we may not provide support services for it.
 8.    ENTIRE AGREEMENT. This agreement, and the terms for supplements, updates, Internet-based services and support services that you use, are the entire agreement for the software and support services.
 9.    APPLICABLE LAW.  If you acquired the software in the United States, Washington law applies to interpretation of and claims for breach of this agreement, and the laws of the state where you live apply to all other claims. If you acquired the software in any other country, its laws apply.

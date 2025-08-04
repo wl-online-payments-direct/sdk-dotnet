@@ -82,6 +82,11 @@ namespace OnlinePayments.Sdk.Domain
         public MultiplePaymentInformation MultiplePaymentInformation { get; set; }
 
         /// <summary>
+        /// Object containing network token details
+        /// </summary>
+        public NetworkTokenData NetworkTokenData { get; set; }
+
+        /// <summary>
         /// Object containing specific input required for CB payments
         /// </summary>
         public PaymentProduct130SpecificInput PaymentProduct130SpecificInput { get; set; }

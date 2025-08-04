@@ -21,6 +21,11 @@ namespace OnlinePayments.Sdk.Domain
         public OperationPaymentReferences OperationReferences { get; set; }
 
         /// <summary>
+        /// The reason for the refund. This will be available in our portal and reports for your information only. It will NOT appear in the consumer bank statement or yours.§
+        /// </summary>
+        public string Reason { get; set; }
+
+        /// <summary>
         /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
         public PaymentReferences References { get; set; }

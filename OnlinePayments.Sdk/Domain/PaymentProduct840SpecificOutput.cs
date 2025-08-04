@@ -11,6 +11,11 @@ namespace OnlinePayments.Sdk.Domain
         public Address BillingAddress { get; set; }
 
         /// <summary>
+        /// Object containing address information
+        /// </summary>
+        public AddressPersonal BillingPersonalAddress { get; set; }
+
+        /// <summary>
         /// Object containing the details of the PayPal account
         /// </summary>
         public PaymentProduct840CustomerAccount CustomerAccount { get; set; }
