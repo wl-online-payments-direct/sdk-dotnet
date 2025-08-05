@@ -10,7 +10,7 @@ The .NET SDK helps you to communicate with the Online Payments Server API. Its p
 * handling of all the details concerning authentication
 * handling of required metadata
 
-See the [Online Payments Developer Hub](https://github.com/Online-Payments/dotnet/) for more information on how to use the SDK.
+See the [Online Payments Developer Hub](https://github.com/wl-online-payments-direct/sdk-dotnet/) for more information on how to use the SDK.
 
 ## Structure of this repository
 This repository consists out of three main components:

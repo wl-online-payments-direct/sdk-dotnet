@@ -12,12 +12,12 @@
     <PackageTags>Online Payments SDK</PackageTags>
     <Copyright>Copyright (c) 2020 Ingenico e-Commerce Solutions B.V..</Copyright>
     <Authors>Online Payments</Authors>
-    <PackageProjectUrl>https://github.com/Online-Payments/dotnet/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/wl-online-payments-direct/sdk-dotnet/</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>packageIcon.png</PackageIcon>
-    <PackageIconUrl>https://github.com/Online-Payments/sdk-dotnet/blob/master/packageIcon.png</PackageIconUrl>
-    <RepositoryUrl>https://github.com/Online-Payments/sdk-dotnet</RepositoryUrl>
+    <PackageIconUrl>https://github.com/wl-online-payments-direct/sdk-dotnet/blob/master/packageIcon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/wl-online-payments-direct/sdk-dotnet</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup>
