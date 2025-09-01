@@ -5,6 +5,11 @@ namespace OnlinePayments.Sdk.Domain
 {
     public class TokenCardData
     {
+        /// <summary>
+        /// Card BIN details
+        /// </summary>
+        public CardBinDetails CardBinDetails { get; set; }
+
         public CardWithoutCvv CardWithoutCvv { get; set; }
 
         /// <summary>

@@ -37,6 +37,11 @@ namespace OnlinePayments.Sdk.Domain
         public string EphemeralKey { get; set; }
 
         /// <summary>
+        /// Object containing information specific to Apple Pay.
+        /// </summary>
+        public MobilePaymentProduct302SpecificInput PaymentProduct302SpecificInput { get; set; }
+
+        /// <summary>
         /// Object containing information specific to Google Pay. Required for payments with product 320.
         /// </summary>
         public MobilePaymentProduct320SpecificInput PaymentProduct320SpecificInput { get; set; }

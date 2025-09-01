@@ -50,6 +50,11 @@ namespace OnlinePayments.Sdk.Domain
         public string CardProductCode { get; set; }
 
         /// <summary>
+        /// Product name of the card
+        /// </summary>
+        public string CardProductName { get; set; }
+
+        /// <summary>
         /// Profile name of the card which is displayed on payment electronic ticket in accordance with MPADS requirements
         /// <list type="bullet">
         ///   <item><description><c>commercial</c> Business card</description></item>
@@ -111,6 +116,27 @@ namespace OnlinePayments.Sdk.Domain
         public string IssuerName { get; set; }
 
         /// <summary>
+        /// Region code of the card issuer
+        /// <list type="bullet">
+        ///   <item><description><c>1</c> USA: California, Hawaii, Nevada</description></item>
+        ///   <item><description><c>2</c> USA: West except California, Hawaii, Nevada</description></item>
+        ///   <item><description><c>3</c> USA: Central North</description></item>
+        ///   <item><description><c>4</c> USA: Central South</description></item>
+        ///   <item><description><c>5</c> USA: Great Lakes states</description></item>
+        ///   <item><description><c>6</c> USA: South East</description></item>
+        ///   <item><description><c>7</c> USA: Extreme North East</description></item>
+        ///   <item><description><c>8</c> USA: North East</description></item>
+        ///   <item><description><c>9</c> USA: Florida and Georgia</description></item>
+        ///   <item><description><c>a</c> Canada</description></item>
+        ///   <item><description><c>b</c> South America</description></item>
+        ///   <item><description><c>c</c> Oceania and Asia</description></item>
+        ///   <item><description><c>d</c> Europe</description></item>
+        ///   <item><description><c>e</c> Africa and Middle East</description></item>
+        /// </list>
+        /// </summary>
+        public string IssuerRegionCode { get; set; }
+
+        /// <summary>
         /// ISO 3166-1 alpha-2 country code in which the card has been issued
         /// </summary>
         public string IssuingCountryCode { get; set; }
@@ -129,5 +155,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates whether the PAN is controlled with Lühn Key algorithm
         /// </summary>
         public bool? PanLuhnCheck { get; set; }
+
+        /// <summary>
+        /// Indicates whether the card is a virtual card
+        /// </summary>
+        public bool? VirtualCardIndicator { get; set; }
     }
 }

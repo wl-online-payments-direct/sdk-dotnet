@@ -7,7 +7,7 @@ using OnlinePayments.Sdk.Json;
 
 namespace OnlinePayments.Sdk.Domain
 {
-    public class IINDetail
+    public class CardBinDetails
     {
         /// <summary>
         /// Indicates whether the card is an Enterprise / Commercial card or not
@@ -90,15 +90,6 @@ namespace OnlinePayments.Sdk.Domain
         public string CountryCode { get; set; }
 
         /// <summary>
-        /// Populated only if you submitted a payment context.
-        /// <list type="bullet">
-        ///   <item><description>true - The payment product is allowed in the submitted context.</description></item>
-        ///   <item><description>false - The payment product is not allowed in the submitted context. Note that in this case, none of the brands of the card will be allowed in the submitted context.</description></item>
-        /// </list>
-        /// </summary>
-        public bool? IsAllowedInContext { get; set; }
-
-        /// <summary>
         /// Issuer code of the card
         /// </summary>
         public string IssuerCode { get; set; }
@@ -148,11 +139,6 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates whether the PAN is controlled with Lühn Key algorithm
         /// </summary>
         public bool? PanLuhnCheck { get; set; }
-
-        /// <summary>
-        /// Payment product identifier - Please see Products documentation for a full overview of possible values.
-        /// </summary>
-        public int? PaymentProductId { get; set; }
 
         /// <summary>
         /// Indicates whether the card is a virtual card
