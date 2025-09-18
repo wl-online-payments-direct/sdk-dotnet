@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public string CaptureId { get; set; }
 
         /// <summary>
+        /// Object containing the additional refund details for an Omnichannel merchant
+        /// </summary>
+        public OmnichannelRefundSpecificInput OmnichannelRefundSpecificInput { get; set; }
+
+        /// <summary>
         /// Object that holds all reference properties that are linked to this transaction
         /// </summary>
         public OperationPaymentReferences OperationReferences { get; set; }

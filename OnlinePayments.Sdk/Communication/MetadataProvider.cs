@@ -92,7 +92,7 @@ namespace OnlinePayments.Sdk.Communication
             .Append(Environment.Version)
             .ToString();
 
-        private const string SdkVersion = "5.1.0";
+        private const string SdkVersion = "5.2.0";
 
         private const string ServerMetaInfoHeader = "X-GCS-ServerMetaInfo";
 
