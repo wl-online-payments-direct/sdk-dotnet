@@ -66,7 +66,7 @@ namespace OnlinePayments.Sdk
         }
 
         /// <summary>
-        /// Creates a fully initialized <see cref="Communicator"/> object.
+        /// Creates a fully initialized <see cref="ICommunicator"/> object.
         /// </summary>
         /// <exception cref="ArgumentException">if not all required components are set</exception>
         public ICommunicator Build()

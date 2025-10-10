@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class Order
     {
         /// <summary>
-        /// Object containing additional input on the order
+        /// This object contains additional input on the order.
         /// </summary>
         public AdditionalOrderInput AdditionalInput { get; set; }
 
@@ -44,5 +44,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific input required to apply surcharging to an order.
         /// </summary>
         public SurchargeSpecificInput SurchargeSpecificInput { get; set; }
+
+        /// <summary>
+        /// tax amount, in minor currency units of the order. Omit if not applicable or not known. This amount is assumed to be included in the order.AmountOfMoney for the payment. There is no validation on this field, outside the fact the amount should be lower than the total payment amount.
+        /// </summary>
+        public long? TotalTaxAmount { get; set; }
     }
 }

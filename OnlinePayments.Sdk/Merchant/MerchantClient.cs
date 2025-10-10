@@ -16,6 +16,7 @@ using OnlinePayments.Sdk.Merchant.Products;
 using OnlinePayments.Sdk.Merchant.Refunds;
 using OnlinePayments.Sdk.Merchant.Services;
 using OnlinePayments.Sdk.Merchant.Sessions;
+using OnlinePayments.Sdk.Merchant.Subsequent;
 using OnlinePayments.Sdk.Merchant.Tokens;
 using OnlinePayments.Sdk.Merchant.Webhooks;
 
@@ -66,6 +67,12 @@ namespace OnlinePayments.Sdk.Merchant
         /// </summary>
         /// <returns>ICompleteClient</returns>
         public ICompleteClient Complete => new CompleteClient(this, null);
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/payments/{paymentId}/subsequent
+        /// </summary>
+        /// <returns>ISubsequentClient</returns>
+        public ISubsequentClient Subsequent => new SubsequentClient(this, null);
 
         /// <summary>
         /// Resource /v2/{merchantId}/productgroups

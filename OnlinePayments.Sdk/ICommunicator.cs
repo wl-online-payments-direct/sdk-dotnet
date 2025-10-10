@@ -17,6 +17,7 @@ namespace OnlinePayments.Sdk
     /// </remarks>
     public interface ICommunicator : IDisposable, ILoggingCapable, IObfuscationCapable
     {
+
         #region HTTP methods
 
         /// <summary>
@@ -138,6 +139,7 @@ namespace OnlinePayments.Sdk
         Task Put(string relativePath, IEnumerable<IRequestHeader> requestHeaders,
             AbstractParamRequest requestParameters,
             object requestBody, Action<Stream, IEnumerable<IResponseHeader>> bodyHandler, CallContext context);
+
         #endregion
 
         /// <summary>

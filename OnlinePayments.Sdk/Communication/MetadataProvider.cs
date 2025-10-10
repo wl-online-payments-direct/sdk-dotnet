@@ -32,7 +32,10 @@ namespace OnlinePayments.Sdk.Communication
             }
         }
 
-        /// <inheritdoc cref="IMetadataProvider" />
+        /// <summary>
+        /// Gets the server related headers containing the metadata to be associated with the request (if any).
+        /// This will always contain at least an automatically generated header <c>X-GCS-ServerMetaInfo</c>.
+        /// </summary>
         public IEnumerable<IRequestHeader> ServerMetadataHeaders { get; }
 
         public static readonly IEnumerable<string> ProhibitedHeaders
@@ -92,7 +95,7 @@ namespace OnlinePayments.Sdk.Communication
             .Append(Environment.Version)
             .ToString();
 
-        private const string SdkVersion = "5.2.0";
+        private const string SdkVersion = "5.3.0";
 
         private const string ServerMetaInfoHeader = "X-GCS-ServerMetaInfo";
 

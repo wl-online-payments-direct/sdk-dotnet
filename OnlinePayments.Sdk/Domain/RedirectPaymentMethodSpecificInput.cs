@@ -46,7 +46,7 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectPaymentProduct5402SpecificInput PaymentProduct5402SpecificInput { get; set; }
 
         /// <summary>
-        /// Object containing specific input required for Chèque-Vacances Connect payments (Payment product ID 5403)
+        /// Object containing specific input required for Chèque-Vacances Connect payments via Limonetik (Payment product ID 5403)
         /// </summary>
         public RedirectPaymentProduct5403SpecificInput PaymentProduct5403SpecificInput { get; set; }
 
@@ -64,6 +64,11 @@ namespace OnlinePayments.Sdk.Domain
         /// iDealin3 (payment product 5410) specific details
         /// </summary>
         public RedirectPaymentProduct5410SpecificInput PaymentProduct5410SpecificInput { get; set; }
+
+        /// <summary>
+        /// Object containing specific input required for Chèque-Vacances Connect payments via ANCV (Payment product ID 5412)
+        /// </summary>
+        public RedirectPaymentProduct5412SpecificInput PaymentProduct5412SpecificInput { get; set; }
 
         /// <summary>
         /// Deprecated, this is no longer used.

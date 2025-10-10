@@ -97,7 +97,7 @@ namespace OnlinePayments.Sdk.Authentication
                     {
                         date = header.Value;
                     }
-                    else if (header.Name.StartsWith("x-gcs", StringComparison.OrdinalIgnoreCase))
+                    else if (header.Name.StartsWith("X-GCS", StringComparison.OrdinalIgnoreCase))
                     {
                         xgcsHttpHeaders.Add(new RequestHeader(header.Name.ToLower(), ToCanonicalizeHeaderValue(header.Value)));
                     }

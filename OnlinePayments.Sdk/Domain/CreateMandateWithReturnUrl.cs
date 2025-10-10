@@ -52,12 +52,14 @@ namespace OnlinePayments.Sdk.Domain
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// Specifies whether the mandate is tick box, unsigned or signed by SMS. Possible values are:
+        /// Specifies whether the mandate is unsigned, signed by SMS or tick box. Possible values are:
         /// <list type="bullet">
         ///   <item><description>UNSIGNED</description></item>
         ///   <item><description>SMS</description></item>
-        ///   <item><description>TICK_BOX - This option is only available for Equens Worldline</description></item>
+        ///   <item><description>TICK_BOX</description></item>
         /// </list>
+        /// <p />
+        /// Refer to the support page to determine the applicable signature types.
         /// </summary>
         public string SignatureType { get; set; }
 

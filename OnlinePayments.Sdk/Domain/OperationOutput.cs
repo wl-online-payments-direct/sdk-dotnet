@@ -11,7 +11,7 @@ namespace OnlinePayments.Sdk.Domain
         public AmountOfMoney AmountOfMoney { get; set; }
 
         /// <summary>
-        /// Our unique payment transaction identifier
+        /// This is our unique payment transaction identifier.
         /// </summary>
         public string Id { get; set; }
 
@@ -36,7 +36,7 @@ namespace OnlinePayments.Sdk.Domain
         public string Status { get; set; }
 
         /// <summary>
-        /// This object has the numeric representation of the current payment status, timestamp of last status change and performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.
+        /// This object has the numeric representation of the current payment status, the timestamp of the last status change, and the performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.
         /// </summary>
         public PaymentStatusOutput StatusOutput { get; set; }
     }

@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class RefundResponse
     {
         /// <summary>
-        /// Our unique payment transaction identifier
+        /// This is our unique payment transaction identifier.
         /// </summary>
         public string Id { get; set; }
 

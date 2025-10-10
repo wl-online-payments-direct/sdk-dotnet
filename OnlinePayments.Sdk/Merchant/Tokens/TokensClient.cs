@@ -92,7 +92,7 @@ namespace OnlinePayments.Sdk.Merchant.Tokens
         }
 
         /// <summary>
-        /// Resource /v2/{merchantId}/tokens - Create token
+        /// Resource /v2/{merchantId}/tokens - Please create a token.
         /// </summary>
         /// <param name="body">CreateTokenRequest</param>
         /// <param name="context">CallContext</param>

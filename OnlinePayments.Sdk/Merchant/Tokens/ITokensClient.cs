@@ -45,7 +45,7 @@ namespace OnlinePayments.Sdk.Merchant.Tokens
         Task DeleteToken(string tokenId, CallContext context = null);
 
         /// <summary>
-        /// Resource /v2/{merchantId}/tokens - Create token
+        /// Resource /v2/{merchantId}/tokens - Please create a token.
         /// </summary>
         /// <param name="body">CreateTokenRequest</param>
         /// <param name="context">CallContext</param>

@@ -6,13 +6,13 @@ namespace OnlinePayments.Sdk.Domain
     public class SubsequentPaymentRequest
     {
         /// <summary>
-        /// Order object containing order related data
-        /// Please note that this object is required to be able to submit the amount.
+        /// The order object contains order-related data;
+        /// Please note that this object is required to submit the amount.
         /// </summary>
         public Order Order { get; set; }
 
         /// <summary>
-        /// specific data required for Bizum subsequent payment
+        /// Specific data is required for Bizum subsequent payment.
         /// </summary>
         public SubsequentPaymentProduct5001SpecificInput SubsequentPaymentProduct5001SpecificInput { get; set; }
 

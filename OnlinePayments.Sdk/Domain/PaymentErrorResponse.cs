@@ -15,7 +15,7 @@ namespace OnlinePayments.Sdk.Domain
         public IList<APIError> Errors { get; set; }
 
         /// <summary>
-        /// Object that contains details on the created payment in case one has been created.
+        /// This object contains details about the created payment if one has been generated.
         /// </summary>
         public CreatePaymentResponse PaymentResult { get; set; }
     }

@@ -51,6 +51,11 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentProduct3012SpecificInput PaymentProduct3012SpecificInput { get; set; }
 
         /// <summary>
+        /// An object containing specific input required for VISA purchasing authorization.
+        /// </summary>
+        public PaymentProduct3013SpecificInput PaymentProduct3013SpecificInput { get; set; }
+
+        /// <summary>
         /// Object containing specific input required for OneyDuplo Leroy Merlin payments.
         /// </summary>
         public PaymentProduct3208SpecificInput PaymentProduct3208SpecificInput { get; set; }

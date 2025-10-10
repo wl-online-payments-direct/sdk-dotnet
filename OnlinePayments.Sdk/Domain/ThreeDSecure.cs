@@ -61,14 +61,14 @@ namespace OnlinePayments.Sdk.Domain
         public ExternalCardholderAuthenticationData ExternalCardholderAuthenticationData { get; set; }
 
         /// <summary>
-        /// Merchant fraud rate in the EEA (all EEA card fraud divided by all EEA card volumes) calculated as per PSD2 RTS. Mastercard will not calculate or validate the merchant fraud score
-        /// Values accepted :
+        /// The merchant fraud rate in the EEA is calculated as the total EEA card fraud divided by all EEA card volumes, as per PSD2 RTS. Mastercard will not calculate or validate the merchant fraud score.
+        /// Accepted values are:
         /// <list type="bullet">
-        ///   <item><description>1 - represents fraud rate less than or equal to 1 basis point [bp], which is 0.01%</description></item>
-        ///   <item><description>2 - represents fraud rate between 1 bp + - and 6 bps</description></item>
-        ///   <item><description>3 - represents fraud rate between 6 bps + - and 13 bps</description></item>
-        ///   <item><description>4 - represents fraud rate between 13 bps + - and 25 bps</description></item>
-        ///   <item><description>5 - represents fraud rate greater than 25 bps</description></item>
+        ///   <item><description>1 - represents a fraud rate less than or equal to 1 basis point (bp), which is 0.01%.</description></item>
+        ///   <item><description>2 - represents a fraud rate between 1 bp and 6 bps.</description></item>
+        ///   <item><description>3 - represents a fraud rate between 6 bps and 13 bps.</description></item>
+        ///   <item><description>4 - represents a fraud rate between 13 bps and 25 bps.</description></item>
+        ///   <item><description>5 - represents a fraud rate greater than 25 bps.</description></item>
         /// </list>
         /// </summary>
         public int? MerchantFraudRate { get; set; }
@@ -84,9 +84,7 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectionData RedirectionData { get; set; }
 
         /// <summary>
-        /// Indicates dedicated payment processes and procedures were used, potential secure corporate payment exemption applies Logically this field should only be set to yes if the
-        /// acquirer exemption field is blank. A merchant cannot claim both acquirer exemption and  secure payment. However, the DS will not validate
-        /// the conditions in the extension. DS will pass data as presented.
+        /// Indicates that dedicated payment processes and procedures were used. A potential secure corporate payment exemption applies. Logically, this field should only be set to 'yes' if the acquirer exemption field is blank. A merchant cannot claim both acquirer exemption and secure payment. However, the DS will not validate the conditions in the extension; DS will pass data as presented.
         /// </summary>
         public bool? SecureCorporatePayment { get; set; }
 

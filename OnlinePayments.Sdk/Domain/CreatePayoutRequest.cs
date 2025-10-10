@@ -59,7 +59,7 @@ namespace OnlinePayments.Sdk.Domain
         public Feedbacks Feedbacks { get; set; }
 
         /// <summary>
-        /// Object containing the additional payout details for a Omnichannel merchants
+        /// Object containing the additional payout details for an Omnichannel merchant
         /// </summary>
         public OmnichannelPayoutSpecificInput OmnichannelPayoutSpecificInput { get; set; }
 

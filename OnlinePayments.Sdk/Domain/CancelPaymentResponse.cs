@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class CancelPaymentResponse
     {
         /// <summary>
-        /// Object that holds the payment related properties
+        /// This object holds the properties related to the payment.
         /// </summary>
         public PaymentResponse Payment { get; set; }
     }

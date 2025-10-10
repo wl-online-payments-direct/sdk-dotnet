@@ -3,16 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>OnlinePayments.Sdk</RootNamespace>
-    <AssemblyVersion>5.2.0</AssemblyVersion>
-    <Version>5.2.0</Version>
+    <AssemblyVersion>5.3.0</AssemblyVersion>
+    <Version>5.3.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Company>Online Payments</Company>
+    <Company>OnlinePayments</Company>
     <Product>Online Payments .NET SDK</Product>
     <Description>SDK to communicate with the Online Payments platform using the Online Payments Server API</Description>
-    <PackageTags>Online Payments SDK</PackageTags>
-    <Copyright>Copyright (c) 2020 Ingenico e-Commerce Solutions B.V..</Copyright>
-    <Authors>Online Payments</Authors>
-    <PackageProjectUrl>https://github.com/Online-Payments/dotnet/</PackageProjectUrl>
+    <PackageTags>OnlinePayments Online Payments SDK</PackageTags>
+    <Copyright>Copyright (c) 2020 Global Collect Services B.V.</Copyright>
+    <Authors>OnlinePayments</Authors>
+    <PackageProjectUrl>https://github.com/wl-online-payments-direct/dotnet/</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>packageIcon.png</PackageIcon>

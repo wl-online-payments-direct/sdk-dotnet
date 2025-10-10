@@ -25,7 +25,7 @@ namespace OnlinePayments.Sdk.Domain
         public string Token { get; set; }
 
         /// <summary>
-        /// Indicates if tokenization was successful or not. If this value is false, then the token and isNewToken properties will not be set.
+        /// Indicates if tokenization was successful or not. If this value is false, then the token and the isNewToken property will not be set.
         /// </summary>
         public bool? TokenizationSucceeded { get; set; }
     }

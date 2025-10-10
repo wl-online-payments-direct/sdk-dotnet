@@ -6,17 +6,17 @@ namespace OnlinePayments.Sdk.Domain
     public class CompletePaymentResponse
     {
         /// <summary>
-        /// Object containing the details of the created payment.
+        /// This object contains the details of the created payment.
         /// </summary>
         public PaymentCreationOutput CreationOutput { get; set; }
 
         /// <summary>
-        /// Object that contains the action, including the needed data, that you should perform next, like showing instructions, showing the transaction results or redirect to a third party to complete the payment
+        /// This object contains the action, including the needed data, that you should perform next. This could involve showing instructions, displaying the transaction results, or redirecting to a third party to complete the payment.
         /// </summary>
         public MerchantAction MerchantAction { get; set; }
 
         /// <summary>
-        /// Object that holds the payment related properties
+        /// This object holds the properties related to the payment.
         /// </summary>
         public PaymentResponse Payment { get; set; }
     }

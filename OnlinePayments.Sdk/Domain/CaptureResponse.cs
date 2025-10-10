@@ -11,7 +11,7 @@ namespace OnlinePayments.Sdk.Domain
         public CaptureOutput CaptureOutput { get; set; }
 
         /// <summary>
-        /// Our unique payment transaction identifier
+        /// This is our unique payment transaction identifier.
         /// </summary>
         public string Id { get; set; }
 

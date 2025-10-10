@@ -20,7 +20,7 @@ namespace OnlinePayments.Sdk.Domain
         public bool? IsCancellable { get; set; }
 
         /// <summary>
-        /// Flag indicating if the payment can be refunded
+        /// This is a flag indicating whether the payment can be refunded.
         /// </summary>
         public bool? IsRefundable { get; set; }
 
