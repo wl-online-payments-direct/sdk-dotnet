@@ -30,6 +30,16 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public ClickToPay ClickToPay { get; set; }
 
+        /// <summary>
+        /// For cobranded cards, this field indicates the brand selection method:
+        /// <list type="bullet">
+        ///   <item><description>default - The holder implicitly accepted the default brand.</description></item>
+        ///   <item><description>alternative - The holder explicitly selected an alternative brand.</description></item>
+        ///   <item><description>notApplicable - The card is not cobranded.</description></item>
+        /// </list>
+        /// </summary>
+        public string CobrandSelectionIndicator { get; set; }
+
         public CurrencyConversion CurrencyConversion { get; set; }
 
         public ExternalTokenLinked ExternalTokenLinked { get; set; }
@@ -43,6 +53,11 @@ namespace OnlinePayments.Sdk.Domain
         /// The unique scheme transactionId of the initial transaction that was performed with SCA. In case this is unknown a scheme transactionId of an earlier transaction part of the same sequence can be used as a fall-back. Strongly advised to be submitted for any MerchantInitiated or recurring transaction (a subsequent one).
         /// </summary>
         public string InitialSchemeTransactionId { get; set; }
+
+        /// <summary>
+        /// Object containing network token details
+        /// </summary>
+        public NetworkTokenEssentials NetworkTokenData { get; set; }
 
         /// <summary>
         /// The Payment Account Reference is a unique alphanumeric identifier that links a PAN with all subsequent PANs for the same payment account (e.g., following card replacement) and all EMV payment tokens associated with that account. On its own Payment Account Reference cannot be used to start financial transactions, but it does allow for complying with regulatory requirements, performing risk analysis &amp; supporting loyalty programs. Please note that the Payment Account Reference is a value returned after an authorization &amp; only if provided by the acquirer and/or the issuer.

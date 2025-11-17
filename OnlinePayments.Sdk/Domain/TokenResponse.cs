@@ -28,6 +28,11 @@ namespace OnlinePayments.Sdk.Domain
         public bool? IsTemporary { get; set; }
 
         /// <summary>
+        /// Represents a linked network token
+        /// </summary>
+        public NetworkTokenLinked NetworkTokenLinked { get; set; }
+
+        /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.
         /// </summary>
         public int? PaymentProductId { get; set; }

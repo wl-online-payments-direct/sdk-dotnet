@@ -1,8 +1,11 @@
 /*
  * This file was automatically generated.
  */
+using System;
+
 namespace OnlinePayments.Sdk.Domain
 {
+    [Obsolete("Deprecated by pendingAuthentication. Contains the third party data for payment product 5001 (Bizum)")]
     public class PaymentProduct5001
     {
         /// <summary>

@@ -49,7 +49,7 @@ namespace OnlinePayments.Sdk.Merchant.Products
         ///   <item><description>translations - Do not return any label texts associated with the payment products</description></item>
         ///   <item><description>productsWithoutFields - Do not return products that require any additional data to be captured</description></item>
         ///   <item><description>productsWithoutInstructions - Do not return products that show instructions</description></item>
-        ///   <item><description>productsWithRedirects - Do not return products that require a redirect to a 3rd party. Note that products that involve potential redirects related to 3D Secure authentication are not hidden</description></item>
+        ///   <item><description>productsWithRedirects - Do not return products that require a redirect to a third party. Note that products that involve potential redirects related to 3D Secure authentication are not hidden</description></item>
         /// </list>
         /// </summary>
         public IList<string> Hide { get; set; }

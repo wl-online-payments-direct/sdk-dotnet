@@ -27,6 +27,11 @@ namespace OnlinePayments.Sdk.Domain
         public FraudFields FraudFields { get; set; }
 
         /// <summary>
+        /// A unique identifier that references a previously created hosted fields session. Use this field to create a payment with the payment method details securely captured in the referenced hosted fields session.
+        /// </summary>
+        public string HostedFieldsSessionId { get; set; }
+
+        /// <summary>
         /// Use this field after a successful Hosted Tokenization session to create a payment with the tokenized payment method details.
         /// </summary>
         public string HostedTokenizationId { get; set; }

@@ -17,6 +17,14 @@ namespace OnlinePayments.Sdk.Domain
 
         /// <summary>
         /// <list type="bullet">
+        ///   <item><description>true - A new unscheduled credentials on file series will be started. You will be able to use the paymentID of this transaction to initiate subsequent merchant initiated transactions. In the EU, the current transaction should be authenticated.</description></item>
+        ///   <item><description>false - Default. No new card on file series created.</description></item>
+        /// </list>
+        /// </summary>
+        public bool? IsNewUnscheduledCardOnFileSeries { get; set; }
+
+        /// <summary>
+        /// <list type="bullet">
         ///   <item><description>true - Only payment products that support recurring payments will be shown. Any transactions created will also be tagged as being a first of a recurring sequence.</description></item>
         ///   <item><description>false - Only payment products that support one-off payments will be shown.
         /// The default value for this property is false.</description></item>
@@ -60,7 +68,7 @@ namespace OnlinePayments.Sdk.Domain
         public string Tokens { get; set; }
 
         /// <summary>
-        /// It is possible to upload multiple templates of your payment pages using the Merchant Portal. You can force the use of a custom template by specifying it in the variant field. This allows you to test out the effect of certain changes to your payment pages in a controlled manner. Please note that you need to specify the filename of the template or customization.
+        /// You can force the use of a custom template by specifying it in the variant field. This allows you to test out the effect of certain changes to your payment pages in a controlled manner. Please note that you need to specify the filename of the template or customization.
         /// </summary>
         public string Variant { get; set; }
     }
