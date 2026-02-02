@@ -105,13 +105,13 @@ namespace OnlinePayments.Sdk.Merchant
         public ISessionsClient Sessions => new SessionsClient(this, null);
 
         /// <summary>
-        /// Resource /v2/{merchantId}/tokens/{tokenId}
+        /// Resource /v2/{merchantId}/tokens
         /// </summary>
         /// <returns>ITokensClient</returns>
         public ITokensClient Tokens => new TokensClient(this, null);
 
         /// <summary>
-        /// Resource /v2/{merchantId}/payouts/{payoutId}
+        /// Resource /v2/{merchantId}/payouts
         /// </summary>
         /// <returns>IPayoutsClient</returns>
         public IPayoutsClient Payouts => new PayoutsClient(this, null);

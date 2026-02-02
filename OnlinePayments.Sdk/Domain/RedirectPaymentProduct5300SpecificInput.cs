@@ -39,5 +39,10 @@ namespace OnlinePayments.Sdk.Domain
         /// The duration of the session in seconds
         /// </summary>
         public int? SessionDuration { get; set; }
+
+        /// <summary>
+        /// Descriptive text that is used towards the customer, either during an online checkout at a third party or on the customer's statement.
+        /// </summary>
+        public string Title { get; set; }
     }
 }

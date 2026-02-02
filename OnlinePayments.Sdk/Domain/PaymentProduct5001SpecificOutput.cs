@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class PaymentProduct5001SpecificOutput
     {
         /// <summary>
-        /// The account number used for this transaction
+        /// The account number is associated with the funding.
         /// </summary>
         public string AccountNumber { get; set; }
 

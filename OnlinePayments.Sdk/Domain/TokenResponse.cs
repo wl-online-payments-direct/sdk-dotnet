@@ -11,6 +11,11 @@ namespace OnlinePayments.Sdk.Domain
         public TokenCard Card { get; set; }
 
         /// <summary>
+        /// The CRM (Customer Relationship Management) token group. CRM tokens are available to enhance knowledge of a merchant's customers by attempting to identify the customer.
+        /// </summary>
+        public CrmToken CrmToken { get; set; }
+
+        /// <summary>
         /// Object containing eWallet details
         /// </summary>
         public TokenEWallet EWallet { get; set; }
@@ -28,7 +33,7 @@ namespace OnlinePayments.Sdk.Domain
         public bool? IsTemporary { get; set; }
 
         /// <summary>
-        /// Represents a linked network token
+        /// Object containing Network Token details, when the Network Token was created on behalf of the merchant and is activated.
         /// </summary>
         public NetworkTokenLinked NetworkTokenLinked { get; set; }
 

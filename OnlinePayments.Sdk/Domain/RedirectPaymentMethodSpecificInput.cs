@@ -11,6 +11,11 @@ namespace OnlinePayments.Sdk.Domain
         public string PaymentOption { get; set; }
 
         /// <summary>
+        /// Object contains the inputs required to perform a bank transfer using payment product 11.
+        /// </summary>
+        public RedirectPaymentProduct11SpecificInput PaymentProduct11SpecificInput { get; set; }
+
+        /// <summary>
         /// Object containing specific input for PostFinancePay payments (Payment product ID 3203).
         /// </summary>
         public RedirectPaymentProduct3203SpecificInput PaymentProduct3203SpecificInput { get; set; }
@@ -29,6 +34,11 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific input required for Klarna payments (Payment product ID 3306)
         /// </summary>
         public RedirectPaymentProduct3306SpecificInput PaymentProduct3306SpecificInput { get; set; }
+
+        /// <summary>
+        /// Object containing specific input required for Klarna payments (Payment product ID 3307)
+        /// </summary>
+        public RedirectPaymentProduct3307SpecificInput PaymentProduct3307SpecificInput { get; set; }
 
         /// <summary>
         /// Object containing specific input required for Bizum payments

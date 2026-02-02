@@ -26,8 +26,18 @@ namespace OnlinePayments.Sdk.Domain
         public Address CustomerAddress { get; set; }
 
         /// <summary>
+        /// Id of a transaction given by PayPal
+        /// </summary>
+        public string PayPalTransactionId { get; set; }
+
+        /// <summary>
         /// Kind of seller protection in force for the PayPal transaction
         /// </summary>
         public ProtectionEligibility ProtectionEligibility { get; set; }
+
+        /// <summary>
+        /// Object containing address information
+        /// </summary>
+        public AddressPersonal ShippingAddress { get; set; }
     }
 }

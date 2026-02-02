@@ -3,7 +3,7 @@
  */
 namespace OnlinePayments.Sdk.Domain
 {
-    public class CreditCardValidationRulesHostedTokenization
+    public class CreditCardValidationRules
     {
         /// <summary>
         /// Determines whether the Card Verification Value must be provided for existing tokens. This option overrides the payment method configuration for the session.

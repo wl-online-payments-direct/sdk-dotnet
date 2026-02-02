@@ -21,6 +21,11 @@ namespace OnlinePayments.Sdk.Domain
         public string Description { get; set; }
 
         /// <summary>
+        /// Indicates whether to include a QR code in the response. When set to true, the response will contain a Base64 encoded QR code image containing the payment link URL.
+        /// </summary>
+        public bool? DisplayQRCode { get; set; }
+
+        /// <summary>
         /// The date after which the payment link will not be usable to complete the payment. The date sent cannot be more than 6 months in the future or a past date. It must also contain the UTC offset.
         /// <p />
         /// Deprecated: Use <c>paymentLinkSpecificInput/expirationDate</c> instead.

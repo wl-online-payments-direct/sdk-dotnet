@@ -36,6 +36,11 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentLinkOrderOutput PaymentLinkOrder { get; set; }
 
         /// <summary>
+        /// Base64 encoded QR code image containing the payment link URL. This field is only included in the response when displayQRCode is set to true in the request.
+        /// </summary>
+        public string QrCodeBase64 { get; set; }
+
+        /// <summary>
         /// The payment link recipient name.
         /// </summary>
         public string RecipientName { get; set; }

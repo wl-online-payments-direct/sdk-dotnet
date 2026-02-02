@@ -99,13 +99,13 @@ namespace OnlinePayments.Sdk.Merchant
         ISessionsClient Sessions { get; }
 
         /// <summary>
-        /// Resource /v2/{merchantId}/tokens/{tokenId}
+        /// Resource /v2/{merchantId}/tokens
         /// </summary>
         /// <returns>ITokensClient</returns>
         ITokensClient Tokens { get; }
 
         /// <summary>
-        /// Resource /v2/{merchantId}/payouts/{payoutId}
+        /// Resource /v2/{merchantId}/payouts
         /// </summary>
         /// <returns>IPayoutsClient</returns>
         IPayoutsClient Payouts { get; }

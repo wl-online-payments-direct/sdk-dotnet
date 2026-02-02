@@ -85,7 +85,7 @@ namespace OnlinePayments.Sdk.Domain
         public string CardType { get; set; }
 
         /// <summary>
-        /// ISO 3166-1 alpha-2 country code
+        /// ISO 3166-1 alpha-2 country code of the card issuer
         /// </summary>
         public string CountryCode { get; set; }
 

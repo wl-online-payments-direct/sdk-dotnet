@@ -36,6 +36,14 @@ namespace OnlinePayments.Sdk.Domain
         public string InitialSchemeTransactionId { get; set; }
 
         /// <summary>
+        /// Object containing marketplace-related data for additional information on sub-merchants (retailers) transacting via the marketplace’s platform.
+        /// This object is required for platforms onboarding multiple sellers to ensure accurate identification and attribution of each transaction.
+        /// The platform must collect and submit the retailer’s country and regional information in accordance with card scheme requirements.
+        /// In some cases, Visa may treat specific regions—such as EU member states—as a single country entity for regulatory and reporting purposes.
+        /// </summary>
+        public MarketPlace MarketPlace { get; set; }
+
+        /// <summary>
         /// Container announcing forecoming subsequent payments. Holds modalities of these subsequent payments.
         /// </summary>
         public MultiplePaymentInformation MultiplePaymentInformation { get; set; }
@@ -91,11 +99,7 @@ namespace OnlinePayments.Sdk.Domain
         public string Token { get; set; }
 
         /// <summary>
-        /// Indicates if this transaction should be tokenized
-        /// <list type="bullet">
-        ///   <item><description>true - Tokenize the transaction. Note that a payment on the payment platform that results in a status REDIRECTED cannot be tokenized in this way.</description></item>
-        ///   <item><description>false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.</description></item>
-        /// </list>
+        /// Indicates if this transaction should be tokenized * true - Tokenize the transaction. * false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments. Note: This property is deprecated for Hosted Checkout integrations. It has been deprecated by hostedCheckoutSpecificInput.cardPaymentMethodSpecificInput.tokenizationMode.
         /// </summary>
         public bool? Tokenize { get; set; }
 

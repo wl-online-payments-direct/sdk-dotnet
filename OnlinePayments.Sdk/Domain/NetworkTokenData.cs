@@ -16,7 +16,7 @@ namespace OnlinePayments.Sdk.Domain
         public string Cryptogram { get; set; }
 
         /// <summary>
-        /// The Electronic Commerce Indicator you got with the Token Cryptogram.
+        /// The Electronic Commerce Indicator linked to the Token Cryptogram that is provided by the token service provider during the generation of the Token Cryptogram.
         /// </summary>
         public int? Eci { get; set; }
 
@@ -27,7 +27,7 @@ namespace OnlinePayments.Sdk.Domain
         public string NetworkToken { get; set; }
 
         /// <summary>
-        /// Identifies the Token Requestor when calling the token service provider.
+        /// Token Requestor Identifier used with the token service provider during the creation of the Network Token. Depending on the acquirer, this data might be required in the authorization request. We advise you to provide it for all Network Token initiated transactions.
         /// </summary>
         public string SchemeTokenRequestorId { get; set; }
 

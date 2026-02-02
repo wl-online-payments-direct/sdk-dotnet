@@ -21,6 +21,11 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentOutput PaymentOutput { get; set; }
 
         /// <summary>
+        /// Session context information. This denotes the origin of the payment session, where the session originated from and that session's unique identifier
+        /// </summary>
+        public SessionDetails SessionDetails { get; set; }
+
+        /// <summary>
         /// Current high-level status of the payment in a human-readable form.
         /// </summary>
         public string Status { get; set; }

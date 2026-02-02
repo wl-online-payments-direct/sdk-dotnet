@@ -20,6 +20,14 @@ namespace OnlinePayments.Sdk.Domain
         public string AuthorizationMode { get; set; }
 
         /// <summary>
+        /// Object containing marketplace-related data for additional information on sub-merchants (retailers) transacting via the marketplace’s platform.
+        /// This object is required for platforms onboarding multiple sellers to ensure accurate identification and attribution of each transaction.
+        /// The platform must collect and submit the retailer’s country and regional information in accordance with card scheme requirements.
+        /// In some cases, Visa may treat specific regions—such as EU member states—as a single country entity for regulatory and reporting purposes.
+        /// </summary>
+        public MarketPlace MarketPlace { get; set; }
+
+        /// <summary>
         /// This payment's ordinal number in the sequence of payments.  As the payments are numbered from 1 to the totalNumberOfPayments provided at initialization of the sequence in the multiplePaymentInformation container, the allowed values for this field actually depend on whether the initial call to CreatePayment or CreateHostedCheckout led to a payment or not.
         /// <list type="bullet">
         ///   <item><description>if the initial call led to a payment, since it is implicitly numbered 1, then the allowed values for this field range from 2 to the totalNumberOfPayments.</description></item>

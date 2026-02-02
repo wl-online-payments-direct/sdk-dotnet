@@ -91,7 +91,7 @@ namespace OnlinePayments.Sdk.Domain
         public IList<IINDetail> CoBrands { get; set; }
 
         /// <summary>
-        /// The ISO 3166-1 alpha-2 country code of the country where the card was issued. If we do not know where the card was issued, then the countryCode will return the value '99'.
+        /// The ISO 3166-1 alpha-2 country code of the card issuer. If we do not know the country of the card issuer, then the countryCode will return the value '99'.
         /// </summary>
         public string CountryCode { get; set; }
 

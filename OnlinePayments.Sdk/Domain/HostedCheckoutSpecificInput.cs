@@ -63,6 +63,11 @@ namespace OnlinePayments.Sdk.Domain
         public bool? ShowResultPage { get; set; }
 
         /// <summary>
+        /// Contains the payment product IDs and payment product groups that will be used to manage the payment products available for the following payments in a split payment. Note that this filter is applied after the paymentProductFilter has been applied. It cannot be used to enable split payments with payment products that were not already allowed by paymentProductFilter.
+        /// </summary>
+        public SplitPaymentProductFiltersHostedCheckout SplitPaymentProductFilters { get; set; }
+
+        /// <summary>
         /// String containing comma separated tokens (no spaces) associated with the customer of this hosted session. Valid tokens will be used to present the customer the option to re-use previously used payment details. This means the customer for instance does not have to re-enter their card details again, which a big plus when the customer is using their mobile phone to complete the operation.
         /// </summary>
         public string Tokens { get; set; }

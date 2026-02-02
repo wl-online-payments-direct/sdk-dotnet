@@ -3,7 +3,7 @@
  */
 namespace OnlinePayments.Sdk.Domain
 {
-    public class OmnichannelRefundSpecificInput
+    public class OmnichannelSubsequentSpecificInput
     {
         /// <summary>
         /// Merchants may optionally include a user identifier to indicate which person within their organization initiated this request, enabling detailed audit trails and transaction accountability.

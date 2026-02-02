@@ -59,5 +59,15 @@ namespace OnlinePayments.Sdk.Domain
         /// Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction
         /// </summary>
         public bool? SkipAuthentication { get; set; }
+
+        /// <summary>
+        /// <list type="bullet">
+        ///   <item><description>true = Soft Decline retry mechanism will be skipped for this transaction. The transaction will result in &quot;Authorization Declined&quot; status. This setting should be used when skipAuthentication is set to true and the merchant does not want to use Soft Decline retry mechanism.</description></item>
+        ///   <item><description>false = Soft Decline retry mechanism will not be skipped for this transaction.</description></item>
+        /// </list>
+        /// <p />
+        /// Note: skipSoftDecline defaults to false if empty. This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.
+        /// </summary>
+        public bool? SkipSoftDecline { get; set; }
     }
 }

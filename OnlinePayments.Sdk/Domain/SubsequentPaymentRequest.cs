@@ -6,6 +6,11 @@ namespace OnlinePayments.Sdk.Domain
     public class SubsequentPaymentRequest
     {
         /// <summary>
+        /// This object contains additional subsequent details for omnichannel merchants.
+        /// </summary>
+        public OmnichannelSubsequentSpecificInput OmnichannelSubsequentSpecificInput { get; set; }
+
+        /// <summary>
         /// The order object contains order-related data;
         /// Please note that this object is required to submit the amount.
         /// </summary>

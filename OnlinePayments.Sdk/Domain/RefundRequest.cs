@@ -34,5 +34,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
         public PaymentReferences References { get; set; }
+
+        /// <summary>
+        /// Object containing the specific input details for refunds for redirection payment methods.
+        /// </summary>
+        public RefundRedirectPaymentMethodSpecificInput RefundRedirectPaymentMethodSpecificInput { get; set; }
     }
 }

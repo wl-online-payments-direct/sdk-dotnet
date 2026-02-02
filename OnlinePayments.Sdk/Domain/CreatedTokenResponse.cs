@@ -7,6 +7,11 @@ namespace OnlinePayments.Sdk.Domain
     {
         public CardWithoutCvv Card { get; set; }
 
+        /// <summary>
+        /// The CRM (Customer Relationship Management) token group. CRM tokens are available to enhance knowledge of a merchant's customers by attempting to identify the customer.
+        /// </summary>
+        public CrmToken CrmToken { get; set; }
+
         public ExternalTokenLinked ExternalTokenLinked { get; set; }
 
         /// <summary>

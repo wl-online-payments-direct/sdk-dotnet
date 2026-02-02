@@ -77,12 +77,20 @@ namespace OnlinePayments.Sdk.Domain
         public bool? IsRecurring { get; set; }
 
         /// <summary>
+        /// Object containing marketplace-related data for additional information on sub-merchants (retailers) transacting via the marketplace’s platform.
+        /// This object is required for platforms onboarding multiple sellers to ensure accurate identification and attribution of each transaction.
+        /// The platform must collect and submit the retailer’s country and regional information in accordance with card scheme requirements.
+        /// In some cases, Visa may treat specific regions—such as EU member states—as a single country entity for regulatory and reporting purposes.
+        /// </summary>
+        public MarketPlace MarketPlace { get; set; }
+
+        /// <summary>
         /// Container announcing forecoming subsequent payments. Holds modalities of these subsequent payments.
         /// </summary>
         public MultiplePaymentInformation MultiplePaymentInformation { get; set; }
 
         /// <summary>
-        /// Object containing network token details
+        /// Object containing Network Token details
         /// </summary>
         public NetworkTokenData NetworkTokenData { get; set; }
 
