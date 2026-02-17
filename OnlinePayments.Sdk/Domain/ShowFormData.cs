@@ -31,6 +31,11 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentProduct5407 PaymentProduct5407 { get; set; }
 
         /// <summary>
+        /// Contains the third party data for payment product 840 (PayPal)
+        /// </summary>
+        public PaymentProduct840 PaymentProduct840 { get; set; }
+
+        /// <summary>
         /// Contains the third party data for payment product requiring an external authentication (e.g., Bizum, CV Connect)
         /// </summary>
         public PendingAuthentication PendingAuthentication { get; set; }

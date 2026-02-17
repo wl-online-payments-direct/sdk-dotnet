@@ -42,6 +42,11 @@ namespace OnlinePayments.Sdk.Domain
         public MobilePaymentMethodSpecificInput MobilePaymentMethodSpecificInput { get; set; }
 
         /// <summary>
+        /// This object contains additional payment details for omnichannel merchants.
+        /// </summary>
+        public OmnichannelPaymentSpecificInput OmnichannelPaymentSpecificInput { get; set; }
+
+        /// <summary>
         /// The order object contains order-related data;
         /// Please note that this object is required to submit the amount.
         /// </summary>

@@ -47,7 +47,7 @@ namespace OnlinePayments.Sdk.Domain
         public string RecurrenceType { get; set; }
 
         /// <summary>
-        /// Return URL to use if the mandate signing requires redirection. Required for S2S Create Payment if and only if the signatureType is &quot;SMS&quot;.
+        /// Return URL to use if the mandate signing requires redirection. Required for S2S Create Payment if and only if the signatureType is &quot;SMS&quot; or &quot;AIS&quot;.
         /// </summary>
         public string ReturnUrl { get; set; }
 
@@ -57,6 +57,7 @@ namespace OnlinePayments.Sdk.Domain
         ///   <item><description>UNSIGNED</description></item>
         ///   <item><description>SMS</description></item>
         ///   <item><description>TICK_BOX</description></item>
+        ///   <item><description>AIS</description></item>
         /// </list>
         /// <p />
         /// Refer to the support page to determine the applicable signature types.

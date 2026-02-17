@@ -1,6 +1,8 @@
 /*
  * This file was automatically generated.
  */
+using System.Collections.Generic;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class RefundRequest
@@ -14,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         /// The identifier of the capture that is used for partial refund. CaptureId is only necessary for Paypal/PostfinancePay multi-capture payments.
         /// </summary>
         public string CaptureId { get; set; }
+
+        /// <summary>
+        /// List of lineItemIds and quantities for capture/refund/cancellation.
+        /// </summary>
+        public IList<LineItemDetail> LineItemDetails { get; set; }
 
         /// <summary>
         /// Object containing the additional refund details for an Omnichannel merchant

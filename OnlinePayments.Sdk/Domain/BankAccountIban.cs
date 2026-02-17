@@ -10,6 +10,7 @@ namespace OnlinePayments.Sdk.Domain
         /// Required for the creation of a Payout
         /// Required for Create and Update token.
         /// Required for Create mandate and Create payment with mandate calls.
+        /// It is optional when the mandate signature type is &quot;AIS&quot;; otherwise, it is mandatory.
         /// </summary>
         public string Iban { get; set; }
     }

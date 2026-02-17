@@ -69,6 +69,11 @@ namespace OnlinePayments.Sdk.Domain
         public SepaDirectDebitPaymentMethodSpecificOutput SepaDirectDebitPaymentMethodSpecificOutput { get; set; }
 
         /// <summary>
+        /// The shopping cart details.
+        /// </summary>
+        public ShoppingCartOutput ShoppingCartOutput { get; set; }
+
+        /// <summary>
         /// Object containing specific surcharging attributes applied to an order.
         /// </summary>
         public SurchargeSpecificOutput SurchargeSpecificOutput { get; set; }

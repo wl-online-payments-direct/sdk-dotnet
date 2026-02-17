@@ -3,8 +3,10 @@
  */
 using System.Collections.Generic;
 using OnlinePayments.Sdk.Merchant.Captures;
+using OnlinePayments.Sdk.Merchant.CofSeries;
 using OnlinePayments.Sdk.Merchant.Complete;
 using OnlinePayments.Sdk.Merchant.HostedCheckout;
+using OnlinePayments.Sdk.Merchant.HostedFields;
 using OnlinePayments.Sdk.Merchant.HostedTokenization;
 using OnlinePayments.Sdk.Merchant.Mandates;
 using OnlinePayments.Sdk.Merchant.PaymentLinks;
@@ -17,6 +19,7 @@ using OnlinePayments.Sdk.Merchant.Refunds;
 using OnlinePayments.Sdk.Merchant.Services;
 using OnlinePayments.Sdk.Merchant.Sessions;
 using OnlinePayments.Sdk.Merchant.Subsequent;
+using OnlinePayments.Sdk.Merchant.Tokenization;
 using OnlinePayments.Sdk.Merchant.Tokens;
 using OnlinePayments.Sdk.Merchant.Webhooks;
 
@@ -43,6 +46,12 @@ namespace OnlinePayments.Sdk.Merchant
         /// </summary>
         /// <returns>IHostedTokenizationClient</returns>
         public IHostedTokenizationClient HostedTokenization => new HostedTokenizationClient(this, null);
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/hostedfields/sessions
+        /// </summary>
+        /// <returns>IHostedFieldsClient</returns>
+        public IHostedFieldsClient HostedFields => new HostedFieldsClient(this, null);
 
         /// <summary>
         /// Resource /v2/{merchantId}/payments
@@ -109,6 +118,18 @@ namespace OnlinePayments.Sdk.Merchant
         /// </summary>
         /// <returns>ITokensClient</returns>
         public ITokensClient Tokens => new TokensClient(this, null);
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/tokens/importCofSeries
+        /// </summary>
+        /// <returns>ICofSeriesClient</returns>
+        public ICofSeriesClient CofSeries => new CofSeriesClient(this, null);
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/detokenize/csr
+        /// </summary>
+        /// <returns>ITokenizationClient</returns>
+        public ITokenizationClient Tokenization => new TokenizationClient(this, null);
 
         /// <summary>
         /// Resource /v2/{merchantId}/payouts
