@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.HostedFields
             var uri = InstantiateUri("/v2/{merchantId}/hostedfields/sessions", null);
             try
             {
+
                 return await _communicator.Post<CreateHostedFieldsSessionResponse>(
                         uri,
                         ClientHeaders,

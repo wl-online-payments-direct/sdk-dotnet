@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.PaymentLinks
             var uri = InstantiateUri("/v2/{merchantId}/paymentlinks", null);
             try
             {
+
                 return await _communicator.Post<PaymentLinkResponse>(
                         uri,
                         ClientHeaders,
@@ -76,6 +77,7 @@ namespace OnlinePayments.Sdk.Merchant.PaymentLinks
             var uri = InstantiateUri("/v2/{merchantId}/paymentlinks/{paymentLinkId}", pathContext);
             try
             {
+
                 return await _communicator.Get<PaymentLinkResponse>(
                         uri,
                         ClientHeaders,
@@ -112,6 +114,7 @@ namespace OnlinePayments.Sdk.Merchant.PaymentLinks
             var uri = InstantiateUri("/v2/{merchantId}/paymentlinks/{paymentLinkId}/cancel", pathContext);
             try
             {
+
                 await _communicator.Post<object>(
                         uri,
                         ClientHeaders,

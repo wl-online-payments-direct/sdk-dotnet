@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.PrivacyPolicy
             var uri = InstantiateUri("/v2/{merchantId}/services/privacypolicy", null);
             try
             {
+
                 return await _communicator.Get<GetPrivacyPolicyResponse>(
                         uri,
                         ClientHeaders,

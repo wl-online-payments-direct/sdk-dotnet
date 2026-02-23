@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.HostedCheckout
             var uri = InstantiateUri("/v2/{merchantId}/hostedcheckouts", null);
             try
             {
+
                 return await _communicator.Post<CreateHostedCheckoutResponse>(
                         uri,
                         ClientHeaders,
@@ -76,6 +77,7 @@ namespace OnlinePayments.Sdk.Merchant.HostedCheckout
             var uri = InstantiateUri("/v2/{merchantId}/hostedcheckouts/{hostedCheckoutId}", pathContext);
             try
             {
+
                 return await _communicator.Get<GetHostedCheckoutResponse>(
                         uri,
                         ClientHeaders,

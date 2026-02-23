@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using OnlinePayments.Sdk.Logging;
 
@@ -72,7 +74,36 @@ namespace OnlinePayments.Sdk.Communication
 
         private async Task<T> SendHttpMessage<T>(HttpMethod method, Uri uri, IEnumerable<IRequestHeader> requestHeaders, Func<HttpStatusCode, Stream, IEnumerable<IResponseHeader>, T>responseHandler, string body = null)
         {
-            var content = body == null ? null : new StringContent(body);
+            HttpContent content = null;
+            if (!string.IsNullOrEmpty(body))
+            {
+                bool useCompression = requestHeaders.Any(h =>
+                    h is EntityHeader && h.Name.Equals("Content-Encoding", StringComparison.OrdinalIgnoreCase));
+
+                if (useCompression)
+                {
+                    var jsonBytes = Encoding.UTF8.GetBytes(body);
+                    using (var input = new MemoryStream(jsonBytes))
+                    using (var output = new MemoryStream())
+                    {
+                        using (var gzip = new GZipStream(output, CompressionMode.Compress, leaveOpen: true))
+                        {
+                            await input.CopyToAsync(gzip);
+                        }
+
+                        var compressedBytes = output.ToArray();
+                        content = new ByteArrayContent(compressedBytes);
+                    }
+
+                    content.Headers.ContentEncoding.Add("gzip");
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                }
+                else
+                {
+                    content = new StringContent(body, Encoding.UTF8, "application/json");
+                }
+            }
+
             return await SendHttpMessage(method, uri, requestHeaders, responseHandler, content, body).ConfigureAwait(false);
         }
 

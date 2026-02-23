@@ -42,6 +42,7 @@ namespace OnlinePayments.Sdk.Merchant.Captures
             var uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}/captures", pathContext);
             try
             {
+
                 return await _communicator.Get<CapturesResponse>(
                         uri,
                         ClientHeaders,

@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.Sessions
             var uri = InstantiateUri("/v2/{merchantId}/sessions", null);
             try
             {
+
                 return await _communicator.Post<SessionResponse>(
                         uri,
                         ClientHeaders,

@@ -42,6 +42,7 @@ namespace OnlinePayments.Sdk.Merchant.Refunds
             var uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}/refunds", pathContext);
             try
             {
+
                 return await _communicator.Get<RefundsResponse>(
                         uri,
                         ClientHeaders,

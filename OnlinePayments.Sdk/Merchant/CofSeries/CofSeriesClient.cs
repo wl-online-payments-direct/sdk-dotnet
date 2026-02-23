@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.CofSeries
             var uri = InstantiateUri("/v2/{merchantId}/tokens/importCofSeries", null);
             try
             {
+
                 return await _communicator.Post<ImportCofSeriesResponse>(
                         uri,
                         ClientHeaders,

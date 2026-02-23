@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.HostedTokenization
             var uri = InstantiateUri("/v2/{merchantId}/hostedtokenizations", null);
             try
             {
+
                 return await _communicator.Post<CreateHostedTokenizationResponse>(
                         uri,
                         ClientHeaders,
@@ -76,6 +77,7 @@ namespace OnlinePayments.Sdk.Merchant.HostedTokenization
             var uri = InstantiateUri("/v2/{merchantId}/hostedtokenizations/{hostedTokenizationId}", pathContext);
             try
             {
+
                 return await _communicator.Get<GetHostedTokenizationResponse>(
                         uri,
                         ClientHeaders,

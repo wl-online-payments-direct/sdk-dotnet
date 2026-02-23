@@ -37,6 +37,7 @@ namespace OnlinePayments.Sdk.Merchant.Services
             var uri = InstantiateUri("/v2/{merchantId}/services/testconnection", null);
             try
             {
+
                 return await _communicator.Get<TestConnection>(
                         uri,
                         ClientHeaders,
@@ -70,6 +71,7 @@ namespace OnlinePayments.Sdk.Merchant.Services
             var uri = InstantiateUri("/v2/{merchantId}/services/getIINdetails", null);
             try
             {
+
                 return await _communicator.Post<GetIINDetailsResponse>(
                         uri,
                         ClientHeaders,
@@ -104,6 +106,7 @@ namespace OnlinePayments.Sdk.Merchant.Services
             var uri = InstantiateUri("/v2/{merchantId}/services/dccrate", null);
             try
             {
+
                 return await _communicator.Post<CurrencyConversionResponse>(
                         uri,
                         ClientHeaders,
@@ -138,6 +141,7 @@ namespace OnlinePayments.Sdk.Merchant.Services
             var uri = InstantiateUri("/v2/{merchantId}/services/surchargecalculation", null);
             try
             {
+
                 return await _communicator.Post<CalculateSurchargeResponse>(
                         uri,
                         ClientHeaders,

@@ -44,6 +44,7 @@ namespace OnlinePayments.Sdk.Merchant.Complete
             var uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}/complete", pathContext);
             try
             {
+
                 return await _communicator.Post<CompletePaymentResponse>(
                         uri,
                         ClientHeaders,

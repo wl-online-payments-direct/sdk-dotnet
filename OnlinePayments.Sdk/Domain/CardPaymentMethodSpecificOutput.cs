@@ -6,6 +6,11 @@ namespace OnlinePayments.Sdk.Domain
     public class CardPaymentMethodSpecificOutput
     {
         /// <summary>
+        /// This object contains the acceptance information for the card payment authorization.
+        /// </summary>
+        public Acceptance Acceptance { get; set; }
+
+        /// <summary>
         /// Information about the acquirer used to process the transaction
         /// </summary>
         public AcquirerInformation AcquirerInformation { get; set; }

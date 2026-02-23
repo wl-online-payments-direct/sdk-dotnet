@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.Mandates
             var uri = InstantiateUri("/v2/{merchantId}/mandates", null);
             try
             {
+
                 return await _communicator.Post<CreateMandateResponse>(
                         uri,
                         ClientHeaders,
@@ -76,6 +77,7 @@ namespace OnlinePayments.Sdk.Merchant.Mandates
             var uri = InstantiateUri("/v2/{merchantId}/mandates/{uniqueMandateReference}", pathContext);
             try
             {
+
                 return await _communicator.Get<GetMandateResponse>(
                         uri,
                         ClientHeaders,
@@ -113,6 +115,7 @@ namespace OnlinePayments.Sdk.Merchant.Mandates
             var uri = InstantiateUri("/v2/{merchantId}/mandates/{uniqueMandateReference}/block", pathContext);
             try
             {
+
                 return await _communicator.Post<GetMandateResponse>(
                         uri,
                         ClientHeaders,
@@ -151,6 +154,7 @@ namespace OnlinePayments.Sdk.Merchant.Mandates
             var uri = InstantiateUri("/v2/{merchantId}/mandates/{uniqueMandateReference}/unblock", pathContext);
             try
             {
+
                 return await _communicator.Post<GetMandateResponse>(
                         uri,
                         ClientHeaders,
@@ -190,6 +194,7 @@ namespace OnlinePayments.Sdk.Merchant.Mandates
             var uri = InstantiateUri("/v2/{merchantId}/mandates/{uniqueMandateReference}/revoke", pathContext);
             try
             {
+
                 return await _communicator.Post<GetMandateResponse>(
                         uri,
                         ClientHeaders,

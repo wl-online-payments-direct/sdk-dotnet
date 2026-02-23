@@ -44,6 +44,7 @@ namespace OnlinePayments.Sdk.Merchant.Subsequent
             var uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}/subsequent", pathContext);
             try
             {
+
                 return await _communicator.Post<SubsequentPaymentResponse>(
                         uri,
                         ClientHeaders,

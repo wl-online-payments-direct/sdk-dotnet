@@ -42,5 +42,11 @@ namespace OnlinePayments.Sdk
         /// on the response to the request for which this call context was used.
         /// </remarks>
         public DateTimeOffset? IdempotenceResponseDateTime { get; set; }
+
+        /// <summary>
+        /// The indicator whether the GZip action should be performed on the request.
+        /// </summary>
+
+        public bool GZip { get; set; }
     }
 }

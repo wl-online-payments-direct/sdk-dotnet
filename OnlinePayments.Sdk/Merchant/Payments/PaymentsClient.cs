@@ -39,6 +39,7 @@ namespace OnlinePayments.Sdk.Merchant.Payments
             var uri = InstantiateUri("/v2/{merchantId}/payments", null);
             try
             {
+
                 return await _communicator.Post<CreatePaymentResponse>(
                         uri,
                         ClientHeaders,
@@ -77,6 +78,7 @@ namespace OnlinePayments.Sdk.Merchant.Payments
             var uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}", pathContext);
             try
             {
+
                 return await _communicator.Get<PaymentResponse>(
                         uri,
                         ClientHeaders,
@@ -114,6 +116,7 @@ namespace OnlinePayments.Sdk.Merchant.Payments
             var uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}/details", pathContext);
             try
             {
+
                 return await _communicator.Get<PaymentDetailsResponse>(
                         uri,
                         ClientHeaders,
@@ -152,6 +155,7 @@ namespace OnlinePayments.Sdk.Merchant.Payments
             var uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}/cancel", pathContext);
             try
             {
+
                 return await _communicator.Post<CancelPaymentResponse>(
                         uri,
                         ClientHeaders,
@@ -191,6 +195,7 @@ namespace OnlinePayments.Sdk.Merchant.Payments
             var uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}/capture", pathContext);
             try
             {
+
                 return await _communicator.Post<CaptureResponse>(
                         uri,
                         ClientHeaders,
@@ -231,6 +236,7 @@ namespace OnlinePayments.Sdk.Merchant.Payments
             var uri = InstantiateUri("/v2/{merchantId}/payments/{paymentId}/refund", pathContext);
             try
             {
+
                 return await _communicator.Post<RefundResponse>(
                         uri,
                         ClientHeaders,

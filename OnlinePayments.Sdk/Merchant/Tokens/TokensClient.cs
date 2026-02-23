@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.Tokens
             var uri = InstantiateUri("/v2/{merchantId}/tokens", null);
             try
             {
+
                 return await _communicator.Post<CreatedTokenResponse>(
                         uri,
                         ClientHeaders,
@@ -76,6 +77,7 @@ namespace OnlinePayments.Sdk.Merchant.Tokens
             var uri = InstantiateUri("/v2/{merchantId}/tokens/{tokenId}", pathContext);
             try
             {
+
                 return await _communicator.Get<TokenResponse>(
                         uri,
                         ClientHeaders,
@@ -112,6 +114,7 @@ namespace OnlinePayments.Sdk.Merchant.Tokens
             var uri = InstantiateUri("/v2/{merchantId}/tokens/{tokenId}", pathContext);
             try
             {
+
                 await _communicator.Delete<object>(
                         uri,
                         ClientHeaders,

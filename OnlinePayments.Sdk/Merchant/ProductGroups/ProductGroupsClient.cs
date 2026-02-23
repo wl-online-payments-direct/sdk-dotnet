@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.ProductGroups
             var uri = InstantiateUri("/v2/{merchantId}/productgroups", null);
             try
             {
+
                 return await _communicator.Get<GetPaymentProductGroupsResponse>(
                         uri,
                         ClientHeaders,
@@ -76,6 +77,7 @@ namespace OnlinePayments.Sdk.Merchant.ProductGroups
             var uri = InstantiateUri("/v2/{merchantId}/productgroups/{paymentProductGroupId}", pathContext);
             try
             {
+
                 return await _communicator.Get<PaymentProductGroup>(
                         uri,
                         ClientHeaders,

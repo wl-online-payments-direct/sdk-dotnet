@@ -38,6 +38,7 @@ namespace OnlinePayments.Sdk.Merchant.Tokenization
             var uri = InstantiateUri("/v2/{merchantId}/detokenize/csr", null);
             try
             {
+
                 return await _communicator.Post<CreateCertificateResponse>(
                         uri,
                         ClientHeaders,
@@ -72,6 +73,7 @@ namespace OnlinePayments.Sdk.Merchant.Tokenization
             var uri = InstantiateUri("/v2/{merchantId}/detokenize/tokens", null);
             try
             {
+
                 return await _communicator.Get<DetokenizationResponse>(
                         uri,
                         ClientHeaders,
@@ -105,6 +107,7 @@ namespace OnlinePayments.Sdk.Merchant.Tokenization
             var uri = InstantiateUri("/v2/{merchantId}/detokenize/payments", null);
             try
             {
+
                 return await _communicator.Get<DetokenizationResponse>(
                         uri,
                         ClientHeaders,

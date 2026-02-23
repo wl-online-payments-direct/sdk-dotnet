@@ -8,6 +8,7 @@ using OnlinePayments.Sdk.Merchant.HostedCheckout;
 using OnlinePayments.Sdk.Merchant.HostedFields;
 using OnlinePayments.Sdk.Merchant.HostedTokenization;
 using OnlinePayments.Sdk.Merchant.Mandates;
+using OnlinePayments.Sdk.Merchant.MerchantBatch;
 using OnlinePayments.Sdk.Merchant.PaymentLinks;
 using OnlinePayments.Sdk.Merchant.Payments;
 using OnlinePayments.Sdk.Merchant.Payouts;
@@ -148,6 +149,12 @@ namespace OnlinePayments.Sdk.Merchant
         /// </summary>
         /// <returns>IPaymentLinksClient</returns>
         IPaymentLinksClient PaymentLinks { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/merchant-batches
+        /// </summary>
+        /// <returns>IMerchantBatchClient</returns>
+        IMerchantBatchClient MerchantBatch { get; }
 
     }
 }

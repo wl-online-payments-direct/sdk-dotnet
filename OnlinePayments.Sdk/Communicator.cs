@@ -164,6 +164,10 @@ namespace OnlinePayments.Sdk
                 requestJson = Marshaller.Marshal(requestBody);
             }
 
+            if (requestBody != null && context?.GZip == true) {
+                requestHeaderList.Add(new EntityHeader("Content-Encoding", "gzip"));
+            }
+
             requestHeaders = await AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context).ConfigureAwait(false);
             return await Connection.Post(uri, requestHeaders, requestJson, (status, body, headers) =>
                 ProcessResponse<T>(status, body, headers, relativePath, context)
@@ -213,6 +217,10 @@ namespace OnlinePayments.Sdk
             {
                 requestHeaderList.Add(new EntityHeader("Content-Type", "application/json"));
                 requestJson = Marshaller.Marshal(requestBody);
+            }
+
+            if (requestBody != null && context?.GZip == true) {
+                requestHeaderList.Add(new EntityHeader("Content-Encoding", "gzip"));
             }
 
             requestHeaders = await AddGenericHeaders(HttpMethod.Post, uri, requestHeaderList, context).ConfigureAwait(false);

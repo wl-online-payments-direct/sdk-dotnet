@@ -77,5 +77,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific surcharging attributes applied to an order.
         /// </summary>
         public SurchargeSpecificOutput SurchargeSpecificOutput { get; set; }
+
+        /// <summary>
+        /// It is the server-side processing date and time of the transaction.
+        /// </summary>
+        public DateTimeOffset TransactionDate { get; set; }
     }
 }

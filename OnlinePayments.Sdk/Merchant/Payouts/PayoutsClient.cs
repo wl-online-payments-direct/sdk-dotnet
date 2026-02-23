@@ -39,6 +39,7 @@ namespace OnlinePayments.Sdk.Merchant.Payouts
             var uri = InstantiateUri("/v2/{merchantId}/payouts", null);
             try
             {
+
                 return await _communicator.Post<PayoutResponse>(
                         uri,
                         ClientHeaders,
@@ -77,6 +78,7 @@ namespace OnlinePayments.Sdk.Merchant.Payouts
             var uri = InstantiateUri("/v2/{merchantId}/payouts/{payoutId}", pathContext);
             try
             {
+
                 return await _communicator.Get<PayoutResponse>(
                         uri,
                         ClientHeaders,
