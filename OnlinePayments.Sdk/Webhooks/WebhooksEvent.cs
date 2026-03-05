@@ -14,6 +14,8 @@ namespace OnlinePayments.Sdk
 
         public string Type { get; set; }
 
+        public GetBatchStatusResponse DirectBatch { get; set; }
+
         public PaymentLinkResponse PaymentLink { get; set; }
 
         public PaymentResponse Payment { get; set; }

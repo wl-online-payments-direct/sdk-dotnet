@@ -132,7 +132,7 @@ namespace OnlinePayments.Sdk.Authentication
         string CanonicalizedResource(Uri uri)
         {
             var sb = new StringBuilder()
-                .Append(Uri.EscapeUriString(uri.LocalPath));
+                .Append(uri.LocalPath);
             if (!string.IsNullOrEmpty(uri.Query))
             {
                 sb.Append(Uri.UnescapeDataString(uri.Query));

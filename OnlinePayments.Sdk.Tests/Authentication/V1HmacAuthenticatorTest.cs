@@ -37,12 +37,12 @@ namespace OnlinePayments.Sdk.Authentication
             httpHeaders.Add(new RequestHeader("X-GCS-ClientMetaInfo", "{\"aap\",\"noot\"}"));
             httpHeaders.Add(new RequestHeader("User-Agent", "Apache-HttpClient/4.3.4 (java 1.5)"));
             httpHeaders.Add(new RequestHeader("Date", "Mon, 07 Jul 2014 12:12:40 GMT"));
-            string dataToSign = authenticator.ToDataToSign(HttpMethod.Post, new Uri("http://localhost:8080/v2/9991/services%20bla/convert/amount?aap=noot&mies=geen%20noot"), httpHeaders);
+            string dataToSign = authenticator.ToDataToSign(HttpMethod.Post, new Uri("http://localhost:8080/v2/services%20bla/testconnection?aap=noot&mies=geen%20noot"), httpHeaders);
 
             string expectedStart =
                 "POST\napplication/json\n";
             string expectedEnd =
-                "x-gcs-clientmetainfo:{\"aap\",\"noot\"}\nx-gcs-servermetainfo:{\"platformIdentifier\":\"Windows 7/6.1 Java/1.7 (Oracle Corporation; Java HotSpot(TM) 64-Bit Server VM; 1.7.0_45)\",\"sdkIdentifier\":\"1.0\"}\n/v2/9991/services%20bla/convert/amount?aap=noot&mies=geen noot\n";
+                "x-gcs-clientmetainfo:{\"aap\",\"noot\"}\nx-gcs-servermetainfo:{\"platformIdentifier\":\"Windows 7/6.1 Java/1.7 (Oracle Corporation; Java HotSpot(TM) 64-Bit Server VM; 1.7.0_45)\",\"sdkIdentifier\":\"1.0\"}\n/v2/services bla/testconnection?aap=noot&mies=geen noot\n";
 
             string actualStart = dataToSign.Substring(0, 22);
             string actualEnd = dataToSign.Substring(52, dataToSign.Length-52);
@@ -99,6 +99,30 @@ namespace OnlinePayments.Sdk.Authentication
             httpHeaders.Add(new RequestHeader("Date", "Fri, 06 Jun 2014 13:39:43 GMT"));
             string signature = await authenticator.GetAuthorization(HttpMethod.Delete, new Uri("https://payment.preprod.online-payments.com/v2/1/tokens/123456789"), httpHeaders);
             Assert.AreEqual("GCS v1HMAC:5e45c937b9db33ae:TbiTwCCsGsyFFnfWt5Rreg0cGYJeTiofxjuZNSLUuGo=", signature);
+        }
+
+        [TestCase]
+        public async Task TestWithSpecificCharactersMerchant()
+        {
+            V1HmacAuthenticator authenticator = new V1HmacAuthenticator(AuthorizationType.V1HMAC, "apiKeyId", "secretApiKey");
+            IList<RequestHeader> httpHeaders = new List<RequestHeader>();
+            httpHeaders.Add(new RequestHeader("X-GCS-ServerMetaInfo", "{\"platformIdentifier\":\"Windows 7/6.1 Java/1.7 (Oracle Corporation; Java HotSpot(TM) 64-Bit Server VM; 1.7.0_45)\",\"sdkIdentifier\":\"1.0\"}"));
+            httpHeaders.Add(new RequestHeader("Content-Type", "application/json"));
+            httpHeaders.Add(new RequestHeader("X-GCS-ClientMetaInfo", "{\"aap\",\"noot\"}"));
+            httpHeaders.Add(new RequestHeader("User-Agent", "Apache-HttpClient/4.3.4 (java 1.5)"));
+            httpHeaders.Add(new RequestHeader("Date", "Mon, 07 Jul 2014 12:12:40 GMT"));
+            string dataToSign = authenticator.ToDataToSign(HttpMethod.Post, new Uri("http://localhost:8080/v2/spécificCharacterMerchant/testconnection?aap=noot&mies=geen%20noot"), httpHeaders);
+
+            string expectedStart =
+                "POST\napplication/json\n";
+            string expectedEnd =
+                "x-gcs-clientmetainfo:{\"aap\",\"noot\"}\nx-gcs-servermetainfo:{\"platformIdentifier\":\"Windows 7/6.1 Java/1.7 (Oracle Corporation; Java HotSpot(TM) 64-Bit Server VM; 1.7.0_45)\",\"sdkIdentifier\":\"1.0\"}\n/v2/spécificCharacterMerchant/testconnection?aap=noot&mies=geen noot\n";
+
+            string actualStart = dataToSign.Substring(0, 22);
+            string actualEnd = dataToSign.Substring(52, dataToSign.Length-52);
+
+            Assert.AreEqual(expectedStart, actualStart);
+            Assert.AreEqual(expectedEnd, actualEnd);
         }
     }
 }
