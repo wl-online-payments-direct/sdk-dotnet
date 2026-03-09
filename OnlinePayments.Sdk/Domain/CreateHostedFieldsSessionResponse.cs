@@ -1,10 +1,17 @@
 /*
  * This file was automatically generated.
  */
+using System.Collections.Generic;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class CreateHostedFieldsSessionResponse
     {
+        /// <summary>
+        /// This is a list of tokens that failed validation.
+        /// </summary>
+        public IList<string> InvalidTokens { get; set; }
+
         /// <summary>
         /// This is the cryptographic hash used for Subresource Integrity validation.
         /// </summary>

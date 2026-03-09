@@ -16,6 +16,21 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectPaymentProduct11SpecificInput PaymentProduct11SpecificInput { get; set; }
 
         /// <summary>
+        /// Object containing specific input for CadoCarte payments (Payment product ID 3103)
+        /// </summary>
+        public RedirectPaymentProduct3103SpecificInput PaymentProduct3103SpecificInput { get; set; }
+
+        /// <summary>
+        /// Object containing specific input required for Illicado payments (Payment product ID 3112)
+        /// </summary>
+        public RedirectPaymentProduct3112SpecificInput PaymentProduct3112SpecificInput { get; set; }
+
+        /// <summary>
+        /// Object containing specific input for SpiritOfCadeau payments (Payment product ID 3116)
+        /// </summary>
+        public RedirectPaymentProduct3116SpecificInput PaymentProduct3116SpecificInput { get; set; }
+
+        /// <summary>
         /// Object containing specific input for PostFinancePay payments (Payment product ID 3203).
         /// </summary>
         public RedirectPaymentProduct3203SpecificInput PaymentProduct3203SpecificInput { get; set; }
@@ -79,6 +94,11 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific input required for Chèque-Vacances Connect payments via ANCV (Payment product ID 5412)
         /// </summary>
         public RedirectPaymentProduct5412SpecificInput PaymentProduct5412SpecificInput { get; set; }
+
+        /// <summary>
+        /// Object containing specific input for Cadhoc payments (Payment product ID 5601)
+        /// </summary>
+        public RedirectPaymentProduct5601SpecificInput PaymentProduct5601SpecificInput { get; set; }
 
         /// <summary>
         /// Deprecated, this is no longer used.
