@@ -26,5 +26,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object that holds all reference properties that are linked to this transaction
         /// </summary>
         public OperationPaymentReferences OperationReferences { get; set; }
+
+        /// <summary>
+        /// Object containing the details of the shipping of the order
+        /// </summary>
+        public ShippingDetail Shipping { get; set; }
     }
 }

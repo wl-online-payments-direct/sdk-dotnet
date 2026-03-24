@@ -18,6 +18,11 @@ namespace OnlinePayments.Sdk.Domain
         public string CaptureId { get; set; }
 
         /// <summary>
+        /// This property indicates whether this will be the final operation. The default value for this property is false.
+        /// </summary>
+        public bool? IsFinal { get; set; }
+
+        /// <summary>
         /// List of lineItemIds and quantities for capture/refund/cancellation.
         /// </summary>
         public IList<LineItemDetail> LineItemDetails { get; set; }

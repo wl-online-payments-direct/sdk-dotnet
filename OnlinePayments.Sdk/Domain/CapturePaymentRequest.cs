@@ -33,5 +33,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
         public PaymentReferences References { get; set; }
+
+        /// <summary>
+        /// Object containing the details of the shipping of the order
+        /// </summary>
+        public ShippingDetail Shipping { get; set; }
     }
 }
