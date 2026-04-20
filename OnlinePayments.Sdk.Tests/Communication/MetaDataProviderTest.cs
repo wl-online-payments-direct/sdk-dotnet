@@ -16,7 +16,7 @@ namespace OnlinePayments.Sdk.Communication
             var metadataProvider = new MetadataProvider("OnlinePayments");
 
             var requestHeaders = metadataProvider.ServerMetadataHeaders;
-            Assert.AreEqual(1, requestHeaders.Count());
+            Assert.That(requestHeaders.Count(), Is.EqualTo(1));
 
             var requestHeader = requestHeaders.First();
             AssertServerMetaInfo(metadataProvider, requestHeader);
@@ -35,7 +35,7 @@ namespace OnlinePayments.Sdk.Communication
             var metadataProvider = new MetadataProviderBuilder("OnlinePayments") { AdditionalRequestHeaders = additionalHeaders }.Build();
 
             var requestHeaders = metadataProvider.ServerMetadataHeaders;
-            Assert.AreEqual(4, requestHeaders.Count());
+            Assert.That(requestHeaders.Count(), Is.EqualTo(4));
             var requestHeader = requestHeaders.First();
             AssertServerMetaInfo(metadataProvider, requestHeader);
 
@@ -44,9 +44,9 @@ namespace OnlinePayments.Sdk.Communication
                 enumerator.MoveNext();
                 foreach (var additionalHeader in additionalHeaders)
                 {
-                    Assert.True(enumerator.MoveNext());
+                    Assert.That(enumerator.MoveNext(), Is.True);
                     requestHeader = enumerator.Current;
-                    Assert.AreEqual(requestHeader, additionalHeader);
+                    Assert.That(additionalHeader, Is.EqualTo(requestHeader));
                 }
             }
         }
@@ -69,16 +69,16 @@ namespace OnlinePayments.Sdk.Communication
 
         private static void AssertServerMetaInfo(MetadataProvider metadataProvider, IRequestHeader requestHeader)
         {
-            Assert.AreEqual(requestHeader.Name, "X-GCS-ServerMetaInfo");
-            Assert.NotNull(requestHeader.Value);
+            Assert.That(requestHeader.Name, Is.EqualTo("X-GCS-ServerMetaInfo"));
+            Assert.That(requestHeader.Value, Is.Not.Null);
 
             var data = Convert.FromBase64String(requestHeader.Value);
             var serverMetaInfoJson = Encoding.UTF8.GetString(data);
 
             var serverMetaInfo = DefaultMarshaller.Instance.Unmarshal<MetadataProvider.ServerMetaInfo>(serverMetaInfoJson);
-            Assert.AreEqual(metadataProvider.SdkIdentifier, serverMetaInfo.SdkIdentifier);
-            Assert.AreEqual("OnlinePayments", serverMetaInfo.SdkCreator);
-            Assert.AreEqual(metadataProvider.PlatformIdentifier, serverMetaInfo.PlatformIdentifier);
+            Assert.That(serverMetaInfo.SdkIdentifier, Is.EqualTo(metadataProvider.SdkIdentifier));
+            Assert.That(serverMetaInfo.SdkCreator, Is.EqualTo("OnlinePayments"));
+            Assert.That(serverMetaInfo.PlatformIdentifier, Is.EqualTo(metadataProvider.PlatformIdentifier));
         }
     }
 }

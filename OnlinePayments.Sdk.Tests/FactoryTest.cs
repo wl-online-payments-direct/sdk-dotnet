@@ -33,13 +33,13 @@ namespace OnlinePayments.Sdk
         {
             CommunicatorConfiguration configuration = Factory.CreateConfiguration(
                 Dict, ApiKeyId, SecretApiKey);
-            Assert.AreEqual(new Uri("https://payment.preprod.online-payments.com"), configuration.ApiEndpoint);
-            Assert.AreEqual(AuthorizationType.V1HMAC, configuration.AuthorizationType);
-            Assert.AreEqual(null, configuration.ConnectTimeout);
-            Assert.AreEqual(null, configuration.SocketTimeout?.TotalMilliseconds);
-            Assert.AreEqual(100, configuration.MaxConnections);
-            Assert.AreEqual(ApiKeyId, configuration.ApiKeyId);
-            Assert.AreEqual(SecretApiKey, configuration.SecretApiKey);
+            Assert.That(configuration.ApiEndpoint, Is.EqualTo(new Uri("https://payment.preprod.online-payments.com")));
+            Assert.That(configuration.AuthorizationType, Is.EqualTo(AuthorizationType.V1HMAC));
+            Assert.That(configuration.ConnectTimeout, Is.Null);
+            Assert.That(configuration.SocketTimeout?.TotalMilliseconds, Is.Null);
+            Assert.That(configuration.MaxConnections, Is.EqualTo(100));
+            Assert.That(configuration.ApiKeyId, Is.EqualTo(ApiKeyId));
+            Assert.That(configuration.SecretApiKey, Is.EqualTo(SecretApiKey));
         }
 
         internal static object GetInstanceField(Type type, object instance, string fieldName)
@@ -55,25 +55,25 @@ namespace OnlinePayments.Sdk
         {
             ICommunicator communicatorInterface = Factory.CreateCommunicator(Dict, ApiKeyId, SecretApiKey);
 
-            Assert.IsInstanceOf<Communicator>(communicatorInterface);
+            Assert.That(communicatorInterface, Is.InstanceOf<Communicator>());
             Communicator communicator = (Communicator)communicatorInterface;
-            Assert.AreSame(DefaultMarshaller.Instance, communicator.Marshaller);
+            Assert.That(communicator.Marshaller, Is.SameAs(DefaultMarshaller.Instance));
 
             IConnection connection = communicator.Connection;
-            Assert.True(connection is DefaultConnection);
+            Assert.That(connection, Is.InstanceOf<DefaultConnection>());
 
             IAuthenticator authenticator = communicator.Authenticator;
-            Assert.True(authenticator is V1HmacAuthenticator);
-            Assert.AreEqual(AuthorizationType.V1HMAC, GetInstanceField(typeof(V1HmacAuthenticator), authenticator, "_authorizationType"));
-            Assert.AreEqual(ApiKeyId, GetInstanceField(typeof(V1HmacAuthenticator), authenticator, "_apiKeyId"));
-            Assert.AreEqual(SecretApiKey, GetInstanceField(typeof(V1HmacAuthenticator), authenticator, "_secretApiKey"));
+            Assert.That(authenticator, Is.InstanceOf<V1HmacAuthenticator>());
+            Assert.That(GetInstanceField(typeof(V1HmacAuthenticator), authenticator, "_authorizationType"), Is.EqualTo(AuthorizationType.V1HMAC));
+            Assert.That(GetInstanceField(typeof(V1HmacAuthenticator), authenticator, "_apiKeyId"), Is.EqualTo(ApiKeyId));
+            Assert.That(GetInstanceField(typeof(V1HmacAuthenticator), authenticator, "_secretApiKey"), Is.EqualTo(SecretApiKey));
 
             IMetadataProvider metaDataProvider = communicator.MetadataProvider;
-            Assert.AreEqual(typeof(MetadataProvider), metaDataProvider.GetType());
+            Assert.That(metaDataProvider.GetType(), Is.EqualTo(typeof(MetadataProvider)));
             IEnumerable<IRequestHeader> requestHeaders = metaDataProvider.ServerMetadataHeaders;
-            Assert.AreEqual(1, requestHeaders.Count());
+            Assert.That(requestHeaders.Count(), Is.EqualTo(1));
             IRequestHeader requestHeader = requestHeaders.ElementAt(0);
-            Assert.AreEqual("X-GCS-ServerMetaInfo", requestHeader.Name);
+            Assert.That(requestHeader.Name, Is.EqualTo("X-GCS-ServerMetaInfo"));
         }
     }
 }

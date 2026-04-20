@@ -17,14 +17,14 @@ namespace OnlinePayments.Sdk
             var configuration = CreateBasicConfiguration();
 
             AssertBasicConfigurationSettings(configuration);
-            Assert.AreEqual(CommunicatorConfiguration.DefaultMaxConnections, configuration.MaxConnections);
-            Assert.Null(configuration.ApiKeyId);
-            Assert.Null(configuration.SecretApiKey);
+            Assert.That(configuration.MaxConnections, Is.EqualTo(CommunicatorConfiguration.DefaultMaxConnections));
+            Assert.That(configuration.ApiKeyId, Is.Null);
+            Assert.That(configuration.SecretApiKey, Is.Null);
 
-            Assert.Null(configuration.Proxy);
-            Assert.Null(configuration.ProxyUri);
-            Assert.Null(configuration.ProxyUserName);
-            Assert.Null(configuration.ProxyPassword);
+            Assert.That(configuration.Proxy, Is.Null);
+            Assert.That(configuration.ProxyUri, Is.Null);
+            Assert.That(configuration.ProxyUserName, Is.Null);
+            Assert.That(configuration.ProxyPassword, Is.Null);
         }
 
         [TestCase]
@@ -34,15 +34,15 @@ namespace OnlinePayments.Sdk
                 .WithProxyUri(new Uri("http://proxy.example.org:3128"));
 
             AssertBasicConfigurationSettings(configuration);
-            Assert.AreEqual(CommunicatorConfiguration.DefaultMaxConnections, configuration.MaxConnections);
-            Assert.Null(configuration.ApiKeyId);
-            Assert.Null(configuration.SecretApiKey);
+            Assert.That(configuration.MaxConnections, Is.EqualTo(CommunicatorConfiguration.DefaultMaxConnections));
+            Assert.That(configuration.ApiKeyId, Is.Null);
+            Assert.That(configuration.SecretApiKey, Is.Null);
 
             var proxy = configuration.Proxy;
-            Assert.NotNull(proxy);
+            Assert.That(proxy, Is.Not.Null);
             AssertBasicProxySettings(proxy);
-            Assert.Null(proxy.Username);
-            Assert.Null(proxy.Password);
+            Assert.That(proxy.Username, Is.Null);
+            Assert.That(proxy.Password, Is.Null);
         }
 
         [TestCase]
@@ -54,15 +54,15 @@ namespace OnlinePayments.Sdk
                 .WithProxyPassword("proxy-password");
 
             AssertBasicConfigurationSettings(configuration);
-            Assert.AreEqual(CommunicatorConfiguration.DefaultMaxConnections, configuration.MaxConnections);
-            Assert.Null(configuration.ApiKeyId);
-            Assert.Null(configuration.SecretApiKey);
+            Assert.That(configuration.MaxConnections, Is.EqualTo(CommunicatorConfiguration.DefaultMaxConnections));
+            Assert.That(configuration.ApiKeyId, Is.Null);
+            Assert.That(configuration.SecretApiKey, Is.Null);
 
             var proxy = configuration.Proxy;
-            Assert.NotNull(proxy);
+            Assert.That(proxy, Is.Not.Null);
             AssertBasicProxySettings(proxy);
-            Assert.AreEqual("proxy-username", proxy.Username);
-            Assert.AreEqual("proxy-password", proxy.Password);
+            Assert.That(proxy.Username, Is.EqualTo("proxy-username"));
+            Assert.That(proxy.Password, Is.EqualTo("proxy-password"));
         }
 
         [TestCase]
@@ -72,9 +72,9 @@ namespace OnlinePayments.Sdk
                 .WithMaxConnections(100);
 
             AssertBasicConfigurationSettings(configuration);
-            Assert.AreEqual(100, configuration.MaxConnections);
-            Assert.Null(configuration.ApiKeyId);
-            Assert.Null(configuration.SecretApiKey);
+            Assert.That(configuration.MaxConnections, Is.EqualTo(100));
+            Assert.That(configuration.ApiKeyId, Is.Null);
+            Assert.That(configuration.SecretApiKey, Is.Null);
 
             // In original tests was null, but not anymore, because of app config configuration
             //Assert.Null(configuration.ProxyConfiguration);
@@ -94,7 +94,7 @@ namespace OnlinePayments.Sdk
 
             var configuration = new CommunicatorConfiguration(properties);
 
-            Assert.AreEqual(new Uri($"http://{BaseUriHost}"), configuration.ApiEndpoint);
+            Assert.That(configuration.ApiEndpoint, Is.EqualTo(new Uri($"http://{BaseUriHost}")));
         }
 
         [TestCase]
@@ -111,7 +111,7 @@ namespace OnlinePayments.Sdk
 
             var configuration = new CommunicatorConfiguration(properties);
 
-            Assert.AreEqual(new Uri($"https://{BaseUriHost}:8443"), configuration.ApiEndpoint);
+            Assert.That(configuration.ApiEndpoint, Is.EqualTo(new Uri($"https://{BaseUriHost}:8443")));
         }
 
         [TestCase]
@@ -129,7 +129,7 @@ namespace OnlinePayments.Sdk
 
             var configuration = new CommunicatorConfiguration(properties);
 
-            Assert.AreEqual(new Uri($"http://{BaseUriHost}:8080"), configuration.ApiEndpoint);
+            Assert.That(configuration.ApiEndpoint, Is .EqualTo(new Uri($"http://{BaseUriHost}:8080")));
         }
 
         [TestCase]
@@ -145,7 +145,7 @@ namespace OnlinePayments.Sdk
 
             var configuration = new CommunicatorConfiguration(properties);
 
-            Assert.AreEqual(new Uri("https://[::1]"), configuration.ApiEndpoint);
+            Assert.That(configuration.ApiEndpoint, Is.EqualTo(new Uri("https://[::1]")));
         }
 
         private static CommunicatorConfiguration CreateBasicConfiguration()
@@ -159,10 +159,10 @@ namespace OnlinePayments.Sdk
 
         private static void AssertBasicConfigurationSettings(CommunicatorConfiguration configuration)
         {
-            Assert.AreEqual(new Uri($"https://{BaseUriHost}"), configuration.ApiEndpoint);
-            Assert.AreEqual(AuthorizationType.V1HMAC, configuration.AuthorizationType);
-            Assert.AreEqual(20000, configuration.ConnectTimeout?.TotalMilliseconds);
-            Assert.AreEqual(10000, configuration.SocketTimeout?.TotalMilliseconds);
+            Assert.That(configuration.ApiEndpoint, Is.EqualTo(new Uri($"https://{BaseUriHost}")));
+            Assert.That(configuration.AuthorizationType, Is.EqualTo(AuthorizationType.V1HMAC));
+            Assert.That(configuration.ConnectTimeout?.TotalMilliseconds, Is.EqualTo(20000));
+            Assert.That(configuration.SocketTimeout?.TotalMilliseconds, Is.EqualTo(10000));
         }
 
         /// <summary>
@@ -171,9 +171,9 @@ namespace OnlinePayments.Sdk
         /// <param name="proxy">Proxy.</param>
         private static void AssertBasicProxySettings(Proxy proxy)
         {
-            Assert.AreEqual("http", proxy.Uri.Scheme);
-            Assert.AreEqual("proxy.example.org", proxy.Uri.Host);
-            Assert.AreEqual(3128, proxy.Uri.Port);
+            Assert.That(proxy.Uri.Scheme, Is.EqualTo("http"));
+            Assert.That(proxy.Uri.Host, Is.EqualTo("proxy.example.org"));
+            Assert.That(proxy.Uri.Port, Is.EqualTo(3128));
         }
     }
 }

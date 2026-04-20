@@ -133,15 +133,15 @@ public class MultipartFormDataTest : IntegrationTest
 
     private void AssertHttpBinResponse(MockHttpServer.HttpBinResponse response)
     {
-        Assert.NotNull(response.Form);
-        Assert.AreEqual(1, response.Form.Count);
-        Assert.IsTrue(response.Form.ContainsKey("value"));
-        Assert.AreEqual("Hello World", response.Form["value"]);
+        Assert.That(response.Form, Is.Not.Null);
+        Assert.That(response.Form.Count, Is.EqualTo(1));
+        Assert.That(response.Form.ContainsKey("value"), Is.True);
+        Assert.That(response.Form["value"], Is.EqualTo("Hello World"));
 
-        Assert.NotNull(response.Files);
-        Assert.AreEqual(1, response.Files.Count);
-        Assert.IsTrue(response.Files.ContainsKey("file"));
-        Assert.AreEqual("file-content", response.Files["file"]);
+        Assert.That(response.Files, Is.Not.Null);
+        Assert.That(response.Files.Count, Is.EqualTo(1));
+        Assert.That(response.Files.ContainsKey("file"), Is.True);
+        Assert.That(response.Files["file"], Is.EqualTo("file-content"));
     }
 
     private async Task RunWithMockServer(Func<ICommunicator, Task> testFunc)

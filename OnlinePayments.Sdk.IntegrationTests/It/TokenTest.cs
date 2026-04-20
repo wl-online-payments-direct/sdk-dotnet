@@ -40,7 +40,7 @@ namespace OnlinePayments.Sdk.It
                     .CreateToken(createTokenRequest)
                     .ConfigureAwait(false);
 
-                Assert.NotNull(createTokenResponse.Token);
+                Assert.That(createTokenResponse.Token, Is.Not.Null);
 
                 await client
                     .WithNewMerchant(GetMerchantId())

@@ -149,16 +149,16 @@ namespace OnlinePayments.Sdk.Webhooks
 
             var anEvent = helper.Unmarshal(bodyStream, requestHeaders);
 
-            Assert.AreEqual("v1", anEvent.ApiVersion);
-            Assert.AreEqual("8ee793f6-4553-4749-85dc-f2ef095c5ab0", anEvent.Id);
-            Assert.AreEqual("2017-02-02T11:24:14.040+0100", anEvent.Created);
-            Assert.AreEqual("20000", anEvent.MerchantId);
-            Assert.AreEqual("payment.paid", anEvent.Type);
+            Assert.That(anEvent.ApiVersion, Is.EqualTo("v1"));
+            Assert.That(anEvent.Id, Is.EqualTo("8ee793f6-4553-4749-85dc-f2ef095c5ab0"));
+            Assert.That(anEvent.Created, Is.EqualTo("2017-02-02T11:24:14.040+0100"));
+            Assert.That(anEvent.MerchantId, Is.EqualTo("20000"));
+            Assert.That(anEvent.Type, Is.EqualTo("payment.paid"));
 
-            Assert.NotNull(anEvent.Payment);
-            Assert.AreEqual("00000200000143570012", anEvent.Payment.Id);
-            Assert.AreEqual(1000, anEvent.Payment.PaymentOutput.AmountOfMoney.Amount);
-            Assert.AreEqual("COMPLETED", anEvent.Payment.StatusOutput.StatusCategory);
+            Assert.That(anEvent.Payment, Is.Not.Null);
+            Assert.That(anEvent.Payment.Id, Is.EqualTo("00000200000143570012"));
+            Assert.That(anEvent.Payment.PaymentOutput.AmountOfMoney.Amount, Is.EqualTo(1000));
+            Assert.That(anEvent.Payment.StatusOutput.StatusCategory, Is.EqualTo("COMPLETED"));
         }
 
         private static string Repeat(string s, int times)
@@ -177,20 +177,20 @@ namespace OnlinePayments.Sdk.Webhooks
             var signature = Guid.NewGuid().ToString();
             var large = Repeat(signature, 100);
 
-            Assert.False("abc".CompareWithoutTimingLeak(signature));
-            Assert.False(signature.CompareWithoutTimingLeak(signature + "1"));
-            Assert.False((signature + "1").CompareWithoutTimingLeak(signature));
-            Assert.False(signature.ToUpper().CompareWithoutTimingLeak(signature.ToLower()));
-            Assert.False(signature.ToLower().CompareWithoutTimingLeak(signature.ToUpper()));
+            Assert.That("abc".CompareWithoutTimingLeak(signature), Is.False);
+            Assert.That(signature.CompareWithoutTimingLeak(signature + "1"), Is.False);
+            Assert.That((signature + "1").CompareWithoutTimingLeak(signature), Is.False);
+            Assert.That(signature.ToUpper().CompareWithoutTimingLeak(signature.ToLower()), Is.False);
+            Assert.That(signature.ToLower().CompareWithoutTimingLeak(signature.ToUpper()), Is.False);
 
-            Assert.False("abc".CompareWithoutTimingLeak(large));
-            Assert.False(large.CompareWithoutTimingLeak(large + "1"));
-            Assert.False((large + "1").CompareWithoutTimingLeak(large));
-            Assert.False(large.ToUpper().CompareWithoutTimingLeak(large.ToLower()));
-            Assert.False(large.ToLower().CompareWithoutTimingLeak(large.ToUpper()));
+            Assert.That("abc".CompareWithoutTimingLeak(large), Is.False);
+            Assert.That(large.CompareWithoutTimingLeak(large + "1"), Is.False);
+            Assert.That((large + "1").CompareWithoutTimingLeak(large), Is.False);
+            Assert.That(large.ToUpper().CompareWithoutTimingLeak(large.ToLower()), Is.False);
+            Assert.That(large.ToLower().CompareWithoutTimingLeak(large.ToUpper()), Is.False);
 
-            Assert.False(large.CompareWithoutTimingLeak(signature));
-            Assert.False(signature.CompareWithoutTimingLeak(large));
+            Assert.That(large.CompareWithoutTimingLeak(signature), Is.False);
+            Assert.That(signature.CompareWithoutTimingLeak(large), Is.False);
         }
     }
 }

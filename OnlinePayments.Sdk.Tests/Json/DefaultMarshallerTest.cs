@@ -22,8 +22,8 @@ namespace OnlinePayments.Sdk.Json
             var json = DefaultMarshaller.Instance.Marshal(token);
             var returnedToken = DefaultMarshaller.Instance.Unmarshal<JsonToken>(json);
 
-            Assert.AreEqual(iban, returnedToken.Iban);
-            Assert.AreEqual(date, returnedToken.Date);
+            Assert.That(returnedToken.Iban, Is.EqualTo(iban));
+            Assert.That(returnedToken.Date, Is.EqualTo(date));
         }
 
         [TestCase]
@@ -37,8 +37,8 @@ namespace OnlinePayments.Sdk.Json
 
             var json = DefaultMarshaller.Instance.Marshal(o);
 
-            StringAssert.Contains("\"2023-12-31\"", json);
-            StringAssert.Contains("\"2023-12-31T13:24:59.123+02:00\"", json);
+            Assert.That(json, Does.Contain("\"2023-12-31\""));
+            Assert.That(json, Does.Contain("\"2023-12-31T13:24:59.123+02:00\""));
         }
 
         [TestCase]
@@ -48,8 +48,8 @@ namespace OnlinePayments.Sdk.Json
 
             var o = DefaultMarshaller.Instance.Unmarshal<ObjectWithDates>(json);
 
-            Assert.AreEqual(new DateTime(2023, 12, 31), o.Date);
-            Assert.AreEqual(new DateTimeOffset(2023, 12, 31, 13, 24, 59, 123, TimeSpan.FromHours(2)), o.DateTime);
+            Assert.That(o.Date, Is.EqualTo(new DateTime(2023, 12, 31)));
+            Assert.That(o.DateTime, Is.EqualTo(new DateTimeOffset(2023, 12, 31, 13, 24, 59, 123, TimeSpan.FromHours(2))));
         }
 
         [TestCase]
@@ -59,8 +59,8 @@ namespace OnlinePayments.Sdk.Json
 
             var o = DefaultMarshaller.Instance.Unmarshal<ObjectWithDates>(json);
 
-            Assert.IsNull(o.Date);
-            Assert.AreEqual(new DateTimeOffset(2023, 12, 31, 13, 24, 59, 123, TimeSpan.Zero), o.DateTime);
+            Assert.That(o.Date, Is.Null);
+            Assert.That(o.DateTime, Is.EqualTo(new DateTimeOffset(2023, 12, 31, 13, 24, 59, 123, TimeSpan.Zero)));
         }
     }
 

@@ -25,13 +25,13 @@ namespace OnlinePayments.Sdk.It
 
                 Assert.That(services, Is.TypeOf(typeof(ServicesClient)));
                 CommunicatorConfiguration configuration = GetCommunicatorConfiguration();
-                Assert.NotNull(configuration.Proxy);
+                Assert.That(configuration.Proxy, Is.Not.Null);
                 AssertProxyAndAuthentication(GetConnectionFromService(services), configuration.Proxy);
 
                 TestConnection response = await services.TestConnection()
                     .ConfigureAwait(false);
 
-                Assert.NotNull(response.Result);
+                Assert.That(response.Result, Is.Not.Null);
             }
         }
 

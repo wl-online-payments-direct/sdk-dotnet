@@ -45,8 +45,8 @@ namespace OnlinePayments.Sdk
             var uri = communicator.ToAbsoluteUri("v1/merchant/20000/convertamount", list);
             var uri2 = communicator.ToAbsoluteUri("/v1/merchant/20000/convertamount", list);
 
-            Assert.AreEqual(new Uri($"https://{BaseUriHost}/v1/merchant/20000/convertamount?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D"), uri);
-            Assert.AreEqual(new Uri($"https://{BaseUriHost}/v1/merchant/20000/convertamount?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D"), uri2);
+            Assert.That(uri, Is.EqualTo(new Uri($"https://{BaseUriHost}/v1/merchant/20000/convertamount?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D")));
+            Assert.That(uri2, Is.EqualTo(new Uri($"https://{BaseUriHost}/v1/merchant/20000/convertamount?amount=123&source=USD&target=EUR&dummy=%C3%A9%26%25%3D")));
         }
     }
 }

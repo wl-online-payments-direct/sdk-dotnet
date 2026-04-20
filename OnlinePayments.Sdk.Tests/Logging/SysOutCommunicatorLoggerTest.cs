@@ -21,7 +21,7 @@ namespace OnlinePayments.Sdk.Logging
                 var logger = SystemConsoleCommunicatorLogger.Instance;
                 logger.Log("Schröder");
                 var aString = _newStdOut.ToString();
-                StringAssert.EndsWith("Schröder" + Environment.NewLine, aString);
+                Assert.That(aString, Does.EndWith("Schröder" + Environment.NewLine));
             }
             finally
             {
@@ -39,7 +39,7 @@ namespace OnlinePayments.Sdk.Logging
                 var logger = SystemConsoleCommunicatorLogger.Instance;
                 logger.Log("Hello world");
                 var aString = _newStdOut.ToString();
-                StringAssert.EndsWith("Hello world" + Environment.NewLine, aString);
+                Assert.That(aString, Does.EndWith("Hello world" + Environment.NewLine));
             }
             finally
             {
@@ -64,7 +64,7 @@ namespace OnlinePayments.Sdk.Logging
                     logger.Log("Hello world", e);
                 }
                 var aString = _newStdOut.ToString();
-                StringAssert.EndsWith("Hello world" + Environment.NewLine + exception + Environment.NewLine, aString);
+                Assert.That(aString, Does.EndWith("Hello world" + Environment.NewLine + exception + Environment.NewLine));
             }
             finally
             {

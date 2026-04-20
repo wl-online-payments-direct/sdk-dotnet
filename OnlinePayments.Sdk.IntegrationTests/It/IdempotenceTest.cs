@@ -55,16 +55,16 @@ namespace OnlinePayments.Sdk.It
                     .ConfigureAwait(false);
                 string paymentId = response.Payment.Id;
 
-                Assert.AreEqual(idempotenceKey, context.IdempotenceKey);
-                Assert.Null(context.IdempotenceRequestTimestamp);
+                Assert.That(context.IdempotenceKey, Is.EqualTo(idempotenceKey));
+                Assert.That(context.IdempotenceRequestTimestamp, Is.Null);
 
                 response = await client.WithNewMerchant(GetMerchantId()).Payments.CreatePayment(body, context)
                     .ConfigureAwait(false);
 
-                Assert.AreEqual(paymentId, response.Payment.Id);
+                Assert.That(response.Payment.Id, Is.EqualTo(paymentId));
 
-                Assert.AreEqual(idempotenceKey, context.IdempotenceKey);
-                Assert.NotNull(context.IdempotenceRequestTimestamp);
+                Assert.That(context.IdempotenceKey, Is.EqualTo(idempotenceKey));
+                Assert.That(context.IdempotenceRequestTimestamp, Is.Not.Null);
             }
         }
     }

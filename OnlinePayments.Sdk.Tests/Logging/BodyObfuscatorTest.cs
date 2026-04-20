@@ -148,7 +148,7 @@ namespace OnlinePayments.Sdk.Logging
         {
             var obfuscatedBody = BodyObfuscator.DefaultObfuscator.ObfuscateBody(null);
 
-            Assert.Null(obfuscatedBody);
+            Assert.That(obfuscatedBody, Is.Null);
         }
 
         [TestCase]
@@ -158,7 +158,7 @@ namespace OnlinePayments.Sdk.Logging
 
             var obfuscatedBody = BodyObfuscator.DefaultObfuscator.ObfuscateBody(body);
 
-            Assert.AreEqual(body, obfuscatedBody);
+            Assert.That(obfuscatedBody, Is.EqualTo(body));
         }
 
         [TestCase]
@@ -210,14 +210,14 @@ namespace OnlinePayments.Sdk.Logging
         {
             var obfuscatedBody = bodyObfuscator.ObfuscateBody(body);
 
-            Assert.AreEqual(expected, obfuscatedBody);
+            Assert.That(obfuscatedBody, Is.EqualTo(expected));
         }
 
         private static void CheckObfuscatedBodyWithNoMatches(string body)
         {
             var obfuscatedBody = BodyObfuscator.DefaultObfuscator.ObfuscateBody(body);
 
-            Assert.AreEqual(body, obfuscatedBody);
+            Assert.That(obfuscatedBody, Is.EqualTo(body));
         }
 
         private static string KeepFirst6AndLast4(string value)

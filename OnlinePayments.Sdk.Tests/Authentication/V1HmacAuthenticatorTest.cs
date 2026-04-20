@@ -15,8 +15,8 @@ namespace OnlinePayments.Sdk.Authentication
         public void TestToCanonicalizeHeaderValue()
         {
             V1HmacAuthenticator authenticator = new V1HmacAuthenticator(AuthorizationType.V1HMAC, "apiKeyId", "secretApiKey");
-            Assert.AreEqual("aap noot", authenticator.ToCanonicalizeHeaderValue("aap\nnoot  "));
-            Assert.AreEqual("aap noot", authenticator.ToCanonicalizeHeaderValue(" aap\r\n  noot"));
+            Assert.That(authenticator.ToCanonicalizeHeaderValue("aap\nnoot  "), Is.EqualTo("aap noot"));
+            Assert.That(authenticator.ToCanonicalizeHeaderValue(" aap\r\n  noot"), Is.EqualTo("aap noot"));
         }
 
         [TestCase]
@@ -24,7 +24,7 @@ namespace OnlinePayments.Sdk.Authentication
         {
             V1HmacAuthenticator authenticator = new V1HmacAuthenticator(AuthorizationType.V1HMAC, "apiKeyId", "secretApiKey");
             var val1 = authenticator.ToCanonicalizeHeaderValue(" some value  \r\n \n with  some \r\n  spaces ");
-            Assert.AreEqual("some value    with  some  spaces", val1);
+            Assert.That(val1, Is.EqualTo("some value    with  some  spaces"));
         }
 
         [TestCase]
@@ -47,8 +47,8 @@ namespace OnlinePayments.Sdk.Authentication
             string actualStart = dataToSign.Substring(0, 22);
             string actualEnd = dataToSign.Substring(52, dataToSign.Length-52);
 
-            Assert.AreEqual(expectedStart, actualStart);
-            Assert.AreEqual(expectedEnd, actualEnd);
+            Assert.That(actualStart, Is.EqualTo(expectedStart));
+            Assert.That(actualEnd, Is.EqualTo(expectedEnd));
         }
 
         [TestCase]
@@ -60,7 +60,7 @@ namespace OnlinePayments.Sdk.Authentication
 
             string authenticationSignature = authenticator.SignData(dataToSign);
 
-            Assert.AreEqual("eyLWp/Fa20rXs8UHlhD/13ZuqZkAVMJh9Z71n9TrFxM=", authenticationSignature);
+            Assert.That(authenticationSignature, Is.EqualTo("eyLWp/Fa20rXs8UHlhD/13ZuqZkAVMJh9Z71n9TrFxM="));
         }
 
         [TestCase]
@@ -72,7 +72,7 @@ namespace OnlinePayments.Sdk.Authentication
 
             string authenticationSignature = authenticator.SignData(dataToSign);
 
-            Assert.AreEqual("Y3E5YaU3oQCt4osEotLGb9W0cMclIzlCpvbaD1KhWxE=", authenticationSignature);
+            Assert.That(authenticationSignature, Is.EqualTo("Y3E5YaU3oQCt4osEotLGb9W0cMclIzlCpvbaD1KhWxE="));
         }
 
         [TestCase]
@@ -83,7 +83,7 @@ namespace OnlinePayments.Sdk.Authentication
             httpHeaders.Add(new RequestHeader("User-Agent", "Apache-HttpClient/4.3.4 (java 1.5)"));
             httpHeaders.Add(new RequestHeader("Date", "Fri, 06 Jun 2014 13:39:43 GMT"));
             string signature = await authenticator.GetAuthorization(HttpMethod.Get, new Uri("https://payment.preprod.online-payments.com/v2/1/tokens/123456789"), httpHeaders);
-            Assert.AreEqual("GCS v1HMAC:5e45c937b9db33ae:UpOoo/pmmj7tW03IbEcw2WtJURFCKL2/J6hqMc+1h1I=", signature);
+            Assert.That(signature, Is.EqualTo("GCS v1HMAC:5e45c937b9db33ae:UpOoo/pmmj7tW03IbEcw2WtJURFCKL2/J6hqMc+1h1I="));
         }
 
         [TestCase]
@@ -98,7 +98,7 @@ namespace OnlinePayments.Sdk.Authentication
             httpHeaders.Add(new RequestHeader("X-GCS-CustomerHeader", "processed header value"));
             httpHeaders.Add(new RequestHeader("Date", "Fri, 06 Jun 2014 13:39:43 GMT"));
             string signature = await authenticator.GetAuthorization(HttpMethod.Delete, new Uri("https://payment.preprod.online-payments.com/v2/1/tokens/123456789"), httpHeaders);
-            Assert.AreEqual("GCS v1HMAC:5e45c937b9db33ae:TbiTwCCsGsyFFnfWt5Rreg0cGYJeTiofxjuZNSLUuGo=", signature);
+            Assert.That(signature, Is.EqualTo("GCS v1HMAC:5e45c937b9db33ae:TbiTwCCsGsyFFnfWt5Rreg0cGYJeTiofxjuZNSLUuGo="));
         }
 
         [TestCase]
@@ -121,8 +121,8 @@ namespace OnlinePayments.Sdk.Authentication
             string actualStart = dataToSign.Substring(0, 22);
             string actualEnd = dataToSign.Substring(52, dataToSign.Length-52);
 
-            Assert.AreEqual(expectedStart, actualStart);
-            Assert.AreEqual(expectedEnd, actualEnd);
+            Assert.That(actualStart, Is.EqualTo(expectedStart));
+            Assert.That(actualEnd, Is.EqualTo(expectedEnd));
         }
     }
 }

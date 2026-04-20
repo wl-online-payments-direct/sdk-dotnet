@@ -23,7 +23,7 @@ namespace OnlinePayments.Sdk.It
                     .TestConnection()
                     .ConfigureAwait(false);
 
-                Assert.NotNull(response.Result);
+                Assert.That(response.Result, Is.Not.Null);
             }
         }
     }

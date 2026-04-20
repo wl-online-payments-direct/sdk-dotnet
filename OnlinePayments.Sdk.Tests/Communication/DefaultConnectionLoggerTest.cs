@@ -227,21 +227,21 @@ namespace OnlinePayments.Sdk.Communication
                 );
                 var response = await communicator.Get<JObject>("v1/get", new List<IRequestHeader>(), query, null);
 
-                Assert.NotNull(response);
-                Assert.AreEqual(new JValue(4547504), response["convertedAmount"]);
+                Assert.That(response, Is.Not.Null);
+                Assert.That(response["convertedAmount"], Is.EqualTo(new JValue(4547504)));
             }
 
             Assert.That(logger.Entries, Has.Count.EqualTo(2));
 
             var requestEntry = logger.Entries.First();
 
-            Assert.NotNull(requestEntry.Message);
-            Assert.Null(requestEntry.Thrown);
+            Assert.That(requestEntry.Message, Is.Not.Null);
+            Assert.That(requestEntry.Thrown, Is.Null);
 
             var responseEntry = logger.Entries.ElementAt(1);
 
-            Assert.NotNull(responseEntry.Message);
-            Assert.Null(responseEntry.Thrown);
+            Assert.That(responseEntry.Message, Is.Not.Null);
+            Assert.That(responseEntry.Thrown, Is.Null);
 
             AssertRequestAndResponse(requestEntry.Message, responseEntry.Message, GetWithQueryParamsRequest, GetWithQueryParamsResponse);
         }
@@ -265,13 +265,13 @@ namespace OnlinePayments.Sdk.Communication
 
             var requestEntry = logger.Entries.First();
 
-            Assert.NotNull(requestEntry.Message);
-            Assert.Null(requestEntry.Thrown);
+            Assert.That(requestEntry.Message, Is.Not.Null);
+            Assert.That(requestEntry.Thrown, Is.Null);
 
             var responseEntry = logger.Entries.ElementAt(1);
 
-            Assert.NotNull(responseEntry.Message);
-            Assert.Null(responseEntry.Thrown);
+            Assert.That(responseEntry.Message, Is.Not.Null);
+            Assert.That(responseEntry.Thrown, Is.Null);
 
             AssertRequestAndResponse(requestEntry.Message, responseEntry.Message, DeleteWithVoidResponseRequest, DeleteWithVoidResponseResponse);
         }
@@ -305,12 +305,12 @@ namespace OnlinePayments.Sdk.Communication
 
                 var response = await communicator.Post<JObject>("v1/created", new List<IRequestHeader>(), null, request, null);
 
-                Assert.NotNull(response);
-                Assert.IsInstanceOf(typeof(JObject), response["payment"]);
+                Assert.That(response, Is.Not.Null);
+                Assert.That(response["payment"], Is.InstanceOf<JObject>());
 
                 var payment = (JObject)response["payment"];
-                Assert.AreEqual(new JValue("000000123410000595980000100001"), payment["id"]);
-                Assert.AreEqual(new JValue("PENDING_APPROVAL"), payment["status"]);
+                Assert.That(payment["id"], Is.EqualTo(new JValue("000000123410000595980000100001")));
+                Assert.That(payment["status"], Is.EqualTo(new JValue("PENDING_APPROVAL")));
             }
             Assert.That(logger.Entries, Has.Count.EqualTo(2));
 
@@ -556,13 +556,13 @@ namespace OnlinePayments.Sdk.Communication
 
             var requestEntry = logger.Entries.First();
 
-            Assert.NotNull(requestEntry.Message);
-            Assert.Null(requestEntry.Thrown);
+            Assert.That(requestEntry.Message, Is.Not.Null);
+            Assert.That(requestEntry.Thrown, Is.Null);
 
             var responseEntry = logger.Entries.ElementAt(1);
 
-            Assert.NotNull(responseEntry.Message);
-            Assert.Null(responseEntry.Thrown);
+            Assert.That(responseEntry.Message, Is.Not.Null);
+            Assert.That(responseEntry.Thrown, Is.Null);
 
             AssertRequestAndResponse(requestEntry.Message, responseEntry.Message, GetWithoutQueryParamsRequest, UnknownServerErrorResponse);
         }
@@ -592,13 +592,13 @@ namespace OnlinePayments.Sdk.Communication
 
             var requestEntry = logger.Entries.First();
 
-            Assert.NotNull(requestEntry.Message);
-            Assert.Null(requestEntry.Thrown);
+            Assert.That(requestEntry.Message, Is.Not.Null);
+            Assert.That(requestEntry.Thrown, Is.Null);
 
             var responseEntry = logger.Entries.ElementAt(1);
 
-            Assert.NotNull(responseEntry.Message);
-            Assert.Null(responseEntry.Thrown);
+            Assert.That(responseEntry.Message, Is.Not.Null);
+            Assert.That(responseEntry.Thrown, Is.Null);
 
             AssertRequestAndResponse(requestEntry.Message, responseEntry.Message, GetWithoutQueryParamsRequest, NotFoundResponse);
         }
@@ -628,13 +628,13 @@ namespace OnlinePayments.Sdk.Communication
             Assert.That(logger.Entries, Has.Count.EqualTo(2));
 
             var requestEntry = logger.Entries.First();
-            Assert.NotNull(requestEntry.Message);
-            Assert.Null(requestEntry.Thrown);
+            Assert.That(requestEntry.Message, Is.Not.Null);
+            Assert.That(requestEntry.Thrown, Is.Null);
 
             var errorEntry = logger.Entries.ElementAt(1);
 
-            Assert.NotNull(errorEntry.Message);
-            Assert.NotNull(errorEntry.Thrown);
+            Assert.That(errorEntry.Message, Is.Not.Null);
+            Assert.That(errorEntry.Thrown, Is.Not.Null);
 
             AssertRequestAndError(requestEntry.Message, errorEntry.Message, GetWithoutQueryParamsRequest);
         }
@@ -666,8 +666,8 @@ namespace OnlinePayments.Sdk.Communication
             Assert.That(logger.Entries, Has.Count.EqualTo(1));
             var requestEntry = logger.Entries.First();
 
-            Assert.NotNull(requestEntry.Message);
-            Assert.Null(requestEntry.Thrown);
+            Assert.That(requestEntry.Message, Is.Not.Null);
+            Assert.That(requestEntry.Thrown, Is.Null);
 
             AssertRequest(requestEntry.Message, GetWithoutQueryParamsRequest);
         }
@@ -698,8 +698,8 @@ namespace OnlinePayments.Sdk.Communication
 
             var requestEntry = logger.Entries.First();
 
-            Assert.NotNull(requestEntry.Message);
-            Assert.Null(requestEntry.Thrown);
+            Assert.That(requestEntry.Message, Is.Not.Null);
+            Assert.That(requestEntry.Thrown, Is.Null);
 
             AssertResponse(requestEntry.Message, GetWithoutQueryParamsResponse);
         }
@@ -730,8 +730,8 @@ namespace OnlinePayments.Sdk.Communication
 
             var errorEntry = logger.Entries.First();
 
-            Assert.NotNull(errorEntry.Message);
-            Assert.NotNull(errorEntry.Thrown);
+            Assert.That(errorEntry.Message, Is.Not.Null);
+            Assert.That(errorEntry.Thrown, Is.Not.Null);
 
             AssertError(errorEntry.Message);
         }
@@ -782,7 +782,7 @@ namespace OnlinePayments.Sdk.Communication
             var responseRequestId = responseMatch.Groups[1].Value;
             if (requestId != null)
             {
-                Assert.AreEqual(requestId, responseRequestId, "response requestId '" + responseRequestId + "' does not match request requestId '" + requestId + "'");
+                Assert.That(responseRequestId, Is.EqualTo(requestId), $"response requestId '{responseRequestId}' does not match request requestId '{requestId}'");
             }
         }
 
@@ -796,7 +796,7 @@ namespace OnlinePayments.Sdk.Communication
 
             if (requestId != null)
             {
-                Assert.AreEqual(errorRequestId, requestId, "error requestId '" + errorRequestId + "' does not match earlier requestId '" + requestId + "'");
+                Assert.That(requestId, Is.EqualTo(errorRequestId), $"error requestId '{errorRequestId}' does not match earlier requestId '{requestId}'");
             }
         }
 

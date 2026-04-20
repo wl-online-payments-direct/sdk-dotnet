@@ -17,19 +17,19 @@ namespace OnlinePayments.Sdk
             AssertNoClientHeaders(client1);
 
             var client2 = client1.WithClientMetaInfo(null);
-            Assert.AreSame(client1, client2);
+            Assert.That(client2, Is.SameAs(client1));
 
             var clientMetaInfo = DefaultMarshaller.Instance.Marshal(new Dictionary<string, string> { { "test", "test" } });
             var client3 = client1.WithClientMetaInfo(clientMetaInfo);
 
-            Assert.AreNotSame(client1, client3);
+            Assert.That(client3, Is.Not.SameAs(client1));
             AssertClientHeaders(client3, clientMetaInfo);
 
             var client4 = client3.WithClientMetaInfo(clientMetaInfo);
-            Assert.AreSame(client3, client4);
+            Assert.That(client4, Is.SameAs(client3));
 
             var client5 = client3.WithClientMetaInfo(null);
-            Assert.AreNotSame(client3, client5);
+            Assert.That(client5, Is.Not.SameAs(client3));
             AssertNoClientHeaders(client5);
 
             // nothing can be said about client1 and client5 being the same or not
@@ -41,13 +41,13 @@ namespace OnlinePayments.Sdk
 
             var headerValue = clientMetaInfo.ToBase64String();
 
-            Assert.NotNull(headers.FirstOrDefault(v => v.Equals(new RequestHeader("X-GCS-ClientMetaInfo", headerValue))));
+            Assert.That(headers.FirstOrDefault(v => v.Equals(new RequestHeader("X-GCS-ClientMetaInfo", headerValue))), Is.Not.Null);
         }
 
         private static void AssertNoClientHeaders(IClient client)
         {
             var headers = GetHeaders(client);
-            Assert.IsEmpty(headers);
+            Assert.That(headers, Is.Empty);
         }
 
         private static IEnumerable<RequestHeader> GetHeaders(IClient client)

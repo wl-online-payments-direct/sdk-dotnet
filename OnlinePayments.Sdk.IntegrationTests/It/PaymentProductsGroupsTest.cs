@@ -27,8 +27,8 @@ namespace OnlinePayments.Sdk.It
                     .GetProductGroup("cards", lParams)
                     .ConfigureAwait(false);
 
-                Assert.IsNotNull(response);
-                Assert.IsTrue(string.Equals("cards", response.Id, System.StringComparison.OrdinalIgnoreCase));
+                Assert.That(response, Is.Not.Null);
+                Assert.That(string.Equals("cards", response.Id, System.StringComparison.OrdinalIgnoreCase), Is.True);
             }
         }
     }

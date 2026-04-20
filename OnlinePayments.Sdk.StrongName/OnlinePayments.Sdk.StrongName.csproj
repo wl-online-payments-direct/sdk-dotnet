@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>OnlinePayments.Sdk</RootNamespace>
-    <AssemblyVersion>6.4.0</AssemblyVersion>
-    <Version>6.4.0</Version>
+    <AssemblyVersion>6.4.1</AssemblyVersion>
+    <Version>6.4.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>Online Payments</Company>
     <Product>Online Payments .NET SDK</Product>
@@ -42,8 +42,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="[13.0.1,)" />
-    <PackageReference Include="System.Collections.Immutable" Version="[1.7.1,)" />
+    <PackageReference Include="Newtonsoft.Json" Version="[13.0.3,)" />
+    <PackageReference Include="System.Collections.Immutable" Version="[8.0.0,)" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="[9.0.0,)" />
   </ItemGroup>
 
