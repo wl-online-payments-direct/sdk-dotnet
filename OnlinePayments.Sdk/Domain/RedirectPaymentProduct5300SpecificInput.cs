@@ -1,6 +1,8 @@
 /*
  * This file was automatically generated.
  */
+using System;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class RedirectPaymentProduct5300SpecificInput
@@ -44,5 +46,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Descriptive text that is used towards the customer, either during an online checkout at a third party or on the customer's statement.
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// The date and time after which the transaction will expire in UTC (format YYYY-MM-DDTHH:mm:ssZ)
+        /// </summary>
+        public DateTimeOffset TransactionExpirationDateTime { get; set; }
     }
 }

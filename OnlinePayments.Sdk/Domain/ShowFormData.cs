@@ -31,6 +31,11 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentProduct5407 PaymentProduct5407 { get; set; }
 
         /// <summary>
+        /// Contains the third party data for payment product 5412 (Chèque-Vacances Connect)
+        /// </summary>
+        public PaymentProduct5412 PaymentProduct5412 { get; set; }
+
+        /// <summary>
         /// Contains the third party data for payment product 840 (PayPal)
         /// </summary>
         public PaymentProduct840 PaymentProduct840 { get; set; }

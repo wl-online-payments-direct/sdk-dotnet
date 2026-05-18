@@ -19,9 +19,6 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public bool? IsFinal { get; set; }
 
-        /// <summary>
-        /// List of lineItemIds and quantities for capture/refund/cancellation.
-        /// </summary>
         public IList<LineItemDetail> LineItemDetails { get; set; }
 
         /// <summary>

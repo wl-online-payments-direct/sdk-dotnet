@@ -13,6 +13,17 @@ namespace OnlinePayments.Sdk.Domain
         public string AirlineLoyaltyStatus { get; set; }
 
         /// <summary>
+        /// Passenger's residence country defined in ISO 3166-1 alpha-2.
+        /// </summary>
+        public string CountryCode { get; set; }
+
+        /// <summary>
+        /// The date of birth of the passenger.
+        /// Format YYYYMMDD
+        /// </summary>
+        public string DateOfBirth { get; set; }
+
+        /// <summary>
         /// First name of the passenger
         /// This field is used by the following payment products: cards, 840
         /// </summary>

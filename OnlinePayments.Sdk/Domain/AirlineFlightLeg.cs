@@ -90,6 +90,12 @@ namespace OnlinePayments.Sdk.Domain
         public int? Fee { get; set; }
 
         /// <summary>
+        /// The flight number of the current leg.
+        /// This field is used by the following payment products: 840
+        /// </summary>
+        public string FlightCode { get; set; }
+
+        /// <summary>
         /// The flight number assigned by the airline carrier with no leading spaces
         /// Should be a numeric string
         /// This field is used by the following payment products: cards, 840

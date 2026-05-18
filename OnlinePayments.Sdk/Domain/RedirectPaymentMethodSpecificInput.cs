@@ -66,6 +66,11 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectPaymentProduct5300SpecificInput PaymentProduct5300SpecificInput { get; set; }
 
         /// <summary>
+        /// PAYONE Buy Now, Pay Later (payment product 5301) specific details
+        /// </summary>
+        public RedirectPaymentProduct5301SpecificInput PaymentProduct5301SpecificInput { get; set; }
+
+        /// <summary>
         /// Object containing specific input required for E-Voucher payments (Payment product ID 5402)
         /// </summary>
         public RedirectPaymentProduct5402SpecificInput PaymentProduct5402SpecificInput { get; set; }
@@ -79,6 +84,11 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific input for EPS payments (Payment product ID 5406)
         /// </summary>
         public RedirectPaymentProduct5406SpecificInput PaymentProduct5406SpecificInput { get; set; }
+
+        /// <summary>
+        /// TWINT (payment product 5407) specific details
+        /// </summary>
+        public RedirectPaymentProduct5407SpecificInput PaymentProduct5407SpecificInput { get; set; }
 
         /// <summary>
         /// Object containing specific input for Account to Account payments (Payment product ID 5408)

@@ -46,7 +46,12 @@ namespace OnlinePayments.Sdk.Domain
         public SurchargeSpecificInput SurchargeSpecificInput { get; set; }
 
         /// <summary>
-        /// tax amount, in minor currency units of the order. Omit if not applicable or not known. This amount is assumed to be included in the order.AmountOfMoney for the payment. There is no validation on this field, outside the fact the amount should be lower than the total payment amount.
+        /// tax percentage, in hundredths of a percent. For example, for a tax percentage of 21%, this field should be set to 2100. Omit if not applicable or not known.
+        /// </summary>
+        public decimal? TaxPercentage { get; set; }
+
+        /// <summary>
+        /// Tax amount, in minor currency units of the order. Omit if not applicable or not known. This amount is assumed to be included in the order.AmountOfMoney for the payment. There is no validation on this field, outside the fact the amount should be lower than the total payment amount.
         /// </summary>
         public long? TotalTaxAmount { get; set; }
     }

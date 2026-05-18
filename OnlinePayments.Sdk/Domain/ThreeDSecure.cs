@@ -40,7 +40,7 @@ namespace OnlinePayments.Sdk.Domain
         public string ChallengeIndicator { get; set; }
 
         /// <summary>
-        /// Determines whether the call is coming from an application or from a browser * AppBased - Call is coming from an application. * Browser - Call is coming from a browser
+        /// Determines whether the call is coming from an application or from a browser * AppBased - Call is coming from an application. * Browser - Call is coming from a browser * ThreeDSRequestorInitiated - The authentication is initiated by the 3DS Requestor (merchant) without direct cardholder interaction, such as for recurring or merchant-initiated transactions.
         /// </summary>
         public string DeviceChannel { get; set; }
 

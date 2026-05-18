@@ -109,6 +109,16 @@ namespace OnlinePayments.Sdk.Domain
         public string IssuerName { get; set; }
 
         /// <summary>
+        /// Code that identifies the principal member within an issuer group
+        /// </summary>
+        public string IssuerPrincipalMemberCode { get; set; }
+
+        /// <summary>
+        /// Name that identifies the principal member within an issuer group
+        /// </summary>
+        public string IssuerPrincipalMemberName { get; set; }
+
+        /// <summary>
         /// Region code of the card issuer
         /// <list type="bullet">
         ///   <item><description><c>1</c> USA: California, Hawaii, Nevada</description></item>

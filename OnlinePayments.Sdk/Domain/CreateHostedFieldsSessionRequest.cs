@@ -1,6 +1,8 @@
 /*
  * This file was automatically generated.
  */
+using System.Collections.Generic;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class CreateHostedFieldsSessionRequest
@@ -9,5 +11,7 @@ namespace OnlinePayments.Sdk.Domain
         /// Locale used in the GUI towards the consumer.
         /// </summary>
         public string Locale { get; set; }
+
+        public IList<string> Tokens { get; set; }
     }
 }

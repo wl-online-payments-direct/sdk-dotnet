@@ -2,6 +2,7 @@
  * This file was automatically generated.
  */
 using System.Collections.Generic;
+using System.Linq;
 using OnlinePayments.Sdk.Communication;
 
 namespace OnlinePayments.Sdk.Merchant.Tokenization
@@ -33,12 +34,9 @@ namespace OnlinePayments.Sdk.Merchant.Tokenization
             var result = new List<RequestParam>();
             if (Payments != null)
             {
-                foreach (var paymentsElement in Payments)
+                foreach (var paymentsElement in Payments.Where(e => e != null))
                 {
-                    if (paymentsElement != null)
-                    {
-                        result.Add(new RequestParam("payments", paymentsElement));
-                    }
+                    result.Add(new RequestParam("payments", paymentsElement));
                 }
             }
             return result;

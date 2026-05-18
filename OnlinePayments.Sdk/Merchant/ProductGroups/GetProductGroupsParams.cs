@@ -3,6 +3,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using OnlinePayments.Sdk.Communication;
 
 namespace OnlinePayments.Sdk.Merchant.ProductGroups
@@ -92,12 +93,9 @@ namespace OnlinePayments.Sdk.Merchant.ProductGroups
             }
             if (Hide != null)
             {
-                foreach (var hideElement in Hide)
+                foreach (var hideElement in Hide.Where(e => e != null))
                 {
-                    if (hideElement != null)
-                    {
-                        result.Add(new RequestParam("hide", hideElement));
-                    }
+                    result.Add(new RequestParam("hide", hideElement));
                 }
             }
             return result;

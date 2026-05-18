@@ -2,6 +2,7 @@
  * This file was automatically generated.
  */
 using System.Collections.Generic;
+using System.Linq;
 using OnlinePayments.Sdk.Communication;
 
 namespace OnlinePayments.Sdk.Merchant.Products
@@ -65,6 +66,17 @@ namespace OnlinePayments.Sdk.Merchant.Products
             hide.Add(value);
         }
 
+        /// <summary>
+        /// This allows you to filter payment products based on the operation type. Allowed values:
+        /// <list type="bullet">
+        ///   <item><description>Authorization - The payment creation results in an authorization that is ready for capture. Final authorizations can't be reversed and need to be captured for the full amount within 7 days.</description></item>
+        ///   <item><description>Pre-authorization - The payment creation results in a pre-authorization that is ready for capture. Pre-authortizations can be reversed and can be captured within 30 days. The capture amount can be lower than the authorized amount.</description></item>
+        ///   <item><description>Sale - The payment creation results in an authorization that is already captured at the moment of approval.</description></item>
+        ///   <item><description>Payout - Payout service enables seamless direct money transfers to a chosen bank account.</description></item>
+        /// </list>
+        /// </summary>
+        public string OperationType { get; set; }
+
         public override IEnumerable<RequestParam> ToRequestParameters()
         {
             var result = new List<RequestParam>();
@@ -90,13 +102,14 @@ namespace OnlinePayments.Sdk.Merchant.Products
             }
             if (Hide != null)
             {
-                foreach (var hideElement in Hide)
+                foreach (var hideElement in Hide.Where(e => e != null))
                 {
-                    if (hideElement != null)
-                    {
-                        result.Add(new RequestParam("hide", hideElement));
-                    }
+                    result.Add(new RequestParam("hide", hideElement));
                 }
+            }
+            if (OperationType != null)
+            {
+                result.Add(new RequestParam("operationType", OperationType));
             }
             return result;
         }
