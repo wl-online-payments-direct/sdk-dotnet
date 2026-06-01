@@ -28,6 +28,10 @@ namespace OnlinePayments.Sdk
             {
                 return refundErrorResponse.RefundResult != null ? new DeclinedRefundException(statusCode, responseBody, refundErrorResponse) : CreateException(statusCode, responseBody, refundErrorResponse.ErrorId, refundErrorResponse.Errors, context);
             }
+            if (errorObject is ProblemDetailsResponse problemDetailsResponse)
+            {
+                return new ProblemDetailsException(statusCode, responseBody, problemDetailsResponse);
+            }
             if (errorObject is ErrorResponse errorResponse)
             {
                 return CreateException(statusCode, responseBody, errorResponse.ErrorId, errorResponse.Errors, context);

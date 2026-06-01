@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public string Id { get; set; }
 
         /// <summary>
+        /// Object containing operation details
+        /// </summary>
+        public OperationOutput OperationOutput { get; set; }
+
+        /// <summary>
         /// Object containing payment details
         /// </summary>
         public PaymentOutput PaymentOutput { get; set; }

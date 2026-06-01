@@ -29,5 +29,10 @@ namespace OnlinePayments.Sdk.Domain
         /// ID of the token to use to create the payment series.
         /// </summary>
         public string TokenId { get; set; }
+
+        /// <summary>
+        /// The Transaction Link Identifier (TLID) of the original Consumer-Initiated Transaction (CIT).
+        /// </summary>
+        public string TransactionLinkIdentifier { get; set; }
     }
 }
