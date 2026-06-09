@@ -20,6 +20,11 @@ namespace OnlinePayments.Sdk.Domain
         public string AuthorizationMode { get; set; }
 
         /// <summary>
+        /// Object containing the auto capture configuration for the payment.
+        /// </summary>
+        public AutoCapture AutoCapture { get; set; }
+
+        /// <summary>
         /// Object containing marketplace-related data for additional information on sub-merchants (retailers) transacting via the marketplace’s platform.
         /// This object is required for platforms onboarding multiple sellers to ensure accurate identification and attribution of each transaction.
         /// The platform must collect and submit the retailer’s country and regional information in accordance with card scheme requirements.
