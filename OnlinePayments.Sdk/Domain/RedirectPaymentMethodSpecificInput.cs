@@ -121,6 +121,11 @@ namespace OnlinePayments.Sdk.Domain
         public RedirectPaymentProduct840SpecificInput PaymentProduct840SpecificInput { get; set; }
 
         /// <summary>
+        /// Object containing specific input required for Wero payments (Payment product ID 900)
+        /// </summary>
+        public RedirectPaymentProduct900SpecificInput PaymentProduct900SpecificInput { get; set; }
+
+        /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.
         /// </summary>
         public int? PaymentProductId { get; set; }

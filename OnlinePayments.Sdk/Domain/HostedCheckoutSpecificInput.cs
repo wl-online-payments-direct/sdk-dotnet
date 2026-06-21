@@ -11,6 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         public int? AllowedNumberOfPaymentAttempts { get; set; }
 
         /// <summary>
+        /// <list type="bullet">
+        ///   <item><description>true - If the customer cancels the order or if the order validity period expires, any payments in a final status related to that order will automatically be subject to a refund attempt to the customer.</description></item>
+        ///   <item><description>false - Default - If the customer cancels the order or if the order's validity period expires, payments in a final status related to this order won't automatically be subject to a refund attempt to the customer.</description></item>
+        /// </list>
+        /// </summary>
+        public bool? AutoRefundSplitPayments { get; set; }
+
+        /// <summary>
         /// Object containing card payment specific data for hosted checkout
         /// </summary>
         public CardPaymentMethodSpecificInputForHostedCheckout CardPaymentMethodSpecificInput { get; set; }

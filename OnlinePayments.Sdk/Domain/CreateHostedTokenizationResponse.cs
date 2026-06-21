@@ -38,5 +38,10 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         [Obsolete("Deprecated")]
         public string PartialRedirectUrl { get; set; }
+
+        /// <summary>
+        /// This is the cryptographic hash used for Subresource Integrity validation.
+        /// </summary>
+        public string Sri { get; set; }
     }
 }

@@ -94,6 +94,11 @@ namespace OnlinePayments.Sdk.Domain
         public CardRecurrenceDetails Recurring { get; set; }
 
         /// <summary>
+        /// When a company decides to operate as a payment facilitator, it obtains a payment facilitator account from an acquirer and aggregates payment transactions for its merchant portfolio through that account. For this reason, payment facilitators’ merchant customers are known as submerchants.
+        /// </summary>
+        public SubMerchant SubMerchant { get; set; }
+
+        /// <summary>
         /// Object containing specific data regarding 3-D Secure
         /// </summary>
         public ThreeDSecureBase ThreeDSecure { get; set; }
