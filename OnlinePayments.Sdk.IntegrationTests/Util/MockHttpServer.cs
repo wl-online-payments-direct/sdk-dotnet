@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using OnlinePayments.Sdk.Json;
 
 namespace OnlinePayments.Sdk.Util;
 
@@ -14,27 +15,27 @@ namespace OnlinePayments.Sdk.Util;
 /// </summary>
 public sealed class MockHttpServer : IDisposable
 {
-    private readonly HttpListener listener;
-    private readonly int port;
+    private readonly HttpListener _listener;
+    private readonly int _port;
 
-    public string Url => $"http://localhost:{port}";
+    public string Url => $"http://localhost:{_port}";
 
     public MockHttpServer()
     {
-        listener = new HttpListener();
-        port = GetFreePort();
-        listener.Prefixes.Add($"http://localhost:{port}/");
-        listener.Start();
+        _listener = new HttpListener();
+        _port = GetFreePort();
+        _listener.Prefixes.Add($"http://localhost:{_port}/");
+        _listener.Start();
         StartListening();
     }
 
     private void StartListening()
     {
-        listener.BeginGetContext(async void (result) =>
+        _listener.BeginGetContext(async void (result) =>
         {
             try
             {
-                var ctx = listener.EndGetContext(result);
+                var ctx = _listener.EndGetContext(result);
                 // continue listening
                 StartListening();
 
@@ -64,7 +65,7 @@ public sealed class MockHttpServer : IDisposable
                     Files = files
                 };
 
-                var responseJson = OnlinePayments.Sdk.Json.DefaultMarshaller.Instance.Marshal(responseObj);
+                var responseJson = DefaultMarshaller.Instance.Marshal(responseObj);
 
                 ctx.Response.ContentType = "application/json";
                 ctx.Response.StatusCode = 200;
@@ -86,12 +87,11 @@ public sealed class MockHttpServer : IDisposable
         var endBoundaryBytes = Encoding.UTF8.GetBytes("--" + boundary + "--");
 
         using var reader = new StreamReader(inputStream);
-        string line;
         string currentName = null;
         StringBuilder fileContent = null;
         bool readingFile = false;
 
-        while ((line = await reader.ReadLineAsync()) != null)
+        while (await reader.ReadLineAsync() is { } line)
         {
             var lineBytes = Encoding.UTF8.GetBytes(line);
             if (lineBytes.SequenceEqual(boundaryBytes) || lineBytes.SequenceEqual(endBoundaryBytes))
@@ -176,7 +176,7 @@ public sealed class MockHttpServer : IDisposable
     {
         try
         {
-            listener?.Stop();
+            _listener?.Stop();
         }
         catch
         {
@@ -186,7 +186,7 @@ public sealed class MockHttpServer : IDisposable
 
     public sealed class HttpBinResponse
     {
-        public Dictionary<string, string> Form { get; set; }
-        public Dictionary<string, string> Files { get; set; }
+        public Dictionary<string, string> Form { get; init; }
+        public Dictionary<string, string> Files { get; init; }
     }
 }

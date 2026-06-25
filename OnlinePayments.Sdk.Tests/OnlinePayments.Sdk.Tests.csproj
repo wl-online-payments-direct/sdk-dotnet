@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>OnlinePayments.Sdk</RootNamespace>
-    <AssemblyVersion>7.3.0</AssemblyVersion>
-    <Version>7.3.0</Version>
+    <AssemblyVersion>7.4.0</AssemblyVersion>
+    <Version>7.4.0</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>Online Payments</Company>
     <Product>Online Payments .NET SDK unit tests</Product>
@@ -32,6 +32,11 @@
     <PackageReference Include="NUnit3TestAdapter" Version="6.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
     <PackageReference Include="NunitXml.TestLogger" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Webhooks\Resources\valid-body" LogicalName="OnlinePayments.Sdk.Webhooks.valid-body" />
+    <EmbeddedResource Include="Webhooks\Resources\invalid-body" LogicalName="OnlinePayments.Sdk.Webhooks.invalid-body" />
   </ItemGroup>
 
   <ItemGroup>

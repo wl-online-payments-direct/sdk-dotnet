@@ -1,75 +1,138 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.IO;
 
-namespace OnlinePayments.Sdk.Logging
-{
-    [TestFixture]
-    public class SysOutCommunicatorLoggerTest
-    {
-        private TextWriter _oldStdOut;
-        private TextWriter _newStdOut;
+namespace OnlinePayments.Sdk.Logging;
 
-        [TestCase]
-        public void TestLogUnicode()
+[TestFixture]
+public class SysOutCommunicatorLoggerTest
+{
+    private TextWriter _oldStdOut;
+    private TextWriter _newStdOut;
+
+    [TestCase]
+    public void TestLogUnicode()
+    {
+        _oldStdOut = Console.Out;
+        _newStdOut = new StringWriter();
+        Console.SetOut(_newStdOut);
+
+        try
         {
-            _oldStdOut = Console.Out;
-            _newStdOut = new StringWriter();
-            Console.SetOut(_newStdOut);
-            try
-            {
-                var logger = SystemConsoleCommunicatorLogger.Instance;
-                logger.Log("Schröder");
-                var aString = _newStdOut.ToString();
-                Assert.That(aString, Does.EndWith("Schröder" + Environment.NewLine));
-            }
-            finally
-            {
-                Console.SetOut(_oldStdOut);
-            }
+            var logger = SystemConsoleCommunicatorLogger.Instance;
+            logger.Log("Schröder");
+
+            var aString = _newStdOut.ToString();
+            Assert.That(aString, Does.EndWith("Schröder" + Environment.NewLine));
         }
-        [TestCase]
-        public void TestLog()
+        finally
         {
-            _oldStdOut = Console.Out;
-            _newStdOut = new StringWriter();
-            Console.SetOut(_newStdOut);
-            try
-            {
-                var logger = SystemConsoleCommunicatorLogger.Instance;
-                logger.Log("Hello world");
-                var aString = _newStdOut.ToString();
-                Assert.That(aString, Does.EndWith("Hello world" + Environment.NewLine));
-            }
-            finally
-            {
-                Console.SetOut(_oldStdOut);
-            }
+            Console.SetOut(_oldStdOut);
         }
-        [TestCase]
-        public void TestLogWithException()
+    }
+
+    [TestCase]
+    public void TestLog()
+    {
+        _oldStdOut = Console.Out;
+        _newStdOut = new StringWriter();
+        Console.SetOut(_newStdOut);
+
+        try
         {
-            _oldStdOut = Console.Out;
-            _newStdOut = new StringWriter();
-            Console.SetOut(_newStdOut);
+            var logger = SystemConsoleCommunicatorLogger.Instance;
+            logger.Log("Hello world");
+
+            var aString = _newStdOut.ToString();
+            Assert.That(aString, Does.EndWith("Hello world" + Environment.NewLine));
+        }
+        finally
+        {
+            Console.SetOut(_oldStdOut);
+        }
+    }
+
+    [TestCase]
+    public void TestLogWithException()
+    {
+        _oldStdOut = Console.Out;
+        _newStdOut = new StringWriter();
+        Console.SetOut(_newStdOut);
+
+        try
+        {
+            var logger = SystemConsoleCommunicatorLogger.Instance;
+            Exception exception = new();
+
             try
             {
-                var logger = SystemConsoleCommunicatorLogger.Instance;
-                var exception = new Exception();
-                try
-                {
-                    throw exception;
-                }
-                catch (Exception e) {
-                    logger.Log("Hello world", e);
-                }
-                var aString = _newStdOut.ToString();
-                Assert.That(aString, Does.EndWith("Hello world" + Environment.NewLine + exception + Environment.NewLine));
+                throw exception;
             }
-            finally
+            catch (Exception e) {
+                logger.Log("Hello world", e);
+            }
+
+            var aString = _newStdOut.ToString();
+            Assert.That(aString, Does.EndWith("Hello world" + Environment.NewLine + exception + Environment.NewLine));
+        }
+        finally
+        {
+            Console.SetOut(_oldStdOut);
+        }
+    }
+
+    [TestCase]
+    public void TestLogWithExceptionWithCause()
+    {
+        _oldStdOut = Console.Out;
+        _newStdOut = new StringWriter();
+        Console.SetOut(_newStdOut);
+
+        try
+        {
+            var logger = SystemConsoleCommunicatorLogger.Instance;
+
+            Exception innerException = new("Root cause");
+            Exception outerException = new("Top level", innerException);
+
+            try
             {
-                Console.SetOut(_oldStdOut);
+                throw outerException;
             }
+            catch (Exception e)
+            {
+                logger.Log("Hello world", e);
+            }
+
+            var aString = _newStdOut.ToString();
+            Assert.That(aString, Does.Contain("Hello world"));
+            Assert.That(aString, Does.Contain("Top level"));
+            Assert.That(aString, Does.Contain("Root cause"));
+        }
+        finally
+        {
+            Console.SetOut(_oldStdOut);
+        }
+    }
+
+    [TestCase]
+    public void TestLogEmptyMessage()
+    {
+        _oldStdOut = Console.Out;
+        _newStdOut = new StringWriter();
+        Console.SetOut(_newStdOut);
+
+        try
+        {
+            var logger = SystemConsoleCommunicatorLogger.Instance;
+            logger.Log("");
+
+            var aString = _newStdOut.ToString();
+            Assert.That(aString, Does.EndWith("" + Environment.NewLine));
+        }
+        finally
+        {
+            Console.SetOut(_oldStdOut);
         }
     }
 }

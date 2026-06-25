@@ -1,28 +1,35 @@
 using System;
 using System.Reflection;
+using NUnit.Framework;
 
-namespace OnlinePayments.Sdk.Util
+namespace OnlinePayments.Sdk.Util;
+
+public static class ReflectionUtil
 {
-    public static class ReflectionUtil
+    internal static T GetPrivateProperty<T>(this object instance, string fieldName)
     {
-        internal static T GetPrivateProperty<T>(this object instance, string fieldName)
-        {
-            const BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-            var property = instance.GetType().GetProperty(fieldName, bindFlags);
-            return (T)property.GetValue(instance);
-        }
+        const BindingFlags bindFlags =
+            BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
 
-        internal static object GetPrivateField<T>(this T instance, string fieldName)
-        {
-            var type = typeof(T);
-            return GetPrivateField(instance, type, fieldName);
-        }
+        var property = instance.GetType().GetProperty(fieldName, bindFlags);
 
-        internal static object GetPrivateField(this object instance, Type type, string fieldName)
-        {
-            const BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
-            var field = type.GetField(fieldName, bindFlags);
-            return field?.GetValue(instance);
-        }
+        Assert.That(property, Is.Not.Null);
+
+        return (T)property.GetValue(instance);
+    }
+
+    internal static object GetPrivateField<T>(this T instance, string fieldName)
+    {
+        var type = typeof(T);
+
+        return GetPrivateField(instance, type, fieldName);
+    }
+
+    private static object GetPrivateField(this object instance, Type type, string fieldName)
+    {
+        const BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
+        var field = type.GetField(fieldName, bindFlags);
+
+        return field?.GetValue(instance);
     }
 }
