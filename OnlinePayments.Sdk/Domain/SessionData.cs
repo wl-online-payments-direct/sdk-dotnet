@@ -23,7 +23,7 @@ namespace OnlinePayments.Sdk.Domain
         public string PlatformUrl { get; set; }
 
         /// <summary>
-        /// The JWT token used to authorize calls between iframes and server
+        /// The CSRF token used to authorize iframe's calls
         /// </summary>
         public string SessionToken { get; set; }
 

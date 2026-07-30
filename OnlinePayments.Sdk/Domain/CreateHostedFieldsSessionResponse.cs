@@ -8,6 +8,11 @@ namespace OnlinePayments.Sdk.Domain
     public class CreateHostedFieldsSessionResponse
     {
         /// <summary>
+        /// Id of the created session
+        /// </summary>
+        public string HostedFieldsSessionId { get; set; }
+
+        /// <summary>
         /// This is a list of tokens that failed validation.
         /// </summary>
         public IList<string> InvalidTokens { get; set; }

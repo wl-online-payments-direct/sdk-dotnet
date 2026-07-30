@@ -12,6 +12,11 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public string Locale { get; set; }
 
+        /// <summary>
+        /// merchant site's origin.
+        /// </summary>
+        public string Origin { get; set; }
+
         public IList<string> Tokens { get; set; }
     }
 }

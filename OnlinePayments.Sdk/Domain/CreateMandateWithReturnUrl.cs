@@ -60,7 +60,7 @@ namespace OnlinePayments.Sdk.Domain
         ///   <item><description>AIS</description></item>
         /// </list>
         /// <p />
-        /// Refer to the support page to determine the applicable signature types.
+        /// Not all signature types are applicable to all merchants. Please visit the support page to determine the applicable signature types.
         /// </summary>
         public string SignatureType { get; set; }
 

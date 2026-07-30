@@ -6,6 +6,37 @@ namespace OnlinePayments.Sdk.Domain
     public class OrderReferences
     {
         /// <summary>
+        /// <b>Deprecated</b>: It is recommended to use the new merchantReconciliationReference for the same usage, and the new softDescriptor on top only in case you start needing another specific value to be pushed to the cardholder statement.
+        /// </summary>
+        public string Descriptor { get; set; }
+
+        /// <summary>
+        /// It allows you to store additional information for the transaction. This is typically used in case you need additional data field on top of the other ones, such as merchantAdditionalReference. This data is not sent to the acquirer, and is used for reporting purpose.
+        /// </summary>
+        public string MerchantComment { get; set; }
+
+        /// <summary>
+        /// It allows you to store additional parameters for the transaction in the format you prefer (e.g.-&gt; key-value query string, JSON, etc.) These parameters are then echoed back to you in API GET calls and Webhook notifications. This field must not contain any personal data.
+        /// </summary>
+        public string MerchantParameters { get; set; }
+
+        /// <summary>
+        /// It allows you to store additional information for the transaction. This is sent to the acquirer (if it accepts it), and is typically to be used for reconciliation purpose . As this information appears in reporting, please do not encode any sensitive data.
+        /// </summary>
+        public string MerchantReconciliationReference { get; set; }
+
+        /// <summary>
+        /// Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.
+        /// It is highly recommended to provide a single MerchantReference per unique order on your side
+        /// </summary>
+        public string MerchantReference { get; set; }
+
+        /// <summary>
+        /// An identifier for a group of transactions. This reference helps to link multiple related transactions together, facilitating easier reconciliation and tracking.
+        /// </summary>
+        public string OperationGroupReference { get; set; }
+
+        /// <summary>
         /// Descriptive text that is used towards to customer, either during an online checkout at a third party and/or on the statement of the customer. For card transactions this is usually referred to as a Soft Descriptor. The maximum allowed length varies per card acquirer:
         /// <list type="bullet">
         ///   <item><description>AIB - 22 characters</description></item>
@@ -41,23 +72,7 @@ namespace OnlinePayments.Sdk.Domain
         /// All other payment products do not support a descriptor.</description></item>
         /// </list>
         /// </summary>
-        public string Descriptor { get; set; }
-
-        /// <summary>
-        /// It allows you to store additional parameters for the transaction in the format you prefer (e.g.-&gt; key-value query string, JSON, etc.) These parameters are then echoed back to you in API GET calls and Webhook notifications. This field must not contain any personal data.
-        /// </summary>
-        public string MerchantParameters { get; set; }
-
-        /// <summary>
-        /// Your unique reference of the transaction that is also returned in our report files. This is almost always used for your reconciliation of our report files.
-        /// It is highly recommended to provide a single MerchantReference per unique order on your side
-        /// </summary>
-        public string MerchantReference { get; set; }
-
-        /// <summary>
-        /// An identifier for a group of transactions. This reference helps to link multiple related transactions together, facilitating easier reconciliation and tracking.
-        /// </summary>
-        public string OperationGroupReference { get; set; }
+        public string SoftDescriptor { get; set; }
 
         /// <summary>
         /// Creditor Reference to use where applicable for invoicing related to the transaction, in accordance with ISO 11649. Might require merchant specific setup to enable and is subject to agreement with the acquirer.
