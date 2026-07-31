@@ -17,6 +17,9 @@ namespace OnlinePayments.Sdk.Communication
     /// </summary>
     public class DefaultConnection : IPooledConnection
     {
+        [Obsolete("Use DefaultConnection(IHttpClientFactory, string) instead. " +
+                  "This constructor manages its own HttpClient/handler and does not benefit from " +
+                  "IHttpClientFactory's pooling and DNS-rotation behavior.")]
         public DefaultConnection(TimeSpan? socketTimeout, int maxConnections = 2, Proxy proxy = null, HttpClientHandler httpClientHandler = null)
         {
             var handler = httpClientHandler ?? new HttpClientHandler();
@@ -42,6 +45,32 @@ namespace OnlinePayments.Sdk.Communication
             _httpClientProvider = () => httpClient;
             _postRequestAction = client => { };
             _disposeAction = httpClient.Dispose;
+        }
+
+        /// <summary>
+        /// Creates a new <c>DefaultConnection</c> that obtains <see cref="HttpClient"/> instances from an
+        /// <see cref="IHttpClientFactory"/> for each request.
+        /// <para>
+        /// The factory manages the lifetime of the underlying HTTP handlers; therefore, returned
+        /// <see cref="HttpClient"/> instances are <b>not</b> disposed after each request and
+        /// <see cref="Dispose"/> on this connection is a no-op. This makes it safe to register
+        /// <c>IClient</c> as a singleton in a dependency-injection container.
+        /// </para>
+        /// </summary>
+        /// <param name="httpClientFactory">The factory used to create <see cref="HttpClient"/> instances.</param>
+        /// <param name="clientName">
+        /// The logical name of the <see cref="HttpClient"/> to create. When <c>null</c> or empty, the
+        /// unnamed/default client is created.
+        /// </param>
+        public DefaultConnection(IHttpClientFactory httpClientFactory, string clientName = null)
+            : this(
+                () => httpClientFactory.CreateClient(clientName ?? string.Empty),
+                client => { })
+        {
+            if (httpClientFactory == null)
+            {
+                throw new ArgumentException("httpClientFactory is required");
+            }
         }
 
         /// <summary>

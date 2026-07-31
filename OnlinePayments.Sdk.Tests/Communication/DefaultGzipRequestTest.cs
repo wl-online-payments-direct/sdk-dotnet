@@ -123,7 +123,6 @@ public class DefaultGzipRequestTest
             .WithApiKeyId("api-key-id")
             .WithSecretApiKey("api-key-secret")
             .WithIntegrator("integrator")
-            .WithConnectTimeout(5000)
             .WithSocketTimeout(5000);
 
         return Factory.CreateCommunicator(configuration);

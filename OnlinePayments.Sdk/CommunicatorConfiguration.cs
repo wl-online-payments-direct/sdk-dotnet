@@ -23,18 +23,17 @@ namespace OnlinePayments.Sdk
         public Uri ApiEndpoint { get; set; }
 
         /// <summary>
-        /// Gets or sets the connect timeout
+        /// Gets or sets a SocketTimeout to be used by <see cref="DefaultConnection"/>.
         /// </summary>
-        public TimeSpan? ConnectTimeout { get; set; }
-
-        /// <summary>
-        /// Gets or sets the socket timeout
-        /// </summary>
+        [Obsolete("SocketTimeout is not used when IHttpClientFactory is configured. " +
+                  "Configure timeout via services.AddHttpClient(...).ConfigureHttpClient(c => c.Timeout = ...) instead.")]
         public TimeSpan? SocketTimeout { get; set; }
 
         /// <summary>
         /// Gets or sets the maximal number of connections
         /// </summary>
+        [Obsolete("MaxConnections is not used when IHttpClientFactory is configured. " +
+                  "Configure connection limits via SocketsHttpHandler.PooledConnectionLifetime during services.AddHttpClient(...) registration instead.")]
         public int MaxConnections { get; set; } = DefaultMaxConnections;
 
         /// <summary>
@@ -66,16 +65,22 @@ namespace OnlinePayments.Sdk
         /// <summary>
         /// Gets or sets the proxy URI.
         /// </summary>
+        [Obsolete("ProxyUri is not used when IHttpClientFactory is configured. " +
+                  "Configure the HTTP handler via services.AddHttpClient(...).ConfigurePrimaryHttpMessageHandler(...) instead.")]
         public Uri ProxyUri { get; set; }
 
         /// <summary>
         /// Gets or sets the proxy username.
         /// </summary>
+        [Obsolete("ProxyUserName is not used when IHttpClientFactory is configured. " +
+                  "Configure the HTTP handler via services.AddHttpClient(...).ConfigurePrimaryHttpMessageHandler(...) instead.")]
         public string ProxyUserName { get; set; }
 
         /// <summary>
         /// Gets or sets the proxy password.
         /// </summary>
+        [Obsolete("ProxyPassword is not used when IHttpClientFactory is configured. " +
+                  "Configure the HTTP handler via services.AddHttpClient(...).ConfigurePrimaryHttpMessageHandler(...) instead.")]
         public string ProxyPassword { get; set; }
 
         /// <summary>
@@ -91,7 +96,24 @@ namespace OnlinePayments.Sdk
         /// <summary>
         /// Gets or sets a custom HttpClientHandler to be used by <see cref="DefaultConnection"/>.
         /// </summary>
+        [Obsolete("HttpClientHandler is not used when IHttpClientFactory is configured. " +
+                  "Configure the HTTP handler via services.AddHttpClient(...).ConfigurePrimaryHttpMessageHandler(...) instead.")]
         public HttpClientHandler HttpClientHandler { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="IHttpClientFactory"/> to be used by <see cref="DefaultConnection"/>.
+        /// When set, <see cref="DefaultConnection"/> will obtain an <see cref="System.Net.Http.HttpClient"/>
+        /// from this factory per request instead of managing one internally.
+        /// The factory manages handler lifetime, so <see cref="HttpClientName"/> may be used to select a
+        /// named registration from <c>services.AddHttpClient(name, ...)</c>.
+        /// </summary>
+        public IHttpClientFactory HttpClientFactory { get; set; }
+
+        /// <summary>
+        /// Gets or sets the logical name of the <see cref="System.Net.Http.HttpClient"/> to request from
+        /// <see cref="HttpClientFactory"/>. When <c>null</c> or empty, the unnamed default client is used.
+        /// </summary>
+        public string HttpClientName { get; set; }
 
         public CommunicatorConfiguration()
         {
@@ -104,9 +126,6 @@ namespace OnlinePayments.Sdk
             {
                 ApiEndpoint = GetApiEndpoint(properties);
                 AuthorizationType = AuthorizationType.GetValueOf(GetProperty(properties, "onlinePayments.api.authorizationType"));
-
-                var connectTimeout = int.Parse(GetProperty(properties, "onlinePayments.api.connectTimeout"));
-                ConnectTimeout = connectTimeout >= 0 ? (TimeSpan?)TimeSpan.FromMilliseconds(connectTimeout) : null;
 
                 var socketTimeout = int.Parse(GetProperty(properties, "onlinePayments.api.socketTimeout"));
                 SocketTimeout = socketTimeout >= 0 ? (TimeSpan?)TimeSpan.FromMilliseconds(socketTimeout) : null;
@@ -130,7 +149,6 @@ namespace OnlinePayments.Sdk
         internal CommunicatorConfiguration(CommunicatorConfigurationSection section)
         {
             ApiEndpoint = section.ApiEndpoint;
-            ConnectTimeout = section.ConnectTimeout;
             SocketTimeout = section.SocketTimeout;
             MaxConnections = section.MaxConnections;
             AuthorizationType = AuthorizationType.GetValueOf(section.AuthorizationType);
@@ -190,21 +208,12 @@ namespace OnlinePayments.Sdk
         }
 
         /// <summary>
-        /// Returns this with the the connect timeout assigned.
-        /// </summary>
-        /// <param name="connectTimeout">The connect timeout.</param>
-        /// <returns>This.</returns>
-        public CommunicatorConfiguration WithConnectTimeout(int connectTimeout)
-        {
-            ConnectTimeout = TimeSpan.FromMilliseconds(connectTimeout);
-            return this;
-        }
-
-        /// <summary>
         /// Returns this with the the socket timeout assigned.
         /// </summary>
         /// <param name="socketTimeout">The socket timeout.</param>
         /// <returns>This.</returns>
+        [Obsolete("WithSocketTimeout is not used when IHttpClientFactory is configured. " +
+                  "Configure timeout via services.AddHttpClient(...).ConfigureHttpClient(c => c.Timeout = ...) instead.")]
         public CommunicatorConfiguration WithSocketTimeout(int socketTimeout)
         {
             SocketTimeout = TimeSpan.FromMilliseconds(socketTimeout);
@@ -216,6 +225,8 @@ namespace OnlinePayments.Sdk
         /// </summary>
         /// <param name="maxConnections">The maximum number of connections.</param>
         /// <returns>This.</returns>
+        [Obsolete("WithMaxConnections is not used when IHttpClientFactory is configured. " +
+                  "Configure connection limits via SocketsHttpHandler.PooledConnectionLifetime during services.AddHttpClient(...) registration instead.")]
         public CommunicatorConfiguration WithMaxConnections(int maxConnections)
         {
             MaxConnections = maxConnections;
@@ -227,6 +238,8 @@ namespace OnlinePayments.Sdk
         /// </summary>
         /// <param name="proxyUri">The proxy URI.</param>
         /// <returns>This.</returns>
+        [Obsolete("WithProxyUri is not used when IHttpClientFactory is configured. " +
+                  "Configure the HTTP handler via services.AddHttpClient(...).ConfigurePrimaryHttpMessageHandler(...) instead.")]
         public CommunicatorConfiguration WithProxyUri(Uri proxyUri)
         {
             ProxyUri = proxyUri;
@@ -238,6 +251,8 @@ namespace OnlinePayments.Sdk
         /// </summary>
         /// <param name="proxyName">The proxy username.</param>
         /// <returns>This.</returns>
+        [Obsolete("WithProxyUserName is not used when IHttpClientFactory is configured. " +
+                  "Configure the HTTP handler via services.AddHttpClient(...).ConfigurePrimaryHttpMessageHandler(...) instead.")]
         public CommunicatorConfiguration WithProxyUserName(string proxyName)
         {
             ProxyUserName = proxyName;
@@ -249,6 +264,8 @@ namespace OnlinePayments.Sdk
         /// </summary>
         /// <param name="proxyPassword">The proxy password.</param>
         /// <returns>This.</returns>
+        [Obsolete("WithProxyPassword is not used when IHttpClientFactory is configured. " +
+                  "Configure the HTTP handler via services.AddHttpClient(...).ConfigurePrimaryHttpMessageHandler(...) instead.")]
         public CommunicatorConfiguration WithProxyPassword(string proxyPassword)
         {
             ProxyPassword = proxyPassword;
@@ -282,9 +299,28 @@ namespace OnlinePayments.Sdk
         /// </summary>
         /// <param name="httpClientHandler">The custom HttpClientHandler.</param>
         /// <returns>This.</returns>
+        [Obsolete("WithHttpClientHandler is not used when IHttpClientFactory is configured. " +
+                  "Configure the HTTP handler via services.AddHttpClient(...).ConfigurePrimaryHttpMessageHandler(...) instead.")]
         public CommunicatorConfiguration WithHttpClientHandler(HttpClientHandler httpClientHandler)
         {
             HttpClientHandler = httpClientHandler;
+            return this;
+        }
+
+        /// <summary>
+        /// Returns this with an <see cref="IHttpClientFactory"/> assigned.
+        /// When set, <see cref="DefaultConnection"/> obtains <see cref="System.Net.Http.HttpClient"/> instances
+        /// from the factory per request. This is the recommended approach for ASP.NET Core applications.
+        /// </summary>
+        /// <param name="httpClientFactory">The factory to use.</param>
+        /// <param name="clientName">
+        /// The logical name of the client to create. When <c>null</c> or empty, the default unnamed client is used.
+        /// </param>
+        /// <returns>This.</returns>
+        public CommunicatorConfiguration WithHttpClientFactory(IHttpClientFactory httpClientFactory, string clientName = null)
+        {
+            HttpClientFactory = httpClientFactory;
+            HttpClientName = clientName;
             return this;
         }
 

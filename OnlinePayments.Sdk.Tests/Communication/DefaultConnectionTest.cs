@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Moq;
 using OnlinePayments.Sdk.Logging;
 using OnlinePayments.Sdk.Util;
 
@@ -351,6 +352,87 @@ public class DefaultConnectionTest
 
         return (HttpClientHandler)httpClient.GetPrivateField<HttpMessageInvoker>("handler")
                ?? (HttpClientHandler)httpClient.GetPrivateField<HttpMessageInvoker>("_handler");
+    }
+
+    #endregion
+
+    #region IHttpClientFactory constructor tests
+
+    [TestCase]
+    public void DefaultConnectionConstructor_WithNullHttpClientFactory_ThrowsArgumentException()
+    {
+        var exception = Assert.Throws<ArgumentException>(
+            () => _ = new DefaultConnection((IHttpClientFactory)null)
+        );
+
+        Assert.That(exception, Is.Not.Null);
+        Assert.That(exception.Message, Does.Contain("httpClientFactory is required"));
+    }
+
+    [TestCase]
+    public async Task DefaultConnectionConstructor_WithHttpClientFactory_UsesClientFromFactoryPerRequest()
+    {
+        var factoryMock = new Mock<IHttpClientFactory>();
+        var handler = new CapturingHttpMessageHandler(_ =>
+            new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("{}") });
+
+        factoryMock
+            .Setup(f => f.CreateClient(It.IsAny<string>()))
+            .Returns(() => new HttpClient(handler, disposeHandler: false));
+
+        using var connection = new DefaultConnection(factoryMock.Object);
+
+        await connection.Get<object>(new Uri("https://example.com"), new List<IRequestHeader>(), (_, _, _) => null);
+        await connection.Get<object>(new Uri("https://example.com"), new List<IRequestHeader>(), (_, _, _) => null);
+
+        factoryMock.Verify(f => f.CreateClient(string.Empty), Times.Exactly(2));
+    }
+
+    [TestCase]
+    public async Task DefaultConnectionConstructor_WithHttpClientFactoryAndClientName_UsesNamedClient()
+    {
+        const string clientName = "OnlinePayments";
+        var factoryMock = new Mock<IHttpClientFactory>();
+        var handler = new CapturingHttpMessageHandler(_ =>
+            new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("{}") });
+
+        factoryMock
+            .Setup(f => f.CreateClient(clientName))
+            .Returns(() => new HttpClient(handler, disposeHandler: false));
+
+        using var connection = new DefaultConnection(factoryMock.Object, clientName);
+
+        await connection.Get<object>(new Uri("https://example.com"), new List<IRequestHeader>(), (_, _, _) => null);
+
+        factoryMock.Verify(f => f.CreateClient(clientName), Times.Once);
+        factoryMock.Verify(f => f.CreateClient(string.Empty), Times.Never);
+    }
+
+    [TestCase]
+    public async Task DefaultConnectionConstructor_WithHttpClientFactory_DoesNotDisposeClientAfterRequest()
+    {
+        var factoryMock = new Mock<IHttpClientFactory>();
+        var handler = new CapturingHttpMessageHandler(_ =>
+            new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("{}") });
+
+        var sharedClient = new HttpClient(handler, disposeHandler: false);
+        factoryMock.Setup(f => f.CreateClient(string.Empty)).Returns(sharedClient);
+
+        using var connection = new DefaultConnection(factoryMock.Object);
+
+        await connection.Get<object>(new Uri("https://example.com"), new List<IRequestHeader>(), (_, _, _) => null);
+
+        Assert.DoesNotThrowAsync(() =>
+            connection.Get<object>(new Uri("https://example.com"), new List<IRequestHeader>(), (_, _, _) => null));
+    }
+
+    [TestCase]
+    public void Dispose_WithHttpClientFactory_IsNoOp()
+    {
+        var factoryMock = new Mock<IHttpClientFactory>();
+        var connection = new DefaultConnection(factoryMock.Object);
+
+        Assert.DoesNotThrow(connection.Dispose);
     }
 
     #endregion

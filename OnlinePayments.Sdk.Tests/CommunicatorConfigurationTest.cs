@@ -1,6 +1,10 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using OnlinePayments.Sdk.Authentication;
 using OnlinePayments.Sdk.Domain;
 
@@ -18,7 +22,6 @@ public class CommunicatorConfigurationTest
         var configuration = CreateBasicConfiguration();
 
         AssertBasicConfigurationSettings(configuration);
-        Assert.That(configuration.MaxConnections, Is.EqualTo(CommunicatorConfiguration.DefaultMaxConnections));
         Assert.That(configuration.ApiKeyId, Is.Null);
         Assert.That(configuration.SecretApiKey, Is.Null);
 
@@ -35,7 +38,6 @@ public class CommunicatorConfigurationTest
             .WithProxyUri(new Uri("http://proxy.example.org:3128"));
 
         AssertBasicConfigurationSettings(configuration);
-        Assert.That(configuration.MaxConnections, Is.EqualTo(CommunicatorConfiguration.DefaultMaxConnections));
         Assert.That(configuration.ApiKeyId, Is.Null);
         Assert.That(configuration.SecretApiKey, Is.Null);
 
@@ -55,7 +57,6 @@ public class CommunicatorConfigurationTest
             .WithProxyPassword("proxy-password");
 
         AssertBasicConfigurationSettings(configuration);
-        Assert.That(configuration.MaxConnections, Is.EqualTo(CommunicatorConfiguration.DefaultMaxConnections));
         Assert.That(configuration.ApiKeyId, Is.Null);
         Assert.That(configuration.SecretApiKey, Is.Null);
 
@@ -86,18 +87,6 @@ public class CommunicatorConfigurationTest
         Assert.That(proxy.Uri.Port, Is.EqualTo(443));
         Assert.That(proxy.Username, Is.Null);
         Assert.That(proxy.Password, Is.Null);
-    }
-
-    [TestCase]
-    public void CommunicatorConfiguration_WithMaxConnections_SetsConfiguredMaxConnections()
-    {
-        var configuration = CreateBasicConfiguration()
-            .WithMaxConnections(100);
-
-        AssertBasicConfigurationSettings(configuration);
-        Assert.That(configuration.MaxConnections, Is.EqualTo(100));
-        Assert.That(configuration.ApiKeyId, Is.Null);
-        Assert.That(configuration.SecretApiKey, Is.Null);
     }
 
     [TestCase]
@@ -196,9 +185,7 @@ public class CommunicatorConfigurationTest
         Assert.That(configuration.ApiEndpoint, Is.Null);
         Assert.That(configuration.ApiKeyId, Is.Null);
         Assert.That(configuration.SecretApiKey, Is.Null);
-        Assert.That(configuration.ConnectTimeout, Is.Null);
         Assert.That(configuration.SocketTimeout, Is.Null);
-        Assert.That(configuration.MaxConnections, Is.EqualTo(CommunicatorConfiguration.DefaultMaxConnections));
         Assert.That(configuration.Proxy, Is.Null);
         Assert.That(configuration.Integrator, Is.Null);
         Assert.That(configuration.ShoppingCartExtension, Is.Null);
@@ -244,16 +231,6 @@ public class CommunicatorConfigurationTest
     }
 
     [Test]
-    public void WithConnectTimeout_WithValue_ReturnsSelfAndSetsConnectTimeout()
-    {
-        CommunicatorConfiguration configuration = new();
-        var result = configuration.WithConnectTimeout(20000);
-
-        Assert.That(result, Is.SameAs(configuration));
-        Assert.That(configuration.ConnectTimeout?.TotalMilliseconds, Is.EqualTo(20000));
-    }
-
-    [Test]
     public void WithSocketTimeout_WithValue_ReturnsSelfAndSetsSocketTimeout()
     {
         CommunicatorConfiguration configuration = new();
@@ -261,16 +238,6 @@ public class CommunicatorConfigurationTest
 
         Assert.That(result, Is.SameAs(configuration));
         Assert.That(configuration.SocketTimeout?.TotalMilliseconds, Is.EqualTo(10000));
-    }
-
-    [Test]
-    public void WithMaxConnections_WithValue_ReturnsSelfAndSetsMaxConnections()
-    {
-        CommunicatorConfiguration configuration = new();
-        var result = configuration.WithMaxConnections(50);
-
-        Assert.That(result, Is.SameAs(configuration));
-        Assert.That(configuration.MaxConnections, Is.EqualTo(50));
     }
 
     [Test]
@@ -335,9 +302,7 @@ public class CommunicatorConfigurationTest
             .WithApiKeyId("api-key-id")
             .WithSecretApiKey("secret-key")
             .WithAuthorizationType(AuthorizationType.V1HMAC)
-            .WithConnectTimeout(20000)
             .WithSocketTimeout(10000)
-            .WithMaxConnections(100)
             .WithProxyUri(new Uri("https://proxy.example.com:3128"))
             .WithProxyUserName("proxy-user")
             .WithProxyPassword("proxy-pass")
@@ -348,9 +313,7 @@ public class CommunicatorConfigurationTest
         Assert.That(configuration.ApiKeyId, Is.EqualTo("api-key-id"));
         Assert.That(configuration.SecretApiKey, Is.EqualTo("secret-key"));
         Assert.That(configuration.AuthorizationType, Is.EqualTo(AuthorizationType.V1HMAC));
-        Assert.That(configuration.ConnectTimeout?.TotalMilliseconds, Is.EqualTo(20000));
         Assert.That(configuration.SocketTimeout?.TotalMilliseconds, Is.EqualTo(10000));
-        Assert.That(configuration.MaxConnections, Is.EqualTo(100));
         Assert.That(configuration.ProxyUri, Is.EqualTo(new Uri("https://proxy.example.com:3128")));
         Assert.That(configuration.ProxyUserName, Is.EqualTo("proxy-user"));
         Assert.That(configuration.ProxyPassword, Is.EqualTo("proxy-pass"));
@@ -372,7 +335,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void ApiEndpoint_WhenAssignedNull_ReturnsNull()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             ApiEndpoint = null
         };
 
@@ -382,7 +345,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void ApiKeyId_WhenAssigned_ReturnsAssignedValue()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             ApiKeyId = "test-api-key-id"
         };
 
@@ -392,7 +355,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void ApiKeyId_WhenAssignedNull_ReturnsNull()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             ApiKeyId = null
         };
 
@@ -402,7 +365,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void SecretApiKey_WhenAssigned_ReturnsAssignedValue()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             SecretApiKey = "test-secret-key"
         };
 
@@ -412,7 +375,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void SecretApiKey_WhenAssignedNull_ReturnsNull()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             SecretApiKey = null
         };
 
@@ -422,7 +385,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void AuthorizationType_WhenAssigned_ReturnsAssignedValue()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             AuthorizationType = AuthorizationType.V1HMAC
         };
 
@@ -432,7 +395,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void AuthorizationType_WhenAssignedNull_ReturnsNull()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             AuthorizationType = null
         };
 
@@ -440,29 +403,9 @@ public class CommunicatorConfigurationTest
     }
 
     [Test]
-    public void ConnectTimeout_WhenAssigned_ReturnsAssignedValue()
-    {
-        CommunicatorConfiguration configuration = new()        {
-            ConnectTimeout = TimeSpan.FromMilliseconds(20000)
-        };
-
-        Assert.That(configuration.ConnectTimeout?.TotalMilliseconds, Is.EqualTo(20000));
-    }
-
-    [Test]
-    public void ConnectTimeout_WhenAssignedNull_ReturnsNull()
-    {
-        CommunicatorConfiguration configuration = new()        {
-            ConnectTimeout = null
-        };
-
-        Assert.That(configuration.ConnectTimeout, Is.Null);
-    }
-
-    [Test]
     public void SocketTimeout_WhenAssigned_ReturnsAssignedValue()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             SocketTimeout = TimeSpan.FromMilliseconds(10000)
         };
 
@@ -472,7 +415,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void SocketTimeout_WhenAssignedNull_ReturnsNull()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             SocketTimeout = null
         };
 
@@ -480,19 +423,9 @@ public class CommunicatorConfigurationTest
     }
 
     [Test]
-    public void MaxConnections_WhenAssigned_ReturnsAssignedValue()
-    {
-        CommunicatorConfiguration configuration = new()        {
-            MaxConnections = 50
-        };
-
-        Assert.That(configuration.MaxConnections, Is.EqualTo(50));
-    }
-
-    [Test]
     public void Proxy_WhenProxyUriIsNull_ReturnsNull()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             ProxyUri = null
         };
 
@@ -502,7 +435,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void Integrator_WhenAssigned_ReturnsAssignedValue()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             Integrator = "TestIntegrator"
         };
 
@@ -512,7 +445,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void Integrator_WhenAssignedNull_ReturnsNull()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             Integrator = null
         };
 
@@ -533,7 +466,7 @@ public class CommunicatorConfigurationTest
     [Test]
     public void ShoppingCartExtension_WhenAssignedNull_ReturnsNull()
     {
-        CommunicatorConfiguration configuration = new()        {
+        CommunicatorConfiguration configuration = new() {
             ShoppingCartExtension = null
         };
 
@@ -545,7 +478,6 @@ public class CommunicatorConfigurationTest
         return new CommunicatorConfiguration()
             .WithApiEndpoint(new Uri($"https://{BaseUriHost}"))
             .WithAuthorizationType(AuthorizationType.V1HMAC)
-            .WithConnectTimeout(20000)
             .WithSocketTimeout(10000);
     }
 
@@ -553,7 +485,6 @@ public class CommunicatorConfigurationTest
     {
         Assert.That(configuration.ApiEndpoint, Is.EqualTo(new Uri($"https://{BaseUriHost}")));
         Assert.That(configuration.AuthorizationType, Is.EqualTo(AuthorizationType.V1HMAC));
-        Assert.That(configuration.ConnectTimeout?.TotalMilliseconds, Is.EqualTo(20000));
         Assert.That(configuration.SocketTimeout?.TotalMilliseconds, Is.EqualTo(10000));
     }
 
@@ -562,5 +493,218 @@ public class CommunicatorConfigurationTest
         Assert.That(proxy.Uri.Scheme, Is.EqualTo("http"));
         Assert.That(proxy.Uri.Host, Is.EqualTo("proxy.example.org"));
         Assert.That(proxy.Uri.Port, Is.EqualTo(3128));
+    }
+
+    [Test]
+    public void WithHttpClientFactory_WithFactory_SetsHttpClientFactoryAndReturnsSelf()
+    {
+        var factoryMock = new Mock<IHttpClientFactory>();
+        CommunicatorConfiguration configuration = new();
+
+        var result = configuration.WithHttpClientFactory(factoryMock.Object);
+
+        Assert.That(result, Is.SameAs(configuration));
+        Assert.That(configuration.HttpClientFactory, Is.SameAs(factoryMock.Object));
+        Assert.That(configuration.HttpClientName, Is.Null);
+    }
+
+    [Test]
+    public void WithHttpClientFactory_WithFactoryAndClientName_SetsHttpClientFactoryAndNameAndReturnsSelf()
+    {
+        var factoryMock = new Mock<IHttpClientFactory>();
+        const string clientName = "OnlinePayments";
+        CommunicatorConfiguration configuration = new();
+
+        var result = configuration.WithHttpClientFactory(factoryMock.Object, clientName);
+
+        Assert.That(result, Is.SameAs(configuration));
+        Assert.That(configuration.HttpClientFactory, Is.SameAs(factoryMock.Object));
+        Assert.That(configuration.HttpClientName, Is.EqualTo(clientName));
+    }
+
+    [Test]
+    public void HttpClientFactory_DefaultValue_IsNull()
+    {
+        CommunicatorConfiguration configuration = new();
+
+        Assert.That(configuration.HttpClientFactory, Is.Null);
+        Assert.That(configuration.HttpClientName, Is.Null);
+    }
+
+    [Test]
+    public void WithHttpClientFactory_WithTimeout_HttpClientHasExpectedTimeout()
+    {
+        var socketTimeout = TimeSpan.FromSeconds(30);
+
+        using var serviceProvider = new ServiceCollection()
+            .AddHttpClient("OnlinePayments", client =>
+            {
+                client.Timeout = socketTimeout;
+            })
+            .Services
+            .BuildServiceProvider();
+
+        var factory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+        var configuration = CreateBasicConfiguration()
+            .WithHttpClientFactory(factory, "OnlinePayments");
+
+        Assert.That(configuration.HttpClientFactory, Is.SameAs(factory));
+
+        var httpClient = factory.CreateClient("OnlinePayments");
+        Assert.That(httpClient.Timeout, Is.EqualTo(socketTimeout));
+    }
+
+    [Test]
+    public void WithHttpClientFactory_WithProxyWithoutAuthentication_HandlerHasExpectedProxy()
+    {
+        var proxyUri = new Uri("http://proxy.example.org:3128");
+        var handler = new SocketsHttpHandler
+        {
+            UseProxy = true,
+            Proxy = new WebProxy(proxyUri)
+        };
+
+        using var serviceProvider = new ServiceCollection()
+            .AddHttpClient("OnlinePayments")
+            .ConfigurePrimaryHttpMessageHandler(() => handler)
+            .Services
+            .BuildServiceProvider();
+
+        var factory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+        var configuration = CreateBasicConfiguration()
+            .WithHttpClientFactory(factory, "OnlinePayments");
+
+        Assert.That(configuration.HttpClientFactory, Is.SameAs(factory));
+
+        Assert.That(handler.UseProxy, Is.True);
+        var webProxy = (WebProxy)handler.Proxy;
+        Assert.That(webProxy.Address, Is.EqualTo(proxyUri));
+        Assert.That(webProxy.Credentials, Is.Null);
+    }
+
+    [Test]
+    public void WithHttpClientFactory_WithProxyAndAuthentication_HandlerHasAuthenticatedProxy()
+    {
+        var proxyUri = new Uri("http://proxy.example.org:3128");
+        var handler = new SocketsHttpHandler
+        {
+            UseProxy = true,
+            Proxy = new WebProxy(proxyUri)
+            {
+                Credentials = new NetworkCredential("proxy-user", "proxy-pass")
+            }
+        };
+
+        using var serviceProvider = new ServiceCollection()
+            .AddHttpClient("OnlinePayments")
+            .ConfigurePrimaryHttpMessageHandler(() => handler)
+            .Services
+            .BuildServiceProvider();
+
+        var factory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+        var configuration = CreateBasicConfiguration()
+            .WithHttpClientFactory(factory, "OnlinePayments");
+
+        Assert.That(configuration.HttpClientFactory, Is.SameAs(factory));
+        Assert.That(handler.UseProxy, Is.True);
+
+        var webProxy = (WebProxy)handler.Proxy;
+        Assert.That(webProxy.Address, Is.EqualTo(proxyUri));
+
+        var credentials = (NetworkCredential)webProxy.Credentials;
+        Assert.That(credentials.UserName, Is.EqualTo("proxy-user"));
+        Assert.That(credentials.Password, Is.EqualTo("proxy-pass"));
+    }
+
+    [Test]
+    public void WithHttpClientFactory_WithPooledConnectionLifetime_HandlerHasExpectedLifetime()
+    {
+        var lifetime = TimeSpan.FromMinutes(2);
+        var handler = new SocketsHttpHandler
+        {
+            PooledConnectionLifetime = lifetime
+        };
+
+        using var serviceProvider = new ServiceCollection()
+            .AddHttpClient("OnlinePayments")
+            .ConfigurePrimaryHttpMessageHandler(() => handler)
+            .Services
+            .BuildServiceProvider();
+
+        var factory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+        var configuration = CreateBasicConfiguration()
+            .WithHttpClientFactory(factory, "OnlinePayments");
+
+        Assert.That(configuration.HttpClientFactory, Is.SameAs(factory));
+        Assert.That(handler.PooledConnectionLifetime, Is.EqualTo(lifetime));
+    }
+
+    [Test]
+    public void WithHttpClientFactory_WithMaxConnectionsPerServer_HandlerHasExpectedMaxConnections()
+    {
+        var handler = new SocketsHttpHandler
+        {
+            MaxConnectionsPerServer = 10
+        };
+
+        using var serviceProvider = new ServiceCollection()
+            .AddHttpClient("OnlinePayments")
+            .ConfigurePrimaryHttpMessageHandler(() => handler)
+            .Services
+            .BuildServiceProvider();
+
+        var factory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+        var configuration = CreateBasicConfiguration()
+            .WithHttpClientFactory(factory, "OnlinePayments");
+
+        Assert.That(configuration.HttpClientFactory, Is.SameAs(factory));
+        Assert.That(handler.MaxConnectionsPerServer, Is.EqualTo(10));
+    }
+
+    [Test]
+    public void WithHttpClientFactory_WithAllConnectionOptions_ConfiguresCorrectly()
+    {
+        var socketTimeout = TimeSpan.FromSeconds(30);
+        var proxyUri = new Uri("http://proxy.example.org:3128");
+        var pooledLifetime = TimeSpan.FromMinutes(2);
+
+        var handler = new SocketsHttpHandler
+        {
+            UseProxy = true,
+            Proxy = new WebProxy(proxyUri)
+            {
+                Credentials = new NetworkCredential("proxy-user", "proxy-pass")
+            },
+            PooledConnectionLifetime = pooledLifetime,
+            MaxConnectionsPerServer = 10
+        };
+
+        using var serviceProvider = new ServiceCollection()
+            .AddHttpClient("OnlinePayments", client =>
+            {
+                client.Timeout = socketTimeout;
+            })
+            .ConfigurePrimaryHttpMessageHandler(() => handler)
+            .Services
+            .BuildServiceProvider();
+
+        var factory = serviceProvider.GetRequiredService<IHttpClientFactory>();
+        var configuration = CreateBasicConfiguration()
+            .WithHttpClientFactory(factory, "OnlinePayments");
+
+        Assert.That(configuration.HttpClientFactory, Is.SameAs(factory));
+        Assert.That(configuration.HttpClientName, Is.EqualTo("OnlinePayments"));
+
+        var httpClient = factory.CreateClient("OnlinePayments");
+        Assert.That(httpClient.Timeout, Is.EqualTo(socketTimeout));
+
+        var webProxy = (WebProxy)handler.Proxy;
+        var credentials = (NetworkCredential)webProxy.Credentials;
+        Assert.That(handler.UseProxy, Is.True);
+        Assert.That(webProxy.Address, Is.EqualTo(proxyUri));
+        Assert.That(credentials.UserName, Is.EqualTo("proxy-user"));
+        Assert.That(credentials.Password, Is.EqualTo("proxy-pass"));
+        Assert.That(handler.PooledConnectionLifetime, Is.EqualTo(pooledLifetime));
+        Assert.That(handler.MaxConnectionsPerServer, Is.EqualTo(10));
     }
 }

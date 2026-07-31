@@ -88,15 +88,23 @@ namespace OnlinePayments.Sdk
         /// </summary>
         public static CommunicatorBuilder CreateCommunicatorBuilder(CommunicatorConfiguration configuration)
         {
+            IConnection connection;
+            if (configuration.HttpClientFactory != null)
+            {
+                connection = new DefaultConnection(configuration.HttpClientFactory, configuration.HttpClientName);
+            }
+            else
+            {
+                connection = new DefaultConnection(
+                    configuration.SocketTimeout,
+                    configuration.MaxConnections,
+                    configuration.Proxy,
+                    configuration.HttpClientHandler);
+            }
+
             return new CommunicatorBuilder()
                     .WithApiEndpoint(configuration.ApiEndpoint)
-                    .WithConnection(new DefaultConnection(
-                            configuration.SocketTimeout,
-                            // connect timeout not supported
-                            configuration.MaxConnections,
-                            configuration.Proxy,
-                            configuration.HttpClientHandler
-                    ))
+                    .WithConnection(connection)
                     .WithMetadataProvider(
                         new MetadataProviderBuilder(configuration.Integrator)
                         {

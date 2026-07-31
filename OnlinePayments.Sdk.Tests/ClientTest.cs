@@ -34,54 +34,6 @@ public class ClientTest
         var clientFifth = clientThird.WithClientMetaInfo(null);
         Assert.That(clientFifth, Is.Not.SameAs(clientThird));
         AssertNoClientHeaders(clientFifth);
-
-        // nothing can be said about client1 and client5 being the same or not
-    }
-
-    private static void AssertClientHeaders(IClient client, string clientMetaInfo)
-    {
-        var headers = GetHeaders(client);
-
-        var headerValue = clientMetaInfo.ToBase64String();
-
-        Assert.That(headers.FirstOrDefault(v => v.Equals(new RequestHeader("X-GCS-ClientMetaInfo", headerValue))), Is.Not.Null);
-    }
-
-    private static void AssertNoClientHeaders(IClient client)
-    {
-        var headers = GetHeaders(client);
-
-        Assert.That(headers, Is.Empty);
-    }
-
-    private static IEnumerable<RequestHeader> GetHeaders(IClient client)
-    {
-        // ApiResource.ClientHeaders is protected, so this test class has no access to it; use reflection to get it
-        return client.GetPrivateProperty<IEnumerable<RequestHeader>>("ClientHeaders");
-    }
-
-    [TestCase]
-    public void CloseIdleConnections_WhenNotPooled_IsNoOp()
-    {
-        // No-op because done automatically by system.
-    }
-
-    [TestCase]
-    public void CloseIdleConnections_WhenPooled_IsNoOp()
-    {
-        // No-op because done automatically by system.
-    }
-
-    [TestCase]
-    public void CloseExpiredConnections_WhenNotPooled_IsNoOp()
-    {
-        // No-op because done automatically by system.
-    }
-
-    [TestCase]
-    public void CloseExpiredConnections_WhenPooled_IsNoOp()
-    {
-        // No-op because done automatically by system.
     }
 
     [Test]
@@ -219,5 +171,27 @@ public class ClientTest
 
         Assert.That(merchantClient, Is.Not.Null);
         Assert.That(merchantClient, Is.InstanceOf<IMerchantClient>());
+    }
+
+    private static void AssertClientHeaders(IClient client, string clientMetaInfo)
+    {
+        var headers = GetHeaders(client);
+
+        var headerValue = clientMetaInfo.ToBase64String();
+
+        Assert.That(headers.FirstOrDefault(v => v.Equals(new RequestHeader("X-GCS-ClientMetaInfo", headerValue))),
+            Is.Not.Null);
+    }
+
+    private static void AssertNoClientHeaders(IClient client)
+    {
+        var headers = GetHeaders(client);
+
+        Assert.That(headers, Is.Empty);
+    }
+
+    private static IEnumerable<RequestHeader> GetHeaders(IClient client)
+    {
+        return client.GetPrivateProperty<IEnumerable<RequestHeader>>("ClientHeaders");
     }
 }

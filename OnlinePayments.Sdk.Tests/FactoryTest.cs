@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Reflection;
 using Moq;
 using OnlinePayments.Sdk.Authentication;
@@ -53,7 +54,6 @@ public class FactoryTest
 
                 Assert.That(configuration.ApiEndpoint, Is.EqualTo(new Uri("https://payment.preprod.online-payments.com")));
                 Assert.That(configuration.AuthorizationType, Is.EqualTo(AuthorizationType.V1HMAC));
-                Assert.That(configuration.ConnectTimeout, Is.Null);
                 Assert.That(configuration.SocketTimeout, Is.Null);
                 Assert.That(configuration.MaxConnections, Is.EqualTo(100));
                 Assert.That(configuration.ApiKeyId, Is.EqualTo(ApiKeyId));
@@ -114,7 +114,6 @@ public class FactoryTest
             var configuration = new CommunicatorConfiguration()
                 .WithApiEndpoint(new Uri("https://payment.example.com"))
                 .WithAuthorizationType(null)
-                .WithConnectTimeout(1000)
                 .WithSocketTimeout(1000)
                 .WithMaxConnections(100)
                 .WithApiKeyId(ApiKeyId)
@@ -223,6 +222,39 @@ public class FactoryTest
 
             Assert.That(client, Is.Not.Null);
             Assert.That(client, Is.InstanceOf<Client>());
+        }
+    }
+
+    [TestFixture]
+    public class WhenCreateCommunicatorBuilderWithHttpClientFactoryIsCalled
+    {
+        [Test]
+        public void CreateCommunicatorBuilder_WithHttpClientFactory_UsesFactoryBackedDefaultConnection()
+        {
+            var factoryMock = new Mock<IHttpClientFactory>();
+            var configuration = new CommunicatorConfiguration()
+                .WithApiEndpoint(new Uri("https://payment.example.com"))
+                .WithApiKeyId(ApiKeyId)
+                .WithSecretApiKey(SecretApiKey)
+                .WithIntegrator("test-integrator")
+                .WithHttpClientFactory(factoryMock.Object, "OnlinePayments");
+
+            var builder = Factory.CreateCommunicatorBuilder(configuration);
+
+            var connection = (IConnection)GetInstanceField(typeof(CommunicatorBuilder), builder, "_connection");
+
+            Assert.That(connection, Is.InstanceOf<DefaultConnection>());
+            Assert.That(connection, Is.Not.Null);
+        }
+
+        [Test]
+        public void CreateCommunicatorBuilder_WithoutHttpClientFactory_UsesLegacyDefaultConnection()
+        {
+            var builder = Factory.CreateCommunicatorBuilder(ConfigurationProperties, ApiKeyId, SecretApiKey);
+
+            var connection = (IConnection)GetInstanceField(typeof(CommunicatorBuilder), builder, "_connection");
+
+            Assert.That(connection, Is.InstanceOf<DefaultConnection>());
         }
     }
 }
