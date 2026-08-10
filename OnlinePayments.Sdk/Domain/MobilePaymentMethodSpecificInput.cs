@@ -18,6 +18,11 @@ namespace OnlinePayments.Sdk.Domain
         public string AuthorizationMode { get; set; }
 
         /// <summary>
+        /// Object containing the auto capture configuration for the payment.
+        /// </summary>
+        public AutoCapture AutoCapture { get; set; }
+
+        /// <summary>
         /// The payment data if you do the decryption of the encrypted payment data yourself.
         /// </summary>
         public DecryptedPaymentData DecryptedPaymentData { get; set; }
