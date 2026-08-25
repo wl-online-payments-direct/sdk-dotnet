@@ -108,26 +108,6 @@ public class ExceptionTest : IntegrationTest
         return Task.CompletedTask;
     }
 
-    [TestCase]
-    public Task CreatePayout_DeclinedCard_ThrowsValidationException()
-    {
-        CreatePayoutRequest request = new CreatePayoutRequestBuilder()
-            .WithCardNumber("4321456998744563")
-            .Build();
-
-        ValidationException exception = Assert.ThrowsAsync<ValidationException>(async () =>
-            await _payoutsClient.CreatePayout(request));
-
-        Assert.That(exception, Is.Not.Null);
-        Assert.That((int)exception.StatusCode, Is.GreaterThanOrEqualTo(400));
-        Assert.That(exception.Errors, Is.Not.Null.And.Not.Empty);
-
-        APIError error = exception.Errors.First();
-        Assert.That(error.Id, Is.EqualTo("INVALID_CARD"));
-
-        return Task.CompletedTask;
-    }
-
     #endregion
 
     #region AuthorizationException
@@ -187,6 +167,30 @@ public class ExceptionTest : IntegrationTest
         Assert.That(paymentResponse.Payment, Is.Not.Null);
         Assert.That(paymentResponse.Payment.Id, Is.Not.Null);
         Assert.That(paymentResponse.Payment.Status, Is.EqualTo("REJECTED"));
+
+        return Task.CompletedTask;
+    }
+
+    #endregion
+
+    #region DeclinedPayoutException
+
+    [TestCase]
+    public Task CreatePayout_DeclinedCard_ThrowsDeclinedPayoutException()
+    {
+        CreatePayoutRequest request = new CreatePayoutRequestBuilder()
+            .WithCardNumber("4321456998744563")
+            .Build();
+
+        DeclinedPayoutException exception = Assert.ThrowsAsync<DeclinedPayoutException>(async () =>
+            await _payoutsClient.CreatePayout(request));
+
+        Assert.That(exception, Is.Not.Null);
+        Assert.That((int)exception.StatusCode, Is.GreaterThanOrEqualTo(400));
+        Assert.That(exception.Errors, Is.Not.Null.And.Not.Empty);
+
+        APIError error = exception.Errors.First();
+        Assert.That(error.Id, Is.EqualTo("INVALID_CARD"));
 
         return Task.CompletedTask;
     }

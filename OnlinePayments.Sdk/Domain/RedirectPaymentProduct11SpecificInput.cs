@@ -1,18 +1,13 @@
 /*
  * This file was automatically generated.
  */
-using System;
-using Newtonsoft.Json;
-using OnlinePayments.Sdk.Json;
-
 namespace OnlinePayments.Sdk.Domain
 {
     public class RedirectPaymentProduct11SpecificInput
     {
         /// <summary>
-        /// The first installment date must be given in the YYYYMMDD format.
+        /// Indicates whether to skip the email validation for the payment. When set to true, the email validation will be skipped.
         /// </summary>
-        [JsonConverter(typeof(DateOnlyConverter))]
-        public DateTime FirstInstallmentPaymentDate { get; set; }
+        public bool? SkipEmailValidation { get; set; }
     }
 }

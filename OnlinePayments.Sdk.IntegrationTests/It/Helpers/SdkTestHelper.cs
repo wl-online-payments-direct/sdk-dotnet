@@ -178,5 +178,21 @@ public class SdkTestHelper(IMerchantClient merchantClient)
         return response.MerchantBatchReference;
     }
 
+    public async Task<string> SubmitAndProcessBatchAndGetReference(
+        List<CreatePaymentRequest> requests,
+        string operationType,
+        int itemCount)
+    {
+        string merchantBatchReference =
+            await SubmitBatchAndGetReference(requests, operationType, itemCount).ConfigureAwait(false);
+
+        await merchantClient
+            .MerchantBatch
+            .ProcessBatch(merchantBatchReference)
+            .ConfigureAwait(false);
+
+        return merchantBatchReference;
+    }
+
     #endregion
 }

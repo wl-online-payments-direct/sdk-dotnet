@@ -6,6 +6,11 @@ namespace OnlinePayments.Sdk.Domain
     public class ShowFormData
     {
         /// <summary>
+        /// Contains the third party data for payment product 11 (Offline Bank transfer)
+        /// </summary>
+        public PaymentProduct11 PaymentProduct11 { get; set; }
+
+        /// <summary>
         /// Contains the third party data for payment product 3012 (Bancontact)
         /// </summary>
         public PaymentProduct3012 PaymentProduct3012 { get; set; }

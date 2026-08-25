@@ -8,6 +8,11 @@ namespace OnlinePayments.Sdk.Domain
     public class CreateHostedFieldsSessionResponse
     {
         /// <summary>
+        /// This is a list of validated, previously stored card tokens available for use in this checkout session.
+        /// </summary>
+        public IList<CardToken> CardTokens { get; set; }
+
+        /// <summary>
         /// Id of the created session
         /// </summary>
         public string HostedFieldsSessionId { get; set; }

@@ -11,6 +11,11 @@ namespace OnlinePayments.Sdk.Domain
         public Card Card { get; set; }
 
         /// <summary>
+        /// A unique identifier that references a previously created hosted fields session. Use this field to reuse the payment method details securely captured in the referenced hosted fields session.
+        /// </summary>
+        public string HostedFieldsSessionId { get; set; }
+
+        /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.
         /// </summary>
         public int? PaymentProductId { get; set; }

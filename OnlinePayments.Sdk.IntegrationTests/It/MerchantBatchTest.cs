@@ -13,6 +13,10 @@ public class MerchantBatchTest : IntegrationTest
 {
     private const string NonExistingMerchantBatchReference = "non-existing-batch-reference";
     private const string InvalidMerchantBatchReference = "";
+    private const string InvalidCursor = "invalid-cursor-value";
+    private const string CursorValue = "cursor-value";
+    private const int LimitBelowMinimum = 0;
+    private const int LimitAboveMaximum = 1001;
 
     private IMerchantBatchClient _merchantBatchClient;
     private SdkTestHelper _sdkTestHelper;
@@ -145,6 +149,174 @@ public class MerchantBatchTest : IntegrationTest
             await _merchantBatchClient.GetBatchStatus(NonExistingMerchantBatchReference));
 
         return Task.CompletedTask;
+    }
+
+    #endregion
+
+    #region GetPaymentsReport
+
+    [TestCase]
+    public async Task GetPaymentsReport_WithFullValidParameters_ReturnsResponse()
+    {
+        CreatePaymentRequest createPaymentRequest = new CreatePaymentRequestBuilder().Build();
+
+        string reference = await _sdkTestHelper.SubmitAndProcessBatchAndGetReference(
+            [createPaymentRequest],
+            "CreatePayment",
+            1);
+
+        GetPaymentsReportParams getPaymentsReportParams = new GetPaymentsReportParamsBuilder().Build();
+
+        PaymentsReportResponse response =
+            await _merchantBatchClient.GetPaymentsReport(reference, getPaymentsReportParams);
+
+        Assert.That(response, Is.Not.Null);
+        Assert.That(response.Payments, Is.Not.Null);
+        Assert.That(response.Pagination, Is.Not.Null);
+    }
+
+    [TestCase]
+    public async Task GetPaymentsReport_WithCursorAndLimit_ReturnsResponse()
+    {
+        CreatePaymentRequest createPaymentRequest = new CreatePaymentRequestBuilder().Build();
+
+        string reference = await _sdkTestHelper.SubmitAndProcessBatchAndGetReference(
+            [createPaymentRequest],
+            "CreatePayment",
+            1);
+
+        GetPaymentsReportParams firstPageParams = new GetPaymentsReportParamsBuilder()
+            .WithLimit(1)
+            .Build();
+
+        PaymentsReportResponse firstPage = await _merchantBatchClient.GetPaymentsReport(reference, firstPageParams);
+
+        Assert.That(firstPage, Is.Not.Null);
+        Assert.That(firstPage.Payments, Is.Not.Null);
+        Assert.That(firstPage.Pagination, Is.Not.Null);
+
+        GetPaymentsReportParams secondPageParams = new GetPaymentsReportParamsBuilder()
+            .WithLimit(1)
+            .WithCursor(firstPage.Pagination?.NextCursor)
+            .Build();
+
+        PaymentsReportResponse secondPage = await _merchantBatchClient.GetPaymentsReport(reference, secondPageParams);
+
+        Assert.That(secondPage, Is.Not.Null);
+        Assert.That(secondPage.Payments, Is.Not.Null);
+        Assert.That(secondPage.Pagination, Is.Not.Null);
+    }
+
+    [TestCase]
+    public async Task GetPaymentsReport_WithExistingMerchantBatchReferenceAndCallContext_ReturnsPaymentsReport()
+    {
+        CreatePaymentRequest createPaymentRequest = new CreatePaymentRequestBuilder().Build();
+
+        string reference = await _sdkTestHelper.SubmitAndProcessBatchAndGetReference(
+            [createPaymentRequest],
+            "CreatePayment",
+            1);
+
+        GetPaymentsReportParams getPaymentsReportParams = new GetPaymentsReportParamsBuilder().Build();
+        CallContext context = new CallContext().WithIdempotenceKey("test-merchant-batch-" + Guid.NewGuid());
+
+        PaymentsReportResponse response =
+            await _merchantBatchClient.GetPaymentsReport(reference, getPaymentsReportParams, context);
+
+        Assert.That(response, Is.Not.Null);
+        Assert.That(response.Payments, Is.Not.Null);
+        Assert.That(response.Pagination, Is.Not.Null);
+    }
+
+    [TestCase]
+    public void GetPaymentsReportParams_WithAllOptionalParams_HaveCorrectValues()
+    {
+        GetPaymentsReportParams getPaymentsReportParams = new GetPaymentsReportParamsBuilder()
+            .WithCursor(CursorValue)
+            .WithLimit(50)
+            .Build();
+
+        Assert.That(getPaymentsReportParams.Cursor, Is.EqualTo(CursorValue));
+        Assert.That(getPaymentsReportParams.Limit, Is.EqualTo(50));
+    }
+
+    [TestCase]
+    public Task GetPaymentsReport_WithNonExistingMerchantBatchReference_ThrowsReferenceException()
+    {
+        GetPaymentsReportParams getPaymentsReportParams = new GetPaymentsReportParamsBuilder().Build();
+
+        ReferenceException exception = Assert.ThrowsAsync<ReferenceException>(async () =>
+            await _merchantBatchClient.GetPaymentsReport(
+                NonExistingMerchantBatchReference,
+                getPaymentsReportParams));
+
+        Assert.That(exception, Is.Not.Null);
+        Assert.That((int)exception.StatusCode, Is.EqualTo(404));
+
+        return Task.CompletedTask;
+    }
+
+    [TestCase]
+    public async Task GetPaymentsReport_WithInvalidCursor_ThrowsValidationException()
+    {
+        CreatePaymentRequest createPaymentRequest = new CreatePaymentRequestBuilder().Build();
+
+        string reference = await _sdkTestHelper.SubmitBatchAndGetReference(
+            [createPaymentRequest],
+            "CreatePayment",
+            1);
+
+        GetPaymentsReportParams getPaymentsReportParams = new GetPaymentsReportParamsBuilder()
+            .WithCursor(InvalidCursor)
+            .Build();
+
+        ValidationException exception = Assert.ThrowsAsync<ValidationException>(async () =>
+            await _merchantBatchClient.GetPaymentsReport(reference, getPaymentsReportParams));
+
+        Assert.That(exception, Is.Not.Null);
+        Assert.That((int)exception.StatusCode, Is.EqualTo(400));
+    }
+
+    [TestCase]
+    public async Task GetPaymentsReport_WithLimitBelowMinimum_ThrowsValidationException()
+    {
+        CreatePaymentRequest createPaymentRequest = new CreatePaymentRequestBuilder().Build();
+
+        string reference = await _sdkTestHelper.SubmitBatchAndGetReference(
+            [createPaymentRequest],
+            "CreatePayment",
+            1);
+
+        GetPaymentsReportParams getPaymentsReportParams = new GetPaymentsReportParamsBuilder()
+            .WithLimit(LimitBelowMinimum)
+            .Build();
+
+        ValidationException exception = Assert.ThrowsAsync<ValidationException>(async () =>
+            await _merchantBatchClient.GetPaymentsReport(reference, getPaymentsReportParams));
+
+        Assert.That(exception, Is.Not.Null);
+        Assert.That((int)exception.StatusCode, Is.EqualTo(400));
+    }
+
+    [TestCase]
+    public async Task GetPaymentsReport_WithLimitAboveMaximum_ThrowsValidationException()
+    {
+        CreatePaymentRequest createPaymentRequest = new CreatePaymentRequestBuilder().Build();
+
+        string reference = await _sdkTestHelper.SubmitBatchAndGetReference(
+            [createPaymentRequest],
+            "CreatePayment",
+            1);
+
+        GetPaymentsReportParams getPaymentsReportParams = new GetPaymentsReportParamsBuilder()
+            .WithLimit(LimitAboveMaximum)
+            .Build();
+
+        ValidationException exception = Assert.ThrowsAsync<ValidationException>(async () =>
+            await _merchantBatchClient.GetPaymentsReport(reference, getPaymentsReportParams));
+
+        Assert.That(exception, Is.Not.Null);
+        Assert.That((int)exception.StatusCode, Is.EqualTo(400));
     }
 
     #endregion

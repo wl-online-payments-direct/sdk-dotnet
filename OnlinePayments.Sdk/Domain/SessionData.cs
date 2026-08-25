@@ -28,7 +28,7 @@ namespace OnlinePayments.Sdk.Domain
         public string SessionToken { get; set; }
 
         /// <summary>
-        /// This is a list of validated, previously stored card tokens available for use in this checkout session.
+        /// This is a list of card tokens
         /// </summary>
         public IList<string> Tokens { get; set; }
     }
