@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class PaymentProduct840SpecificOutput
     {
         /// <summary>
-        /// Object containing billing address details.
+        /// Deprecated - Use billingPersonalAddress instead
         /// </summary>
         public Address BillingAddress { get; set; }
 
@@ -21,7 +21,7 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentProduct840CustomerAccount CustomerAccount { get; set; }
 
         /// <summary>
-        /// Object containing billing address details.
+        /// Deprecated - Use shippingAddress instead
         /// </summary>
         public Address CustomerAddress { get; set; }
 

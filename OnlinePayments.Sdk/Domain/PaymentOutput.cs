@@ -8,7 +8,7 @@ namespace OnlinePayments.Sdk.Domain
     public class PaymentOutput
     {
         /// <summary>
-        /// Object containing amount and ISO currency code attributes
+        /// Amount that has been acquired by the Acquirer
         /// </summary>
         public AmountOfMoney AcquiredAmount { get; set; }
 
@@ -76,6 +76,6 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// It is the server-side processing date and time of the transaction.
         /// </summary>
-        public DateTimeOffset TransactionDate { get; set; }
+        public DateTimeOffset? TransactionDate { get; set; }
     }
 }

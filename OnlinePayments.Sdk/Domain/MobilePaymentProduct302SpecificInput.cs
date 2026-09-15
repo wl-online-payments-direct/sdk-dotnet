@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class MobilePaymentProduct302SpecificInput
     {
         /// <summary>
-        /// Object containing information specific to Apple Pay recurring request.
+        /// Object containing information specific to Apple Pay recurring request. Only used for HostedCheckout.
         /// </summary>
         public ApplePayRecurringPaymentRequest ApplePayRecurringPaymentRequest { get; set; }
 
@@ -28,7 +28,7 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// Indicates if this transaction should be tokenized
         /// <list type="bullet">
-        ///   <item><description>true - Tokenize the transaction. Note that a payment on the payment platform that results in a status REDIRECTED cannot be tokenized in this way.</description></item>
+        ///   <item><description>true - Tokenize the transaction.</description></item>
         ///   <item><description>false - Do not tokenize the transaction, unless it would be tokenized by other means such as auto-tokenization of recurring payments.</description></item>
         /// </list>
         /// </summary>

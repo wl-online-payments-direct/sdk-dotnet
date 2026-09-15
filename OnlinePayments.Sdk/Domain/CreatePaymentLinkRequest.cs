@@ -31,7 +31,7 @@ namespace OnlinePayments.Sdk.Domain
         /// Deprecated: Use <c>paymentLinkSpecificInput/expirationDate</c> instead.
         /// </summary>
         [Obsolete("The date after which the payment link will not be usable to complete the payment. The date sent cannot be more than 6 months in the future or a past date. It must also contain the UTC offset.  Use paymentLinkSpecificInput/expirationDate instead.")]
-        public DateTimeOffset ExpirationDate { get; set; }
+        public DateTimeOffset? ExpirationDate { get; set; }
 
         /// <summary>
         /// This section will contain feedback Urls to provide feedback on the payment.

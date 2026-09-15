@@ -17,6 +17,9 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public string Origin { get; set; }
 
+        /// <summary>
+        /// These are your stored tokens that you can reuse during the session.
+        /// </summary>
         public IList<string> Tokens { get; set; }
     }
 }

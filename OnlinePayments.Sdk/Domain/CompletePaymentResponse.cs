@@ -6,12 +6,12 @@ namespace OnlinePayments.Sdk.Domain
     public class CompletePaymentResponse
     {
         /// <summary>
-        /// This object contains the details of the created payment.
+        /// Deprecated: This field is not used by any payment product
         /// </summary>
         public PaymentCreationOutput CreationOutput { get; set; }
 
         /// <summary>
-        /// This object contains the action, including the needed data, that you should perform next. This could involve showing instructions, displaying the transaction results, or redirecting to a third party to complete the payment.
+        /// Deprecated: This field is not used by any payment product
         /// </summary>
         public MerchantAction MerchantAction { get; set; }
 

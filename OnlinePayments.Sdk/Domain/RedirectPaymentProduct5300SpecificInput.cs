@@ -50,6 +50,6 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// The date and time after which the transaction will expire in UTC (format YYYY-MM-DDTHH:mm:ssZ)
         /// </summary>
-        public DateTimeOffset TransactionExpirationDateTime { get; set; }
+        public DateTimeOffset? TransactionExpirationDateTime { get; set; }
     }
 }

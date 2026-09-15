@@ -29,5 +29,10 @@ namespace OnlinePayments.Sdk.Domain
         /// Merchant Identifier is a value defined by the acquirer.
         /// </summary>
         public string MerchantId { get; set; }
+
+        /// <summary>
+        /// Website address of the submerchant.
+        /// </summary>
+        public string Website { get; set; }
     }
 }

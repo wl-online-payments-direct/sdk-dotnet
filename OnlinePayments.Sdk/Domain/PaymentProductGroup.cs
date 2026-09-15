@@ -10,10 +10,13 @@ namespace OnlinePayments.Sdk.Domain
         public AccountOnFile AccountOnFile { get; set; }
 
         /// <summary>
-        /// Object containing display hints like the order of the product when shown in a list, the name of the product and the logo
+        /// Deprecated: field is replaced by displayHintsList
         /// </summary>
         public PaymentProductDisplayHints DisplayHints { get; set; }
 
+        /// <summary>
+        /// List of display hints
+        /// </summary>
         public IList<PaymentProductDisplayHints> DisplayHintsList { get; set; }
 
         /// <summary>

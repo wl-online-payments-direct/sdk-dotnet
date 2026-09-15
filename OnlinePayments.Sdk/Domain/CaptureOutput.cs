@@ -8,7 +8,7 @@ namespace OnlinePayments.Sdk.Domain
     public class CaptureOutput
     {
         /// <summary>
-        /// Object containing amount and ISO currency code attributes
+        /// Amount that has been acquired by the Acquirer
         /// </summary>
         public AmountOfMoney AcquiredAmount { get; set; }
 

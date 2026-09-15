@@ -7,6 +7,9 @@ namespace OnlinePayments.Sdk.Domain
 {
     public class PaymentStatusOutput
     {
+        /// <summary>
+        /// This field contains the set of errors encountered during the process.
+        /// </summary>
         public IList<APIError> Errors { get; set; }
 
         /// <summary>

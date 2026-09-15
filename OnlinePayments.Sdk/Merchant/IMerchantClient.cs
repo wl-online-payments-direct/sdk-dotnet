@@ -12,6 +12,7 @@ using OnlinePayments.Sdk.Merchant.MerchantBatch;
 using OnlinePayments.Sdk.Merchant.PaymentLinks;
 using OnlinePayments.Sdk.Merchant.Payments;
 using OnlinePayments.Sdk.Merchant.Payouts;
+using OnlinePayments.Sdk.Merchant.PreAuthorization;
 using OnlinePayments.Sdk.Merchant.PrivacyPolicy;
 using OnlinePayments.Sdk.Merchant.ProductGroups;
 using OnlinePayments.Sdk.Merchant.Products;
@@ -77,6 +78,12 @@ namespace OnlinePayments.Sdk.Merchant
         /// </summary>
         /// <returns>ISubsequentClient</returns>
         ISubsequentClient Subsequent { get; }
+
+        /// <summary>
+        /// Resource /v2/{merchantId}/payments/{paymentId}/increment-authorization
+        /// </summary>
+        /// <returns>IPreAuthorizationClient</returns>
+        IPreAuthorizationClient PreAuthorization { get; }
 
         /// <summary>
         /// Resource /v2/{merchantId}/productgroups

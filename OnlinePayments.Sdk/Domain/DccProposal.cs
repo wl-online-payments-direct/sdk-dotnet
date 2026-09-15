@@ -20,6 +20,9 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public string DisclaimerReceipt { get; set; }
 
+        /// <summary>
+        /// Rate details given by the Dynamic Currency Conversion(DCC) provider
+        /// </summary>
         public RateDetails Rate { get; set; }
 
         /// <summary>

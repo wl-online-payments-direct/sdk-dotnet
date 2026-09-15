@@ -23,7 +23,7 @@ namespace OnlinePayments.Sdk.Domain
         /// The card effective date (YYYY-MM-DD)
         /// </summary>
         [JsonConverter(typeof(DateOnlyConverter))]
-        public DateTime CardEffectiveDate { get; set; }
+        public DateTime? CardEffectiveDate { get; set; }
 
         /// <summary>
         /// Indicator of existence of a card effective date

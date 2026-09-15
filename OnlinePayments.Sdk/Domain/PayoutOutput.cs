@@ -35,6 +35,6 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// It is the server-side processing date and time of the transaction.
         /// </summary>
-        public DateTimeOffset TransactionDate { get; set; }
+        public DateTimeOffset? TransactionDate { get; set; }
     }
 }

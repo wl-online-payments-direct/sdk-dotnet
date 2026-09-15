@@ -95,7 +95,7 @@ namespace OnlinePayments.Sdk.Domain
         public int? PaymentProductId { get; set; }
 
         /// <summary>
-        /// Instructions for reattempting a declined authorization. Provided only in case of declined authorization, for those acquirers that may respond with explicit instructions regarding potential reattempt processing.
+        /// Provided only in case of declined authorization, for those acquirers that may respond with explicit instructions regarding potential reattempt processing.
         /// </summary>
         public ReattemptInstructions ReattemptInstructions { get; set; }
 

@@ -28,7 +28,7 @@ namespace OnlinePayments.Sdk.Domain
         public string AuthorizationMode { get; set; }
 
         /// <summary>
-        /// Object containing the auto capture configuration for the payment.
+        /// Container for all auto capture-related settings.
         /// </summary>
         public AutoCapture AutoCapture { get; set; }
 
@@ -123,6 +123,11 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific input required for OneyDuplo Alcampo payments.
         /// </summary>
         public PaymentProduct3209SpecificInput PaymentProduct3209SpecificInput { get; set; }
+
+        /// <summary>
+        /// Object containing specific input required for Click to Pay payments.
+        /// </summary>
+        public PaymentProduct5002SpecificInput PaymentProduct5002SpecificInput { get; set; }
 
         /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.

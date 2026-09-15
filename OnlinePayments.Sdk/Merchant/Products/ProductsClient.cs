@@ -55,7 +55,7 @@ namespace OnlinePayments.Sdk.Merchant.Products
         /// <summary>
         /// Resource /v2/{merchantId}/products/{paymentProductId} - Get payment product
         /// </summary>
-        /// <param name="paymentProductId">int?</param>
+        /// <param name="paymentProductId">int</param>
         /// <param name="query">GetPaymentProductParams</param>
         /// <param name="context">CallContext</param>
         /// <returns>PaymentProduct</returns>
@@ -68,7 +68,7 @@ namespace OnlinePayments.Sdk.Merchant.Products
         ///            the payment platform was unable to process a message from a downstream partner/acquirer,
         ///            or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)</exception>
         /// <exception cref="ApiException">if the payment platform returned any other error</exception>
-        public async Task<PaymentProduct> GetPaymentProduct(int? paymentProductId, GetPaymentProductParams query, CallContext context = null)
+        public async Task<PaymentProduct> GetPaymentProduct(int paymentProductId, GetPaymentProductParams query, CallContext context = null)
         {
             var pathContext = new Dictionary<string, string>
             {
@@ -94,7 +94,7 @@ namespace OnlinePayments.Sdk.Merchant.Products
         /// <summary>
         /// Resource /v2/{merchantId}/products/{paymentProductId}/networks - Get payment product networks
         /// </summary>
-        /// <param name="paymentProductId">int?</param>
+        /// <param name="paymentProductId">int</param>
         /// <param name="query">GetPaymentProductNetworksParams</param>
         /// <param name="context">CallContext</param>
         /// <returns>PaymentProductNetworksResponse</returns>
@@ -107,7 +107,7 @@ namespace OnlinePayments.Sdk.Merchant.Products
         ///            the payment platform was unable to process a message from a downstream partner/acquirer,
         ///            or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)</exception>
         /// <exception cref="ApiException">if the payment platform returned any other error</exception>
-        public async Task<PaymentProductNetworksResponse> GetPaymentProductNetworks(int? paymentProductId, GetPaymentProductNetworksParams query, CallContext context = null)
+        public async Task<PaymentProductNetworksResponse> GetPaymentProductNetworks(int paymentProductId, GetPaymentProductNetworksParams query, CallContext context = null)
         {
             var pathContext = new Dictionary<string, string>
             {
@@ -133,7 +133,7 @@ namespace OnlinePayments.Sdk.Merchant.Products
         /// <summary>
         /// Resource /v2/{merchantId}/products/{paymentProductId}/directory - Get payment product directory
         /// </summary>
-        /// <param name="paymentProductId">int?</param>
+        /// <param name="paymentProductId">int</param>
         /// <param name="query">GetProductDirectoryParams</param>
         /// <param name="context">CallContext</param>
         /// <returns>ProductDirectory</returns>
@@ -146,7 +146,7 @@ namespace OnlinePayments.Sdk.Merchant.Products
         ///            the payment platform was unable to process a message from a downstream partner/acquirer,
         ///            or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)</exception>
         /// <exception cref="ApiException">if the payment platform returned any other error</exception>
-        public async Task<ProductDirectory> GetProductDirectory(int? paymentProductId, GetProductDirectoryParams query, CallContext context = null)
+        public async Task<ProductDirectory> GetProductDirectory(int paymentProductId, GetProductDirectoryParams query, CallContext context = null)
         {
             var pathContext = new Dictionary<string, string>
             {
@@ -172,7 +172,7 @@ namespace OnlinePayments.Sdk.Merchant.Products
         /// <summary>
         /// Resource /v2/{merchantId}/products/{paymentProductId}/sessions - Create a session for a payment product
         /// </summary>
-        /// <param name="paymentProductId">int?</param>
+        /// <param name="paymentProductId">int</param>
         /// <param name="body">PaymentProductSessionRequest</param>
         /// <param name="context">CallContext</param>
         /// <returns>PaymentProductSessionResponse</returns>
@@ -185,7 +185,7 @@ namespace OnlinePayments.Sdk.Merchant.Products
         ///            the payment platform was unable to process a message from a downstream partner/acquirer,
         ///            or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)</exception>
         /// <exception cref="ApiException">if the payment platform returned any other error</exception>
-        public async Task<PaymentProductSessionResponse> CreatePaymentProductSession(int? paymentProductId, PaymentProductSessionRequest body, CallContext context = null)
+        public async Task<PaymentProductSessionResponse> CreatePaymentProductSession(int paymentProductId, PaymentProductSessionRequest body, CallContext context = null)
         {
             var pathContext = new Dictionary<string, string>
             {

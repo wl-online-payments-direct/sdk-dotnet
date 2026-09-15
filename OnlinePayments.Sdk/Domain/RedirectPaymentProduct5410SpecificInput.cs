@@ -13,6 +13,6 @@ namespace OnlinePayments.Sdk.Domain
         /// The date of the second installment (YYYYMMDD)
         /// </summary>
         [JsonConverter(typeof(DateOnlyConverter))]
-        public DateTime SecondInstallmentPaymentDate { get; set; }
+        public DateTime? SecondInstallmentPaymentDate { get; set; }
     }
 }

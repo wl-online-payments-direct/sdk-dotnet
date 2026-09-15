@@ -27,6 +27,9 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public string CustomerId { get; set; }
 
+        /// <summary>
+        /// Tokens that are submitted in the request are validated. In case any of the tokens can't be used anymore they are returned in this array. You should most likely remove those tokens from your system.
+        /// </summary>
         public IList<string> InvalidTokens { get; set; }
     }
 }

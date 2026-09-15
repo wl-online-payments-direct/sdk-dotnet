@@ -36,10 +36,13 @@ namespace OnlinePayments.Sdk.Domain
         public bool? AllowsTokenization { get; set; }
 
         /// <summary>
-        /// Object containing display hints like the order of the product when shown in a list, the name of the product and the logo
+        /// Deprecated: field is replaced by displayHintsList
         /// </summary>
         public PaymentProductDisplayHints DisplayHints { get; set; }
 
+        /// <summary>
+        /// List of display hints
+        /// </summary>
         public IList<PaymentProductDisplayHints> DisplayHintsList { get; set; }
 
         /// <summary>
@@ -57,9 +60,20 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         public string PaymentMethod { get; set; }
 
+        /// <summary>
+        /// Apple Pay (payment product 302) specific details.
+        /// </summary>
         public PaymentProduct302SpecificData PaymentProduct302SpecificData { get; set; }
 
+        /// <summary>
+        /// Google Pay (payment product 320) specific details.
+        /// </summary>
         public PaymentProduct320SpecificData PaymentProduct320SpecificData { get; set; }
+
+        /// <summary>
+        /// Click to Pay (payment product 5002) specific details.
+        /// </summary>
+        public PaymentProduct5002SpecificData PaymentProduct5002SpecificData { get; set; }
 
         /// <summary>
         /// The payment product group that has this payment product, if there is any. Not populated otherwise. Currently only one payment product group is supported:

@@ -12,7 +12,7 @@ namespace OnlinePayments.Sdk.Domain
         public IList<APIError> Errors { get; set; }
 
         /// <summary>
-        /// This object has the numeric representation of the current refund status, timestamp of last status change and performable action on the current refund resource. In case of a rejected refund, detailed error information is listed.
+        /// Deprecated: This field is not used by any payment product
         /// </summary>
         public RefundResponse RefundResult { get; set; }
     }

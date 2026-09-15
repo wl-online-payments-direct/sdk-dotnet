@@ -25,6 +25,6 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// Date and time the payment was created in UTC
         /// </summary>
-        public DateTimeOffset TransactionDate { get; set; }
+        public DateTimeOffset? TransactionDate { get; set; }
     }
 }

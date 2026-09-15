@@ -15,6 +15,11 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// It is the authorization processing date and time of the transaction.
         /// </summary>
-        public DateTimeOffset AuthorizationDate { get; set; }
+        public DateTimeOffset? AuthorizationDate { get; set; }
+
+        /// <summary>
+        /// Identifier shared with the acquirer during the authorization process. For example, this reference data could be sent by the acquirer in the authorization response, then sent (unchanged) in a subsequent authorization reversal message, to the extent that the acquirer is able to match a reversal message to the associated response message.
+        /// </summary>
+        public string AuthorizationMessageReference { get; set; }
     }
 }

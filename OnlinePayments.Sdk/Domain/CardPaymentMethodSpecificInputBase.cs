@@ -26,7 +26,7 @@ namespace OnlinePayments.Sdk.Domain
         public string AuthorizationMode { get; set; }
 
         /// <summary>
-        /// Object containing the auto capture configuration for the payment.
+        /// Container for all auto capture-related settings.
         /// </summary>
         public AutoCapture AutoCapture { get; set; }
 

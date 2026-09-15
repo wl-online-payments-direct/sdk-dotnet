@@ -6,7 +6,7 @@ namespace OnlinePayments.Sdk.Domain
     public class CardInfo
     {
         /// <summary>
-        /// The complete credit/debit card number (also known as the PAN) is always obfuscated in any of our responses.
+        /// Provide the complete credit/debit card number (also known as the PAN) for the most accurate results.
         /// </summary>
         public string CardNumber { get; set; }
 

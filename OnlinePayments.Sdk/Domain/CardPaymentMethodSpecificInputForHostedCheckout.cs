@@ -26,7 +26,7 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// This array contains the payment product identifiers representing the brands. For co-badged cards, this displays their available brands in the order defined by this array, when groupCards is activated.
         /// </summary>
-        public IList<int?> PaymentProductPreferredOrder { get; set; }
+        public IList<int> PaymentProductPreferredOrder { get; set; }
 
         /// <summary>
         /// Controls the generation and use of a token within a hosted checkout session.

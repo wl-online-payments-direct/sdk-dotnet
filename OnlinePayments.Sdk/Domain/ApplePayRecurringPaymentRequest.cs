@@ -21,12 +21,12 @@ namespace OnlinePayments.Sdk.Domain
         public string PaymentDescription { get; set; }
 
         /// <summary>
-        /// Object containing specific data regarding Apple Pay recurring payment.
+        /// Object containing specific data regarding Apple Pay recurring regular payment
         /// </summary>
         public ApplePayLineItem RegularBilling { get; set; }
 
         /// <summary>
-        /// Object containing specific data regarding Apple Pay recurring payment.
+        /// Object containing specific data regarding Apple Pay recurring trial payment
         /// </summary>
         public ApplePayLineItem TrialBilling { get; set; }
     }

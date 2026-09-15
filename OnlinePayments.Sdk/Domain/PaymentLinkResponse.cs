@@ -11,7 +11,7 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// The date after which the payment link will not be usable to complete the payment. The date will contain the UTC offset.
         /// </summary>
-        public DateTimeOffset ExpirationDate { get; set; }
+        public DateTimeOffset? ExpirationDate { get; set; }
 
         /// <summary>
         /// Indicates if the payment link can be used multiple times. The default value for this property is false

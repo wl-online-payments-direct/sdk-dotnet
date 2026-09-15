@@ -7,6 +7,9 @@ namespace OnlinePayments.Sdk.Domain
 {
     public class PaymentProductFilterHostedTokenization
     {
-        public IList<int?> Products { get; set; }
+        /// <summary>
+        /// List containing all payment product ids that should either be restricted to in or excluded from the payment context.
+        /// </summary>
+        public IList<int> Products { get; set; }
     }
 }
