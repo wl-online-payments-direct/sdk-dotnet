@@ -105,6 +105,11 @@ namespace OnlinePayments.Sdk.Domain
         public string SchemeReferenceData { get; set; }
 
         /// <summary>
+        /// This is populated in case of a Mastercard payment, with the Mastercard TLID (Transaction Life Cycle ID) field.
+        /// </summary>
+        public string SchemeTransactionId { get; set; }
+
+        /// <summary>
         /// 3D Secure results object
         /// </summary>
         public ThreeDSecureResults ThreeDSecureResults { get; set; }
