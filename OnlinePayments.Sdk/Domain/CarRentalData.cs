@@ -48,7 +48,7 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// Object containing specific data regarding the pickup or return of a rental car
         /// </summary>
-        public CarRentalPickupReturnData Pickup { get; set; }
+        public CarRentalPickupReturnData PickupDetails { get; set; }
 
         /// <summary>
         /// Fare amount.
@@ -68,7 +68,7 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// Object containing specific data regarding the pickup or return of a rental car
         /// </summary>
-        public CarRentalPickupReturnData Return { get; set; }
+        public CarRentalPickupReturnData ReturnDetails { get; set; }
 
         /// <summary>
         /// This field indicate the taxable status (taxable/tax exempt).
