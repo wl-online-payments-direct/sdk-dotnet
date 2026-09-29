@@ -37,5 +37,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Object returned for the SHOW_INSTRUCTIONS actionType.
         /// </summary>
         public ShowInstructionsData ShowInstructionsData { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MerchantAction WithActionType(string value)
+        {
+            ActionType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MerchantAction WithMobileThreeDSecureChallengeParameters(MobileThreeDSecureChallengeParameters value)
+        {
+            MobileThreeDSecureChallengeParameters = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MerchantAction WithRedirectData(RedirectData value)
+        {
+            RedirectData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MerchantAction WithShowFormData(ShowFormData value)
+        {
+            ShowFormData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MerchantAction WithShowInstructionsData(ShowInstructionsData value)
+        {
+            ShowInstructionsData = value;
+            return this;
+        }
     }
 }

@@ -19,5 +19,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Title of customer
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PersonalName WithFirstName(string value)
+        {
+            FirstName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PersonalName WithSurname(string value)
+        {
+            Surname = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PersonalName WithTitle(string value)
+        {
+            Title = value;
+            return this;
+        }
     }
 }

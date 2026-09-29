@@ -13,5 +13,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string SurchargeMode { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SurchargeForPaymentLink WithSurchargeMode(string value)
+        {
+            SurchargeMode = value;
+            return this;
+        }
     }
 }

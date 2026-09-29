@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific data regarding Apple Pay recurring trial payment
         /// </summary>
         public ApplePayLineItem TrialBilling { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayRecurringPaymentRequest WithBillingAgreement(string value)
+        {
+            BillingAgreement = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayRecurringPaymentRequest WithManagementUrl(string value)
+        {
+            ManagementUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayRecurringPaymentRequest WithPaymentDescription(string value)
+        {
+            PaymentDescription = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayRecurringPaymentRequest WithRegularBilling(ApplePayLineItem value)
+        {
+            RegularBilling = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayRecurringPaymentRequest WithTrialBilling(ApplePayLineItem value)
+        {
+            TrialBilling = value;
+            return this;
+        }
     }
 }

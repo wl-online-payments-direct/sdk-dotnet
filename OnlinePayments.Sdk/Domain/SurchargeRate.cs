@@ -24,5 +24,41 @@ namespace OnlinePayments.Sdk.Domain
         /// A specific version identifier of the surcharge rates as applied for this request
         /// </summary>
         public string SurchargeProductTypeVersion { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SurchargeRate WithAdValoremRate(decimal? value)
+        {
+            AdValoremRate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SurchargeRate WithSpecificRate(int? value)
+        {
+            SpecificRate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SurchargeRate WithSurchargeProductTypeId(string value)
+        {
+            SurchargeProductTypeId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SurchargeRate WithSurchargeProductTypeVersion(string value)
+        {
+            SurchargeProductTypeVersion = value;
+            return this;
+        }
     }
 }

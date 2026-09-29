@@ -23,5 +23,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Numeric status code of the legacy API. The value can also be found in the BackOffice and in report files.
         /// </summary>
         public int? StatusCode { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutStatusOutput WithIsCancellable(bool? value)
+        {
+            IsCancellable = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutStatusOutput WithStatusCategory(string value)
+        {
+            StatusCategory = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutStatusOutput WithStatusCode(int? value)
+        {
+            StatusCode = value;
+            return this;
+        }
     }
 }

@@ -18,6 +18,15 @@ namespace OnlinePayments.Sdk.Merchant.Tokenization
         /// </summary>
         public IList<string> Tokens { get; set; }
 
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetCardDataByTokensParams WithTokens(IList<string> value)
+        {
+            Tokens = value;
+            return this;
+        }
+
         public void AddTokens(string value)
         {
             var tokens = Tokens;

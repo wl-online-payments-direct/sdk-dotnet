@@ -13,5 +13,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public bool? CompleteRemainingPaymentAmount { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5402SpecificInput WithCompleteRemainingPaymentAmount(bool? value)
+        {
+            CompleteRemainingPaymentAmount = value;
+            return this;
+        }
     }
 }

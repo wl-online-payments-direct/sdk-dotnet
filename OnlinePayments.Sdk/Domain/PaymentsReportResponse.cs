@@ -16,5 +16,23 @@ namespace OnlinePayments.Sdk.Domain
         /// List of payment summaries
         /// </summary>
         public IList<PaymentSummary> Payments { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentsReportResponse WithPagination(CursorPaginationInfo value)
+        {
+            Pagination = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentsReportResponse WithPayments(IList<PaymentSummary> value)
+        {
+            Payments = value;
+            return this;
+        }
     }
 }

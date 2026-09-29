@@ -15,5 +15,23 @@ namespace OnlinePayments.Sdk.Domain
         /// The Payment Id of the transaction (either in-store or online), from which you request to make a refund.
         /// </summary>
         public string PaymentId { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OmnichannelPayoutSpecificInput WithOperatorId(string value)
+        {
+            OperatorId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OmnichannelPayoutSpecificInput WithPaymentId(string value)
+        {
+            PaymentId = value;
+            return this;
+        }
     }
 }

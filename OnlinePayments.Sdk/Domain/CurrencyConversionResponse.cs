@@ -19,5 +19,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Result of a requested currency conversion
         /// </summary>
         public CurrencyConversionResult Result { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversionResponse WithDccSessionId(string value)
+        {
+            DccSessionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversionResponse WithProposal(DccProposal value)
+        {
+            Proposal = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversionResponse WithResult(CurrencyConversionResult value)
+        {
+            Result = value;
+            return this;
+        }
     }
 }

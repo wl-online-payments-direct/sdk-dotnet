@@ -21,5 +21,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Identifier shared with the acquirer during the authorization process. For example, this reference data could be sent by the acquirer in the authorization response, then sent (unchanged) in a subsequent authorization reversal message, to the extent that the acquirer is able to match a reversal message to the associated response message.
         /// </summary>
         public string AuthorizationMessageReference { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Acceptance WithAcceptanceSystemApplicationId(string value)
+        {
+            AcceptanceSystemApplicationId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Acceptance WithAuthorizationDate(DateTimeOffset? value)
+        {
+            AuthorizationDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Acceptance WithAuthorizationMessageReference(string value)
+        {
+            AuthorizationMessageReference = value;
+            return this;
+        }
     }
 }

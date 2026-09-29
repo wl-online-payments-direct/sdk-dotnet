@@ -21,5 +21,41 @@ namespace OnlinePayments.Sdk.Domain
         public string Status { get; set; }
 
         public OrderStatusOutput StatusOutput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundResponse WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundResponse WithRefundOutput(RefundOutput value)
+        {
+            RefundOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundResponse WithStatus(string value)
+        {
+            Status = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundResponse WithStatusOutput(OrderStatusOutput value)
+        {
+            StatusOutput = value;
+            return this;
+        }
     }
 }

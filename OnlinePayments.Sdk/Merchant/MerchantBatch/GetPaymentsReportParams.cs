@@ -18,9 +18,27 @@ namespace OnlinePayments.Sdk.Merchant.MerchantBatch
         public string Cursor { get; set; }
 
         /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentsReportParams WithCursor(string value)
+        {
+            Cursor = value;
+            return this;
+        }
+
+        /// <summary>
         /// Maximum number of items to return per page.
         /// </summary>
         public int? Limit { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentsReportParams WithLimit(int? value)
+        {
+            Limit = value;
+            return this;
+        }
 
         public override IEnumerable<RequestParam> ToRequestParameters()
         {

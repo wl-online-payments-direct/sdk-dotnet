@@ -39,5 +39,68 @@ namespace OnlinePayments.Sdk.Domain
         /// The unique identifier for the token is required for processing.
         /// </summary>
         public string Token { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DetokenizedTokenResponse WithCardBrand(string value)
+        {
+            CardBrand = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DetokenizedTokenResponse WithCardExpiryDate(string value)
+        {
+            CardExpiryDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DetokenizedTokenResponse WithCardHolderName(string value)
+        {
+            CardHolderName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DetokenizedTokenResponse WithEncryptedCardNumber(string value)
+        {
+            EncryptedCardNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DetokenizedTokenResponse WithPaymentId(string value)
+        {
+            PaymentId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DetokenizedTokenResponse WithSchemeReferenceData(string value)
+        {
+            SchemeReferenceData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DetokenizedTokenResponse WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
     }
 }

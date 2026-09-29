@@ -53,5 +53,77 @@ namespace OnlinePayments.Sdk.Domain
         /// Surname of the PayPal account holder
         /// </summary>
         public string Surname { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840CustomerAccount WithAccountId(string value)
+        {
+            AccountId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840CustomerAccount WithCompanyName(string value)
+        {
+            CompanyName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840CustomerAccount WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840CustomerAccount WithCustomerAccountStatus(string value)
+        {
+            CustomerAccountStatus = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840CustomerAccount WithCustomerAddressStatus(string value)
+        {
+            CustomerAddressStatus = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840CustomerAccount WithFirstName(string value)
+        {
+            FirstName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840CustomerAccount WithPayerId(string value)
+        {
+            PayerId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840CustomerAccount WithSurname(string value)
+        {
+            Surname = value;
+            return this;
+        }
     }
 }

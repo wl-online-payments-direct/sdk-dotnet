@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// International version of the work phone number of the customer including the leading + (i.e. +31235671500)
         /// </summary>
         public string WorkPhoneNumber { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ContactDetails WithEmailAddress(string value)
+        {
+            EmailAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ContactDetails WithFaxNumber(string value)
+        {
+            FaxNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ContactDetails WithMobilePhoneNumber(string value)
+        {
+            MobilePhoneNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ContactDetails WithPhoneNumber(string value)
+        {
+            PhoneNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ContactDetails WithWorkPhoneNumber(string value)
+        {
+            WorkPhoneNumber = value;
+            return this;
+        }
     }
 }

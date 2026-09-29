@@ -13,5 +13,14 @@ namespace OnlinePayments.Sdk.Domain
         /// It is optional when the mandate signature type is &quot;AIS&quot;; otherwise, it is mandatory.
         /// </summary>
         public string Iban { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public BankAccountIban WithIban(string value)
+        {
+            Iban = value;
+            return this;
+        }
     }
 }

@@ -49,5 +49,86 @@ namespace OnlinePayments.Sdk.Domain
         /// Zip code
         /// </summary>
         public string Zip { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AddressPersonal WithAdditionalInfo(string value)
+        {
+            AdditionalInfo = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AddressPersonal WithCity(string value)
+        {
+            City = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AddressPersonal WithCompanyName(string value)
+        {
+            CompanyName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AddressPersonal WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AddressPersonal WithHouseNumber(string value)
+        {
+            HouseNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AddressPersonal WithName(PersonalName value)
+        {
+            Name = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AddressPersonal WithState(string value)
+        {
+            State = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AddressPersonal WithStreet(string value)
+        {
+            Street = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AddressPersonal WithZip(string value)
+        {
+            Zip = value;
+            return this;
+        }
     }
 }

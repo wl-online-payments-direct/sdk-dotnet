@@ -68,5 +68,77 @@ namespace OnlinePayments.Sdk.Domain
         /// The unique identifier of the mandate
         /// </summary>
         public string UniqueMandateReference { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateMandateWithReturnUrl WithAlias(string value)
+        {
+            Alias = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateMandateWithReturnUrl WithCustomer(MandateCustomer value)
+        {
+            Customer = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateMandateWithReturnUrl WithCustomerReference(string value)
+        {
+            CustomerReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateMandateWithReturnUrl WithLanguage(string value)
+        {
+            Language = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateMandateWithReturnUrl WithRecurrenceType(string value)
+        {
+            RecurrenceType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateMandateWithReturnUrl WithReturnUrl(string value)
+        {
+            ReturnUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateMandateWithReturnUrl WithSignatureType(string value)
+        {
+            SignatureType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateMandateWithReturnUrl WithUniqueMandateReference(string value)
+        {
+            UniqueMandateReference = value;
+            return this;
+        }
     }
 }

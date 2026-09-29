@@ -11,5 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         /// List of previously stored tokens linked to the customer that wants to checkout.
         /// </summary>
         public IList<string> Tokens { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionRequest WithTokens(IList<string> value)
+        {
+            Tokens = value;
+            return this;
+        }
     }
 }

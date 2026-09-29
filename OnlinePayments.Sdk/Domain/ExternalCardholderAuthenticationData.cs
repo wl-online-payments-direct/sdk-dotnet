@@ -79,5 +79,95 @@ namespace OnlinePayments.Sdk.Domain
         /// The transaction ID that is used for the 3D Authentication
         /// </summary>
         public string Xid { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithAcsTransactionId(string value)
+        {
+            AcsTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithAppliedExemption(string value)
+        {
+            AppliedExemption = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithCavv(string value)
+        {
+            Cavv = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithCavvAlgorithm(string value)
+        {
+            CavvAlgorithm = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithDirectoryServerTransactionId(string value)
+        {
+            DirectoryServerTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithEci(int? value)
+        {
+            Eci = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithFlow(string value)
+        {
+            Flow = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithSchemeRiskScore(int? value)
+        {
+            SchemeRiskScore = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithThreeDSecureVersion(string value)
+        {
+            ThreeDSecureVersion = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ExternalCardholderAuthenticationData WithXid(string value)
+        {
+            Xid = value;
+            return this;
+        }
     }
 }

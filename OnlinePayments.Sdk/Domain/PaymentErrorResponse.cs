@@ -18,5 +18,32 @@ namespace OnlinePayments.Sdk.Domain
         /// This object contains details about the created payment if one has been generated.
         /// </summary>
         public CreatePaymentResponse PaymentResult { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentErrorResponse WithErrorId(string value)
+        {
+            ErrorId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentErrorResponse WithErrors(IList<APIError> value)
+        {
+            Errors = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentErrorResponse WithPaymentResult(CreatePaymentResponse value)
+        {
+            PaymentResult = value;
+            return this;
+        }
     }
 }

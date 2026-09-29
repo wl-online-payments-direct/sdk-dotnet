@@ -23,5 +23,23 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AmountBreakdown WithAmount(long? value)
+        {
+            Amount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AmountBreakdown WithType(string value)
+        {
+            Type = value;
+            return this;
+        }
     }
 }

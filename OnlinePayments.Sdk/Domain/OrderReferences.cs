@@ -78,5 +78,77 @@ namespace OnlinePayments.Sdk.Domain
         /// Creditor Reference to use where applicable for invoicing related to the transaction, in accordance with ISO 11649. Might require merchant specific setup to enable and is subject to agreement with the acquirer.
         /// </summary>
         public string StructuredCreditorReference { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderReferences WithDescriptor(string value)
+        {
+            Descriptor = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderReferences WithMerchantComment(string value)
+        {
+            MerchantComment = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderReferences WithMerchantParameters(string value)
+        {
+            MerchantParameters = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderReferences WithMerchantReconciliationReference(string value)
+        {
+            MerchantReconciliationReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderReferences WithMerchantReference(string value)
+        {
+            MerchantReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderReferences WithOperationGroupReference(string value)
+        {
+            OperationGroupReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderReferences WithSoftDescriptor(string value)
+        {
+            SoftDescriptor = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderReferences WithStructuredCreditorReference(string value)
+        {
+            StructuredCreditorReference = value;
+            return this;
+        }
     }
 }

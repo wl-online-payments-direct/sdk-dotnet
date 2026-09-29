@@ -36,5 +36,59 @@ namespace OnlinePayments.Sdk.Domain
         /// This contains the data required to initialize the Hosted Fields SDK.
         /// </summary>
         public SessionData SessionData { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedFieldsSessionResponse WithCardTokens(IList<CardToken> value)
+        {
+            CardTokens = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedFieldsSessionResponse WithHostedFieldsSessionId(string value)
+        {
+            HostedFieldsSessionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedFieldsSessionResponse WithInvalidTokens(IList<string> value)
+        {
+            InvalidTokens = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedFieldsSessionResponse WithSdkSri(string value)
+        {
+            SdkSri = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedFieldsSessionResponse WithSdkUrl(string value)
+        {
+            SdkUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedFieldsSessionResponse WithSessionData(SessionData value)
+        {
+            SessionData = value;
+            return this;
+        }
     }
 }

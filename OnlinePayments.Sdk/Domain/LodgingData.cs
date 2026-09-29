@@ -10,5 +10,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Format YYYYMMDD
         /// </summary>
         public string CheckInDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LodgingData WithCheckInDate(string value)
+        {
+            CheckInDate = value;
+            return this;
+        }
     }
 }

@@ -91,5 +91,131 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public bool? UsesRedirectionTo3rdParty { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithAccountsOnFile(IList<AccountOnFile> value)
+        {
+            AccountsOnFile = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithAllowsAuthentication(bool? value)
+        {
+            AllowsAuthentication = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithAllowsRecurring(bool? value)
+        {
+            AllowsRecurring = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithAllowsTokenization(bool? value)
+        {
+            AllowsTokenization = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithDisplayHints(PaymentProductDisplayHints value)
+        {
+            DisplayHints = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithDisplayHintsList(IList<PaymentProductDisplayHints> value)
+        {
+            DisplayHintsList = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithFields(IList<PaymentProductField> value)
+        {
+            Fields = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithId(int? value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithPaymentMethod(string value)
+        {
+            PaymentMethod = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithPaymentProduct302SpecificData(PaymentProduct302SpecificData value)
+        {
+            PaymentProduct302SpecificData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithPaymentProduct320SpecificData(PaymentProduct320SpecificData value)
+        {
+            PaymentProduct320SpecificData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithPaymentProduct5002SpecificData(PaymentProduct5002SpecificData value)
+        {
+            PaymentProduct5002SpecificData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithPaymentProductGroup(string value)
+        {
+            PaymentProductGroup = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct WithUsesRedirectionTo3rdParty(bool? value)
+        {
+            UsesRedirectionTo3rdParty = value;
+            return this;
+        }
     }
 }

@@ -84,5 +84,122 @@ namespace OnlinePayments.Sdk.Domain
         /// Transaction ID for the Authentication
         /// </summary>
         public string Xid { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithAcsTransactionId(string value)
+        {
+            AcsTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithAppliedExemption(string value)
+        {
+            AppliedExemption = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithAuthenticationStatus(string value)
+        {
+            AuthenticationStatus = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithCavv(string value)
+        {
+            Cavv = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithChallengeIndicator(string value)
+        {
+            ChallengeIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithDsTransactionId(string value)
+        {
+            DsTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithEci(string value)
+        {
+            Eci = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithExemptionEngineFlow(string value)
+        {
+            ExemptionEngineFlow = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithFlow(string value)
+        {
+            Flow = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithLiability(string value)
+        {
+            Liability = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithSchemeEci(string value)
+        {
+            SchemeEci = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithVersion(string value)
+        {
+            Version = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureResults WithXid(string value)
+        {
+            Xid = value;
+            return this;
+        }
     }
 }

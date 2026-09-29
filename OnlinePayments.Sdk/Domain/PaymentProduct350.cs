@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Contains the token that identifies the payment on the Swish side. This can be used to generate a QR code (either manually or by calling the public QR Code API of Swish) to be scanned by the Swish app.
         /// </summary>
         public string PaymentRequestToken { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct350 WithAppSwitchLink(string value)
+        {
+            AppSwitchLink = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct350 WithPaymentRequestToken(string value)
+        {
+            PaymentRequestToken = value;
+            return this;
+        }
     }
 }

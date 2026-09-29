@@ -9,5 +9,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Legal name of registered DPA.
         /// </summary>
         public string DpaName { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DpaData WithDpaName(string value)
+        {
+            DpaName = value;
+            return this;
+        }
     }
 }

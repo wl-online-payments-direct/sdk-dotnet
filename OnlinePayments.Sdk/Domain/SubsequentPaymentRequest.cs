@@ -25,5 +25,41 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the specific input details for subsequent card payments
         /// </summary>
         public SubsequentCardPaymentMethodSpecificInput SubsequentcardPaymentMethodSpecificInput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentPaymentRequest WithOmnichannelSubsequentSpecificInput(OmnichannelSubsequentSpecificInput value)
+        {
+            OmnichannelSubsequentSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentPaymentRequest WithOrder(Order value)
+        {
+            Order = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentPaymentRequest WithSubsequentPaymentProduct5001SpecificInput(SubsequentPaymentProduct5001SpecificInput value)
+        {
+            SubsequentPaymentProduct5001SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentPaymentRequest WithSubsequentcardPaymentMethodSpecificInput(SubsequentCardPaymentMethodSpecificInput value)
+        {
+            SubsequentcardPaymentMethodSpecificInput = value;
+            return this;
+        }
     }
 }

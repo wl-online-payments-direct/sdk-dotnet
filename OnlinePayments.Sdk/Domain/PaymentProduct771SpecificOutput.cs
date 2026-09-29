@@ -9,5 +9,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Unique reference to a Mandate
         /// </summary>
         public string MandateReference { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct771SpecificOutput WithMandateReference(string value)
+        {
+            MandateReference = value;
+            return this;
+        }
     }
 }

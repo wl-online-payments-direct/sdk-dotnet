@@ -16,5 +16,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string CaptureTrigger { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct900SpecificInput WithCaptureTrigger(string value)
+        {
+            CaptureTrigger = value;
+            return this;
+        }
     }
 }

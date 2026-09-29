@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Name of the acquirer used to process the transaction
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AcquirerInformation WithAcquirerSelectionInformation(AcquirerSelectionInformation value)
+        {
+            AcquirerSelectionInformation = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AcquirerInformation WithName(string value)
+        {
+            Name = value;
+            return this;
+        }
     }
 }

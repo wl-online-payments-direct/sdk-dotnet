@@ -39,5 +39,68 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing address information
         /// </summary>
         public AddressPersonal ShippingAddress { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840SpecificOutput WithBillingAddress(Address value)
+        {
+            BillingAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840SpecificOutput WithBillingPersonalAddress(AddressPersonal value)
+        {
+            BillingPersonalAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840SpecificOutput WithCustomerAccount(PaymentProduct840CustomerAccount value)
+        {
+            CustomerAccount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840SpecificOutput WithCustomerAddress(Address value)
+        {
+            CustomerAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840SpecificOutput WithPayPalTransactionId(string value)
+        {
+            PayPalTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840SpecificOutput WithProtectionEligibility(ProtectionEligibility value)
+        {
+            ProtectionEligibility = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct840SpecificOutput WithShippingAddress(AddressPersonal value)
+        {
+            ShippingAddress = value;
+            return this;
+        }
     }
 }

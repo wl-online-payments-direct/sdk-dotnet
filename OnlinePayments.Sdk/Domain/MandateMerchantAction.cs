@@ -17,5 +17,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing all data needed to redirect the customer
         /// </summary>
         public MandateRedirectData RedirectData { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateMerchantAction WithActionType(string value)
+        {
+            ActionType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateMerchantAction WithRedirectData(MandateRedirectData value)
+        {
+            RedirectData = value;
+            return this;
+        }
     }
 }

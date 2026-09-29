@@ -21,5 +21,41 @@ namespace OnlinePayments.Sdk.Domain
         /// This object has the numeric representation of the current capture status, timestamp of last status change and performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.
         /// </summary>
         public CaptureStatusOutput StatusOutput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Capture WithCaptureOutput(CaptureOutput value)
+        {
+            CaptureOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Capture WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Capture WithStatus(string value)
+        {
+            Status = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Capture WithStatusOutput(CaptureStatusOutput value)
+        {
+            StatusOutput = value;
+            return this;
+        }
     }
 }

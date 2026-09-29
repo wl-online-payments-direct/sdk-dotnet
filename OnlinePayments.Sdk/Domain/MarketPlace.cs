@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// This field is required if the transaction is performed by a merchant using the marketplace. This field must contain the name of the end merchant.
         /// </summary>
         public string RetailerName { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MarketPlace WithRetailerCountry(string value)
+        {
+            RetailerCountry = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MarketPlace WithRetailerName(string value)
+        {
+            RetailerName = value;
+            return this;
+        }
     }
 }

@@ -15,5 +15,32 @@ namespace OnlinePayments.Sdk.Domain
         public IList<APIError> Errors { get; set; }
 
         public PayoutResult PayoutResult { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutErrorResponse WithErrorId(string value)
+        {
+            ErrorId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutErrorResponse WithErrors(IList<APIError> value)
+        {
+            Errors = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutErrorResponse WithPayoutResult(PayoutResult value)
+        {
+            PayoutResult = value;
+            return this;
+        }
     }
 }

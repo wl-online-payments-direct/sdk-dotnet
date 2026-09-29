@@ -19,5 +19,32 @@ namespace OnlinePayments.Sdk.Domain
         /// This object holds the properties related to the payment.
         /// </summary>
         public PaymentResponse Payment { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CompletePaymentResponse WithCreationOutput(PaymentCreationOutput value)
+        {
+            CreationOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CompletePaymentResponse WithMerchantAction(MerchantAction value)
+        {
+            MerchantAction = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CompletePaymentResponse WithPayment(PaymentResponse value)
+        {
+            Payment = value;
+            return this;
+        }
     }
 }

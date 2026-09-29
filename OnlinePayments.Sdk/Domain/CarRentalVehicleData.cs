@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// This field contains a unique identifier assigned by the taxi company to the vehicle.
         /// </summary>
         public string IdentificationNumber { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalVehicleData WithClassId(string value)
+        {
+            ClassId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalVehicleData WithIdentificationNumber(string value)
+        {
+            IdentificationNumber = value;
+            return this;
+        }
     }
 }

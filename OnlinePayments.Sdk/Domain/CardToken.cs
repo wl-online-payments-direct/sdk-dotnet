@@ -40,5 +40,68 @@ namespace OnlinePayments.Sdk.Domain
         /// This is a validated card token available for later use.
         /// </summary>
         public string Token { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardToken WithCardholderName(string value)
+        {
+            CardholderName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardToken WithExpiryDate(string value)
+        {
+            ExpiryDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardToken WithLogoUrl(string value)
+        {
+            LogoUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardToken WithMaskedPan(string value)
+        {
+            MaskedPan = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardToken WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardToken WithProductName(string value)
+        {
+            ProductName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardToken WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
     }
 }

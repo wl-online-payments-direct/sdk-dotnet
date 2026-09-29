@@ -34,5 +34,59 @@ namespace OnlinePayments.Sdk.Domain
         /// Website address of the submerchant.
         /// </summary>
         public string Website { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubMerchant WithAddress(Address value)
+        {
+            Address = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubMerchant WithCompanyIdentificationNumber(string value)
+        {
+            CompanyIdentificationNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubMerchant WithCompanyName(string value)
+        {
+            CompanyName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubMerchant WithMerchantCategoryCode(string value)
+        {
+            MerchantCategoryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubMerchant WithMerchantId(string value)
+        {
+            MerchantId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubMerchant WithWebsite(string value)
+        {
+            Website = value;
+            return this;
+        }
     }
 }

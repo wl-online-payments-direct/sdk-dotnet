@@ -12,5 +12,14 @@ namespace OnlinePayments.Sdk.Domain
         /// or the seller and their affiliates.
         /// </summary>
         public string ExtraMerchantData { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct3306SpecificInput WithExtraMerchantData(string value)
+        {
+            ExtraMerchantData = value;
+            return this;
+        }
     }
 }

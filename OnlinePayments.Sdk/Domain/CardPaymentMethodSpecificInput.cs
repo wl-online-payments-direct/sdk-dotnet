@@ -218,5 +218,285 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string UnscheduledCardOnFileSequenceIndicator { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithAllowDynamicLinking(bool? value)
+        {
+            AllowDynamicLinking = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithAuthorizationMode(string value)
+        {
+            AuthorizationMode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithAutoCapture(AutoCapture value)
+        {
+            AutoCapture = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithCard(Card value)
+        {
+            Card = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithCardOnFileRecurringExpiration(string value)
+        {
+            CardOnFileRecurringExpiration = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithCardOnFileRecurringFrequency(string value)
+        {
+            CardOnFileRecurringFrequency = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithCobrandSelectionIndicator(string value)
+        {
+            CobrandSelectionIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithCurrencyConversion(CurrencyConversionInput value)
+        {
+            CurrencyConversion = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithInitialSchemeTransactionId(string value)
+        {
+            InitialSchemeTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithIsRecurring(bool? value)
+        {
+            IsRecurring = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithMarketPlace(MarketPlace value)
+        {
+            MarketPlace = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithMultiplePaymentInformation(MultiplePaymentInformation value)
+        {
+            MultiplePaymentInformation = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithNetworkTokenData(NetworkTokenData value)
+        {
+            NetworkTokenData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithPaymentProduct130SpecificInput(PaymentProduct130SpecificInput value)
+        {
+            PaymentProduct130SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithPaymentProduct3012SpecificInput(PaymentProduct3012SpecificInput value)
+        {
+            PaymentProduct3012SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithPaymentProduct3013SpecificInput(PaymentProduct3013SpecificInput value)
+        {
+            PaymentProduct3013SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithPaymentProduct3208SpecificInput(PaymentProduct3208SpecificInput value)
+        {
+            PaymentProduct3208SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithPaymentProduct3209SpecificInput(PaymentProduct3209SpecificInput value)
+        {
+            PaymentProduct3209SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithPaymentProduct5002SpecificInput(PaymentProduct5002SpecificInput value)
+        {
+            PaymentProduct5002SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithRecurring(CardRecurrenceDetails value)
+        {
+            Recurring = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithReturnUrl(string value)
+        {
+            ReturnUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithSchemeReferenceData(string value)
+        {
+            SchemeReferenceData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Use threeDSecure.skipAuthentication instead.  * true = 3D Secure authentication will be skipped for this transaction. This setting should be used when isRecurring is set to true and recurringPaymentSequenceIndicator is set to recurring.  * false = 3D Secure authentication will not be skipped for this transaction.    Note: This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.")]
+        public CardPaymentMethodSpecificInput WithSkipAuthentication(bool? value)
+        {
+            SkipAuthentication = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithSubMerchant(SubMerchant value)
+        {
+            SubMerchant = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithThreeDSecure(ThreeDSecure value)
+        {
+            ThreeDSecure = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithTokenize(bool? value)
+        {
+            Tokenize = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithTransactionChannel(string value)
+        {
+            TransactionChannel = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithUnscheduledCardOnFileRequestor(string value)
+        {
+            UnscheduledCardOnFileRequestor = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithUnscheduledCardOnFileSequenceIndicator(string value)
+        {
+            UnscheduledCardOnFileSequenceIndicator = value;
+            return this;
+        }
     }
 }

@@ -17,5 +17,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string CheckoutType { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct3203SpecificInput WithCheckoutType(string value)
+        {
+            CheckoutType = value;
+            return this;
+        }
     }
 }

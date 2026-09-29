@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Contains elements from which card number can be obtained.
         /// </summary>
         public CardSource CardSource { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CalculateSurchargeRequest WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CalculateSurchargeRequest WithCardSource(CardSource value)
+        {
+            CardSource = value;
+            return this;
+        }
     }
 }

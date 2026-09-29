@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing personal information of the customer
         /// </summary>
         public MandatePersonalInformationResponse PersonalInformation { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomerResponse WithBankAccountIban(BankAccountIban value)
+        {
+            BankAccountIban = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomerResponse WithCompanyName(string value)
+        {
+            CompanyName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomerResponse WithContactDetails(MandateContactDetails value)
+        {
+            ContactDetails = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomerResponse WithMandateAddress(MandateAddressResponse value)
+        {
+            MandateAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomerResponse WithPersonalInformation(MandatePersonalInformationResponse value)
+        {
+            PersonalInformation = value;
+            return this;
+        }
     }
 }

@@ -38,5 +38,59 @@ namespace OnlinePayments.Sdk.Domain
         /// This object has the numeric representation of the current payment status, the timestamp of the last status change, and the performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.
         /// </summary>
         public PaymentStatusOutput StatusOutput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentDetailsResponse WithOperations(IList<OperationOutput> value)
+        {
+            Operations = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentDetailsResponse WithHostedCheckoutSpecificOutput(HostedCheckoutSpecificOutput value)
+        {
+            HostedCheckoutSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentDetailsResponse WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentDetailsResponse WithPaymentOutput(PaymentOutput value)
+        {
+            PaymentOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentDetailsResponse WithStatus(string value)
+        {
+            Status = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentDetailsResponse WithStatusOutput(PaymentStatusOutput value)
+        {
+            StatusOutput = value;
+            return this;
+        }
     }
 }

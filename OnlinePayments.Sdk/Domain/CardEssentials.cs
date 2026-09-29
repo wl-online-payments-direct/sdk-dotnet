@@ -170,5 +170,212 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates whether the card is a virtual card
         /// </summary>
         public bool? VirtualCardIndicator { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithBin(string value)
+        {
+            Bin = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardCorporateIndicator(bool? value)
+        {
+            CardCorporateIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardEffectiveDate(DateTime? value)
+        {
+            CardEffectiveDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardEffectiveDateIndicator(bool? value)
+        {
+            CardEffectiveDateIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardNumber(string value)
+        {
+            CardNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardPanType(string value)
+        {
+            CardPanType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardProductCode(string value)
+        {
+            CardProductCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardProductName(string value)
+        {
+            CardProductName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardProductUsageLabel(string value)
+        {
+            CardProductUsageLabel = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardScheme(string value)
+        {
+            CardScheme = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCardType(string value)
+        {
+            CardType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithExpiryDate(string value)
+        {
+            ExpiryDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithIssuerCode(string value)
+        {
+            IssuerCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithIssuerName(string value)
+        {
+            IssuerName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithIssuerPrincipalMemberCode(string value)
+        {
+            IssuerPrincipalMemberCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithIssuerPrincipalMemberName(string value)
+        {
+            IssuerPrincipalMemberName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithIssuerRegionCode(string value)
+        {
+            IssuerRegionCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithIssuingCountryCode(string value)
+        {
+            IssuingCountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithPanLengthMax(int? value)
+        {
+            PanLengthMax = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithPanLengthMin(int? value)
+        {
+            PanLengthMin = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithPanLuhnCheck(bool? value)
+        {
+            PanLuhnCheck = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardEssentials WithVirtualCardIndicator(bool? value)
+        {
+            VirtualCardIndicator = value;
+            return this;
+        }
     }
 }

@@ -11,5 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string PaymentMethodType { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5301SpecificInput WithPaymentMethodType(string value)
+        {
+            PaymentMethodType = value;
+            return this;
+        }
     }
 }

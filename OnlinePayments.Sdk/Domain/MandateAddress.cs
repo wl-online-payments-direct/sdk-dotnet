@@ -37,5 +37,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Required for Create hostedCheckout calls where the IBAN is also provided.
         /// </summary>
         public string Zip { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddress WithCity(string value)
+        {
+            City = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddress WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddress WithHouseNumber(string value)
+        {
+            HouseNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddress WithStreet(string value)
+        {
+            Street = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddress WithZip(string value)
+        {
+            Zip = value;
+            return this;
+        }
     }
 }

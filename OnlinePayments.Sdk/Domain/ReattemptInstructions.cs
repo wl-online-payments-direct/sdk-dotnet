@@ -27,5 +27,32 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string Indicator { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ReattemptInstructions WithConditions(ReattemptInstructionsConditions value)
+        {
+            Conditions = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ReattemptInstructions WithFrozenPeriod(int? value)
+        {
+            FrozenPeriod = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ReattemptInstructions WithIndicator(string value)
+        {
+            Indicator = value;
+            return this;
+        }
     }
 }

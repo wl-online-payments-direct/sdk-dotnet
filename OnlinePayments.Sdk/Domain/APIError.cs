@@ -63,5 +63,78 @@ namespace OnlinePayments.Sdk.Domain
         /// Retriable requests mean that a technical error happened and that the same request can safely be sent again with a new idempotence key.
         /// </summary>
         public bool? Retriable { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public APIError WithCategory(string value)
+        {
+            Category = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Use errorCode instead. Error code")]
+        public APIError WithCode(string value)
+        {
+            Code = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public APIError WithErrorCode(string value)
+        {
+            ErrorCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public APIError WithHttpStatusCode(int? value)
+        {
+            HttpStatusCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public APIError WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public APIError WithMessage(string value)
+        {
+            Message = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public APIError WithPropertyName(string value)
+        {
+            PropertyName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public APIError WithRetriable(bool? value)
+        {
+            Retriable = value;
+            return this;
+        }
     }
 }

@@ -19,5 +19,23 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string CobrandSelectionIndicator { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public TokenData WithCard(Card value)
+        {
+            Card = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public TokenData WithCobrandSelectionIndicator(string value)
+        {
+            CobrandSelectionIndicator = value;
+            return this;
+        }
     }
 }

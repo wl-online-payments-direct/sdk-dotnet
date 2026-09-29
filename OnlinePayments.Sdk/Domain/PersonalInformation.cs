@@ -20,5 +20,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the name details of the customer
         /// </summary>
         public PersonalName Name { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PersonalInformation WithDateOfBirth(string value)
+        {
+            DateOfBirth = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PersonalInformation WithGender(string value)
+        {
+            Gender = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PersonalInformation WithName(PersonalName value)
+        {
+            Name = value;
+            return this;
+        }
     }
 }

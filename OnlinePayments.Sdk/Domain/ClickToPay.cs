@@ -12,5 +12,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         [JsonProperty(PropertyName = "IsClickToPayPayment")]
         public bool? IsClickToPayPayment { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ClickToPay WithIsClickToPayPayment(bool? value)
+        {
+            IsClickToPayPayment = value;
+            return this;
+        }
     }
 }

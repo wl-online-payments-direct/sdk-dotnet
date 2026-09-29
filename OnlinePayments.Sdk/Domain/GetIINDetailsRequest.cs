@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Optional payment context to refine the IIN lookup to filter out payment products not applicable to your payment.
         /// </summary>
         public PaymentContext PaymentContext { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetIINDetailsRequest WithBin(string value)
+        {
+            Bin = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetIINDetailsRequest WithPaymentContext(PaymentContext value)
+        {
+            PaymentContext = value;
+            return this;
+        }
     }
 }

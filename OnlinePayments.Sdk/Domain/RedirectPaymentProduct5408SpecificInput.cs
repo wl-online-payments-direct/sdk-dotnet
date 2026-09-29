@@ -17,5 +17,23 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public bool? InstantPaymentOnly { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5408SpecificInput WithCustomerBankAccount(CustomerBankAccount value)
+        {
+            CustomerBankAccount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5408SpecificInput WithInstantPaymentOnly(bool? value)
+        {
+            InstantPaymentOnly = value;
+            return this;
+        }
     }
 }

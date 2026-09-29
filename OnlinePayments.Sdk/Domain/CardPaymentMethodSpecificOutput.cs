@@ -118,5 +118,212 @@ namespace OnlinePayments.Sdk.Domain
         /// ID of the token. This property is populated when the payment was done with a token or when the payment was tokenized.
         /// </summary>
         public string Token { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithAcceptance(Acceptance value)
+        {
+            Acceptance = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithAcquirerInformation(AcquirerInformation value)
+        {
+            AcquirerInformation = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithAuthenticatedAmount(long? value)
+        {
+            AuthenticatedAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithAuthorisationCode(string value)
+        {
+            AuthorisationCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithCard(CardEssentials value)
+        {
+            Card = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithClickToPay(ClickToPay value)
+        {
+            ClickToPay = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithCobrandSelectionIndicator(string value)
+        {
+            CobrandSelectionIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithCrmToken(CrmToken value)
+        {
+            CrmToken = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithCurrencyConversion(CurrencyConversion value)
+        {
+            CurrencyConversion = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithExternalTokenLinked(ExternalTokenLinked value)
+        {
+            ExternalTokenLinked = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithFraudResults(CardFraudResults value)
+        {
+            FraudResults = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithInitialSchemeTransactionId(string value)
+        {
+            InitialSchemeTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithNetworkTokenData(NetworkTokenEssentials value)
+        {
+            NetworkTokenData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithPaymentAccountReference(string value)
+        {
+            PaymentAccountReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithPaymentOption(string value)
+        {
+            PaymentOption = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithPaymentProduct3208SpecificOutput(PaymentProduct3208SpecificOutput value)
+        {
+            PaymentProduct3208SpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithPaymentProduct3209SpecificOutput(PaymentProduct3209SpecificOutput value)
+        {
+            PaymentProduct3209SpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithReattemptInstructions(ReattemptInstructions value)
+        {
+            ReattemptInstructions = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithSchemeReferenceData(string value)
+        {
+            SchemeReferenceData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithSchemeTransactionId(string value)
+        {
+            SchemeTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithThreeDSecureResults(ThreeDSecureResults value)
+        {
+            ThreeDSecureResults = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificOutput WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
     }
 }

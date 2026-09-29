@@ -24,5 +24,41 @@ namespace OnlinePayments.Sdk.Domain
         /// Summary of payment status output with essential information
         /// </summary>
         public PaymentStatusOutputSummary StatusOutput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentSummary WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentSummary WithPaymentOutput(PaymentOutputSummary value)
+        {
+            PaymentOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentSummary WithStatus(string value)
+        {
+            Status = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentSummary WithStatusOutput(PaymentStatusOutputSummary value)
+        {
+            StatusOutput = value;
+            return this;
+        }
     }
 }

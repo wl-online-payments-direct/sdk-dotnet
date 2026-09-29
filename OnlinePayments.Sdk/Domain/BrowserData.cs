@@ -52,5 +52,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Note: This data can only be collected if JavaScript is enabled in the browser. This means that 3-D Secure version 2.1 requires the use of JavaScript to enabled. In the upcoming version 2.2 of the specification this is no longer a requirement.
         /// </summary>
         public string ScreenWidth { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public BrowserData WithColorDepth(int? value)
+        {
+            ColorDepth = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public BrowserData WithJavaEnabled(bool? value)
+        {
+            JavaEnabled = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public BrowserData WithJavaScriptEnabled(bool? value)
+        {
+            JavaScriptEnabled = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public BrowserData WithScreenHeight(string value)
+        {
+            ScreenHeight = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public BrowserData WithScreenWidth(string value)
+        {
+            ScreenWidth = value;
+            return this;
+        }
     }
 }

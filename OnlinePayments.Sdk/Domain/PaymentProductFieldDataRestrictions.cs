@@ -17,5 +17,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the details of the validations on the field
         /// </summary>
         public PaymentProductFieldValidators Validators { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDataRestrictions WithIsRequired(bool? value)
+        {
+            IsRequired = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDataRestrictions WithValidators(PaymentProductFieldValidators value)
+        {
+            Validators = value;
+            return this;
+        }
     }
 }

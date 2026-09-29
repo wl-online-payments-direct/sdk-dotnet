@@ -19,5 +19,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Three-letter ISO currency code representing the currency for the amount
         /// </summary>
         public string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AmountOfMoney WithAmount(long? value)
+        {
+            Amount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AmountOfMoney WithCurrencyCode(string value)
+        {
+            CurrencyCode = value;
+            return this;
+        }
     }
 }

@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// The fully qualified domain name of the web page that will host the Apple Pay session.
         /// </summary>
         public string DomainName { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductSession302SpecificInput WithDisplayName(string value)
+        {
+            DisplayName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductSession302SpecificInput WithDomainName(string value)
+        {
+            DomainName = value;
+            return this;
+        }
     }
 }

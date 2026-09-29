@@ -67,5 +67,95 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing personal information like name, date of birth and gender.
         /// </summary>
         public PersonalInformation PersonalInformation { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithAccount(CustomerAccount value)
+        {
+            Account = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithAccountType(string value)
+        {
+            AccountType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithBillingAddress(Address value)
+        {
+            BillingAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithCompanyInformation(CompanyInformation value)
+        {
+            CompanyInformation = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithContactDetails(ContactDetails value)
+        {
+            ContactDetails = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithDevice(CustomerDevice value)
+        {
+            Device = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithFiscalNumber(string value)
+        {
+            FiscalNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithLocale(string value)
+        {
+            Locale = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithMerchantCustomerId(string value)
+        {
+            MerchantCustomerId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Customer WithPersonalInformation(PersonalInformation value)
+        {
+            PersonalInformation = value;
+            return this;
+        }
     }
 }

@@ -24,5 +24,41 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates the type of payment for which an authentication is requested
         /// </summary>
         public string Usecase { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct130SpecificThreeDSecure WithAcquirerExemption(bool? value)
+        {
+            AcquirerExemption = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct130SpecificThreeDSecure WithMerchantScore(string value)
+        {
+            MerchantScore = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct130SpecificThreeDSecure WithNumberOfItems(int? value)
+        {
+            NumberOfItems = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct130SpecificThreeDSecure WithUsecase(string value)
+        {
+            Usecase = value;
+            return this;
+        }
     }
 }

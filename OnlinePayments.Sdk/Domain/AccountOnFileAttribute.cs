@@ -34,5 +34,42 @@ namespace OnlinePayments.Sdk.Domain
         /// Value of the key or property
         /// </summary>
         public string Value { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AccountOnFileAttribute WithKey(string value)
+        {
+            Key = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Deprecated")]
+        public AccountOnFileAttribute WithMustWriteReason(string value)
+        {
+            MustWriteReason = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AccountOnFileAttribute WithStatus(string value)
+        {
+            Status = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AccountOnFileAttribute WithValue(string value)
+        {
+            Value = value;
+            return this;
+        }
     }
 }

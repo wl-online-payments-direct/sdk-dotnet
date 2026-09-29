@@ -156,5 +156,266 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public bool? Tokenize { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentOption(string value)
+        {
+            PaymentOption = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct11SpecificInput(RedirectPaymentProduct11SpecificInput value)
+        {
+            PaymentProduct11SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct3103SpecificInput(RedirectPaymentProduct3103SpecificInput value)
+        {
+            PaymentProduct3103SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct3112SpecificInput(RedirectPaymentProduct3112SpecificInput value)
+        {
+            PaymentProduct3112SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct3116SpecificInput(RedirectPaymentProduct3116SpecificInput value)
+        {
+            PaymentProduct3116SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct3203SpecificInput(RedirectPaymentProduct3203SpecificInput value)
+        {
+            PaymentProduct3203SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct3204SpecificInput(RedirectPaymentProduct3204SpecificInput value)
+        {
+            PaymentProduct3204SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct3302SpecificInput(RedirectPaymentProduct3302SpecificInput value)
+        {
+            PaymentProduct3302SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct3306SpecificInput(RedirectPaymentProduct3306SpecificInput value)
+        {
+            PaymentProduct3306SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct3307SpecificInput(RedirectPaymentProduct3307SpecificInput value)
+        {
+            PaymentProduct3307SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5001SpecificInput(RedirectPaymentProduct5001SpecificInput value)
+        {
+            PaymentProduct5001SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5300SpecificInput(RedirectPaymentProduct5300SpecificInput value)
+        {
+            PaymentProduct5300SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5301SpecificInput(RedirectPaymentProduct5301SpecificInput value)
+        {
+            PaymentProduct5301SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5402SpecificInput(RedirectPaymentProduct5402SpecificInput value)
+        {
+            PaymentProduct5402SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5403SpecificInput(RedirectPaymentProduct5403SpecificInput value)
+        {
+            PaymentProduct5403SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5406SpecificInput(RedirectPaymentProduct5406SpecificInput value)
+        {
+            PaymentProduct5406SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5407SpecificInput(RedirectPaymentProduct5407SpecificInput value)
+        {
+            PaymentProduct5407SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5408SpecificInput(RedirectPaymentProduct5408SpecificInput value)
+        {
+            PaymentProduct5408SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5410SpecificInput(RedirectPaymentProduct5410SpecificInput value)
+        {
+            PaymentProduct5410SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5412SpecificInput(RedirectPaymentProduct5412SpecificInput value)
+        {
+            PaymentProduct5412SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct5601SpecificInput(RedirectPaymentProduct5601SpecificInput value)
+        {
+            PaymentProduct5601SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct809SpecificInput(RedirectPaymentProduct809SpecificInput value)
+        {
+            PaymentProduct809SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct840SpecificInput(RedirectPaymentProduct840SpecificInput value)
+        {
+            PaymentProduct840SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProduct900SpecificInput(RedirectPaymentProduct900SpecificInput value)
+        {
+            PaymentProduct900SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithRedirectionData(RedirectionData value)
+        {
+            RedirectionData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithRequiresApproval(bool? value)
+        {
+            RequiresApproval = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificInput WithTokenize(bool? value)
+        {
+            Tokenize = value;
+            return this;
+        }
     }
 }

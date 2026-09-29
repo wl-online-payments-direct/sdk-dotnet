@@ -24,5 +24,41 @@ namespace OnlinePayments.Sdk.Domain
         /// ISO-3166 country code of the merchant.
         /// </summary>
         public string MerchantCountryCode { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AuthenticationOptions WithAcquirerBIN(string value)
+        {
+            AcquirerBIN = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AuthenticationOptions WithAcquirerMerchantId(string value)
+        {
+            AcquirerMerchantId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AuthenticationOptions WithMerchantCategoryCode(string value)
+        {
+            MerchantCategoryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AuthenticationOptions WithMerchantCountryCode(string value)
+        {
+            MerchantCountryCode = value;
+            return this;
+        }
     }
 }

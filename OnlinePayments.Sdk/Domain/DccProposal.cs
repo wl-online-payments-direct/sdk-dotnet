@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing amount and ISO currency code attributes
         /// </summary>
         public AmountOfMoney TargetAmount { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DccProposal WithBaseAmount(AmountOfMoney value)
+        {
+            BaseAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DccProposal WithDisclaimerDisplay(string value)
+        {
+            DisclaimerDisplay = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DccProposal WithDisclaimerReceipt(string value)
+        {
+            DisclaimerReceipt = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DccProposal WithRate(RateDetails value)
+        {
+            Rate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DccProposal WithTargetAmount(AmountOfMoney value)
+        {
+            TargetAmount = value;
+            return this;
+        }
     }
 }

@@ -21,5 +21,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Plain text explaining the result of the currency conversion request
         /// </summary>
         public string ResultReason { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversionResult WithResult(string value)
+        {
+            Result = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversionResult WithResultReason(string value)
+        {
+            ResultReason = value;
+            return this;
+        }
     }
 }

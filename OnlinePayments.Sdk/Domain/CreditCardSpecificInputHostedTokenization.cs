@@ -18,5 +18,23 @@ namespace OnlinePayments.Sdk.Domain
         /// This array contains the payment product identifiers representing the brands. For co-badged cards, this displays their available brands in the order defined by this array.
         /// </summary>
         public IList<int> PaymentProductPreferredOrder { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreditCardSpecificInputHostedTokenization WithValidationRules(CreditCardValidationRules value)
+        {
+            ValidationRules = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreditCardSpecificInputHostedTokenization WithPaymentProductPreferredOrder(IList<int> value)
+        {
+            PaymentProductPreferredOrder = value;
+            return this;
+        }
     }
 }

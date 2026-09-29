@@ -16,5 +16,23 @@ namespace OnlinePayments.Sdk.Domain
         /// The networks that can be used in the current payment context. The strings that represent the networks in the array are identical to the strings that GooglePay uses in their documentation. For instance &quot;Visa&quot;.
         /// </summary>
         public IList<string> Networks { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct320SpecificData WithGateway(string value)
+        {
+            Gateway = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct320SpecificData WithNetworks(IList<string> value)
+        {
+            Networks = value;
+            return this;
+        }
     }
 }

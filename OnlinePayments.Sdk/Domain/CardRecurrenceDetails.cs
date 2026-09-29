@@ -14,5 +14,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Note: For any first of a recurring the system will automatically create a token as you will need to use a token for any subsequent recurring transactions. In case a token already exists this is indicated in the response with a value of False for the isNewToken property in the response.
         /// </summary>
         public string RecurringPaymentSequenceIndicator { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardRecurrenceDetails WithRecurringPaymentSequenceIndicator(string value)
+        {
+            RecurringPaymentSequenceIndicator = value;
+            return this;
+        }
     }
 }

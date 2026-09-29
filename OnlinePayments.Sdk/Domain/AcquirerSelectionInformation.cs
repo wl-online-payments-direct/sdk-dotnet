@@ -19,5 +19,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Name of the rule used to select the acquirer
         /// </summary>
         public string RuleName { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AcquirerSelectionInformation WithFallbackLevel(int? value)
+        {
+            FallbackLevel = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AcquirerSelectionInformation WithResult(string value)
+        {
+            Result = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AcquirerSelectionInformation WithRuleName(string value)
+        {
+            RuleName = value;
+            return this;
+        }
     }
 }

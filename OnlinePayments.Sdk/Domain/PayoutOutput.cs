@@ -36,5 +36,50 @@ namespace OnlinePayments.Sdk.Domain
         /// It is the server-side processing date and time of the transaction.
         /// </summary>
         public DateTimeOffset? TransactionDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutOutput WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutOutput WithPayoutCardPaymentMethodSpecificOutput(PayoutCardPaymentMethodSpecificOutput value)
+        {
+            PayoutCardPaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutOutput WithPayoutReason(string value)
+        {
+            PayoutReason = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutOutput WithReferences(PaymentReferences value)
+        {
+            References = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutOutput WithTransactionDate(DateTimeOffset? value)
+        {
+            TransactionDate = value;
+            return this;
+        }
     }
 }

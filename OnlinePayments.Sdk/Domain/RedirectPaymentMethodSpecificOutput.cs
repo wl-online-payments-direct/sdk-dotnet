@@ -64,5 +64,113 @@ namespace OnlinePayments.Sdk.Domain
         /// ID of the token. This property is populated when the payment was done with a token or when the payment was tokenized.
         /// </summary>
         public string Token { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithAuthorisationCode(string value)
+        {
+            AuthorisationCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithCustomerBankAccount(CustomerBankAccount value)
+        {
+            CustomerBankAccount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithFraudResults(FraudResults value)
+        {
+            FraudResults = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithPaymentMethod3204SpecificOutput(PaymentProduct3204SpecificOutput value)
+        {
+            PaymentMethod3204SpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithPaymentOption(string value)
+        {
+            PaymentOption = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithPaymentProduct3203SpecificOutput(PaymentProduct3203SpecificOutput value)
+        {
+            PaymentProduct3203SpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithPaymentProduct5001SpecificOutput(PaymentProduct5001SpecificOutput value)
+        {
+            PaymentProduct5001SpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithPaymentProduct5402SpecificOutput(PaymentProduct5402SpecificOutput value)
+        {
+            PaymentProduct5402SpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithPaymentProduct5500SpecificOutput(PaymentProduct5500SpecificOutput value)
+        {
+            PaymentProduct5500SpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithPaymentProduct840SpecificOutput(PaymentProduct840SpecificOutput value)
+        {
+            PaymentProduct840SpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentMethodSpecificOutput WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
     }
 }

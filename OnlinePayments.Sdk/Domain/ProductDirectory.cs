@@ -11,5 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         /// List of entries in the directory
         /// </summary>
         public IList<DirectoryEntry> Entries { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ProductDirectory WithEntries(IList<DirectoryEntry> value)
+        {
+            Entries = value;
+            return this;
+        }
     }
 }

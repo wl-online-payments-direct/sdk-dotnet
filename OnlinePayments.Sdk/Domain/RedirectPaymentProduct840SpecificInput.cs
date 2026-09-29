@@ -43,5 +43,41 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public bool? PayLater { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct840SpecificInput WithJavaScriptSdkFlow(bool? value)
+        {
+            JavaScriptSdkFlow = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct840SpecificInput WithAddressSelectionAtPayPal(bool? value)
+        {
+            AddressSelectionAtPayPal = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct840SpecificInput WithCustom(string value)
+        {
+            Custom = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct840SpecificInput WithPayLater(bool? value)
+        {
+            PayLater = value;
+            return this;
+        }
     }
 }

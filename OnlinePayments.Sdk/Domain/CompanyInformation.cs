@@ -9,5 +9,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Name of company, as a customer. For Klarna payment method, company name should be provided to trigger a B2B session. If nothing is provided, a B2C session will be the default.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CompanyInformation WithName(string value)
+        {
+            Name = value;
+            return this;
+        }
     }
 }

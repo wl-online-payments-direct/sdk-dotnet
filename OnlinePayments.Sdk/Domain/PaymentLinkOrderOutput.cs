@@ -20,5 +20,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing details how surcharge will be applied to a payment link.
         /// </summary>
         public SurchargeForPaymentLink SurchargeSpecificOutput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkOrderOutput WithAmount(AmountOfMoney value)
+        {
+            Amount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkOrderOutput WithMerchantReference(string value)
+        {
+            MerchantReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkOrderOutput WithSurchargeSpecificOutput(SurchargeForPaymentLink value)
+        {
+            SurchargeSpecificOutput = value;
+            return this;
+        }
     }
 }

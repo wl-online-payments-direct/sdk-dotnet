@@ -25,5 +25,24 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         [Obsolete("This field is not used by any payment product")]
         public IList<ValueMappingElement> ValueMapping { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldFormElement WithType(string value)
+        {
+            Type = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product")]
+        public PaymentProductFieldFormElement WithValueMapping(IList<ValueMappingElement> value)
+        {
+            ValueMapping = value;
+            return this;
+        }
     }
 }

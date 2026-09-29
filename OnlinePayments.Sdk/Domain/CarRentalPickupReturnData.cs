@@ -39,5 +39,68 @@ namespace OnlinePayments.Sdk.Domain
         /// State/region of the pickup/return location
         /// </summary>
         public string State { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalPickupReturnData WithAddress(string value)
+        {
+            Address = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalPickupReturnData WithCity(string value)
+        {
+            City = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalPickupReturnData WithCountry(int? value)
+        {
+            Country = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalPickupReturnData WithDate(string value)
+        {
+            Date = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalPickupReturnData WithLocation(string value)
+        {
+            Location = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalPickupReturnData WithPostcode(string value)
+        {
+            Postcode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalPickupReturnData WithState(string value)
+        {
+            State = value;
+            return this;
+        }
     }
 }

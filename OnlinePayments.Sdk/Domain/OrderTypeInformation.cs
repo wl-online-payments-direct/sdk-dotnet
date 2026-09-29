@@ -25,5 +25,23 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string TransactionType { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderTypeInformation WithPurchaseType(string value)
+        {
+            PurchaseType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderTypeInformation WithTransactionType(string value)
+        {
+            TransactionType = value;
+            return this;
+        }
     }
 }

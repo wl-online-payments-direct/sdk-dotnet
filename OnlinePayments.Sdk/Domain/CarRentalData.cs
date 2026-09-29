@@ -84,5 +84,149 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific data regarding the vehicle
         /// </summary>
         public CarRentalVehicleData Vehicle { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithAgreementNumber(string value)
+        {
+            AgreementNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithCardholderNotified(bool? value)
+        {
+            CardholderNotified = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithChargesAmount(long? value)
+        {
+            ChargesAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithChargesCategory(string value)
+        {
+            ChargesCategory = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithDistanceMeasure(int? value)
+        {
+            DistanceMeasure = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithDistanceUnit(string value)
+        {
+            DistanceUnit = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithDriverIdentificationNumber(string value)
+        {
+            DriverIdentificationNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithDriverTaxNumber(string value)
+        {
+            DriverTaxNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithPickupDetails(CarRentalPickupReturnData value)
+        {
+            PickupDetails = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithRentalRateAmount(long? value)
+        {
+            RentalRateAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithRentalRateType(string value)
+        {
+            RentalRateType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithRenterName(string value)
+        {
+            RenterName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithReturnDetails(CarRentalPickupReturnData value)
+        {
+            ReturnDetails = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithTaxExemptIndicator(bool? value)
+        {
+            TaxExemptIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithTollFreeNumber(string value)
+        {
+            TollFreeNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CarRentalData WithVehicle(CarRentalVehicleData value)
+        {
+            Vehicle = value;
+            return this;
+        }
     }
 }

@@ -24,5 +24,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Quantity of the units being purchased, should be greater than zero Note: Must not be all spaces or all zeros
         /// </summary>
         public long? Quantity { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LineItemDetail WithDiscountAmount(long? value)
+        {
+            DiscountAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LineItemDetail WithLineItemId(string value)
+        {
+            LineItemId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LineItemDetail WithQuantity(long? value)
+        {
+            Quantity = value;
+            return this;
+        }
     }
 }

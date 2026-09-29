@@ -24,5 +24,41 @@ namespace OnlinePayments.Sdk.Domain
         /// The start date of the payment validity
         /// </summary>
         public string PaymentStartDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5500SpecificOutput WithEntityId(string value)
+        {
+            EntityId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5500SpecificOutput WithPaymentEndDate(string value)
+        {
+            PaymentEndDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5500SpecificOutput WithPaymentReference(string value)
+        {
+            PaymentReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5500SpecificOutput WithPaymentStartDate(string value)
+        {
+            PaymentStartDate = value;
+            return this;
+        }
     }
 }

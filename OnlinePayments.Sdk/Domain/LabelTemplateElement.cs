@@ -15,5 +15,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Note: The mask is optional as not every field has a mask
         /// </summary>
         public string Mask { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LabelTemplateElement WithAttributeKey(string value)
+        {
+            AttributeKey = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LabelTemplateElement WithMask(string value)
+        {
+            Mask = value;
+            return this;
+        }
     }
 }

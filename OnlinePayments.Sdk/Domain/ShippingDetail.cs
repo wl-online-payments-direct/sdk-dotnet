@@ -24,5 +24,23 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public long? ShippingCostTax { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShippingDetail WithShippingCost(long? value)
+        {
+            ShippingCost = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShippingDetail WithShippingCostTax(long? value)
+        {
+            ShippingCostTax = value;
+            return this;
+        }
     }
 }

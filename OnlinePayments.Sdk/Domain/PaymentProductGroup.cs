@@ -23,5 +23,41 @@ namespace OnlinePayments.Sdk.Domain
         /// The ID of the payment product group in our system
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductGroup WithAccountOnFile(AccountOnFile value)
+        {
+            AccountOnFile = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductGroup WithDisplayHints(PaymentProductDisplayHints value)
+        {
+            DisplayHints = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductGroup WithDisplayHintsList(IList<PaymentProductDisplayHints> value)
+        {
+            DisplayHintsList = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductGroup WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
     }
 }

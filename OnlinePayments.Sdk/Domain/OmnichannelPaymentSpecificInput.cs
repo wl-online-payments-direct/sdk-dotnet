@@ -10,5 +10,14 @@ namespace OnlinePayments.Sdk.Domain
         /// If not provided, the field defaults to the merchant ID.
         /// </summary>
         public string OperatorId { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OmnichannelPaymentSpecificInput WithOperatorId(string value)
+        {
+            OperatorId = value;
+            return this;
+        }
     }
 }

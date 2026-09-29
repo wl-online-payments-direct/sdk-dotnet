@@ -19,5 +19,23 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string Status { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetHostedCheckoutResponse WithCreatedPaymentOutput(CreatedPaymentOutput value)
+        {
+            CreatedPaymentOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetHostedCheckoutResponse WithStatus(string value)
+        {
+            Status = value;
+            return this;
+        }
     }
 }

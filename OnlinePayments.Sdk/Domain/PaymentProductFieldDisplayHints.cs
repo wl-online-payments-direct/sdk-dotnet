@@ -75,5 +75,96 @@ namespace OnlinePayments.Sdk.Domain
         /// Object that contains an optional tooltip to assist the customer
         /// </summary>
         public PaymentProductFieldTooltip Tooltip { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayHints WithAlwaysShow(bool? value)
+        {
+            AlwaysShow = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayHints WithDisplayOrder(int? value)
+        {
+            DisplayOrder = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayHints WithFormElement(PaymentProductFieldFormElement value)
+        {
+            FormElement = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayHints WithLabel(string value)
+        {
+            Label = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Deprecated")]
+        public PaymentProductFieldDisplayHints WithLink(string value)
+        {
+            Link = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayHints WithMask(string value)
+        {
+            Mask = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayHints WithObfuscate(bool? value)
+        {
+            Obfuscate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayHints WithPlaceholderLabel(string value)
+        {
+            PlaceholderLabel = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayHints WithPreferredInputType(string value)
+        {
+            PreferredInputType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayHints WithTooltip(PaymentProductFieldTooltip value)
+        {
+            Tooltip = value;
+            return this;
+        }
     }
 }

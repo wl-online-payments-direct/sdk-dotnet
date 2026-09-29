@@ -34,5 +34,59 @@ namespace OnlinePayments.Sdk.Domain
         /// The amount of money to be charged to a payer including any applicable surcharge. If you intend to apply additional services to the transaction before processing payment (such as DCC- Dynamic Currency Conversion), it is important to use this amount containing the surcharge instead of the net amount.
         /// </summary>
         public AmountOfMoney TotalAmount { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Surcharge WithNetAmount(AmountOfMoney value)
+        {
+            NetAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Surcharge WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Surcharge WithResult(string value)
+        {
+            Result = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Surcharge WithSurchargeAmount(AmountOfMoney value)
+        {
+            SurchargeAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Surcharge WithSurchargeRate(SurchargeRate value)
+        {
+            SurchargeRate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Surcharge WithTotalAmount(AmountOfMoney value)
+        {
+            TotalAmount = value;
+            return this;
+        }
     }
 }

@@ -61,5 +61,104 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the specific input details for SEPA direct debit payments
         /// </summary>
         public SepaDirectDebitPaymentMethodSpecificInput SepaDirectDebitPaymentMethodSpecificInput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithCardPaymentMethodSpecificInput(CardPaymentMethodSpecificInput value)
+        {
+            CardPaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithEncryptedCustomerInput(string value)
+        {
+            EncryptedCustomerInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithFeedbacks(Feedbacks value)
+        {
+            Feedbacks = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithFraudFields(FraudFields value)
+        {
+            FraudFields = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithHostedFieldsSessionId(string value)
+        {
+            HostedFieldsSessionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithHostedTokenizationId(string value)
+        {
+            HostedTokenizationId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithMobilePaymentMethodSpecificInput(MobilePaymentMethodSpecificInput value)
+        {
+            MobilePaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithOmnichannelPaymentSpecificInput(OmnichannelPaymentSpecificInput value)
+        {
+            OmnichannelPaymentSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithOrder(Order value)
+        {
+            Order = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithRedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInput value)
+        {
+            RedirectPaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentRequest WithSepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpecificInput value)
+        {
+            SepaDirectDebitPaymentMethodSpecificInput = value;
+            return this;
+        }
     }
 }

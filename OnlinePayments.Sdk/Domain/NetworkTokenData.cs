@@ -36,5 +36,59 @@ namespace OnlinePayments.Sdk.Domain
         /// Format: MMYY
         /// </summary>
         public string TokenExpiryDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenData WithCardholderName(string value)
+        {
+            CardholderName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenData WithCryptogram(string value)
+        {
+            Cryptogram = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenData WithEci(int? value)
+        {
+            Eci = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenData WithNetworkToken(string value)
+        {
+            NetworkToken = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenData WithSchemeTokenRequestorId(string value)
+        {
+            SchemeTokenRequestorId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenData WithTokenExpiryDate(string value)
+        {
+            TokenExpiryDate = value;
+            return this;
+        }
     }
 }

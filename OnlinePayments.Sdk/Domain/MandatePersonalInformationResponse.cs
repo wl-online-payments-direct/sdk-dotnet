@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the title of the customer (Mr, Miss or Mrs)
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandatePersonalInformationResponse WithName(MandatePersonalNameResponse value)
+        {
+            Name = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandatePersonalInformationResponse WithTitle(string value)
+        {
+            Title = value;
+            return this;
+        }
     }
 }

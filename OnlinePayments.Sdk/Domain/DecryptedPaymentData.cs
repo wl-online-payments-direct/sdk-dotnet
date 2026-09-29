@@ -46,5 +46,50 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string ExpiryDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DecryptedPaymentData WithCardholderName(string value)
+        {
+            CardholderName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DecryptedPaymentData WithCryptogram(string value)
+        {
+            Cryptogram = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DecryptedPaymentData WithDpan(string value)
+        {
+            Dpan = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DecryptedPaymentData WithEci(int? value)
+        {
+            Eci = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DecryptedPaymentData WithExpiryDate(string value)
+        {
+            ExpiryDate = value;
+            return this;
+        }
     }
 }

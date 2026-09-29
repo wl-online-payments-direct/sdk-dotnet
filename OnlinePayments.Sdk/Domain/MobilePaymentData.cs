@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Expiry date of the tokenized card. Format: MMYY
         /// </summary>
         public string ExpiryDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentData WithDpan(string value)
+        {
+            Dpan = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentData WithExpiryDate(string value)
+        {
+            ExpiryDate = value;
+            return this;
+        }
     }
 }

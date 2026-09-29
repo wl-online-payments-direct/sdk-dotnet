@@ -51,5 +51,86 @@ namespace OnlinePayments.Sdk.Domain
         /// The date and time after which the transaction will expire in UTC (format YYYY-MM-DDTHH:mm:ssZ)
         /// </summary>
         public DateTimeOffset? TransactionExpirationDateTime { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5300SpecificInput WithBirthCity(string value)
+        {
+            BirthCity = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5300SpecificInput WithBirthCountry(string value)
+        {
+            BirthCountry = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5300SpecificInput WithBirthZipCode(string value)
+        {
+            BirthZipCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5300SpecificInput WithChannel(string value)
+        {
+            Channel = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5300SpecificInput WithLoyaltyCardNumber(string value)
+        {
+            LoyaltyCardNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5300SpecificInput WithSecondInstallmentPaymentDate(string value)
+        {
+            SecondInstallmentPaymentDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5300SpecificInput WithSessionDuration(int? value)
+        {
+            SessionDuration = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5300SpecificInput WithTitle(string value)
+        {
+            Title = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5300SpecificInput WithTransactionExpirationDateTime(DateTimeOffset? value)
+        {
+            TransactionExpirationDateTime = value;
+            return this;
+        }
     }
 }

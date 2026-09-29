@@ -34,5 +34,50 @@ namespace OnlinePayments.Sdk.Domain
         /// The reference returned by redsys to identify the operation
         /// </summary>
         public string OperationCode { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5001SpecificOutput WithAccountNumber(string value)
+        {
+            AccountNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5001SpecificOutput WithAuthorisationCode(string value)
+        {
+            AuthorisationCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5001SpecificOutput WithLiability(string value)
+        {
+            Liability = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5001SpecificOutput WithMobilePhoneNumber(string value)
+        {
+            MobilePhoneNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5001SpecificOutput WithOperationCode(string value)
+        {
+            OperationCode = value;
+            return this;
+        }
     }
 }

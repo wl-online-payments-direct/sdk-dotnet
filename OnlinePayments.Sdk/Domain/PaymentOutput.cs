@@ -77,5 +77,132 @@ namespace OnlinePayments.Sdk.Domain
         /// It is the server-side processing date and time of the transaction.
         /// </summary>
         public DateTimeOffset? TransactionDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithAcquiredAmount(AmountOfMoney value)
+        {
+            AcquiredAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Amount that has been paid. This is deprecated. Use acquiredAmount instead.")]
+        public PaymentOutput WithAmountPaid(long? value)
+        {
+            AmountPaid = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithCardPaymentMethodSpecificOutput(CardPaymentMethodSpecificOutput value)
+        {
+            CardPaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithCustomer(CustomerOutput value)
+        {
+            Customer = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithDiscount(Discount value)
+        {
+            Discount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithMerchantParameters(string value)
+        {
+            MerchantParameters = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithMobilePaymentMethodSpecificOutput(MobilePaymentMethodSpecificOutput value)
+        {
+            MobilePaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithPaymentMethod(string value)
+        {
+            PaymentMethod = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithRedirectPaymentMethodSpecificOutput(RedirectPaymentMethodSpecificOutput value)
+        {
+            RedirectPaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithReferences(PaymentReferences value)
+        {
+            References = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithSepaDirectDebitPaymentMethodSpecificOutput(SepaDirectDebitPaymentMethodSpecificOutput value)
+        {
+            SepaDirectDebitPaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithSurchargeSpecificOutput(SurchargeSpecificOutput value)
+        {
+            SurchargeSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithTransactionDate(DateTimeOffset? value)
+        {
+            TransactionDate = value;
+            return this;
+        }
     }
 }

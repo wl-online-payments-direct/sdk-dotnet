@@ -9,5 +9,14 @@ namespace OnlinePayments.Sdk.Domain
         /// The name given by the bank (the publisher of the mobile application) to identify the mobile account where the User will confirm the payment
         /// </summary>
         public string BankingAppLabel { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct3204SpecificOutput WithBankingAppLabel(string value)
+        {
+            BankingAppLabel = value;
+            return this;
+        }
     }
 }

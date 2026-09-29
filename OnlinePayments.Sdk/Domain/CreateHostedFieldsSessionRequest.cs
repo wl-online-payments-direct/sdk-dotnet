@@ -21,5 +21,32 @@ namespace OnlinePayments.Sdk.Domain
         /// These are your stored tokens that you can reuse during the session.
         /// </summary>
         public IList<string> Tokens { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedFieldsSessionRequest WithLocale(string value)
+        {
+            Locale = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedFieldsSessionRequest WithOrigin(string value)
+        {
+            Origin = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedFieldsSessionRequest WithTokens(IList<string> value)
+        {
+            Tokens = value;
+            return this;
+        }
     }
 }

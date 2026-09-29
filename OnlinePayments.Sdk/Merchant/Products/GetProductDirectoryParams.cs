@@ -18,9 +18,27 @@ namespace OnlinePayments.Sdk.Merchant.Products
         public string CountryCode { get; set; }
 
         /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetProductDirectoryParams WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
         /// Three-letter ISO currency code representing the currency of the transaction
         /// </summary>
         public string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetProductDirectoryParams WithCurrencyCode(string value)
+        {
+            CurrencyCode = value;
+            return this;
+        }
 
         public override IEnumerable<RequestParam> ToRequestParameters()
         {

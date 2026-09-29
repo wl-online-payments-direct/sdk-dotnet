@@ -79,5 +79,79 @@ namespace OnlinePayments.Sdk.Domain
         /// Defaults to ECOMMERCE.
         /// </summary>
         public string TransactionChannel { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentCardPaymentMethodSpecificInput WithAuthorizationMode(string value)
+        {
+            AuthorizationMode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentCardPaymentMethodSpecificInput WithAutoCapture(AutoCapture value)
+        {
+            AutoCapture = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentCardPaymentMethodSpecificInput WithMarketPlace(MarketPlace value)
+        {
+            MarketPlace = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentCardPaymentMethodSpecificInput WithPaymentNumber(int? value)
+        {
+            PaymentNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Deprecated")]
+        public SubsequentCardPaymentMethodSpecificInput WithSchemeReferenceData(string value)
+        {
+            SchemeReferenceData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentCardPaymentMethodSpecificInput WithSubsequentType(string value)
+        {
+            SubsequentType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("ID of the token to use to create the payment.")]
+        public SubsequentCardPaymentMethodSpecificInput WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentCardPaymentMethodSpecificInput WithTransactionChannel(string value)
+        {
+            TransactionChannel = value;
+            return this;
+        }
     }
 }

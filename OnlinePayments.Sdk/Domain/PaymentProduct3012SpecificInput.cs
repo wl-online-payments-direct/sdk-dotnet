@@ -34,5 +34,41 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string WipMerchantAuthenticationMethod { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct3012SpecificInput WithForceAuthentication(bool? value)
+        {
+            ForceAuthentication = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct3012SpecificInput WithIsDeferredPayment(bool? value)
+        {
+            IsDeferredPayment = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct3012SpecificInput WithIsWipTransaction(bool? value)
+        {
+            IsWipTransaction = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct3012SpecificInput WithWipMerchantAuthenticationMethod(string value)
+        {
+            WipMerchantAuthenticationMethod = value;
+            return this;
+        }
     }
 }

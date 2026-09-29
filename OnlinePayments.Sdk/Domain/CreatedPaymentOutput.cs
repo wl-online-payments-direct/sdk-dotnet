@@ -11,5 +11,23 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentResponse Payment { get; set; }
 
         public string PaymentStatusCategory { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatedPaymentOutput WithPayment(PaymentResponse value)
+        {
+            Payment = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatedPaymentOutput WithPaymentStatusCategory(string value)
+        {
+            PaymentStatusCategory = value;
+            return this;
+        }
     }
 }

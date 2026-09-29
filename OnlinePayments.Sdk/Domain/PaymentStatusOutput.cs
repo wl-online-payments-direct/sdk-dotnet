@@ -41,5 +41,68 @@ namespace OnlinePayments.Sdk.Domain
         /// Timestamp of the latest status change
         /// </summary>
         public string StatusCodeChangeDateTime { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentStatusOutput WithErrors(IList<APIError> value)
+        {
+            Errors = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentStatusOutput WithIsAuthorized(bool? value)
+        {
+            IsAuthorized = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentStatusOutput WithIsCancellable(bool? value)
+        {
+            IsCancellable = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentStatusOutput WithIsRefundable(bool? value)
+        {
+            IsRefundable = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentStatusOutput WithStatusCategory(string value)
+        {
+            StatusCategory = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentStatusOutput WithStatusCode(int? value)
+        {
+            StatusCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentStatusOutput WithStatusCodeChangeDateTime(string value)
+        {
+            StatusCodeChangeDateTime = value;
+            return this;
+        }
     }
 }

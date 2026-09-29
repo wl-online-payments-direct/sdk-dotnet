@@ -14,5 +14,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string SubsequentType { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubsequentPaymentProduct5001SpecificInput WithSubsequentType(string value)
+        {
+            SubsequentType = value;
+            return this;
+        }
     }
 }

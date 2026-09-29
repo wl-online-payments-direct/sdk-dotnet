@@ -142,5 +142,196 @@ namespace OnlinePayments.Sdk.Domain
         /// This field is used by the following payment products: 840
         /// </summary>
         public int? Taxes { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithAirlineClass(string value)
+        {
+            AirlineClass = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithArrivalAirport(string value)
+        {
+            ArrivalAirport = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithArrivalTime(string value)
+        {
+            ArrivalTime = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithCarrierCode(string value)
+        {
+            CarrierCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithConjunctionTicket(string value)
+        {
+            ConjunctionTicket = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithCouponNumber(string value)
+        {
+            CouponNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithDate(string value)
+        {
+            Date = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithDepartureTime(string value)
+        {
+            DepartureTime = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithEndorsementOrRestriction(string value)
+        {
+            EndorsementOrRestriction = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithExchangeTicket(string value)
+        {
+            ExchangeTicket = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Use legFare instead. Fare of this leg")]
+        public AirlineFlightLeg WithFare(string value)
+        {
+            Fare = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithFareBasis(string value)
+        {
+            FareBasis = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithFee(int? value)
+        {
+            Fee = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithFlightCode(string value)
+        {
+            FlightCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithFlightNumber(string value)
+        {
+            FlightNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithLegFare(int? value)
+        {
+            LegFare = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product Sequence number of the flight leg")]
+        public AirlineFlightLeg WithNumber(int? value)
+        {
+            Number = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithOriginAirport(string value)
+        {
+            OriginAirport = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithPassengerClass(string value)
+        {
+            PassengerClass = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithStopoverCode(string value)
+        {
+            StopoverCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineFlightLeg WithTaxes(int? value)
+        {
+            Taxes = value;
+            return this;
+        }
     }
 }

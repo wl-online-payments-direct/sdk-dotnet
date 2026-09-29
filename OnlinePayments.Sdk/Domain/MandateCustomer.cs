@@ -32,5 +32,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Required for Create mandate and Create payment calls.
         /// </summary>
         public MandatePersonalInformation PersonalInformation { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomer WithBankAccountIban(BankAccountIban value)
+        {
+            BankAccountIban = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomer WithCompanyName(string value)
+        {
+            CompanyName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomer WithContactDetails(MandateContactDetails value)
+        {
+            ContactDetails = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomer WithMandateAddress(MandateAddress value)
+        {
+            MandateAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateCustomer WithPersonalInformation(MandatePersonalInformation value)
+        {
+            PersonalInformation = value;
+            return this;
+        }
     }
 }

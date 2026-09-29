@@ -22,5 +22,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Refer to the support page to determine if the property is applicable.
         /// </summary>
         public string RevocationReason { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RevokeMandateRequest WithRevocationReason(string value)
+        {
+            RevocationReason = value;
+            return this;
+        }
     }
 }

@@ -40,5 +40,68 @@ namespace OnlinePayments.Sdk.Domain
         /// The unique identifier of the mandate
         /// </summary>
         public string UniqueMandateReference { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateResponse WithAlias(string value)
+        {
+            Alias = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateResponse WithCustomer(MandateCustomerResponse value)
+        {
+            Customer = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateResponse WithCustomerReference(string value)
+        {
+            CustomerReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateResponse WithMandatePdf(string value)
+        {
+            MandatePdf = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateResponse WithRecurrenceType(string value)
+        {
+            RecurrenceType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateResponse WithStatus(string value)
+        {
+            Status = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateResponse WithUniqueMandateReference(string value)
+        {
+            UniqueMandateReference = value;
+            return this;
+        }
     }
 }

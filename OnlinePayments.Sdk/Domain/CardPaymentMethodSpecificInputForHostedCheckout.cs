@@ -39,5 +39,41 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string TokenizationMode { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInputForHostedCheckout WithClickToPay(bool? value)
+        {
+            ClickToPay = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInputForHostedCheckout WithGroupCards(bool? value)
+        {
+            GroupCards = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInputForHostedCheckout WithPaymentProductPreferredOrder(IList<int> value)
+        {
+            PaymentProductPreferredOrder = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInputForHostedCheckout WithTokenizationMode(string value)
+        {
+            TokenizationMode = value;
+            return this;
+        }
     }
 }

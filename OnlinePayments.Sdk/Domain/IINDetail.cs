@@ -168,5 +168,203 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates whether the card is a virtual card
         /// </summary>
         public bool? VirtualCardIndicator { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCardCorporateIndicator(bool? value)
+        {
+            CardCorporateIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCardEffectiveDate(DateTime? value)
+        {
+            CardEffectiveDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCardEffectiveDateIndicator(bool? value)
+        {
+            CardEffectiveDateIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCardPanType(string value)
+        {
+            CardPanType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCardProductCode(string value)
+        {
+            CardProductCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCardProductName(string value)
+        {
+            CardProductName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCardProductUsageLabel(string value)
+        {
+            CardProductUsageLabel = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCardScheme(string value)
+        {
+            CardScheme = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCardType(string value)
+        {
+            CardType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithIsAllowedInContext(bool? value)
+        {
+            IsAllowedInContext = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithIssuerCode(string value)
+        {
+            IssuerCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithIssuerName(string value)
+        {
+            IssuerName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithIssuerPrincipalMemberCode(string value)
+        {
+            IssuerPrincipalMemberCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithIssuerPrincipalMemberName(string value)
+        {
+            IssuerPrincipalMemberName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithIssuerRegionCode(string value)
+        {
+            IssuerRegionCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithIssuingCountryCode(string value)
+        {
+            IssuingCountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithPanLengthMax(int? value)
+        {
+            PanLengthMax = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithPanLengthMin(int? value)
+        {
+            PanLengthMin = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithPanLuhnCheck(bool? value)
+        {
+            PanLuhnCheck = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public IINDetail WithVirtualCardIndicator(bool? value)
+        {
+            VirtualCardIndicator = value;
+            return this;
+        }
     }
 }

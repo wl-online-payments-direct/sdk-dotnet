@@ -90,5 +90,122 @@ namespace OnlinePayments.Sdk.Domain
         /// You can force the use of a custom template by specifying it in the variant field. This allows you to test out the effect of certain changes to your payment pages in a controlled manner. Please note that you need to specify the filename of the template or customization.
         /// </summary>
         public string Variant { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithAllowedNumberOfPaymentAttempts(int? value)
+        {
+            AllowedNumberOfPaymentAttempts = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithAutoRefundSplitPayments(bool? value)
+        {
+            AutoRefundSplitPayments = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithCardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputForHostedCheckout value)
+        {
+            CardPaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithIsNewUnscheduledCardOnFileSeries(bool? value)
+        {
+            IsNewUnscheduledCardOnFileSeries = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithIsRecurring(bool? value)
+        {
+            IsRecurring = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithLocale(string value)
+        {
+            Locale = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithPaymentProductFilters(PaymentProductFiltersHostedCheckout value)
+        {
+            PaymentProductFilters = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithReturnUrl(string value)
+        {
+            ReturnUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithSessionTimeout(int? value)
+        {
+            SessionTimeout = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithShowResultPage(bool? value)
+        {
+            ShowResultPage = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithSplitPaymentProductFilters(SplitPaymentProductFiltersHostedCheckout value)
+        {
+            SplitPaymentProductFilters = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithTokens(string value)
+        {
+            Tokens = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificInput WithVariant(string value)
+        {
+            Variant = value;
+            return this;
+        }
     }
 }

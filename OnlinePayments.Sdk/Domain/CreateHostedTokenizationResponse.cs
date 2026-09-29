@@ -43,5 +43,60 @@ namespace OnlinePayments.Sdk.Domain
         /// This is the cryptographic hash used for Subresource Integrity validation.
         /// </summary>
         public string Sri { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationResponse WithExpiredCardTokens(IList<string> value)
+        {
+            ExpiredCardTokens = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationResponse WithHostedTokenizationId(string value)
+        {
+            HostedTokenizationId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationResponse WithHostedTokenizationUrl(string value)
+        {
+            HostedTokenizationUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationResponse WithInvalidTokens(IList<string> value)
+        {
+            InvalidTokens = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Deprecated")]
+        public CreateHostedTokenizationResponse WithPartialRedirectUrl(string value)
+        {
+            PartialRedirectUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationResponse WithSri(string value)
+        {
+            Sri = value;
+            return this;
+        }
     }
 }

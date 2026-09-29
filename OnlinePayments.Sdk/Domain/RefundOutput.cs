@@ -39,5 +39,95 @@ namespace OnlinePayments.Sdk.Domain
         /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
         public PaymentReferences References { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithAmountPaid(long? value)
+        {
+            AmountPaid = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithCardRefundMethodSpecificOutput(RefundCardMethodSpecificOutput value)
+        {
+            CardRefundMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithEWalletRefundMethodSpecificOutput(RefundEWalletMethodSpecificOutput value)
+        {
+            EWalletRefundMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithMerchantParameters(string value)
+        {
+            MerchantParameters = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithMobileRefundMethodSpecificOutput(RefundMobileMethodSpecificOutput value)
+        {
+            MobileRefundMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithOperationReferences(OperationPaymentReferences value)
+        {
+            OperationReferences = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithPaymentMethod(string value)
+        {
+            PaymentMethod = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithRedirectRefundMethodSpecificOutput(RefundRedirectMethodSpecificOutput value)
+        {
+            RedirectRefundMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithReferences(PaymentReferences value)
+        {
+            References = value;
+            return this;
+        }
     }
 }

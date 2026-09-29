@@ -32,5 +32,59 @@ namespace OnlinePayments.Sdk.Domain
         /// You can force the use of a custom template by specifying it in the variant field. This allows you to test out the effect of certain changes to your payment pages in a controlled manner. Please note that you need to specify the filename of the template or customization.
         /// </summary>
         public string Variant { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationRequest WithAskConsumerConsent(bool? value)
+        {
+            AskConsumerConsent = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationRequest WithCreditCardSpecificInput(CreditCardSpecificInputHostedTokenization value)
+        {
+            CreditCardSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationRequest WithLocale(string value)
+        {
+            Locale = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationRequest WithPaymentProductFilters(PaymentProductFiltersHostedTokenization value)
+        {
+            PaymentProductFilters = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationRequest WithTokens(string value)
+        {
+            Tokens = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationRequest WithVariant(string value)
+        {
+            Variant = value;
+            return this;
+        }
     }
 }

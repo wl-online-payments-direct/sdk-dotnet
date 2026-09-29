@@ -28,5 +28,41 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates if tokenization was successful or not. If this value is false, then the token and the isNewToken property will not be set.
         /// </summary>
         public bool? TokenizationSucceeded { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentCreationOutput WithExternalReference(string value)
+        {
+            ExternalReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentCreationOutput WithIsNewToken(bool? value)
+        {
+            IsNewToken = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentCreationOutput WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentCreationOutput WithTokenizationSucceeded(bool? value)
+        {
+            TokenizationSucceeded = value;
+            return this;
+        }
     }
 }

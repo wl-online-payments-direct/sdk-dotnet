@@ -52,5 +52,78 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         [Obsolete("This field is not used by any payment product Title of the passenger (this property is used for fraud screening on the payment platform)")]
         public string Title { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlinePassenger WithAirlineLoyaltyStatus(string value)
+        {
+            AirlineLoyaltyStatus = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlinePassenger WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlinePassenger WithDateOfBirth(string value)
+        {
+            DateOfBirth = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlinePassenger WithFirstName(string value)
+        {
+            FirstName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlinePassenger WithPassengerType(string value)
+        {
+            PassengerType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlinePassenger WithSurname(string value)
+        {
+            Surname = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlinePassenger WithSurnamePrefix(string value)
+        {
+            SurnamePrefix = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product Title of the passenger (this property is used for fraud screening on the payment platform)")]
+        public AirlinePassenger WithTitle(string value)
+        {
+            Title = value;
+            return this;
+        }
     }
 }

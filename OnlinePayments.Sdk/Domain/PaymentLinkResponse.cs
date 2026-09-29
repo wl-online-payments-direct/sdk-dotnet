@@ -58,5 +58,95 @@ namespace OnlinePayments.Sdk.Domain
         /// * EXPIRED - The payment link has passed its expiration date (expirationDate) and is no longer usable.
         /// </summary>
         public string Status { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithExpirationDate(DateTimeOffset? value)
+        {
+            ExpirationDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithIsReusableLink(bool? value)
+        {
+            IsReusableLink = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithPaymentId(string value)
+        {
+            PaymentId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithPaymentLinkEvents(IList<PaymentLinkEvent> value)
+        {
+            PaymentLinkEvents = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithPaymentLinkId(string value)
+        {
+            PaymentLinkId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithPaymentLinkOrder(PaymentLinkOrderOutput value)
+        {
+            PaymentLinkOrder = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithQrCodeBase64(string value)
+        {
+            QrCodeBase64 = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithRecipientName(string value)
+        {
+            RecipientName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithRedirectionUrl(string value)
+        {
+            RedirectionUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkResponse WithStatus(string value)
+        {
+            Status = value;
+            return this;
+        }
     }
 }

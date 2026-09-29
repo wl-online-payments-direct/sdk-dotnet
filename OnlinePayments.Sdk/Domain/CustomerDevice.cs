@@ -45,5 +45,68 @@ namespace OnlinePayments.Sdk.Domain
         /// As a fall-back we will use the userAgent that might be included in the encryptedCustomerInput, but this is captured client side using JavaScript and might be different.
         /// </summary>
         public string UserAgent { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerDevice WithAcceptHeader(string value)
+        {
+            AcceptHeader = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerDevice WithBrowserData(BrowserData value)
+        {
+            BrowserData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerDevice WithDeviceFingerprint(string value)
+        {
+            DeviceFingerprint = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerDevice WithIpAddress(string value)
+        {
+            IpAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerDevice WithLocale(string value)
+        {
+            Locale = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerDevice WithTimezoneOffsetUtcMinutes(string value)
+        {
+            TimezoneOffsetUtcMinutes = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerDevice WithUserAgent(string value)
+        {
+            UserAgent = value;
+            return this;
+        }
     }
 }

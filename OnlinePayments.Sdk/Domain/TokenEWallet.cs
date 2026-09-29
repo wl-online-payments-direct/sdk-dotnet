@@ -15,5 +15,24 @@ namespace OnlinePayments.Sdk.Domain
         public string Alias { get; set; }
 
         public CustomerToken Customer { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product An alias for the token. This can be used to visually represent the token.")]
+        public TokenEWallet WithAlias(string value)
+        {
+            Alias = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public TokenEWallet WithCustomer(CustomerToken value)
+        {
+            Customer = value;
+            return this;
+        }
     }
 }

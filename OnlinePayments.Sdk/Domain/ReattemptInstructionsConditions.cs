@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Max hours during which reattempt can be made.
         /// </summary>
         public int? MaxDelay { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ReattemptInstructionsConditions WithMaxAttempts(int? value)
+        {
+            MaxAttempts = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ReattemptInstructionsConditions WithMaxDelay(int? value)
+        {
+            MaxDelay = value;
+            return this;
+        }
     }
 }

@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// This field provides a Base64-encoded string representing a standardized payment QR code. The payload contains the complete transaction initiation data, including Service Tag, Version, Character Set, Identification, BIC, Beneficiary Name, IBAN, Amount, and Communication reference.
         /// </summary>
         public string QrCode { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct11 WithPaymentBIC(string value)
+        {
+            PaymentBIC = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct11 WithPaymentBeneficiary(string value)
+        {
+            PaymentBeneficiary = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct11 WithPaymentIBAN(string value)
+        {
+            PaymentIBAN = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct11 WithPaymentReference(string value)
+        {
+            PaymentReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct11 WithQrCode(string value)
+        {
+            QrCode = value;
+            return this;
+        }
     }
 }

@@ -21,5 +21,32 @@ namespace OnlinePayments.Sdk.Domain
         /// The payment link recipient name.
         /// </summary>
         public string RecipientName { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkSpecificInput WithDescription(string value)
+        {
+            Description = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkSpecificInput WithExpirationDate(DateTimeOffset? value)
+        {
+            ExpirationDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkSpecificInput WithRecipientName(string value)
+        {
+            RecipientName = value;
+            return this;
+        }
     }
 }

@@ -39,5 +39,68 @@ namespace OnlinePayments.Sdk.Domain
         /// The date of the first payment. Example 2022-01-01T00:00:00
         /// </summary>
         public string RecurringPaymentStartDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayLineItem WithAmount(string value)
+        {
+            Amount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayLineItem WithLabel(string value)
+        {
+            Label = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayLineItem WithPaymentTiming(string value)
+        {
+            PaymentTiming = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayLineItem WithRecurringPaymentEndDate(string value)
+        {
+            RecurringPaymentEndDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayLineItem WithRecurringPaymentIntervalCount(long? value)
+        {
+            RecurringPaymentIntervalCount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayLineItem WithRecurringPaymentIntervalUnit(string value)
+        {
+            RecurringPaymentIntervalUnit = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApplePayLineItem WithRecurringPaymentStartDate(string value)
+        {
+            RecurringPaymentStartDate = value;
+            return this;
+        }
     }
 }

@@ -9,5 +9,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicate whether to use a specific Cpay brand. Brands are configurable at the payment method level. See BackOffice Cpay configuration for allowed values.
         /// </summary>
         public string Brand { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5100SpecificInput WithBrand(string value)
+        {
+            Brand = value;
+            return this;
+        }
     }
 }

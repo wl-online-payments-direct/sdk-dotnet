@@ -19,9 +19,27 @@ namespace OnlinePayments.Sdk.Merchant.Products
         public string CountryCode { get; set; }
 
         /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductsParams WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
         /// Three-letter ISO currency code representing the currency for the amount
         /// </summary>
         public string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductsParams WithCurrencyCode(string value)
+        {
+            CurrencyCode = value;
+            return this;
+        }
 
         /// <summary>
         /// Locale used in the GUI towards the consumer.
@@ -29,9 +47,27 @@ namespace OnlinePayments.Sdk.Merchant.Products
         public string Locale { get; set; }
 
         /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductsParams WithLocale(string value)
+        {
+            Locale = value;
+            return this;
+        }
+
+        /// <summary>
         /// Whole amount in cents (not containing any decimals)
         /// </summary>
         public long? Amount { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductsParams WithAmount(long? value)
+        {
+            Amount = value;
+            return this;
+        }
 
         /// <summary>
         /// This allows you to filter payment products based on their support for recurring payments.
@@ -41,6 +77,15 @@ namespace OnlinePayments.Sdk.Merchant.Products
         /// </list>
         /// </summary>
         public bool? IsRecurring { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductsParams WithIsRecurring(bool? value)
+        {
+            IsRecurring = value;
+            return this;
+        }
 
         /// <summary>
         /// Allows you to hide elements from the response, reducing the amount of data that needs to be returned to your client. Possible options are:
@@ -54,6 +99,15 @@ namespace OnlinePayments.Sdk.Merchant.Products
         /// </list>
         /// </summary>
         public IList<string> Hide { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductsParams WithHide(IList<string> value)
+        {
+            Hide = value;
+            return this;
+        }
 
         public void AddHide(string value)
         {
@@ -76,6 +130,15 @@ namespace OnlinePayments.Sdk.Merchant.Products
         /// </list>
         /// </summary>
         public string OperationType { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductsParams WithOperationType(string value)
+        {
+            OperationType = value;
+            return this;
+        }
 
         public override IEnumerable<RequestParam> ToRequestParameters()
         {

@@ -25,5 +25,41 @@ namespace OnlinePayments.Sdk.Domain
         /// An identifier that represents card details that have been previously stored
         /// </summary>
         public string Token { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardSource WithCard(SurchargeCalculationCard value)
+        {
+            Card = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardSource WithEncryptedCustomerInput(string value)
+        {
+            EncryptedCustomerInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardSource WithHostedTokenizationId(string value)
+        {
+            HostedTokenizationId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardSource WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
     }
 }

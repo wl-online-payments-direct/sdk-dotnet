@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing information to create a SEPA Direct Debit mandate.
         /// </summary>
         public CreateMandateRequest Mandate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SepaDirectDebitPaymentProduct771SpecificInputBase WithExistingUniqueMandateReference(string value)
+        {
+            ExistingUniqueMandateReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SepaDirectDebitPaymentProduct771SpecificInputBase WithMandate(CreateMandateRequest value)
+        {
+            Mandate = value;
+            return this;
+        }
     }
 }

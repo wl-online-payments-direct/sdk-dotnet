@@ -68,5 +68,59 @@ namespace OnlinePayments.Sdk.Domain
         /// Creditor Reference to use where applicable for invoicing related to the transaction, in accordance with ISO 11649. Might require merchant specific setup to enable and is subject to agreement with the acquirer.
         /// </summary>
         public string StructuredCreditorReference { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationPaymentReferences WithMerchantComment(string value)
+        {
+            MerchantComment = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationPaymentReferences WithMerchantReconciliationReference(string value)
+        {
+            MerchantReconciliationReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationPaymentReferences WithMerchantReference(string value)
+        {
+            MerchantReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationPaymentReferences WithOperationGroupReference(string value)
+        {
+            OperationGroupReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationPaymentReferences WithSoftDescriptor(string value)
+        {
+            SoftDescriptor = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationPaymentReferences WithStructuredCreditorReference(string value)
+        {
+            StructuredCreditorReference = value;
+            return this;
+        }
     }
 }

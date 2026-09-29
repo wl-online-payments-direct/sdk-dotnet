@@ -16,5 +16,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Required for Create mandate and Create payment calls.
         /// </summary>
         public string Surname { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandatePersonalName WithFirstName(string value)
+        {
+            FirstName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandatePersonalName WithSurname(string value)
+        {
+            Surname = value;
+            return this;
+        }
     }
 }

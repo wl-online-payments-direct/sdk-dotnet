@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Session type. This denotes the origin of the session. For example PayByLink, HostedTokenization, etc.
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionDetails WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionDetails WithType(string value)
+        {
+            Type = value;
+            return this;
+        }
     }
 }

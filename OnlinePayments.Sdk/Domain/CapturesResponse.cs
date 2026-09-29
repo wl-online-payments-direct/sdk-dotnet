@@ -11,5 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         /// The list of all captures performed on the requested payment.
         /// </summary>
         public IList<Capture> Captures { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CapturesResponse WithCaptures(IList<Capture> value)
+        {
+            Captures = value;
+            return this;
+        }
     }
 }

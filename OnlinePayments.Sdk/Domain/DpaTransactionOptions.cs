@@ -9,5 +9,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Merchant’s 3DS input data. Conditionality: Must be supplied if 3DS is to be performed by SRC System.
         /// </summary>
         public ThreeDsInputData ThreeDsInputData { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DpaTransactionOptions WithThreeDsInputData(ThreeDsInputData value)
+        {
+            ThreeDsInputData = value;
+            return this;
+        }
     }
 }

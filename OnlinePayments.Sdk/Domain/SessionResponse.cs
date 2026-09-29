@@ -31,5 +31,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Tokens that are submitted in the request are validated. In case any of the tokens can't be used anymore they are returned in this array. You should most likely remove those tokens from your system.
         /// </summary>
         public IList<string> InvalidTokens { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionResponse WithAssetUrl(string value)
+        {
+            AssetUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionResponse WithClientApiUrl(string value)
+        {
+            ClientApiUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionResponse WithClientSessionId(string value)
+        {
+            ClientSessionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionResponse WithCustomerId(string value)
+        {
+            CustomerId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionResponse WithInvalidTokens(IList<string> value)
+        {
+            InvalidTokens = value;
+            return this;
+        }
     }
 }

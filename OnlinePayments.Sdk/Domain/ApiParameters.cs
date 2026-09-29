@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// The following fields need to be provided to the visa field within the configuration.
         /// </summary>
         public Visa Visa { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApiParameters WithAmex(Amex value)
+        {
+            Amex = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApiParameters WithCb(PaymentProduct5002defaultBrandParameters value)
+        {
+            Cb = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApiParameters WithEftpos(PaymentProduct5002defaultBrandParameters value)
+        {
+            Eftpos = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApiParameters WithMastercard(Mastercard value)
+        {
+            Mastercard = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ApiParameters WithVisa(Visa value)
+        {
+            Visa = value;
+            return this;
+        }
     }
 }

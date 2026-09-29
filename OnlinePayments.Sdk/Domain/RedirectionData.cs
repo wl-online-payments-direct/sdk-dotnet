@@ -11,5 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         /// URLs without a protocol will be rejected.
         /// </summary>
         public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectionData WithReturnUrl(string value)
+        {
+            ReturnUrl = value;
+            return this;
+        }
     }
 }

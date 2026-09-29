@@ -181,5 +181,239 @@ namespace OnlinePayments.Sdk.Domain
         /// This field is used by the following payment products: 840
         /// </summary>
         public string TravelAgencyName { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithAgentNumericCode(string value)
+        {
+            AgentNumericCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithCode(string value)
+        {
+            Code = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product Date of the Flight Format: YYYYMMDD")]
+        public AirlineData WithFlightDate(string value)
+        {
+            FlightDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithFlightIndicator(string value)
+        {
+            FlightIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithFlightLegs(IList<AirlineFlightLeg> value)
+        {
+            FlightLegs = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithInvoiceNumber(string value)
+        {
+            InvoiceNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Deprecated")]
+        public AirlineData WithIsETicket(bool? value)
+        {
+            IsETicket = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithIsRestrictedTicket(bool? value)
+        {
+            IsRestrictedTicket = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product  * true - The payer is the ticket holder  * false - The payer is not the ticket holder")]
+        public AirlineData WithIsThirdParty(bool? value)
+        {
+            IsThirdParty = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithIssueDate(string value)
+        {
+            IssueDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithMerchantCustomerId(string value)
+        {
+            MerchantCustomerId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product Name of the airline")]
+        public AirlineData WithName(string value)
+        {
+            Name = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Use passengers instead Name of passenger")]
+        public AirlineData WithPassengerName(string value)
+        {
+            PassengerName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithPassengers(IList<AirlinePassenger> value)
+        {
+            Passengers = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product Place of issue For sales in the US the last two characters (pos 14-15) must be the US state code.")]
+        public AirlineData WithPlaceOfIssue(string value)
+        {
+            PlaceOfIssue = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Use passengers instead.")]
+        public AirlineData WithPnr(string value)
+        {
+            Pnr = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithPointOfSale(string value)
+        {
+            PointOfSale = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product City code of the point of sale")]
+        public AirlineData WithPosCityCode(string value)
+        {
+            PosCityCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithTicketCurrency(string value)
+        {
+            TicketCurrency = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product Delivery method of the ticket")]
+        public AirlineData WithTicketDeliveryMethod(string value)
+        {
+            TicketDeliveryMethod = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithTicketNumber(string value)
+        {
+            TicketNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithTotalFare(int? value)
+        {
+            TotalFare = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithTotalFee(int? value)
+        {
+            TotalFee = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithTotalTaxes(int? value)
+        {
+            TotalTaxes = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AirlineData WithTravelAgencyName(string value)
+        {
+            TravelAgencyName = value;
+            return this;
+        }
     }
 }

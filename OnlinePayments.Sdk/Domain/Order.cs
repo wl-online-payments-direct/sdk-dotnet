@@ -54,5 +54,95 @@ namespace OnlinePayments.Sdk.Domain
         /// Tax amount, in minor currency units of the order. Omit if not applicable or not known. This amount is assumed to be included in the order.AmountOfMoney for the payment. There is no validation on this field, outside the fact the amount should be lower than the total payment amount.
         /// </summary>
         public long? TotalTaxAmount { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithAdditionalInput(AdditionalOrderInput value)
+        {
+            AdditionalInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithCustomer(Customer value)
+        {
+            Customer = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithDiscount(Discount value)
+        {
+            Discount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithReferences(OrderReferences value)
+        {
+            References = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithShipping(Shipping value)
+        {
+            Shipping = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithShoppingCart(ShoppingCart value)
+        {
+            ShoppingCart = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithSurchargeSpecificInput(SurchargeSpecificInput value)
+        {
+            SurchargeSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithTaxPercentage(decimal? value)
+        {
+            TaxPercentage = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Order WithTotalTaxAmount(long? value)
+        {
+            TotalTaxAmount = value;
+            return this;
+        }
     }
 }

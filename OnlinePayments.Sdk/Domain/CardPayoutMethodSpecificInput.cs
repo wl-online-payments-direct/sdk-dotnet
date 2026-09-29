@@ -34,5 +34,50 @@ namespace OnlinePayments.Sdk.Domain
         /// ID of the token
         /// </summary>
         public string Token { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPayoutMethodSpecificInput WithCard(Card value)
+        {
+            Card = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPayoutMethodSpecificInput WithHostedFieldsSessionId(string value)
+        {
+            HostedFieldsSessionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPayoutMethodSpecificInput WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPayoutMethodSpecificInput WithPayoutReason(string value)
+        {
+            PayoutReason = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPayoutMethodSpecificInput WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
     }
 }

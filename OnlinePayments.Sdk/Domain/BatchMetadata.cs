@@ -19,5 +19,32 @@ namespace OnlinePayments.Sdk.Domain
         /// The specific operation type being requested for the batch.
         /// </summary>
         public string OperationType { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public BatchMetadata WithItemCount(int? value)
+        {
+            ItemCount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public BatchMetadata WithMerchantBatchReference(string value)
+        {
+            MerchantBatchReference = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public BatchMetadata WithOperationType(string value)
+        {
+            OperationType = value;
+            return this;
+        }
     }
 }

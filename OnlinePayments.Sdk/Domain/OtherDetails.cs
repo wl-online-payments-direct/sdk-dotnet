@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Information used by the following PaymentProducts [5110,5111,5112,5125,3104,3107,3108,3109].
         /// </summary>
         public string TravelData { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OtherDetails WithMetaData(string value)
+        {
+            MetaData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OtherDetails WithTravelData(string value)
+        {
+            TravelData = value;
+            return this;
+        }
     }
 }

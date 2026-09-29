@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// A URI reference that identifies the problem type.
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ProblemDetailsResponse WithDetail(string value)
+        {
+            Detail = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ProblemDetailsResponse WithInstance(string value)
+        {
+            Instance = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ProblemDetailsResponse WithStatus(int? value)
+        {
+            Status = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ProblemDetailsResponse WithTitle(string value)
+        {
+            Title = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ProblemDetailsResponse WithType(string value)
+        {
+            Type = value;
+            return this;
+        }
     }
 }

@@ -61,5 +61,32 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string FraudServiceResult { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardFraudResults WithAvsResult(string value)
+        {
+            AvsResult = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardFraudResults WithCvvResult(string value)
+        {
+            CvvResult = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardFraudResults WithFraudServiceResult(string value)
+        {
+            FraudServiceResult = value;
+            return this;
+        }
     }
 }

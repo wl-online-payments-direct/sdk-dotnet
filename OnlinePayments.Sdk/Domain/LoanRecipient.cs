@@ -30,5 +30,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Zip code of the recipient of the loan
         /// </summary>
         public string Zip { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LoanRecipient WithAccountNumber(string value)
+        {
+            AccountNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LoanRecipient WithDateOfBirth(string value)
+        {
+            DateOfBirth = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LoanRecipient WithPartialPan(string value)
+        {
+            PartialPan = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LoanRecipient WithSurname(string value)
+        {
+            Surname = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public LoanRecipient WithZip(string value)
+        {
+            Zip = value;
+            return this;
+        }
     }
 }

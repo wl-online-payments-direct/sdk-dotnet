@@ -22,5 +22,23 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ProtectionEligibility WithEligibility(string value)
+        {
+            Eligibility = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ProtectionEligibility WithType(string value)
+        {
+            Type = value;
+            return this;
+        }
     }
 }

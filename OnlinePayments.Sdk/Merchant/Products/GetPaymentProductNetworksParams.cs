@@ -18,14 +18,41 @@ namespace OnlinePayments.Sdk.Merchant.Products
         public string CountryCode { get; set; }
 
         /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductNetworksParams WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
         /// Three-letter ISO currency code representing the currency for the amount
         /// </summary>
         public string CurrencyCode { get; set; }
 
         /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductNetworksParams WithCurrencyCode(string value)
+        {
+            CurrencyCode = value;
+            return this;
+        }
+
+        /// <summary>
         /// Amount in cents and always having 2 decimals
         /// </summary>
         public long? Amount { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductNetworksParams WithAmount(long? value)
+        {
+            Amount = value;
+            return this;
+        }
 
         /// <summary>
         /// This allows you to filter networks based on their support for recurring or not
@@ -35,6 +62,15 @@ namespace OnlinePayments.Sdk.Merchant.Products
         /// </list>
         /// </summary>
         public bool? IsRecurring { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductNetworksParams WithIsRecurring(bool? value)
+        {
+            IsRecurring = value;
+            return this;
+        }
 
         public override IEnumerable<RequestParam> ToRequestParameters()
         {

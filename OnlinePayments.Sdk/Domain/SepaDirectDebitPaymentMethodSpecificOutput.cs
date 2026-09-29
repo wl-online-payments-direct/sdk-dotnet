@@ -19,5 +19,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.
         /// </summary>
         public int? PaymentProductId { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SepaDirectDebitPaymentMethodSpecificOutput WithFraudResults(FraudResults value)
+        {
+            FraudResults = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SepaDirectDebitPaymentMethodSpecificOutput WithPaymentProduct771SpecificOutput(PaymentProduct771SpecificOutput value)
+        {
+            PaymentProduct771SpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SepaDirectDebitPaymentMethodSpecificOutput WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
     }
 }

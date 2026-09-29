@@ -23,5 +23,41 @@ namespace OnlinePayments.Sdk.Domain
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.
         /// </summary>
         public int? PaymentProductId { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AccountOnFile WithAttributes(IList<AccountOnFileAttribute> value)
+        {
+            Attributes = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AccountOnFile WithDisplayHints(AccountOnFileDisplayHints value)
+        {
+            DisplayHints = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AccountOnFile WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public AccountOnFile WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
     }
 }

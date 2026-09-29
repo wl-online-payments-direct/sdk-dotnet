@@ -13,5 +13,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public bool? DccEnabled { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversionSpecificInput WithDccEnabled(bool? value)
+        {
+            DccEnabled = value;
+            return this;
+        }
     }
 }

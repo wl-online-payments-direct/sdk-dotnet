@@ -16,5 +16,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Number of attempts made to add new card to the customer account in the last 24 hours
         /// </summary>
         public int? NumberOfCardOnFileCreationAttemptsLast24Hours { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentAccountOnFile WithCreateDate(string value)
+        {
+            CreateDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentAccountOnFile WithNumberOfCardOnFileCreationAttemptsLast24Hours(int? value)
+        {
+            NumberOfCardOnFileCreationAttemptsLast24Hours = value;
+            return this;
+        }
     }
 }

@@ -78,5 +78,86 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Shipping WithAddress(AddressPersonal value)
+        {
+            Address = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Shipping WithAddressIndicator(string value)
+        {
+            AddressIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Shipping WithEmailAddress(string value)
+        {
+            EmailAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Shipping WithFirstUsageDate(string value)
+        {
+            FirstUsageDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Shipping WithIsFirstUsage(bool? value)
+        {
+            IsFirstUsage = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Shipping WithMethod(ShippingMethod value)
+        {
+            Method = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Shipping WithShippingCost(long? value)
+        {
+            ShippingCost = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Shipping WithShippingCostTax(long? value)
+        {
+            ShippingCostTax = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Shipping WithType(string value)
+        {
+            Type = value;
+            return this;
+        }
     }
 }

@@ -67,5 +67,114 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific surcharging attributes applied to an order.
         /// </summary>
         public SurchargeSpecificOutput SurchargeSpecificOutput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithAcquiredAmount(AmountOfMoney value)
+        {
+            AcquiredAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Amount that has been paid. This is deprecated. Use acquiredAmount instead.")]
+        public CaptureOutput WithAmountPaid(long? value)
+        {
+            AmountPaid = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithCardPaymentMethodSpecificOutput(CardPaymentMethodSpecificOutput value)
+        {
+            CardPaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithMerchantParameters(string value)
+        {
+            MerchantParameters = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithMobilePaymentMethodSpecificOutput(MobilePaymentMethodSpecificOutput value)
+        {
+            MobilePaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithOperationReferences(OperationPaymentReferences value)
+        {
+            OperationReferences = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithPaymentMethod(string value)
+        {
+            PaymentMethod = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithRedirectPaymentMethodSpecificOutput(RedirectPaymentMethodSpecificOutput value)
+        {
+            RedirectPaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithReferences(PaymentReferences value)
+        {
+            References = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithSepaDirectDebitPaymentMethodSpecificOutput(SepaDirectDebitPaymentMethodSpecificOutput value)
+        {
+            SepaDirectDebitPaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithSurchargeSpecificOutput(SurchargeSpecificOutput value)
+        {
+            SurchargeSpecificOutput = value;
+            return this;
+        }
     }
 }

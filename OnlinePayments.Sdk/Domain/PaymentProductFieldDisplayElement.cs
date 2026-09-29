@@ -31,5 +31,41 @@ namespace OnlinePayments.Sdk.Domain
         /// the value of the display element.
         /// </summary>
         public string Value { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayElement WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayElement WithLabel(string value)
+        {
+            Label = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayElement WithType(string value)
+        {
+            Type = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldDisplayElement WithValue(string value)
+        {
+            Value = value;
+            return this;
+        }
     }
 }

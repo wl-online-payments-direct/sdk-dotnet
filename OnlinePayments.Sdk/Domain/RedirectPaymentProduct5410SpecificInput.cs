@@ -14,5 +14,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </summary>
         [JsonConverter(typeof(DateOnlyConverter))]
         public DateTime? SecondInstallmentPaymentDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5410SpecificInput WithSecondInstallmentPaymentDate(DateTime? value)
+        {
+            SecondInstallmentPaymentDate = value;
+            return this;
+        }
     }
 }

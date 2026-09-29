@@ -21,5 +21,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Total number of payments. If a payment is implied by this call, it implicitly has ordinal number 1.
         /// </summary>
         public int? TotalNumberOfPayments { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MultiplePaymentInformation WithPaymentPattern(string value)
+        {
+            PaymentPattern = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MultiplePaymentInformation WithTotalNumberOfPayments(int? value)
+        {
+            TotalNumberOfPayments = value;
+            return this;
+        }
     }
 }

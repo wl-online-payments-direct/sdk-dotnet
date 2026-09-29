@@ -9,5 +9,14 @@ namespace OnlinePayments.Sdk.Domain
         /// HTML content to be displayed to the user.
         /// </summary>
         public string HtmlContent { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPrivacyPolicyResponse WithHtmlContent(string value)
+        {
+            HtmlContent = value;
+            return this;
+        }
     }
 }

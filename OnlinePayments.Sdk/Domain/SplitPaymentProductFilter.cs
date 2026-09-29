@@ -11,5 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         /// List containing all payment product ids that should either be restricted to in or excluded from the payment context.
         /// </summary>
         public IList<int> Products { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SplitPaymentProductFilter WithProducts(IList<int> value)
+        {
+            Products = value;
+            return this;
+        }
     }
 }

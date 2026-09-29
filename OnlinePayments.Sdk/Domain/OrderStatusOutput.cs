@@ -32,5 +32,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Timestamp of the latest status change
         /// </summary>
         public string StatusCodeChangeDateTime { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderStatusOutput WithErrors(IList<APIError> value)
+        {
+            Errors = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderStatusOutput WithIsCancellable(bool? value)
+        {
+            IsCancellable = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderStatusOutput WithStatusCategory(string value)
+        {
+            StatusCategory = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderStatusOutput WithStatusCode(int? value)
+        {
+            StatusCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderStatusOutput WithStatusCodeChangeDateTime(string value)
+        {
+            StatusCodeChangeDateTime = value;
+            return this;
+        }
     }
 }

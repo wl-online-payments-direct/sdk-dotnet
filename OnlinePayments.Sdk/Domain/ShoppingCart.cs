@@ -43,5 +43,60 @@ namespace OnlinePayments.Sdk.Domain
         /// false = this is the first time the customer is ordering these items
         /// </summary>
         public bool? ReOrderIndicator { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("Use order.shipping.shippingCost for shipping cost. Other amounts are not used. Determines how the total amount is split into amount types")]
+        public ShoppingCart WithAmountBreakdown(IList<AmountBreakdown> value)
+        {
+            AmountBreakdown = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShoppingCart WithGiftCardPurchase(GiftCardPurchase value)
+        {
+            GiftCardPurchase = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShoppingCart WithIsPreOrder(bool? value)
+        {
+            IsPreOrder = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShoppingCart WithItems(IList<LineItem> value)
+        {
+            Items = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShoppingCart WithPreOrderItemAvailabilityDate(string value)
+        {
+            PreOrderItemAvailabilityDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShoppingCart WithReOrderIndicator(bool? value)
+        {
+            ReOrderIndicator = value;
+            return this;
+        }
     }
 }

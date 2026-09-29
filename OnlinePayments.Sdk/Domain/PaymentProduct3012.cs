@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Contains URL intent that can be used as the link of an &quot;open the app&quot; button on a device
         /// </summary>
         public string UrlIntent { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct3012 WithQrCode(string value)
+        {
+            QrCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct3012 WithUrlIntent(string value)
+        {
+            UrlIntent = value;
+            return this;
+        }
     }
 }

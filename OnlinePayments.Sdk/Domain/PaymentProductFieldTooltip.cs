@@ -18,5 +18,24 @@ namespace OnlinePayments.Sdk.Domain
         /// A text explaining the field in more detail. This is meant to be used for displaying to the customer.
         /// </summary>
         public string Label { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("This field is not used by any payment product Relative URL that can be used to retrieve an image for the tooltip image.")]
+        public PaymentProductFieldTooltip WithImage(string value)
+        {
+            Image = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductFieldTooltip WithLabel(string value)
+        {
+            Label = value;
+            return this;
+        }
     }
 }

@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Dynamic Currency Conversion(DCC) Session Id that was previously returned by rate enquiry (/dccrate).
         /// </summary>
         public string DccSessionId { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversionInput WithAcceptedByUser(bool? value)
+        {
+            AcceptedByUser = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversionInput WithDccSessionId(string value)
+        {
+            DccSessionId = value;
+            return this;
+        }
     }
 }

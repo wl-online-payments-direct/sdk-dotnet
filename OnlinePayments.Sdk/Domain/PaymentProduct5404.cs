@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Contains a QR code url that can be used to build a QR code (intended to be scanned by a device with the WeChat Pay app)
         /// </summary>
         public string QrCodeUrl { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5404 WithAppSwitchLink(string value)
+        {
+            AppSwitchLink = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct5404 WithQrCodeUrl(string value)
+        {
+            QrCodeUrl = value;
+            return this;
+        }
     }
 }

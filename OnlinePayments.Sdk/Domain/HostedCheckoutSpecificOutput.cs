@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// You can force the use of a custom template by specifying it in the variant field. This allows you to test out the effect of certain changes to your payment pages in a controlled manner. Please note that you need to specify the filename of the template or customization.
         /// </summary>
         public string Variant { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificOutput WithHostedCheckoutId(string value)
+        {
+            HostedCheckoutId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public HostedCheckoutSpecificOutput WithVariant(string value)
+        {
+            Variant = value;
+            return this;
+        }
     }
 }

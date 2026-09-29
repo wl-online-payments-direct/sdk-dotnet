@@ -17,5 +17,23 @@ namespace OnlinePayments.Sdk.Domain
         /// The URL that the customer should be redirected to. Be sure to redirect using the GET method.
         /// </summary>
         public string RedirectURL { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateRedirectData WithRETURNMAC(string value)
+        {
+            RETURNMAC = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateRedirectData WithRedirectURL(string value)
+        {
+            RedirectURL = value;
+            return this;
+        }
     }
 }

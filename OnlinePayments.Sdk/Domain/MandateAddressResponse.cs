@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Zip code
         /// </summary>
         public string Zip { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddressResponse WithCity(string value)
+        {
+            City = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddressResponse WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddressResponse WithHouseNumber(string value)
+        {
+            HouseNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddressResponse WithStreet(string value)
+        {
+            Street = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandateAddressResponse WithZip(string value)
+        {
+            Zip = value;
+            return this;
+        }
     }
 }

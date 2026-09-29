@@ -11,5 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Array containing payment products and their characteristics
         /// </summary>
         public IList<PaymentProduct> PaymentProducts { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPaymentProductsResponse WithPaymentProducts(IList<PaymentProduct> value)
+        {
+            PaymentProducts = value;
+            return this;
+        }
     }
 }

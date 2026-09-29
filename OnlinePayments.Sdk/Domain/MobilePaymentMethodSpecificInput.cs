@@ -69,5 +69,95 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public bool? RequiresApproval { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithAuthorizationMode(string value)
+        {
+            AuthorizationMode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithAutoCapture(AutoCapture value)
+        {
+            AutoCapture = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithDecryptedPaymentData(DecryptedPaymentData value)
+        {
+            DecryptedPaymentData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithEncryptedPaymentData(string value)
+        {
+            EncryptedPaymentData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithEphemeralKey(string value)
+        {
+            EphemeralKey = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithPaymentProduct302SpecificInput(MobilePaymentProduct302SpecificInput value)
+        {
+            PaymentProduct302SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithPaymentProduct320SpecificInput(MobilePaymentProduct320SpecificInput value)
+        {
+            PaymentProduct320SpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithPublicKeyHash(string value)
+        {
+            PublicKeyHash = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentMethodSpecificInput WithRequiresApproval(bool? value)
+        {
+            RequiresApproval = value;
+            return this;
+        }
     }
 }

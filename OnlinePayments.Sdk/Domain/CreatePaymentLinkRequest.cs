@@ -99,5 +99,143 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the specific input details for SEPA direct debit payments
         /// </summary>
         public SepaDirectDebitPaymentMethodSpecificInputBase SepaDirectDebitPaymentMethodSpecificInput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithCardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputBase value)
+        {
+            CardPaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("A note related to the created payment link.  Use paymentLinkSpecificInput/description instead.")]
+        public CreatePaymentLinkRequest WithDescription(string value)
+        {
+            Description = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithDisplayQRCode(bool? value)
+        {
+            DisplayQRCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("The date after which the payment link will not be usable to complete the payment. The date sent cannot be more than 6 months in the future or a past date. It must also contain the UTC offset.  Use paymentLinkSpecificInput/expirationDate instead.")]
+        public CreatePaymentLinkRequest WithExpirationDate(DateTimeOffset? value)
+        {
+            ExpirationDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithFeedbacks(Feedbacks value)
+        {
+            Feedbacks = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithFraudFields(FraudFields value)
+        {
+            FraudFields = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithHostedCheckoutSpecificInput(HostedCheckoutSpecificInput value)
+        {
+            HostedCheckoutSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithIsReusableLink(bool? value)
+        {
+            IsReusableLink = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithMobilePaymentMethodSpecificInput(MobilePaymentMethodHostedCheckoutSpecificInput value)
+        {
+            MobilePaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithOrder(Order value)
+        {
+            Order = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithPaymentLinkOrder(PaymentLinkOrderInput value)
+        {
+            PaymentLinkOrder = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithPaymentLinkSpecificInput(PaymentLinkSpecificInput value)
+        {
+            PaymentLinkSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        [Obsolete("The payment link recipient name.  Use paymentLinkSpecificInput/recipientName instead.")]
+        public CreatePaymentLinkRequest WithRecipientName(string value)
+        {
+            RecipientName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithRedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInput value)
+        {
+            RedirectPaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePaymentLinkRequest WithSepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpecificInputBase value)
+        {
+            SepaDirectDebitPaymentMethodSpecificInput = value;
+            return this;
+        }
     }
 }

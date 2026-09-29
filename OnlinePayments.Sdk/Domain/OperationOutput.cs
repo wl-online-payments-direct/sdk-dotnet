@@ -39,5 +39,68 @@ namespace OnlinePayments.Sdk.Domain
         /// This object has the numeric representation of the current payment status, the timestamp of the last status change, and the performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.
         /// </summary>
         public PaymentStatusOutput StatusOutput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationOutput WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationOutput WithId(string value)
+        {
+            Id = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationOutput WithOperationReferences(OperationPaymentReferences value)
+        {
+            OperationReferences = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationOutput WithPaymentMethod(string value)
+        {
+            PaymentMethod = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationOutput WithReferences(PaymentReferences value)
+        {
+            References = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationOutput WithStatus(string value)
+        {
+            Status = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationOutput WithStatusOutput(PaymentStatusOutput value)
+        {
+            StatusOutput = value;
+            return this;
+        }
     }
 }

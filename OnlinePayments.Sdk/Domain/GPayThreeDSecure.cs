@@ -69,5 +69,59 @@ namespace OnlinePayments.Sdk.Domain
         /// Note: skipSoftDecline defaults to false if empty. This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.
         /// </summary>
         public bool? SkipSoftDecline { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GPayThreeDSecure WithChallengeCanvasSize(string value)
+        {
+            ChallengeCanvasSize = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GPayThreeDSecure WithChallengeIndicator(string value)
+        {
+            ChallengeIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GPayThreeDSecure WithExemptionRequest(string value)
+        {
+            ExemptionRequest = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GPayThreeDSecure WithRedirectionData(RedirectionData value)
+        {
+            RedirectionData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GPayThreeDSecure WithSkipAuthentication(bool? value)
+        {
+            SkipAuthentication = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GPayThreeDSecure WithSkipSoftDecline(bool? value)
+        {
+            SkipSoftDecline = value;
+            return this;
+        }
     }
 }

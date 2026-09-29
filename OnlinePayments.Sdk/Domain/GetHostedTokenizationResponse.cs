@@ -16,5 +16,23 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string TokenStatus { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetHostedTokenizationResponse WithToken(TokenResponse value)
+        {
+            Token = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetHostedTokenizationResponse WithTokenStatus(string value)
+        {
+            TokenStatus = value;
+            return this;
+        }
     }
 }

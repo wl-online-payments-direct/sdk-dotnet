@@ -24,5 +24,41 @@ namespace OnlinePayments.Sdk.Domain
         /// The 3-D Secure version 2 transaction ID that is used for the 3D Authentication
         /// </summary>
         public string ThreeDServerTransactionId { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobileThreeDSecureChallengeParameters WithAcsReferenceNumber(string value)
+        {
+            AcsReferenceNumber = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobileThreeDSecureChallengeParameters WithAcsSignedContent(string value)
+        {
+            AcsSignedContent = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobileThreeDSecureChallengeParameters WithAcsTransactionId(string value)
+        {
+            AcsTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobileThreeDSecureChallengeParameters WithThreeDServerTransactionId(string value)
+        {
+            ThreeDServerTransactionId = value;
+            return this;
+        }
     }
 }

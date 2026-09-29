@@ -18,9 +18,27 @@ namespace OnlinePayments.Sdk.Merchant.PrivacyPolicy
         public string Locale { get; set; }
 
         /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPrivacyPolicyParams WithLocale(string value)
+        {
+            Locale = value;
+            return this;
+        }
+
+        /// <summary>
         /// ID of the specific payment product for which you wish to retrieve the privacy policy. When none is provided you will receive a complete policy for all the payment methods available for the specified merchantId.
         /// </summary>
         public int? PaymentProductId { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public GetPrivacyPolicyParams WithPaymentProductId(int? value)
+        {
+            PaymentProductId = value;
+            return this;
+        }
 
         public override IEnumerable<RequestParam> ToRequestParameters()
         {

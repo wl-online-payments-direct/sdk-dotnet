@@ -29,5 +29,32 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string TokenState { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenLinked WithExpiryDate(string value)
+        {
+            ExpiryDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenLinked WithMaskedToken(string value)
+        {
+            MaskedToken = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenLinked WithTokenState(string value)
+        {
+            TokenState = value;
+            return this;
+        }
     }
 }

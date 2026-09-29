@@ -31,5 +31,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the details of the shipping of the order
         /// </summary>
         public ShippingDetail Shipping { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CancelPaymentRequest WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CancelPaymentRequest WithIsFinal(bool? value)
+        {
+            IsFinal = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CancelPaymentRequest WithLineItemDetails(IList<LineItemDetail> value)
+        {
+            LineItemDetails = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CancelPaymentRequest WithOperationReferences(OperationPaymentReferences value)
+        {
+            OperationReferences = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CancelPaymentRequest WithShipping(ShippingDetail value)
+        {
+            Shipping = value;
+            return this;
+        }
     }
 }

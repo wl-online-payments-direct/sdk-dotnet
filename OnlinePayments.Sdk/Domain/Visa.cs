@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// A unique ID provided by the SRCI for the DPA, which can be used as an external client ID. Required if srciDpaId in dpaData is not provided.
         /// </summary>
         public string SrciDpaId { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Visa WithAuthenticationOptions(VisaAuthenticationOptions value)
+        {
+            AuthenticationOptions = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Visa WithEncryptionKey(string value)
+        {
+            EncryptionKey = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Visa WithNModulus(string value)
+        {
+            NModulus = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Visa WithSrcInitiatorId(string value)
+        {
+            SrcInitiatorId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Visa WithSrciDpaId(string value)
+        {
+            SrciDpaId = value;
+            return this;
+        }
     }
 }

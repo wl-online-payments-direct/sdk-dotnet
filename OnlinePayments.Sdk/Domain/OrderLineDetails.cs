@@ -65,5 +65,95 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates the line item unit of measure; for example: each, kit, pair, gallon, month, etc.
         /// </summary>
         public string Unit { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithDiscountAmount(long? value)
+        {
+            DiscountAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithProductBrand(string value)
+        {
+            ProductBrand = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithProductCode(string value)
+        {
+            ProductCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithProductName(string value)
+        {
+            ProductName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithProductPrice(long? value)
+        {
+            ProductPrice = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithProductType(string value)
+        {
+            ProductType = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithQuantity(long? value)
+        {
+            Quantity = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithTaxAmount(long? value)
+        {
+            TaxAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithTaxPercentage(decimal? value)
+        {
+            TaxPercentage = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OrderLineDetails WithUnit(string value)
+        {
+            Unit = value;
+            return this;
+        }
     }
 }

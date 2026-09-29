@@ -29,5 +29,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Timestamp (YYYYMMDDHHmm) of the authentication of the customer to their account with you
         /// </summary>
         public string UtcTimestamp { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccountAuthentication WithData(string value)
+        {
+            Data = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccountAuthentication WithMethod(string value)
+        {
+            Method = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccountAuthentication WithUtcTimestamp(string value)
+        {
+            UtcTimestamp = value;
+            return this;
+        }
     }
 }

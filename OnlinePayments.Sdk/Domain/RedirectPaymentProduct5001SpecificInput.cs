@@ -23,5 +23,23 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string SubsequentType { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5001SpecificInput WithExemptionRequest(string value)
+        {
+            ExemptionRequest = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5001SpecificInput WithSubsequentType(string value)
+        {
+            SubsequentType = value;
+            return this;
+        }
     }
 }

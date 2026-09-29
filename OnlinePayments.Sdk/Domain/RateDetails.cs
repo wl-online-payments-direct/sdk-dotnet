@@ -29,5 +29,50 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates the exchange rate source name. The rate source is supplied for receipt printing purposes and to meet regulatory requirements where applicable
         /// </summary>
         public string Source { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RateDetails WithExchangeRate(decimal? value)
+        {
+            ExchangeRate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RateDetails WithInvertedExchangeRate(decimal? value)
+        {
+            InvertedExchangeRate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RateDetails WithMarkUpRate(decimal? value)
+        {
+            MarkUpRate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RateDetails WithQuotationDateTime(string value)
+        {
+            QuotationDateTime = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RateDetails WithSource(string value)
+        {
+            Source = value;
+            return this;
+        }
     }
 }

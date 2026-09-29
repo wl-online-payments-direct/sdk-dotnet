@@ -25,5 +25,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Timestamp in UTC (YYYYMMDDHHmm) of the 3-D Secure authentication of this transaction
         /// </summary>
         public string UtcTimestamp { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureData WithAcsTransactionId(string value)
+        {
+            AcsTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureData WithMethod(string value)
+        {
+            Method = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecureData WithUtcTimestamp(string value)
+        {
+            UtcTimestamp = value;
+            return this;
+        }
     }
 }

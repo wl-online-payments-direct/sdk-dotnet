@@ -19,5 +19,32 @@ namespace OnlinePayments.Sdk.Domain
         /// The type of event that occurred.
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkEvent WithDateTime(string value)
+        {
+            DateTime = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkEvent WithDetails(string value)
+        {
+            Details = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentLinkEvent WithType(string value)
+        {
+            Type = value;
+            return this;
+        }
     }
 }

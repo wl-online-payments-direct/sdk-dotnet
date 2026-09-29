@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Determines whether the Card Verification Value must be provided for new tokens. This option overrides the payment method configuration for the session.
         /// </summary>
         public bool? CvvMandatoryForNewToken { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreditCardValidationRules WithCvvMandatoryForExistingToken(bool? value)
+        {
+            CvvMandatoryForExistingToken = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreditCardValidationRules WithCvvMandatoryForNewToken(bool? value)
+        {
+            CvvMandatoryForNewToken = value;
+            return this;
+        }
     }
 }

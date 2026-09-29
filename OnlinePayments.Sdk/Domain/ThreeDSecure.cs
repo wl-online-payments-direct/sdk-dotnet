@@ -107,5 +107,113 @@ namespace OnlinePayments.Sdk.Domain
         /// Note: skipSoftDecline defaults to false if empty. This is only possible if your account in our system is setup for 3D Secure authentication and if your configuration in our system allows you to override it per transaction.
         /// </summary>
         public bool? SkipSoftDecline { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithAuthenticationAmount(long? value)
+        {
+            AuthenticationAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithChallengeCanvasSize(string value)
+        {
+            ChallengeCanvasSize = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithChallengeIndicator(string value)
+        {
+            ChallengeIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithDeviceChannel(string value)
+        {
+            DeviceChannel = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithExemptionRequest(string value)
+        {
+            ExemptionRequest = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithExternalCardholderAuthenticationData(ExternalCardholderAuthenticationData value)
+        {
+            ExternalCardholderAuthenticationData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithMerchantFraudRate(int? value)
+        {
+            MerchantFraudRate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithPriorThreeDSecureData(ThreeDSecureData value)
+        {
+            PriorThreeDSecureData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithRedirectionData(RedirectionData value)
+        {
+            RedirectionData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithSecureCorporatePayment(bool? value)
+        {
+            SecureCorporatePayment = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithSkipAuthentication(bool? value)
+        {
+            SkipAuthentication = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ThreeDSecure WithSkipSoftDecline(bool? value)
+        {
+            SkipSoftDecline = value;
+            return this;
+        }
     }
 }

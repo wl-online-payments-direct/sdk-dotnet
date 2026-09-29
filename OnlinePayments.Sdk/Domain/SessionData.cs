@@ -31,5 +31,50 @@ namespace OnlinePayments.Sdk.Domain
         /// This is a list of card tokens
         /// </summary>
         public IList<string> Tokens { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionData WithHostedFieldsSessionId(string value)
+        {
+            HostedFieldsSessionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionData WithLocale(string value)
+        {
+            Locale = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionData WithPlatformUrl(string value)
+        {
+            PlatformUrl = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionData WithSessionToken(string value)
+        {
+            SessionToken = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SessionData WithTokens(IList<string> value)
+        {
+            Tokens = value;
+            return this;
+        }
     }
 }

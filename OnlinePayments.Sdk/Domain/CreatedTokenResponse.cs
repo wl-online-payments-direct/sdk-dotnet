@@ -37,5 +37,59 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string TokenStatus { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatedTokenResponse WithCard(CardWithoutCvv value)
+        {
+            Card = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatedTokenResponse WithCrmToken(CrmToken value)
+        {
+            CrmToken = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatedTokenResponse WithExternalTokenLinked(ExternalTokenLinked value)
+        {
+            ExternalTokenLinked = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatedTokenResponse WithIsNewToken(bool? value)
+        {
+            IsNewToken = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatedTokenResponse WithToken(string value)
+        {
+            Token = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatedTokenResponse WithTokenStatus(string value)
+        {
+            TokenStatus = value;
+            return this;
+        }
     }
 }

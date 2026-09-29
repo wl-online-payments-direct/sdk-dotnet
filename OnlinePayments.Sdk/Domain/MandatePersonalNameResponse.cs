@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Surname(s) or last name(s) of the customer.
         /// </summary>
         public string Surname { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandatePersonalNameResponse WithFirstName(string value)
+        {
+            FirstName = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MandatePersonalNameResponse WithSurname(string value)
+        {
+            Surname = value;
+            return this;
+        }
     }
 }

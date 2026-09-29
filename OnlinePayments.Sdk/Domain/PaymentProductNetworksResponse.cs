@@ -11,5 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Array containing network entries for a payment product. The strings that represent the networks in the array are identical to the strings that the payment product vendors use in their documentation. For instance: &quot;Visa&quot; for Apple Pay, and &quot;VISA&quot; for Google Pay.
         /// </summary>
         public IList<string> Networks { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProductNetworksResponse WithNetworks(IList<string> value)
+        {
+            Networks = value;
+            return this;
+        }
     }
 }

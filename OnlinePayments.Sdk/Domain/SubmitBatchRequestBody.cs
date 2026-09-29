@@ -46,5 +46,77 @@ namespace OnlinePayments.Sdk.Domain
         /// Array of subsequent payment requests to be submitted in batch.
         /// </summary>
         public IList<SubsequentPaymentBatchRequest> SubsequentPayments { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubmitBatchRequestBody WithCancelPayments(IList<CancelPaymentBatchRequest> value)
+        {
+            CancelPayments = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubmitBatchRequestBody WithCapturePayments(IList<CapturePaymentBatchRequest> value)
+        {
+            CapturePayments = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubmitBatchRequestBody WithCreatePaymentLinks(IList<CreatePaymentLinkRequest> value)
+        {
+            CreatePaymentLinks = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubmitBatchRequestBody WithCreatePayments(IList<CreatePaymentRequest> value)
+        {
+            CreatePayments = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubmitBatchRequestBody WithCreatePayouts(IList<CreatePayoutRequest> value)
+        {
+            CreatePayouts = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubmitBatchRequestBody WithHeader(BatchMetadata value)
+        {
+            Header = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubmitBatchRequestBody WithRefundPayments(IList<RefundPaymentBatchRequest> value)
+        {
+            RefundPayments = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public SubmitBatchRequestBody WithSubsequentPayments(IList<SubsequentPaymentBatchRequest> value)
+        {
+            SubsequentPayments = value;
+            return this;
+        }
     }
 }

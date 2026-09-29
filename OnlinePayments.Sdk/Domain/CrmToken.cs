@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// A unique identifier for the card that was tokenized. This identifier remains the same for a given card, even if the tokenID may differ. The unique card identifier cannot be used to trigger a payment.
         /// </summary>
         public string UniqueCardIdentifier { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CrmToken WithUniqueAccountIdentifier(string value)
+        {
+            UniqueAccountIdentifier = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CrmToken WithUniqueCardIdentifier(string value)
+        {
+            UniqueCardIdentifier = value;
+            return this;
+        }
     }
 }

@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing address information
         /// </summary>
         public AddressPersonal ShippingAddress { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct3203SpecificOutput WithBillingAddress(AddressPersonal value)
+        {
+            BillingAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentProduct3203SpecificOutput WithShippingAddress(AddressPersonal value)
+        {
+            ShippingAddress = value;
+            return this;
+        }
     }
 }

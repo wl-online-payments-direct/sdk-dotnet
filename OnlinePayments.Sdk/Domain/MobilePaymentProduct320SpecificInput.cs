@@ -33,5 +33,41 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public bool? Tokenize { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentProduct320SpecificInput WithIsRecurring(bool? value)
+        {
+            IsRecurring = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentProduct320SpecificInput WithRecurring(Product320Recurring value)
+        {
+            Recurring = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentProduct320SpecificInput WithThreeDSecure(GPayThreeDSecure value)
+        {
+            ThreeDSecure = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentProduct320SpecificInput WithTokenize(bool? value)
+        {
+            Tokenize = value;
+            return this;
+        }
     }
 }

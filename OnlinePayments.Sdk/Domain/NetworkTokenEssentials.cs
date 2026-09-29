@@ -44,5 +44,59 @@ namespace OnlinePayments.Sdk.Domain
         /// Format: MMYY
         /// </summary>
         public string TokenExpiryDate { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenEssentials WithBin(string value)
+        {
+            Bin = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenEssentials WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenEssentials WithNetworkToken(string value)
+        {
+            NetworkToken = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenEssentials WithNetworkTokenState(string value)
+        {
+            NetworkTokenState = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenEssentials WithNetworkTokenUsed(bool? value)
+        {
+            NetworkTokenUsed = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public NetworkTokenEssentials WithTokenExpiryDate(string value)
+        {
+            TokenExpiryDate = value;
+            return this;
+        }
     }
 }

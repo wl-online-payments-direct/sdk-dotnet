@@ -9,5 +9,14 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates whether to skip the email validation for the payment. When set to true, the email validation will be skipped.
         /// </summary>
         public bool? SkipEmailValidation { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct11SpecificInput WithSkipEmailValidation(bool? value)
+        {
+            SkipEmailValidation = value;
+            return this;
+        }
     }
 }

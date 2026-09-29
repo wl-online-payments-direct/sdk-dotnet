@@ -22,5 +22,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Name of the issuing bank as it should be presented to the customer
         /// </summary>
         public string IssuerName { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DirectoryEntry WithIssuerId(string value)
+        {
+            IssuerId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DirectoryEntry WithIssuerList(string value)
+        {
+            IssuerList = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public DirectoryEntry WithIssuerName(string value)
+        {
+            IssuerName = value;
+            return this;
+        }
     }
 }

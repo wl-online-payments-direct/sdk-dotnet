@@ -34,5 +34,59 @@ namespace OnlinePayments.Sdk.Domain
         /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
         public PaymentReferences References { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePayoutRequest WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePayoutRequest WithCardPayoutMethodSpecificInput(CardPayoutMethodSpecificInput value)
+        {
+            CardPayoutMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePayoutRequest WithDescriptor(string value)
+        {
+            Descriptor = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePayoutRequest WithFeedbacks(Feedbacks value)
+        {
+            Feedbacks = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePayoutRequest WithOmnichannelPayoutSpecificInput(OmnichannelPayoutSpecificInput value)
+        {
+            OmnichannelPayoutSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreatePayoutRequest WithReferences(PaymentReferences value)
+        {
+            References = value;
+            return this;
+        }
     }
 }

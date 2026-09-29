@@ -62,5 +62,86 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing data on the purchase history of the customer with you
         /// </summary>
         public CustomerPaymentActivity PaymentActivity { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccount WithAuthentication(CustomerAccountAuthentication value)
+        {
+            Authentication = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccount WithChangeDate(string value)
+        {
+            ChangeDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccount WithChangedDuringCheckout(bool? value)
+        {
+            ChangedDuringCheckout = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccount WithCreateDate(string value)
+        {
+            CreateDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccount WithHadSuspiciousActivity(bool? value)
+        {
+            HadSuspiciousActivity = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccount WithPasswordChangeDate(string value)
+        {
+            PasswordChangeDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccount WithPasswordChangedDuringCheckout(bool? value)
+        {
+            PasswordChangedDuringCheckout = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccount WithPaymentAccountOnFile(PaymentAccountOnFile value)
+        {
+            PaymentAccountOnFile = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerAccount WithPaymentActivity(CustomerPaymentActivity value)
+        {
+            PaymentActivity = value;
+            return this;
+        }
     }
 }

@@ -12,5 +12,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Please note that this object is required to submit the amount.
         /// </summary>
         public Order Order { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CompletePaymentRequest WithCardPaymentMethodSpecificInput(CompletePaymentCardPaymentMethodSpecificInput value)
+        {
+            CardPaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CompletePaymentRequest WithOrder(Order value)
+        {
+            Order = value;
+            return this;
+        }
     }
 }

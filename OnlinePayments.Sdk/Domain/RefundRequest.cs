@@ -51,5 +51,86 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the specific input details for refunds for redirection payment methods.
         /// </summary>
         public RefundRedirectPaymentMethodSpecificInput RefundRedirectPaymentMethodSpecificInput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundRequest WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundRequest WithCaptureId(string value)
+        {
+            CaptureId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundRequest WithIsFinal(bool? value)
+        {
+            IsFinal = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundRequest WithLineItemDetails(IList<LineItemDetail> value)
+        {
+            LineItemDetails = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundRequest WithOmnichannelRefundSpecificInput(OmnichannelRefundSpecificInput value)
+        {
+            OmnichannelRefundSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundRequest WithOperationReferences(OperationPaymentReferences value)
+        {
+            OperationReferences = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundRequest WithReason(string value)
+        {
+            Reason = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundRequest WithReferences(PaymentReferences value)
+        {
+            References = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundRequest WithRefundRedirectPaymentMethodSpecificInput(RefundRedirectPaymentMethodSpecificInput value)
+        {
+            RefundRedirectPaymentMethodSpecificInput = value;
+            return this;
+        }
     }
 }

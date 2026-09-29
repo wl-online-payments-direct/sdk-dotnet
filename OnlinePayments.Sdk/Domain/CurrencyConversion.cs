@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// Details of currency conversion to be proposed to the cardholder
         /// </summary>
         public DccProposal Proposal { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversion WithAcceptedByUser(bool? value)
+        {
+            AcceptedByUser = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CurrencyConversion WithProposal(DccProposal value)
+        {
+            Proposal = value;
+            return this;
+        }
     }
 }

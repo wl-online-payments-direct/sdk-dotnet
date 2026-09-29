@@ -11,5 +11,14 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public string RecurringPaymentSequenceIndicator { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public Product302Recurring WithRecurringPaymentSequenceIndicator(string value)
+        {
+            RecurringPaymentSequenceIndicator = value;
+            return this;
+        }
     }
 }

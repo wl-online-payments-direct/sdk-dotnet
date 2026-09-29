@@ -19,5 +19,32 @@ namespace OnlinePayments.Sdk.Domain
         /// True if the payment is recurring
         /// </summary>
         public bool? IsRecurring { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentContext WithAmountOfMoney(AmountOfMoney value)
+        {
+            AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentContext WithCountryCode(string value)
+        {
+            CountryCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentContext WithIsRecurring(bool? value)
+        {
+            IsRecurring = value;
+            return this;
+        }
     }
 }

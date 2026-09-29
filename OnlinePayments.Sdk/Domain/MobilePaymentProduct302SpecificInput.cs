@@ -33,5 +33,41 @@ namespace OnlinePayments.Sdk.Domain
         /// </list>
         /// </summary>
         public bool? Tokenize { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentProduct302SpecificInput WithApplePayRecurringPaymentRequest(ApplePayRecurringPaymentRequest value)
+        {
+            ApplePayRecurringPaymentRequest = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentProduct302SpecificInput WithIsRecurring(bool? value)
+        {
+            IsRecurring = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentProduct302SpecificInput WithRecurring(Product302Recurring value)
+        {
+            Recurring = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public MobilePaymentProduct302SpecificInput WithTokenize(bool? value)
+        {
+            Tokenize = value;
+            return this;
+        }
     }
 }

@@ -45,5 +45,77 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing the specific input details for SEPA direct debit payments
         /// </summary>
         public SepaDirectDebitPaymentMethodSpecificInputBase SepaDirectDebitPaymentMethodSpecificInput { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedCheckoutRequest WithCardPaymentMethodSpecificInput(CardPaymentMethodSpecificInputBase value)
+        {
+            CardPaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedCheckoutRequest WithFeedbacks(Feedbacks value)
+        {
+            Feedbacks = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedCheckoutRequest WithFraudFields(FraudFields value)
+        {
+            FraudFields = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedCheckoutRequest WithHostedCheckoutSpecificInput(HostedCheckoutSpecificInput value)
+        {
+            HostedCheckoutSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedCheckoutRequest WithMobilePaymentMethodSpecificInput(MobilePaymentMethodHostedCheckoutSpecificInput value)
+        {
+            MobilePaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedCheckoutRequest WithOrder(Order value)
+        {
+            Order = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedCheckoutRequest WithRedirectPaymentMethodSpecificInput(RedirectPaymentMethodSpecificInput value)
+        {
+            RedirectPaymentMethodSpecificInput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedCheckoutRequest WithSepaDirectDebitPaymentMethodSpecificInput(SepaDirectDebitPaymentMethodSpecificInputBase value)
+        {
+            SepaDirectDebitPaymentMethodSpecificInput = value;
+            return this;
+        }
     }
 }

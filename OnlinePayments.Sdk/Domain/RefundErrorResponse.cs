@@ -15,5 +15,32 @@ namespace OnlinePayments.Sdk.Domain
         /// Deprecated: This field is not used by any payment product
         /// </summary>
         public RefundResponse RefundResult { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundErrorResponse WithErrorId(string value)
+        {
+            ErrorId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundErrorResponse WithErrors(IList<APIError> value)
+        {
+            Errors = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundErrorResponse WithRefundResult(RefundResponse value)
+        {
+            RefundResult = value;
+            return this;
+        }
     }
 }

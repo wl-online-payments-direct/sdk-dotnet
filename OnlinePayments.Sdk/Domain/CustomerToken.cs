@@ -16,5 +16,32 @@ namespace OnlinePayments.Sdk.Domain
         public CompanyInformation CompanyInformation { get; set; }
 
         public PersonalInformationToken PersonalInformation { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerToken WithBillingAddress(Address value)
+        {
+            BillingAddress = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerToken WithCompanyInformation(CompanyInformation value)
+        {
+            CompanyInformation = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CustomerToken WithPersonalInformation(PersonalInformationToken value)
+        {
+            PersonalInformation = value;
+            return this;
+        }
     }
 }

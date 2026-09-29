@@ -24,5 +24,41 @@ namespace OnlinePayments.Sdk.Domain
         /// Shipping method type
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShippingMethod WithDetails(string value)
+        {
+            Details = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShippingMethod WithName(string value)
+        {
+            Name = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShippingMethod WithSpeed(int? value)
+        {
+            Speed = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ShippingMethod WithType(string value)
+        {
+            Type = value;
+            return this;
+        }
     }
 }

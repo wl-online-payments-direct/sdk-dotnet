@@ -14,5 +14,23 @@ namespace OnlinePayments.Sdk.Domain
         /// The customer's 11-digit CV Connect ID, or their e-mail address on file with ANCV. The customer will be able to confirm their ID before proceeding with payment.
         /// </summary>
         public string BeneficiaryId { get; set; }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5412SpecificInput WithAdjustableAmount(bool? value)
+        {
+            AdjustableAmount = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RedirectPaymentProduct5412SpecificInput WithBeneficiaryId(string value)
+        {
+            BeneficiaryId = value;
+            return this;
+        }
     }
 }
