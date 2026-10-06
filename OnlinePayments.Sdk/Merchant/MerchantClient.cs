@@ -62,6 +62,12 @@ namespace OnlinePayments.Sdk.Merchant
         public IPaymentsClient Payments => new PaymentsClient(this, null);
 
         /// <summary>
+        /// Resource /v2/{merchantId}/paymentlinks/{paymentLinkId}/share
+        /// </summary>
+        /// <returns>IPaymentLinksClient</returns>
+        public IPaymentLinksClient PaymentLinks => new PaymentLinksClient(this, null);
+
+        /// <summary>
         /// Resource /v2/{merchantId}/payments/{paymentId}/captures
         /// </summary>
         /// <returns>ICapturesClient</returns>
@@ -156,12 +162,6 @@ namespace OnlinePayments.Sdk.Merchant
         /// </summary>
         /// <returns>IPrivacyPolicyClient</returns>
         public IPrivacyPolicyClient PrivacyPolicy => new PrivacyPolicyClient(this, null);
-
-        /// <summary>
-        /// Resource /v2/{merchantId}/paymentlinks
-        /// </summary>
-        /// <returns>IPaymentLinksClient</returns>
-        public IPaymentLinksClient PaymentLinks => new PaymentLinksClient(this, null);
 
         /// <summary>
         /// Resource /v2/{merchantId}/merchant-batches

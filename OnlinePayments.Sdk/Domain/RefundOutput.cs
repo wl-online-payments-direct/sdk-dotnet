@@ -1,6 +1,8 @@
 /*
  * This file was automatically generated.
  */
+using System;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class RefundOutput
@@ -29,6 +31,11 @@ namespace OnlinePayments.Sdk.Domain
         public OperationPaymentReferences OperationReferences { get; set; }
 
         /// <summary>
+        /// Date and time when the current payment was first created
+        /// </summary>
+        public DateTimeOffset? PaymentCreationDate { get; set; }
+
+        /// <summary>
         /// Payment method identifier used by the our payment engine.
         /// </summary>
         public string PaymentMethod { get; set; }
@@ -39,6 +46,11 @@ namespace OnlinePayments.Sdk.Domain
         /// Object that holds all reference properties that are linked to this transaction. <b>Deprecated for capture/refund</b>: Use operationReferences instead.
         /// </summary>
         public PaymentReferences References { get; set; }
+
+        /// <summary>
+        /// It is the server-side processing date and time of the transaction.
+        /// </summary>
+        public DateTimeOffset? TransactionDate { get; set; }
 
         /// <summary>
         /// Sets the property and returns this same instance.
@@ -106,6 +118,15 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// Sets the property and returns this same instance.
         /// </summary>
+        public RefundOutput WithPaymentCreationDate(DateTimeOffset? value)
+        {
+            PaymentCreationDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
         public RefundOutput WithPaymentMethod(string value)
         {
             PaymentMethod = value;
@@ -127,6 +148,15 @@ namespace OnlinePayments.Sdk.Domain
         public RefundOutput WithReferences(PaymentReferences value)
         {
             References = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public RefundOutput WithTransactionDate(DateTimeOffset? value)
+        {
+            TransactionDate = value;
             return this;
         }
     }

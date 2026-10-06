@@ -13,6 +13,11 @@ namespace OnlinePayments.Sdk.Domain
         public AmountOfMoney AmountOfMoney { get; set; }
 
         /// <summary>
+        /// Date and time when the current payment was first created
+        /// </summary>
+        public DateTimeOffset? PaymentCreationDate { get; set; }
+
+        /// <summary>
         /// Object containing the card payment method details in a Payout context
         /// </summary>
         public PayoutCardPaymentMethodSpecificOutput PayoutCardPaymentMethodSpecificOutput { get; set; }
@@ -43,6 +48,15 @@ namespace OnlinePayments.Sdk.Domain
         public PayoutOutput WithAmountOfMoney(AmountOfMoney value)
         {
             AmountOfMoney = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PayoutOutput WithPaymentCreationDate(DateTimeOffset? value)
+        {
+            PaymentCreationDate = value;
             return this;
         }
 

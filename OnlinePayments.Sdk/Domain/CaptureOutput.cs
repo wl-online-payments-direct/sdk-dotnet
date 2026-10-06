@@ -44,6 +44,11 @@ namespace OnlinePayments.Sdk.Domain
         public OperationPaymentReferences OperationReferences { get; set; }
 
         /// <summary>
+        /// Date and time when the current payment was first created
+        /// </summary>
+        public DateTimeOffset? PaymentCreationDate { get; set; }
+
+        /// <summary>
         /// Payment method identifier used by the our payment engine.
         /// </summary>
         public string PaymentMethod { get; set; }
@@ -67,6 +72,11 @@ namespace OnlinePayments.Sdk.Domain
         /// Object containing specific surcharging attributes applied to an order.
         /// </summary>
         public SurchargeSpecificOutput SurchargeSpecificOutput { get; set; }
+
+        /// <summary>
+        /// It is the server-side processing date and time of the transaction.
+        /// </summary>
+        public DateTimeOffset? TransactionDate { get; set; }
 
         /// <summary>
         /// Sets the property and returns this same instance.
@@ -135,6 +145,15 @@ namespace OnlinePayments.Sdk.Domain
         /// <summary>
         /// Sets the property and returns this same instance.
         /// </summary>
+        public CaptureOutput WithPaymentCreationDate(DateTimeOffset? value)
+        {
+            PaymentCreationDate = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
         public CaptureOutput WithPaymentMethod(string value)
         {
             PaymentMethod = value;
@@ -174,6 +193,15 @@ namespace OnlinePayments.Sdk.Domain
         public CaptureOutput WithSurchargeSpecificOutput(SurchargeSpecificOutput value)
         {
             SurchargeSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CaptureOutput WithTransactionDate(DateTimeOffset? value)
+        {
+            TransactionDate = value;
             return this;
         }
     }

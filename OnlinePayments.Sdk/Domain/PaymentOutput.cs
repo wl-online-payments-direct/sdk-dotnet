@@ -49,6 +49,11 @@ namespace OnlinePayments.Sdk.Domain
         public MobilePaymentMethodSpecificOutput MobilePaymentMethodSpecificOutput { get; set; }
 
         /// <summary>
+        /// Date and time when the current payment was first created
+        /// </summary>
+        public DateTimeOffset? PaymentCreationDate { get; set; }
+
+        /// <summary>
         /// Payment method identifier used by the our payment engine.
         /// </summary>
         public string PaymentMethod { get; set; }
@@ -148,6 +153,15 @@ namespace OnlinePayments.Sdk.Domain
         public PaymentOutput WithMobilePaymentMethodSpecificOutput(MobilePaymentMethodSpecificOutput value)
         {
             MobilePaymentMethodSpecificOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public PaymentOutput WithPaymentCreationDate(DateTimeOffset? value)
+        {
+            PaymentCreationDate = value;
             return this;
         }
 

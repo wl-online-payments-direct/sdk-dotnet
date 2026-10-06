@@ -1,6 +1,8 @@
 /*
  * This file was automatically generated.
  */
+using System;
+
 namespace OnlinePayments.Sdk.Domain
 {
     public class OperationOutput
@@ -39,6 +41,11 @@ namespace OnlinePayments.Sdk.Domain
         /// This object has the numeric representation of the current payment status, the timestamp of the last status change, and the performable action on the current payment resource. In case of failed payments and negative scenarios, detailed error information is listed.
         /// </summary>
         public PaymentStatusOutput StatusOutput { get; set; }
+
+        /// <summary>
+        /// It is the server-side processing date and time of the transaction.
+        /// </summary>
+        public DateTimeOffset? TransactionDate { get; set; }
 
         /// <summary>
         /// Sets the property and returns this same instance.
@@ -100,6 +107,15 @@ namespace OnlinePayments.Sdk.Domain
         public OperationOutput WithStatusOutput(PaymentStatusOutput value)
         {
             StatusOutput = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public OperationOutput WithTransactionDate(DateTimeOffset? value)
+        {
+            TransactionDate = value;
             return this;
         }
     }

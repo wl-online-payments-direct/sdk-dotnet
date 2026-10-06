@@ -16,6 +16,11 @@ namespace OnlinePayments.Sdk.Domain
         public string CurrencyCode { get; set; }
 
         /// <summary>
+        /// Object containing Network Token details
+        /// </summary>
+        public NetworkTokenData NetworkTokenData { get; set; }
+
+        /// <summary>
         /// Payment product identifier - Please see Products documentation for a full overview of possible values.
         /// </summary>
         public int? PaymentProductId { get; set; }
@@ -50,6 +55,15 @@ namespace OnlinePayments.Sdk.Domain
         public ImportCofSeriesRequest WithCurrencyCode(string value)
         {
             CurrencyCode = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ImportCofSeriesRequest WithNetworkTokenData(NetworkTokenData value)
+        {
+            NetworkTokenData = value;
             return this;
         }
 
