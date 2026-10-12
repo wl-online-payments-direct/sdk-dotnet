@@ -244,7 +244,7 @@ public class ExceptionTest : IntegrationTest
     #region IdempotenceException
 
     [TestCase]
-    public async Task CreatePayment_ConcurrentRequestsWithSameIdempotenceKey_ThrowsReferenceException()
+    public async Task CreatePayment_ConcurrentRequestsWithSameIdempotenceKey_ThrowsIdempotenceException()
     {
         string idempotenceKey = Guid.NewGuid().ToString();
 
@@ -275,9 +275,9 @@ public class ExceptionTest : IntegrationTest
         Assert.That(succeeded, Is.EqualTo(1));
         Assert.That(failed, Is.Not.Null);
 
-        Assert.That(failed, Is.InstanceOf<ReferenceException>());
+        Assert.That(failed, Is.InstanceOf<IdempotenceException>());
 
-        var error = ((ReferenceException)failed).Errors[0];
+        var error = ((IdempotenceException)failed).Errors[0];
 
         Assert.That(error.HttpStatusCode, Is.EqualTo(409));
         Assert.That(error.Id, Is.EqualTo("DUPLICATE_REQUEST_IN_PROGRESS"));

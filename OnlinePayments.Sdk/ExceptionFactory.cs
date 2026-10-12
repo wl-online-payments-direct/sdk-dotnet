@@ -78,7 +78,7 @@ namespace OnlinePayments.Sdk
         {
             return context?.IdempotenceKey != null
                    && errors?.Count == 1
-                   && "1409".Equals(errors[0]?.ErrorCode);
+                   && "30001002".Equals(errors[0]?.ErrorCode);
         }
     }
 }

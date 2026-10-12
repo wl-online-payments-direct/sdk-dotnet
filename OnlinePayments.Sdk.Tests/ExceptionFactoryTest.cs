@@ -9,7 +9,7 @@ namespace OnlinePayments.Sdk;
 [TestFixture]
 public class ExceptionFactoryTest
 {
-    private static APIError CreateIdempotenceError() => new() { ErrorCode = "1409" };
+    private static APIError CreateIdempotenceError() => new() { ErrorCode = "30001002" };
 
     private static CallContext CreateIdempotenceContext(string key = "idempotence-key")
         => new CallContext().WithIdempotenceKey(key);
