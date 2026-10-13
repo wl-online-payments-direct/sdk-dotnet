@@ -245,13 +245,8 @@ public class PaymentsTest : IntegrationTest
 
         await _paymentsClient.CapturePayment(paymentId, new CapturePaymentRequestBuilder().Build());
 
-        CancelPaymentResponse cancelPaymentResponse =
-            await _paymentsClient.CancelPayment(paymentId, new CancelPaymentRequestBuilder().Build());
-
-        Assert.That(cancelPaymentResponse, Is.Not.Null);
-        Assert.That(cancelPaymentResponse.Payment, Is.Not.Null);
-        Assert.That(cancelPaymentResponse.Payment.StatusOutput, Is.Not.Null);
-        Assert.That(cancelPaymentResponse.Payment.StatusOutput.StatusCategory, Is.EqualTo("UNSUCCESSFUL"));
+        Assert.ThrowsAsync<ValidationException>(async () =>
+            await _paymentsClient.CancelPayment(paymentId, new CancelPaymentRequestBuilder().Build()));
     }
 
     [TestCase]
@@ -285,13 +280,8 @@ public class PaymentsTest : IntegrationTest
         RefundRequest refundRequest = new RefundRequestBuilder().Build();
         await _paymentsClient.RefundPayment(paymentId, refundRequest);
 
-        CancelPaymentResponse cancelPaymentResponse =
-            await _paymentsClient.CancelPayment(paymentId, new CancelPaymentRequestBuilder().Build());
-
-        Assert.That(cancelPaymentResponse, Is.Not.Null);
-        Assert.That(cancelPaymentResponse.Payment, Is.Not.Null);
-        Assert.That(cancelPaymentResponse.Payment.StatusOutput, Is.Not.Null);
-        Assert.That(cancelPaymentResponse.Payment.StatusOutput.StatusCategory, Is.EqualTo("UNSUCCESSFUL"));
+        Assert.ThrowsAsync<ValidationException>(async () =>
+            await _paymentsClient.CancelPayment(paymentId, new CancelPaymentRequestBuilder().Build()));
     }
 
     [TestCase]
