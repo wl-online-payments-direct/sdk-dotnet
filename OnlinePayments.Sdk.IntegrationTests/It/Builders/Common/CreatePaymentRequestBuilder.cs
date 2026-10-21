@@ -20,6 +20,8 @@ public class CreatePaymentRequestBuilder
 
     private string _token;
     private bool _autoCapture;
+    private string _authorizationMode = "FINAL_AUTHORIZATION";
+    private int _paymentProductId = 1;
 
     private PaymentMethodType _paymentMethodType = PaymentMethodType.Card;
 
@@ -97,6 +99,18 @@ public class CreatePaymentRequestBuilder
         return this;
     }
 
+    public CreatePaymentRequestBuilder WithAuthorizationMode(string authorizationMode)
+    {
+        _authorizationMode = authorizationMode;
+        return this;
+    }
+
+    public CreatePaymentRequestBuilder WithPaymentProductId(int paymentProductId)
+    {
+        _paymentProductId = paymentProductId;
+        return this;
+    }
+
     #endregion
 
     public CreatePaymentRequest Build()
@@ -167,19 +181,19 @@ public class CreatePaymentRequestBuilder
                     CardNumber = _cardNumber,
                     ExpiryDate = _expiryDate
                 },
-                AuthorizationMode = "FINAL_AUTHORIZATION",
+                AuthorizationMode = _authorizationMode,
                 TransactionChannel = "ECOMMERCE",
                 ReturnUrl = "https://example.com/return",
-                PaymentProductId = 1,
+                PaymentProductId = _paymentProductId,
                 AutoCapture = _autoCapture ? new AutoCapture { DelayInMinutes = 10 } : null
             }
             : new CardPaymentMethodSpecificInput
             {
                 Token = _token,
-                AuthorizationMode = "FINAL_AUTHORIZATION",
+                AuthorizationMode = _authorizationMode,
                 TransactionChannel = "ECOMMERCE",
                 ReturnUrl = "https://example.com/return",
-                PaymentProductId = 1,
+                PaymentProductId = _paymentProductId,
                 AutoCapture = _autoCapture ? new AutoCapture { DelayInMinutes = 10 } : null
             };
     }

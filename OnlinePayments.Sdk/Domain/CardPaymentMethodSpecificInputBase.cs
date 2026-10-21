@@ -117,7 +117,9 @@ namespace OnlinePayments.Sdk.Domain
         /// Indicates the channel via which the payment is created. Allowed values:
         /// <list type="bullet">
         ///   <item><description>ECOMMERCE - The transaction is a regular E-Commerce transaction.</description></item>
-        ///   <item><description>MOTO - The transaction is a Mail Order/Telephone Order.</description></item>
+        ///   <item><description>MOTO - (Deprecated) The transaction is a Mail Order/Telephone Order. Use MAIL or TELEPHONE instead.</description></item>
+        ///   <item><description>MAIL - The transaction is a Mail Order.</description></item>
+        ///   <item><description>TELEPHONE - The transaction is a Telephone Order.</description></item>
         /// </list>
         /// <p />
         /// Defaults to ECOMMERCE.

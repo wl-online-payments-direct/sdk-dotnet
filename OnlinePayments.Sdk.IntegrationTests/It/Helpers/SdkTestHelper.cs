@@ -43,6 +43,45 @@ public class SdkTestHelper(IMerchantClient merchantClient)
         return response.Payment.Id;
     }
 
+    public async Task<string> CreatePreAuthorizedPaymentAndGetId(long amount, string currencyCode)
+    {
+        CreatePaymentResponse response = await CreatePayment(new CreatePaymentRequestBuilder()
+            .WithAuthorizationMode("PRE_AUTHORIZATION")
+            .WithAmount(amount)
+            .WithCurrencyCode(currencyCode)
+            .Build())
+            .ConfigureAwait(false);
+
+        return response.Payment.Id;
+    }
+
+    public async Task<string> CreateMastercardPaymentAndGetId(long amount, string currencyCode)
+    {
+        CreatePaymentResponse response = await CreatePayment(new CreatePaymentRequestBuilder()
+            .WithCardNumber("5137009801943438")
+            .WithPaymentProductId(3)
+            .WithAmount(amount)
+            .WithCurrencyCode(currencyCode)
+            .Build())
+            .ConfigureAwait(false);
+
+        return response.Payment.Id;
+    }
+
+    public async Task<string> CreatePreAuthorizedMastercardPaymentAndGetId(long amount, string currencyCode)
+    {
+        CreatePaymentResponse response = await CreatePayment(new CreatePaymentRequestBuilder()
+            .WithAuthorizationMode("PRE_AUTHORIZATION")
+            .WithCardNumber("5137009801943438")
+            .WithPaymentProductId(3)
+            .WithAmount(amount)
+            .WithCurrencyCode(currencyCode)
+            .Build())
+            .ConfigureAwait(false);
+
+        return response.Payment.Id;
+    }
+
     public async Task<string> CreatePayPalPaymentAndGetId()
     {
         CreatePaymentResponse response = await CreatePayment(
