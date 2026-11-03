@@ -11,9 +11,10 @@ namespace OnlinePayments.Sdk.Domain
         /// To be enabled when Javascript SDK integration is implemented on S2S flow
         /// <list type="bullet">
         ///   <item><description>false = When this flag is disabled the field RedirectionURL is returned by CreatePayment call and should be used in merchant implementation to redirect buyer to PayPal.</description></item>
-        ///   <item><description>true = When this flag is enabled the field orderID is returned by CreatePayment call and should be utilized in case merchant has integrated JS SDK button on their S2S implementation
-        /// Default value is false.</description></item>
+        ///   <item><description>true = When this flag is enabled the field orderID is returned by CreatePayment call and should be utilized in case merchant has integrated JS SDK button on their S2S implementation</description></item>
         /// </list>
+        /// <p />
+        /// Default value is false.
         /// </summary>
         [JsonProperty(PropertyName = "JavaScriptSdkFlow")]
         public bool? JavaScriptSdkFlow { get; set; }

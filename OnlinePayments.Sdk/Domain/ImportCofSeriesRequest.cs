@@ -31,6 +31,11 @@ namespace OnlinePayments.Sdk.Domain
         public string SchemeReferenceData { get; set; }
 
         /// <summary>
+        /// When a company decides to operate as a payment facilitator, it obtains a payment facilitator account from an acquirer and aggregates payment transactions for its merchant portfolio through that account. For this reason, payment facilitators’ merchant customers are known as submerchants.
+        /// </summary>
+        public SubMerchant SubMerchant { get; set; }
+
+        /// <summary>
         /// ID of the token to use to create the payment series.
         /// </summary>
         public string TokenId { get; set; }
@@ -82,6 +87,15 @@ namespace OnlinePayments.Sdk.Domain
         public ImportCofSeriesRequest WithSchemeReferenceData(string value)
         {
             SchemeReferenceData = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public ImportCofSeriesRequest WithSubMerchant(SubMerchant value)
+        {
+            SubMerchant = value;
             return this;
         }
 
