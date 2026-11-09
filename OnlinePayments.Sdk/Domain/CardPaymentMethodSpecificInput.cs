@@ -73,6 +73,11 @@ namespace OnlinePayments.Sdk.Domain
         public string InitialSchemeTransactionId { get; set; }
 
         /// <summary>
+        /// Object containing data related to installment
+        /// </summary>
+        public CardInstallmentDetails Installment { get; set; }
+
+        /// <summary>
         /// <list type="bullet">
         ///   <item><description>true - Indicates that the transaction is part of a scheduled recurring sequence. In addition, recurringPaymentSequenceIndicator indicates if the transaction is the first or subsequent in a recurring sequence.</description></item>
         ///   <item><description>false - Indicates that the transaction is not part of a scheduled recurring sequence.
@@ -222,6 +227,11 @@ namespace OnlinePayments.Sdk.Domain
         public string UnscheduledCardOnFileSequenceIndicator { get; set; }
 
         /// <summary>
+        /// Object containing specific validation rules for creditCard.
+        /// </summary>
+        public CreditCardValidationRules ValidationRules { get; set; }
+
+        /// <summary>
         /// Sets the property and returns this same instance.
         /// </summary>
         public CardPaymentMethodSpecificInput WithAllowDynamicLinking(bool? value)
@@ -299,6 +309,15 @@ namespace OnlinePayments.Sdk.Domain
         public CardPaymentMethodSpecificInput WithInitialSchemeTransactionId(string value)
         {
             InitialSchemeTransactionId = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithInstallment(CardInstallmentDetails value)
+        {
+            Installment = value;
             return this;
         }
 
@@ -498,6 +517,15 @@ namespace OnlinePayments.Sdk.Domain
         public CardPaymentMethodSpecificInput WithUnscheduledCardOnFileSequenceIndicator(string value)
         {
             UnscheduledCardOnFileSequenceIndicator = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CardPaymentMethodSpecificInput WithValidationRules(CreditCardValidationRules value)
+        {
+            ValidationRules = value;
             return this;
         }
     }

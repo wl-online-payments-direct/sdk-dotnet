@@ -19,6 +19,11 @@ namespace OnlinePayments.Sdk.Domain
         public string Locale { get; set; }
 
         /// <summary>
+        /// The origin of the merchant site. This is used to prevent the HTP iframe from being embedded by other origins.
+        /// </summary>
+        public string Origin { get; set; }
+
+        /// <summary>
         /// Contains the payment product ids that will be used for manipulating the payment products available for the payment to the customer.
         /// </summary>
         public PaymentProductFiltersHostedTokenization PaymentProductFilters { get; set; }
@@ -57,6 +62,15 @@ namespace OnlinePayments.Sdk.Domain
         public CreateHostedTokenizationRequest WithLocale(string value)
         {
             Locale = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the property and returns this same instance.
+        /// </summary>
+        public CreateHostedTokenizationRequest WithOrigin(string value)
+        {
+            Origin = value;
             return this;
         }
 
