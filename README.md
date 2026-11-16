@@ -48,6 +48,27 @@ To install the latest .NET SDK release, run the following command:
 
 To install the latest .NET SDK release as a [Strong-Named assembly](https://docs.microsoft.com/en-us/dotnet/framework/app-domains/strong-named-assemblies), follow the instructions above but use `OnlinePayments.Sdk.StrongName` instead of `OnlinePayments.Sdk`.
 
+## Working with AI agents
+
+The SDK comes with an agent skill for AI coding agents such as Claude Code, Codex, GitHub Copilot and Cursor. It tells the agent how to choose an integration method, which steps each flow needs, which rules every integration must follow, and gives code examples that are compiled against this SDK version.
+
+The skill for this version is available:
+
+* online, as plain Markdown for agents: https://raw.githubusercontent.com/wl-online-payments-direct/sdk-dotnet/10.1.0/skills/worldline-direct/SKILL.md
+* online, on GitHub: https://github.com/wl-online-payments-direct/sdk-dotnet/blob/10.1.0/skills/worldline-direct/SKILL.md
+* in the NuGet package: `skills/worldline-direct/` in the package folder, for example `~/.nuget/packages/onlinepayments.sdk/<version>/skills/worldline-direct/`
+* in this repository: `skills/worldline-direct/`
+
+To make your agent use it, add this to the `AGENTS.md` or `CLAUDE.md` file of your project:
+
+```
+For the Worldline Direct integration (OnlinePayments.Sdk), read and follow the agent skill
+https://raw.githubusercontent.com/wl-online-payments-direct/sdk-dotnet/10.1.0/skills/worldline-direct/SKILL.md
+Use the code shown in the skill; do not write SDK calls from memory.
+```
+
+Use the link from the README of the SDK version you have installed. Agents that support the Agent Skills format can also load the folder directly, for example by copying `skills/worldline-direct/` to `.claude/skills/worldline-direct/` in your project for Claude Code.
+
 ## Building the repository
 
 This repository uses [Visual Studio](https://www.visualstudio.com/) 2022 to build. Open `OnlinePayments.Sdk.sln` in Visual Studio, and click build.
